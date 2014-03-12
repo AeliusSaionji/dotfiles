@@ -1,0 +1,34 @@
+vim
+systemctl suspend
+gvim
+gpointing-device-settings
+xkeycaps
+xcompmgr
+compton 75
+"compton 75"
+echo 'hi' | wmiir write /rbar/!notice
+aurf
+surfpp
+compton-trans 75
+steam-skin
+fired
+steam-wb
+putty
+tmux
+parcellite
+xterm
+mc
+tabbed vimprobable -e
+tabbed 'vimprobable -e'
+tabbed vimprobable2 -e
+browser.sh
+firf
+urxvt
+surf
+st
+[
+surf 
+firefox
+xombrero
+vimprobable2
+steam

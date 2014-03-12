@@ -1,0 +1,1 @@
+{"literal:file:///home/Link/.pentadactyl/plugins/noscript-dev.js:133":"\n    NoScriptAllowed         color: green;\n    NoScriptBlocked         color: #444; font-style: italic;\n    NoScriptTemp            color: blue;\n    NoScriptUntrusted       color: #c00; font-style: italic;\n"}

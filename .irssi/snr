@@ -1,0 +1,52 @@
+$VAR1 = {
+          'Conformal' => {
+                           '#conformal' => '438/276'
+                         },
+          'Freenode' => {
+                          '#jsonapi' => '4/36',
+                          '##vim' => '0/2',
+                          '#pentadactyl' => '5/216',
+                          '#irssi' => '13472/31349',
+                          '#vimprobable' => '165/136',
+                          '#dtach' => '0/1',
+                          '#archlinux' => '115669/151766',
+                          '##windows-phone' => '497/1247',
+                          '#NetHack' => '3259/1648',
+                          '##c' => '3625/2495',
+                          '#windows' => '0/0',
+                          '#xombrero' => '0/2',
+                          '#tmux' => '590/2699',
+                          '#linux-wireles' => '0/1',
+                          '##hardware' => '116767/59612',
+                          '#windows-phone' => '0/1',
+                          '##chemistry' => '600/454',
+                          '#vimperator' => '151/1354',
+                          '##windowsphone' => '76/128',
+                          '#linux-wireless' => '337/767',
+                          '##windows-please-register' => '0/504',
+                          '#zsh' => '686/2278',
+                          '#nethack' => '181/56',
+                          '#irsi' => '0/1',
+                          '#perl' => '60/573',
+                          '##windows' => '48514/64466',
+                          '#screen' => '2/67',
+                          '#windowsphone' => '9/145',
+                          '#moviegods' => '0/0',
+                          '#vim' => '38375/107811',
+                          '#openvpn' => '471/518',
+                          '#hardware' => '0/0',
+                          '##irssi' => '0/1'
+                        },
+          'conformal' => {
+                           '#conformal' => '26/147'
+                         },
+          'Kaine' => {
+                       '#windowsphone' => '0/1',
+                       '##windowsphone' => '0/1',
+                       '#falcoon' => '3068/701'
+                     },
+          'OFTC' => {
+                      '#oftc' => '0/123',
+                      '#suckless' => '2342/6680'
+                    }
+        };

@@ -1,0 +1,20 @@
+"xbacklight -dec 20"
+  F6
+
+"xbacklight -inc 20"
+  F7
+
+"amixer sset Master playback toggle"
+  F8
+
+"amixer sset Master playback 2dB-"
+  F9
+
+"amixer sset Master playback 2dB+"
+  F10
+
+"xte 'key Prior'"
+  Shift + F10
+
+"xte 'key Next'"
+  Shift + F9
