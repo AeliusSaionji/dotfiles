@@ -1,1 +1,1 @@
-rsync -arvhP --files-from="include" .
+rsync -arvhP --files-from="include" ~ .
