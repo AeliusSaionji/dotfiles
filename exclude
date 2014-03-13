@@ -6,3 +6,5 @@
 .vimperator/info/
 restore.sh
 backup.sh
+include
+exclude
