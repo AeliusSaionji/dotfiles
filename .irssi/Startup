@@ -1,3 +1,0 @@
-set dcc_autochat_masks Gustav Zooby emmytee Weiss
-set dcc_autoget_masks Gustav Zooby emmytee Weiss
-exec - cmd /c start "" "$SKYDRV\\Documents\\Scripts\\borderlessirssi.ahk"

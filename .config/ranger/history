@@ -45,6 +45,6 @@ open_with j
 search X11
 shell sudo ln -s %s ~/dotfiles/
 open_with 
-delete
 shell mv %s dotfiles
 shell ln -s %s ~/
+delete
