@@ -1,4 +1,6 @@
 .vim/bundle/
 .git/
+.config/ranger/bookmarks
+.config/ranger/history
 restore.sh
 backup.sh
