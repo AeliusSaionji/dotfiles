@@ -2,5 +2,7 @@
 .git/
 .config/ranger/bookmarks
 .config/ranger/history
+.pentadactyl/info/
+.vimperator/info/
 restore.sh
 backup.sh
