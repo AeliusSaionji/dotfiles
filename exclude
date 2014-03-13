@@ -1,2 +1,4 @@
 .vim/bundle/
 .git/
+restore.sh
+backup.sh
