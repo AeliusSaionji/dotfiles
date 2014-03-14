@@ -1,0 +1,10 @@
+" vim: set ft=pentadactyl:
+
+silent cd C:\Users\Link
+tabopen https://imageshack.us/scaled/landing/577/headunitpinout.gif
+tabopen https://ifttt.com/connect/feedly/readability
+tabopen http://hackage.haskell.org/package/rss2irc
+tabopen http://emails2rss.appspot.com/
+tabopen https://aur.archlinux.org/packages/feed-cli/
+tabopen http://www.linkdata.se/software/lcdhost/
+tabopen http://www.g15-applets.de/g19-g19upnpnetspeed2-v10170-public-beta-t8083.html
