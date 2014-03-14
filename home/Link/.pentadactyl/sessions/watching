@@ -1,0 +1,26 @@
+" vim: set ft=pentadactyl:
+
+silent cd C:\Users\Link
+tabopen http://flamingsteel.dyndns.org:6879/Tinyboard/c/index.html
+tabopen http://www.gamesave-manager.com/forum/viewtopic.php?f=7&t=2173&sid=a07954e1956fd1acb13b428c4a5d3c69
+tabopen https://irfanview-forum.de/showthread.php?t=9945&p=42223#post42223
+tabopen http://code.google.com/p/dactyl/issues/detail?id=523&q=panorama&sort=-id&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary
+tabopen http://code.google.com/p/dactyl/issues/detail?can=2&start=0&num=100&q=bookmark%20folder&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary&groupby=&sort=-id&id=346
+tabopen http://www.neogaf.com/forum/private.php?do=showpm&pmid=4106812
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1109&sort=-id&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary
+tabopen http://code.google.com/p/dactyl/issues/detail?can=2&start=0&num=100&q=&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary&groupby=&sort=-id&id=1108
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1081&sort=-id&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1001&q=bookmark%20folder&sort=-id&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1110&thanks=1110&ts=1391111261
+tabopen http://code.google.com/p/vimperator-labs/issues/detail?id=953&thanks=953&ts=1387345223
+tabopen http://arstechnica.com/civis/viewtopic.php?f=2&t=1231043&p=26113603#p26113603
+tabopen http://code.google.com/p/mintty/issues/detail?id=419&thanks=419&ts=1390688892
+tabopen http://www.svp-team.com/forum/viewtopic.php?pid=39696#p39696
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1113&thanks=1113&ts=1391382047
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1114&thanks=1114&ts=1391384194
+
+tabopen http://code.google.com/p/dactyl/issues/detail?can=2&start=100&num=100&q=&colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary&groupby=&sort=&id=833
+
+tabopen http://www.dslreports.com/forum/r28969765-WIN8-How-to-Stop-UAC-Prompts-on-Startup-Programs~start=30
+tabopen http://www.g15-applets.de/g19-g19upnpnetspeed2-v10170-public-beta-t8083-15.html#67826
+tabopen http://code.google.com/p/dactyl/issues/detail?id=1115&thanks=1115&ts=1391498105
