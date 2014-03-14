@@ -11,7 +11,7 @@ xmodmap -e "keycode 124 = Insert"
 # https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
 syndaemon -t -k -i 2 &
 # Disable middle click
-synclient TapButton2=-1
+synclient TapButton3=-1
 # Pressure required for movement
 synclient FingerHigh=45
 # Speed
