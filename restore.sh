@@ -1,1 +1,1 @@
-rsync --exclude-from="exclude" -avhP --no-perms . ~
+rsync --exclude-from="exclude" -avhP --no-perms . /
