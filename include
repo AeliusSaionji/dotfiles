@@ -1,7 +1,6 @@
 .bin/
 .config/ranger
 .config/parcellite
-.fehbg
 .nethackrc
 .openrc
 .pentadactyl/
