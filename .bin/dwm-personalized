@@ -10,8 +10,8 @@ xmodmap -e "keycode 124 = Insert"
 # Disable touchpad while typing
 # https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
 syndaemon -t -k -i 2 &
-# Disable middle click, three finger tap is right click
-synclient TapButton2=3
+# Disable middle click
+synclient TapButton2=-1
 # Pressure required for movement
 synclient FingerHigh=45
 # Speed
