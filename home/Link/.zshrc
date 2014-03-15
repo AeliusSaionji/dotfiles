@@ -30,6 +30,7 @@ alias grep="grep -n --color=auto"
 alias rm=' timeout 3 rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
 alias shred=' timeout 3 shred -v'
+alias nn='ranger'
 
 # Add ~/.bin to the path
 typeset -U path
