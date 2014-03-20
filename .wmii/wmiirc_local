@@ -1,7 +1,0 @@
-MODKEY=Mod4
-status() {
-    echo -n ' wlp1s0:' $(iw dev wlp1s0 link | grep SSID) $(iw dev wlp1s0 link | grep freq) $(iw dev wlp1s0 link | grep signal) $(iw dev wlp1s0 link | grep bitrate)  '| Bat:' $(acpi) '|' $(uptime | sed 's/.*: //; s/,//g') '|' $(date '+%c')
-}
-
-export WMII_FONT='xft:Sans-9'
-export WMII_TERM="st -e tmux"

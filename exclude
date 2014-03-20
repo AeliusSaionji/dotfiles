@@ -8,3 +8,5 @@ restore.sh
 backup.sh
 include
 exclude
+history
+cache
