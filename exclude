@@ -1,6 +1,7 @@
 .vim/bundle/
 .git/
 .config/ranger/bookmarks
+.config/ranger/Trash
 .config/ranger/history
 .pentadactyl/info/
 .vimperator/info/
