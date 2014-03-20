@@ -18,3 +18,7 @@ home/Link/.xombrero.conf
 home/Link/.zandronum/
 home/Link/.zshrc
 etc/X11/xorg.conf.d/20-intel.conf
+etc/modprobe.d/
+etc/sysctl.d/
+etc/pacman.conf
+etc/rsyncd.conf

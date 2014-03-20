@@ -1,0 +1,98 @@
+" Shortcut to type panorama in the command line
+cnoremap <C-p> panorama<Space>switch<Space>
+
+" I forget, beep at me if I try to go back while typing text?
+inoremap <C-o> <Esc>:beep<Return>
+
+" Ctrl a selects all instead of going to beginning of line
+inoremap <C-a> <Insert><C-a><Insert>
+
+" F9 shows the tab to the left while in insert mode
+inoremap <F9> <Esc>:bNext<Return>
+
+" F12 shows the tab to the right while in insert mode
+inoremap <F12> <Esc>:bnext<Return>
+
+" F9 shows the tab to the left
+noremap <F9> :bNext<Return>
+
+" F12 shows the tab to the right
+noremap <F12> :bnext<Return>
+
+" Toggle permanently allow site in noscript
+noremap <A-S-s> :noscript toggleperm
+
+" Toggle temporarily allow in noscript
+noremap <A-s> :noscript toggletemp
+
+" Open downloads in freecommander
+noremap <A-d> :silent<Space>run<Space>c:\PROGRA~2\FREECO~1\FreeCommander.exe<Space>/c<Space>d:\downloads<Return>
+
+" Map x to search the firefox menu items
+noremap x :emenu<Space>
+
+" Shift c closes the active window- because extension "minimize on start and close"
+noremap C :winclose<Return>
+
+" move cmdline to downloads
+noremap <C-S-d> :cd d:\downloads<CR>
+
+" Ctrl shift p opens a private window
+noremap <C-S-P> :winopen<Space>-private<Return>
+
+" Ctrl ] saves the current url using wget (to the current cmdline directory) and closes the tab
+noremap <C-]> O<Home><C-Del>!c:\cygwin64\bin\wget<Space>--no-check-certificate<Space><Return>qd
+
+" Ctrl [ opens up a cmdline ready to save the current url to the cmdline directory- type a filename
+noremap <C-[> O<Home><C-Del>!c:\cygwin64\bin\wget<Space>--no-check-certificate<Space>-O<Space><Space><Left>
+
+" Toggle show/hide tabs with ctrl t
+noremap <C-t> :set<Space>toolbars+=tabs,notabs<Return>
+
+" Toggle show/hide address bar with ctrl shift t
+noremap <C-S-t> :set<Space>toolbars+=navigation,nonavigation<Return>
+
+" Open a cmdline preconfigured to search the current tab's site.
+noremap <C-A-s> O<Home><Right><Right><Right><Right><Right>site:<Left><Left><Left><Left><Left><Left><Space>
+
+" Show all tabs in current window via firefox thing
+noremap s :emenu<Space>View.Show<Space>All<Space>Tabs<Return>
+
+" Let firefox handle tab closes with the d key- vimperator always shows the tab to the left instead of last viewed tab
+noremap d <C-w>
+
+" Open a cmdline ready to mux youtube (or any) audio and video streams into one file
+noremap <C-0> :!C:\Progra~1\MediaCoder\codecs64\ffmpeg.exe -i input_video.mp4 -i input_audio.m4a -acodec copy -vcodec copy outfile.mp4
+
+" Yank site url and title
+nnoremap Ya :js util.copyToClipboard(buffer.URL+String.fromCharCode(10)+buffer.title)
+
+" Yank site title
+nnoremap Yt :js util.copyToClipboard(buffer.title)
+
+set complete=sbltSf
+set noscrollbars
+set toolbars=none
+set status=input,location,bookmark,history,tabcount,position,ssl
+set suggestengines=bing
+set defsearch=bing
+set titlestring=Palemoon
+set animations=true
+
+
+silent cd ~
+silent qmark w http://wallbase.cc
+silent qmark a https://boards.4chan.org/a
+silent qmark l https://www.archlinux.org/
+silent qmark o https://bay171.mail.live.com/default.aspx?id=64855&owa=1&owasuffix=owa/
+silent qmark x http://4xdcc.info/search.php, http://xdcc.me 
+silent qmark i https://ixquick.com
+silent qmark z http://amazon.com
+colorscheme seaweed
+
+" Add more configurations from another (computer specific) config
+" source! "C:\\Users\\Link\\_vimperatorrc.local"
+
+" Play a wav when downloads finish
+autocmd DownloadPost .* -javascript Audio("file://c:/users/Link/pentadactyl/masseffectbeep.wav").play()
+
