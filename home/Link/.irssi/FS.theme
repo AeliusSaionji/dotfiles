@@ -294,10 +294,17 @@ abstracts = {
 };
 formats = {
   "fe-common/core" = {
-    pubmsg = "{pubmsgnick $2 {pubnick %X4A$0}}$1";
-    pubmsg_channel = "{pubmsgnick $2 {pubnick %X4A$0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick %w$0}}$1";
+    pubmsg_channel = "{pubmsgnick $2 {pubnick %w$0}}$1";
   };
   "fe-common/irc" = {
     whois = "{nick $0} {nickhost $1@$2}%:{whois ircname $3}%:{whois note $NOTE}";
+  };
+  "Irssi::Script::adv_windowlist" = {
+    awl_display_nokey_visible = "%U$N${cumode_space}$H$C$S";
+    awl_display_key_visible = "%U$Q${cumode_space}$H$C$S";
+    awl_display_nokey_active = "%U$N${cumode_space}$H$C$S";
+    awl_display_key_active = "%U$Q${cumode_space}$H$C$S";
+    awl_display_header = "";
   };
 };
