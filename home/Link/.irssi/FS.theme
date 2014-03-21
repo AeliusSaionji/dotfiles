@@ -294,8 +294,8 @@ abstracts = {
 };
 formats = {
   "fe-common/core" = {
-    pubmsg = "{pubmsgnick $2 {pubnick %X26$0}}$1";
-    pubmsg_channel = "{pubmsgnick $2 {pubnick %X26$0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick %X4A$0}}$1";
+    pubmsg_channel = "{pubmsgnick $2 {pubnick %X4A$0}}$1";
   };
   "fe-common/irc" = {
     whois = "{nick $0} {nickhost $1@$2}%:{whois ircname $3}%:{whois note $NOTE}";

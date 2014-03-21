@@ -25,7 +25,7 @@ zstyle ':completion:*' menu select
 PS1='%m%#[%~]>'
 
 # Command aliases
-alias ls="ls --color=auto"
+alias ls="ls -h --color=auto"
 alias grep="grep -n --color=auto"
 alias rm=' timeout 3 rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
