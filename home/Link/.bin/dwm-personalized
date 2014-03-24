@@ -42,7 +42,6 @@ synclient VertScrollDelta=-109
 # Startup processes
 parcellite &
 qiv -xrt ~/pictures/bg/ &
-st -c ranger -e ranger ~ &
 
 while true; do
     # Log stderror to a file 
