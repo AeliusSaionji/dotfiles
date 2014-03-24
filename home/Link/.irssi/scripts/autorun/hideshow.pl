@@ -6,7 +6,8 @@ use Irssi;
 use Irssi::TextUI;
 use Encode;
 
-our $VERSION = '0.2';
+
+our $VERSION = '0.3';
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -105,10 +106,24 @@ sub UNLOAD {
     show_lines();
 }
 
+my $multi_msgs_last;
+
 sub prt_text_issue {
-    ($dest) = @_;
+    $dest = $_[0];
+    my $stripd = $_[2];
     if (ref $dest && $Irssi::scripts::hideshow::hide_next) {
+	$multi_msgs_last = undef;
 	$dest->{hide} = 1;
+	if ($dest->{level} & (MSGLEVEL_QUITS|MSGLEVEL_NICKS)) {
+	    $multi_msgs_last = $stripd;
+	}
+    }
+    elsif (ref $dest && $dest->{level} & (MSGLEVEL_QUITS|MSGLEVEL_NICKS)
+	       && defined $multi_msgs_last && $multi_msgs_last eq $stripd) {
+	$dest->{hide} = 1;
+    }
+    else {
+	$multi_msgs_last = undef;
     }
     $Irssi::scripts::hideshow::hide_next = undef;
 }

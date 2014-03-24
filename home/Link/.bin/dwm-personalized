@@ -7,6 +7,17 @@ xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
 # Power button is Insert
 xmodmap -e "keycode 124 = Insert"
+### REMINDER! LEAVE AT LEAST ONE Fkey SO YOU CAN GET TO THE TTY ###
+	# These keybindings are isolated within X, so all TTYs are still reachable.
+# Rebind F1 and F2 to PgUP and PgDown
+xmodmap -e "keycode 67 = Prior"
+xmodmap -e "keycode 68 = Next"
+# Rebind F6-F10 to work as expected
+xmodmap -e "keycode 72 = XF86MonBrightnessDown"
+xmodmap -e "keycode 73 = XF86MonBrightnessUp"
+xmodmap -e "keycode 74 = XF86AudioMute"
+xmodmap -e "keycode 75 = XF86AudioLowerVolume"
+xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
 # Disable touchpad while typing
 # https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
 syndaemon -t -k -i 2 &
@@ -15,15 +26,19 @@ synclient TapButton3=-1
 # Pressure required for movement
 synclient FingerHigh=45
 # Speed
+synclient MinSpeed=0.5
 synclient MaxSpeed=3
+synclient AccellFactor=0.5
+# Random ass default
+#synclient AccellFactor=0.0366905
 # Two finger horizontal scrolling
 synclient HorizTwoFingerScroll=1
 # "Natural" scrolling
 synclient HorizScrollDelta=-109
 synclient VertScrollDelta=-109
 # Locked drags because mac touchpads are stupid
-synclient LockedDrags=1
-synclient LockedDragTimeout=2000
+# synclient LockedDrags=1
+# synclient LockedDragTimeout=2000
 # Startup processes
 parcellite &
 qiv -xrt ~/pictures/bg/ &
