@@ -75,8 +75,9 @@ run_under_tmux() {
 }
 
 # Start irssi in or attach to existing tmux
-irc() { run_under_tmux irssi; }
+#irc() { run_under_tmux irssi; }
 #irc() { dtach -A /tmp/irc -z -r winch irssi }
+irc() { abduco -A /tmp/irc irssi }
 
 # So I think this is the framework for detecting if you're running ssh, and changing colors if true
 #over_ssh() {

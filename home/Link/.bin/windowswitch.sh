@@ -8,6 +8,7 @@ application=$(
 	# Remove flash from results
 	# grep -v "plugin-container" |\
 	 grep -v "parcellite" |\
+	 grep -v "xombrero" |\
 	# Show only app-names ---- not necessary with lsw
    	# cut -d" " -f3 |\
 	# Pipe to dmenu ($@ to include font settings from dwm/config.h)

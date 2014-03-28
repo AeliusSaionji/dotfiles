@@ -43,6 +43,7 @@ synclient VertScrollDelta=-109
 parcellite &
 qiv -xrt ~/pictures/bg/ &
 redshift -l 42:-73 &
+dstatus &
 
 while true; do
     # Log stderror to a file 
