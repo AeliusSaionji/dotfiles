@@ -21,7 +21,13 @@ xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
 # Disable touchpad while typing
 # https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
 syndaemon -t -k -i 2 &
-# Disable middle click
+# This is a clickpad but for some reason I have to lie
+synclient ClickPad=0
+# Two finger tap is right click
+synclient TapButton2=3
+# Three finger click is middle click
+synclient Clickfinger3=2
+# Disable tap middle click
 synclient TapButton3=-1
 # Pressure required for movement
 synclient FingerHigh=45

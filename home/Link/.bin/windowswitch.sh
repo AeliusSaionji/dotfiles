@@ -12,7 +12,7 @@ application=$(
 	# Show only app-names ---- not necessary with lsw
    	# cut -d" " -f3 |\
 	# Pipe to dmenu ($@ to include font settings from dwm/config.h)
-	 dmenu -i -p "Switch to" "${@}" |\
+	 dmenu -l 30 -i -p "Switch to" "${@}" |\
 	# escape () characters for xdotool
 	# application=${application//'('/'\('} application=${application//')'/'\)'};
 	 sed 's/(/\\(/g' | sed 's/)/\\)/g'

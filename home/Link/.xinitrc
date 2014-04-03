@@ -1,2 +1,2 @@
-dwmstatus.sh &
+#dwmstatus.sh &
 exec dwm-personalized
