@@ -2,20 +2,16 @@
 # Search through open programs and switch to their tag
 application=$(
 	# List all running programs
-	 /usr/bin/lsw |\
-	# Fix Virtualbox and LibreOffice
-   	# sed -e 's/.*VirtualBox/foobar  virtualbox/g' -e 's/.*soffice/foobar  libreoffice/g' |\
+# switch to this xwininfo -tree -root
+	 /usr/bin/xlsclients |\
 	# Remove flash from results
 	# grep -v "plugin-container" |\
-	 grep -v "parcellite" |\
-	 grep -v "xombrero" |\
-	# Show only app-names ---- not necessary with lsw
-   	# cut -d" " -f3 |\
+	 tr -d "Saya " |\
 	# Pipe to dmenu ($@ to include font settings from dwm/config.h)
-	 dmenu -l 30 -i -p "Switch to" "${@}" |\
+	 dmenu -l 30 -i -p "Switch to" "${@}"
 	# escape () characters for xdotool
 	# application=${application//'('/'\('} application=${application//')'/'\)'};
-	 sed 's/(/\\(/g' | sed 's/)/\\)/g'
+	# sed 's/(/\\(/g' | sed 's/)/\\)/g'
 )
 # Switch to chosen application
 # case $application in
@@ -23,6 +19,6 @@ application=$(
 #		xdotool search --onlyvisible -classname "$application" windowactivate &> /dev/null
 #		;;
 #	*)
-		xdotool search --name "${application}" windowactivate 
+		xdotool search --class "${application}" windowactivate 
 #		;;
 #esac

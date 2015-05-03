@@ -1,1 +1,1 @@
-st -c irssi -t irssi -e abduco -A /tmp/irc irssi
+st -c irssi -t irssi -e abduco -A irc irssi

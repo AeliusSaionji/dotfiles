@@ -8,9 +8,6 @@ setopt HIST_IGNORE_DUPS
 # Use vi style keys
 bindkey -v
 
-# Map mouse wheel to scrolling in dvtm
-#bindkey '^Y' pageup-char
-
 # Idk
 zstyle :compinstall filename '/home/Link/.zshrc'
 
@@ -26,11 +23,12 @@ PS1='%m%#[%~]>'
 
 # Command aliases
 alias ls="ls -h --color=auto"
+alias ll="ls -lh --color=auto"
 alias grep="grep -n --color=auto"
-alias rm=' timeout 3 rm -Iv --one-file-system'
+alias rm='rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
-alias shred=' timeout 3 shred -v'
 alias nn='ranger'
+alias apacman='apacman --auronly'
 
 # Add ~/.bin to the path
 typeset -U path

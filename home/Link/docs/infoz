@@ -1,0 +1,32 @@
+[Notes]
+qiv doesn't set the background wallpaper in a way that works with transparency, which is why we keep feh around
+st has transparency compiled in from the source (via a patch)
+compton is newer than xcompmgr, use compton
+terminal font: inconsolata
+dvtm MOD-e loads the terminal buffer in vim
+like ditto on windows, the clipboard history (program: clipmenu) is ctrl`
+dwm is now responsible for opening URLs, press MOD-u to open any selected text with ~/.bin/browser.sh
+set window class with the following: xprop -f WM_CLASS 8s -set WM_CLASS newclasshere
+baobab is an awesome disk usage visualizer
+devilspie can be used to wait for windows to appear, and do things to them
+fbgrab - screenshot of the non X terminal
+fbv - view images in the non X terminal
+
+
+First, extract the three tarballs from the .deb file :
+# ar vx package.deb
+Then extract the contents of data.tar.gz using tar:
+# tar xzvf data.tar.gz
+
+[Flow]
+.zshrc adds ~/.bin to $PATH
+	.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
+dwm launches st with dvtm
+
+[Todo]
+better tab location
+better dvtm modkey
+run or raise st?
+hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
+keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
+	for example, if we hide the statusbar, irssi could fifo it back on with a hilight

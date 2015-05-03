@@ -3,8 +3,6 @@
 .config/ranger/bookmarks
 .config/ranger/Trash
 .config/ranger/history
-.pentadactyl/info/
-.vimperator/info/
 restore.sh
 backup.sh
 include

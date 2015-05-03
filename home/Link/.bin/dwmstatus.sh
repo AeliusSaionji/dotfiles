@@ -1,4 +1,4 @@
-DWM_REFRESH_INT="1m"
+DWM_REFRESH_INT="30s"
 while true; do
 
 # Power/Battery Status

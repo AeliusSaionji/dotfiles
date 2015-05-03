@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Transparency and fading
-#compton -bf -i 0.8 --backend glx --vsync opengl-swc
+compton -i 0.5 --focus-exclude 'x = 0 && y = 0' -f &
 # Right alt is considered mod4
 xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
@@ -10,8 +10,8 @@ xmodmap -e "keycode 124 = Insert"
 ### REMINDER! LEAVE AT LEAST ONE Fkey SO YOU CAN GET TO THE TTY ###
 	# These keybindings are isolated within X, so all TTYs are still reachable.
 # Rebind F1 and F2 to PgUP and PgDown
-xmodmap -e "keycode 67 = Prior"
-xmodmap -e "keycode 68 = Next"
+xmodmap -e "keycode 67 = Page_Up"
+xmodmap -e "keycode 68 = Page_Down"
 # Rebind F6-F10 to work as expected
 xmodmap -e "keycode 72 = XF86MonBrightnessDown"
 xmodmap -e "keycode 73 = XF86MonBrightnessUp"
@@ -46,10 +46,10 @@ synclient VertScrollDelta=-109
 # synclient LockedDrags=1
 # synclient LockedDragTimeout=2000
 # Startup processes
-parcellite &
-qiv -xrt ~/pictures/bg/ &
+feh --bg-max --no-fehbg -z /home/Link/pictures/bg
+clipmenud &
 redshift -l 42:-73 &
-dstatus &
+dwmstatus.sh &
 
 while true; do
     # Log stderror to a file 

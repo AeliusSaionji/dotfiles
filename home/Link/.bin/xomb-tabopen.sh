@@ -1,4 +1,4 @@
-if [[ -e ~/.xombrero/socket ]]
+if (pgrep -x xombrero)
 then
 	xombrero -n "$1" &
 else
