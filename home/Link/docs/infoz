@@ -21,7 +21,9 @@ Then extract the contents of data.tar.gz using tar:
 [Flow]
 .zshrc adds ~/.bin to $PATH
 	.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
+		dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into dwm/dmenu
 dwm launches st with dvtm
+
 
 [Todo]
 better tab location
