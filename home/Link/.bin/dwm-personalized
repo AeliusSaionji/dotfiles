@@ -5,46 +5,59 @@ compton -i 0.5 --focus-exclude 'class_i = "dmenu"' --focus-exclude 'class_i = "s
 # Right alt is considered mod4
 xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
-# Power button is Insert
-xmodmap -e "keycode 124 = Insert"
-### REMINDER! LEAVE AT LEAST ONE Fkey SO YOU CAN GET TO THE TTY ###
-	# These keybindings are isolated within X, so all TTYs are still reachable.
-# Rebind F1 and F2 to PgUP and PgDown
-xmodmap -e "keycode 67 = Page_Up"
-xmodmap -e "keycode 68 = Page_Down"
-# Rebind F6-F10 to work as expected
-xmodmap -e "keycode 72 = XF86MonBrightnessDown"
-xmodmap -e "keycode 73 = XF86MonBrightnessUp"
-xmodmap -e "keycode 74 = XF86AudioMute"
-xmodmap -e "keycode 75 = XF86AudioLowerVolume"
-xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
-# Disable touchpad while typing
-# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
-syndaemon -t -k -i 2 &
-# This is a clickpad but for some reason I have to lie
-synclient ClickPad=0
-# Two finger tap is right click
-synclient TapButton2=3
-# Three finger click is middle click
-synclient Clickfinger3=2
-# Disable tap middle click
-synclient TapButton3=-1
-# Pressure required for movement
-synclient FingerHigh=45
-# Speed
-synclient MinSpeed=0.5
-synclient MaxSpeed=3
-synclient AccellFactor=0.5
-# Random ass default
-#synclient AccellFactor=0.0366905
-# Two finger horizontal scrolling
-synclient HorizTwoFingerScroll=1
-# "Natural" scrolling
-synclient HorizScrollDelta=-109
-synclient VertScrollDelta=-109
-# Locked drags because mac touchpads are stupid
-# synclient LockedDrags=1
-# synclient LockedDragTimeout=2000
+
+# Get the hostname
+host="$(hostnamectl status --static)"
+# Saya specific commands
+if [ $host = "Saya" ]; then
+	# Power button is Insert
+	xmodmap -e "keycode 124 = Insert"
+	### REMINDER! LEAVE AT LEAST ONE Fkey SO YOU CAN GET TO THE TTY ###
+		# These keybindings are isolated within X, so all TTYs are still reachable.
+	# Rebind F1 and F2 to PgUP and PgDown
+	xmodmap -e "keycode 67 = Page_Up"
+	xmodmap -e "keycode 68 = Page_Down"
+	# Rebind F6-F10 to work as expected
+	xmodmap -e "keycode 72 = XF86MonBrightnessDown"
+	xmodmap -e "keycode 73 = XF86MonBrightnessUp"
+	xmodmap -e "keycode 74 = XF86AudioMute"
+	xmodmap -e "keycode 75 = XF86AudioLowerVolume"
+	xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
+	# This is a clickpad but for some reason I have to lie
+	synclient ClickPad=0
+	# Two finger tap is right click
+	synclient TapButton2=3
+	# Three finger click is middle click
+	synclient Clickfinger3=2
+	# Disable tap middle click
+	synclient TapButton3=-1
+	# Locked drags because mac touchpads are stupid
+	# synclient LockedDrags=1
+	# synclient LockedDragTimeout=2000
+fi
+
+# Get device type
+chassis="$(hostnamectl | sed -e '/Chassis/!d' -e 's/^.*Chassis: //')"
+# laptop specific commands
+if [ $chassis = "laptop" ]; then
+	# Disable touchpad while typing
+	# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
+	syndaemon -t -k -i 2 &
+	# Pressure required for movement
+	synclient FingerHigh=45
+	# Speed
+	synclient MinSpeed=0.5
+	synclient MaxSpeed=3
+	synclient AccellFactor=0.5
+	# Random ass default
+	#synclient AccellFactor=0.0366905
+	# Two finger horizontal scrolling
+	synclient HorizTwoFingerScroll=1
+	# "Natural" scrolling
+	synclient HorizScrollDelta=-109
+	synclient VertScrollDelta=-109
+fi
+
 # Startup processes
 feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 clipmenud &
