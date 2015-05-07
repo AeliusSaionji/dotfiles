@@ -1,8 +1,3 @@
-etc/X11/xorg.conf.d/20-intel.conf
-etc/modprobe.d/
-etc/pacman.conf
-etc/rsyncd.conf
-etc/sysctl.d/
 home/Link/.bin/
 home/Link/.config/ranger
 home/Link/.nethackrc
