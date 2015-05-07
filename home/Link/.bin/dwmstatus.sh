@@ -22,3 +22,11 @@ xsetroot -name "$DWM_STATUS";
 sleep $DWM_REFRESH_INT;
 
 done &
+
+
+# Wi-Fi eSSID
+#if [ "$( cat /sys/class/rfkill/rfkill1/state )" -eq "1" ]; then
+#		  DWM_ESSID=$( echo 'On' ); 
+#else
+#		  DWM_ESSID="OFF";
+#fi;

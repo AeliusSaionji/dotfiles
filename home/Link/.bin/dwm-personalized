@@ -36,6 +36,12 @@ if [ $host = "Saya" ]; then
 	# synclient LockedDragTimeout=2000
 fi
 
+if [ $host = "GIR" ]; then
+	# Appskey aka menu key is now right alt and considered mod1
+	xmodmap -e "keycode 135 = Alt_R"
+	xmodmap -e "add mod1 = Alt_R"
+fi
+
 # Get device type
 chassis="$(hostnamectl | sed -e '/Chassis/!d' -e 's/^.*Chassis: //')"
 # laptop specific commands
@@ -54,8 +60,8 @@ if [ $chassis = "laptop" ]; then
 	# Two finger horizontal scrolling
 	synclient HorizTwoFingerScroll=1
 	# "Natural" scrolling
-	synclient HorizScrollDelta=-109
-	synclient VertScrollDelta=-109
+	synclient HorizScrollDelta=-100
+	synclient VertScrollDelta=-100
 fi
 
 # Startup processes
