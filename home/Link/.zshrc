@@ -34,6 +34,12 @@ alias apacman='apacman --auronly'
 typeset -U path
 path=(~/.bin $path)
 
+# Device specific settings
+host="$(hostnamectl status --static)"
+if [ $host = "GIR" ]; then
+	#nothing here yet
+fi
+
 # Set the window title
 precmd () {
   print -Pn "\e]0;[%n@%M][%~]%#\a"
