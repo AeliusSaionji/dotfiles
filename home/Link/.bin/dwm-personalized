@@ -38,8 +38,10 @@ fi
 
 if [ $host = "GIR" ]; then
 	# Appskey aka menu key is now right alt and considered mod1
-	xmodmap -e "keycode 135 = Alt_R"
-	xmodmap -e "add mod1 = Alt_R"
+#	xmodmap -e "keycode 135 = Alt_R"
+#	xmodmap -e "add mod1 = Alt_R"
+	# Changed my mind, it's tab now
+	xmodmap -e "keycode 135 = Tab"
 fi
 
 # Get device type
