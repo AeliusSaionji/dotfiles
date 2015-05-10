@@ -35,10 +35,10 @@ typeset -U path
 path=(~/.bin $path)
 
 # Device specific settings
-host="$(hostnamectl status --static)"
-if [ $host = "GIR" ]; then
-	#nothing here yet
-fi
+#host="$(hostnamectl status --static)"
+#if [ $host = "GIR" ]; then
+#	#nothing here yet
+#fi
 
 # Set the window title
 precmd () {
@@ -80,8 +80,7 @@ run_under_tmux() {
 
 # Start irssi in or attach to existing tmux
 #irc() { run_under_tmux irssi; }
-#irc() { dtach -A /tmp/irc -z -r winch irssi }
-irc() { abduco -A /tmp/irc irssi }
+irc() { abduco -A irc irssi }
 
 # So I think this is the framework for detecting if you're running ssh, and changing colors if true
 #over_ssh() {
