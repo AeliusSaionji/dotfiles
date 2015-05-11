@@ -1,0 +1,9 @@
+[Unit]
+Description=Appskey is F13
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/loadkeys /home/Link/.bin/F13.map
+
+[Install]
+WantedBy=multi-user.target
