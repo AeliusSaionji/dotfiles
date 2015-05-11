@@ -19,7 +19,7 @@ compinit
 zstyle ':completion:*' menu select
 
 # Customize the shell prompt
-PS1='%m%#[%~]>'
+#PS1='%m%#[%~]>'
 
 # Command aliases
 alias ls="ls -h --color=auto"
@@ -35,9 +35,9 @@ typeset -U path
 path=(~/.bin $path)
 
 function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    RPS2=$RPS1
-    zle reset-prompt
+	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+	RPS2=$RPS1
+	zle reset-prompt
 }
 
 zle -N zle-line-init
