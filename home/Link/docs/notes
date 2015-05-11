@@ -1,0 +1,42 @@
+[Notes]
+	-Transparency-
+		qiv doesn't set the background wallpaper in a way that works with transparency, which is why we keep feh around
+		st has transparency compiled in from the source (via a patch)
+		compton is newer than xcompmgr, use compton
+	-Terminal-
+		terminal font: inconsolata
+		dvtm MOD-e loads the terminal buffer in vim
+		dvtm: on devices with Appkey, map Appskey to F13 (VT: systemd service, X11: xmodmap), compile dvtm with mod: Key_F(13)
+	-WM Usage-
+		MOD is Windows key or Right Alt
+		MOD-p is program launcher
+		clipboard history (program: clipmenu): ctrl` (like Ditto on Windows)
+		Open URLs: MOD-u opens selected text with ~/.bin/browser.sh
+
+
+[Flow]
+.zshrc adds ~/.bin to $PATH
+	.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
+		dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
+dwm launches st with dvtm
+
+
+[Todo]
+better tab location
+better dvtm modkey
+hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
+	or, remove X focus follows cursor functionality from dwm
+keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
+	for example, if we hide the statusbar, irssi could fifo it back on with a hilight
+		(tried patching this in, it compiled but crashed)
+
+[Misc]
+	-Extract .deb-
+		Extract contents of .deb
+		# ar vx package.deb
+		Everything is in data.tar.gz
+	-Programs I'll never remember-
+		baobab - awesome disk usage visualizer
+		devilspie - wait for windows to appear, do things to them
+		fbgrab - VT screenshot
+		fbv - VT image viewer
