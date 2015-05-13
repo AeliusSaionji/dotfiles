@@ -15,6 +15,7 @@ if [ $host = "Saya" ]; then
 	### REMINDER! LEAVE AT LEAST ONE Fkey SO YOU CAN GET TO THE TTY ###
 		# These keybindings are isolated within X, so all TTYs are still reachable.
 	# Rebind F1 and F2 to PgUP and PgDown
+		# not good enough for dvtm
 	xmodmap -e "keycode 67 = Page_Up"
 	xmodmap -e "keycode 68 = Page_Down"
 	# Rebind F6-F10 to work as expected
@@ -40,6 +41,7 @@ elif [ $host = "GIR" ]; then
 elif [ $host = "Talim" ]; then
 	# where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
+	export DVTM_TERM=st
 fi
 
 # Get device type
