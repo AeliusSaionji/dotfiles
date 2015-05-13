@@ -3,3 +3,4 @@ etc/modprobe.d/
 etc/sysctl.d/
 etc/systemd/system/appskey-is-tab.service
 etc/systemd/system/appskey-is-F13.service
+etc/systemd/system/unfuck-Talim-wifi.service
