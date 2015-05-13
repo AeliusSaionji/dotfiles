@@ -29,6 +29,7 @@ dwm launches st with dvtm
 	feh (sets the wallpaper)
 	aur/compton-git
 	aur/clipmenu-git
+	aur/mmkeyosd (also handles keybindings)
 
 [Todo]
 better tab location
