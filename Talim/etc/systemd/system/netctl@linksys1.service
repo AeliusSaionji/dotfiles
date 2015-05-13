@@ -1,0 +1,6 @@
+.include /usr/lib/systemd/system/netctl@.service
+
+[Unit]
+Description=A simple WPA encrypted wireless connection
+BindsTo=sys-subsystem-net-devices-wls1.device
+After=sys-subsystem-net-devices-wls1.device
