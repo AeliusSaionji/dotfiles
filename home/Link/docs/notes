@@ -13,13 +13,22 @@
 		clipboard history (program: clipmenu): ctrl` (like Ditto on Windows)
 		Open URLs: MOD-u opens selected text with ~/.bin/browser.sh
 
-
 [Flow]
 .zshrc adds ~/.bin to $PATH
 	.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
 		dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
 dwm launches st with dvtm
 
+[Necessities]
+	abs.git
+	zsh (sets path, is great)
+	ttf-dejavu (browsers)
+	ttf-inconsolata (terminal)
+	xsel (for url launching, ranger, clipmenu)
+	rfkill (Talim's unfuck wifi needs this)
+	feh (sets the wallpaper)
+	aur/compton-git
+	aur/clipmenu-git
 
 [Todo]
 better tab location
