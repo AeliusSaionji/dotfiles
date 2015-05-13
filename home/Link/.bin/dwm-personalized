@@ -69,6 +69,7 @@ fi
 # Startup processes
 feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 clipmenud &
+mmkeyosd &
 redshift -l 42:-73 &
 dwmstatus.sh &
 
