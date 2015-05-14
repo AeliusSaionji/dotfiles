@@ -27,6 +27,7 @@ dwm launches st with dvtm
 	xsel (for url launching, ranger, clipmenu)
 	rfkill (Talim's unfuck wifi needs this)
 	feh (sets the wallpaper)
+	aur/abduco (for irc)
 	aur/compton-git
 	aur/clipmenu-git
 	aur/mmkeyosd (also handles keybindings)

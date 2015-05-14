@@ -7,6 +7,7 @@ setopt HIST_IGNORE_DUPS
 
 # Use vi style keys
 bindkey -v
+bindkey jj vi-cmd-mode
 
 # Idk
 zstyle :compinstall filename '/home/Link/.zshrc'
