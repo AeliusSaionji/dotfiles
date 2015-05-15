@@ -3,9 +3,9 @@ while true; do
 
 # Power/Battery Status
 if [ "$( cat /sys/class/power_supply/AC/online )" -eq "1" ]; then
-        POWERSOURCE="AC";
+        POWERSOURCE="+";
 else
-        POWERSOURCE="BATT";
+        POWERSOURCE="-";
 fi;
 BATTERYLEVEL=$(( `cat /sys/class/power_supply/BAT0/charge_now` * 100 / `cat /sys/class/power_supply/BAT0/charge_full` ));
 
@@ -19,8 +19,8 @@ NETPROFILE=$(netctl list | sed -e '/\*/!d' -e 's/\* //')
 CLOCK=$( date '+%H:%M' );
 
 # Overall output command
-#DWM_STATUS="[$POWERSOURCE][$BATTERYLEVEL] | $VOLUME| $NETPROFILE | $CLOCK";
-DWM_STATUS="[$POWERSOURCE][$BATTERYLEVEL] | $NETPROFILE | $CLOCK";
+#DWM_STATUS="$NETPROFILE | [$POWERSOURCE][$BATTERYLEVEL] | $VOLUME| $CLOCK";
+DWM_STATUS="$NETPROFILE | [$POWERSOURCE][$BATTERYLEVEL] | $CLOCK";
 xsetroot -name "$DWM_STATUS";
 sleep $DWM_REFRESH_INT;
 
