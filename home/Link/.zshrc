@@ -28,7 +28,6 @@ alias ll="ls -lh --color=auto"
 alias grep="grep -n --color=auto"
 alias rm='rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
-alias nn='ranger'
 alias apacman='apacman --auronly'
 
 # Add ~/.bin to the path
@@ -56,8 +55,17 @@ precmd () {
 } 
 preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
 
-# Define a function to run things under or attach to existing tmux
+# run or raise ranger. rethink name- rg() maybe?
+nn() {
+    if [ -z "$RANGER_LEVEL" ]
+    then
+        ranger
+    else
+        exit
+    fi
+}
 
+# Define a function to run things under or attach to existing tmux
 run_under_tmux() {
 	# Run $1 under session or attach if such session already exist.
 	# $2 is optional path, if no specified, will use $1 from $PATH.
