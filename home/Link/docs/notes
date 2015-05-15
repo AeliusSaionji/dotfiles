@@ -25,6 +25,7 @@ dwm launches st with dvtm
 	grml-zsh-config (extreme convenience)
 	ttf-dejavu (browsers)
 	ttf-inconsolata (terminal)
+	ttf-hanazono (everything else and maybe jpn letters?)
 	xsel (for url launching, ranger, clipmenu)
 	rfkill (Talim's unfuck wifi needs this)
 	feh (sets the wallpaper)
@@ -44,7 +45,6 @@ dwm launches st with dvtm
 
 [Todo]
 better tab location
-figure out if I need the font ttf-hanazono
 Talim stick- scrollwheel instead of arrow keys?
 hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
 	or, remove X focus follows cursor functionality from dwm
