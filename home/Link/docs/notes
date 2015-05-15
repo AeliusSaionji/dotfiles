@@ -36,6 +36,7 @@ dwm launches st with dvtm
 [Todo]
 better tab location
 why is zsh evil?
+figure out if I need the font ttf-hanazono
 Talim touchpad
 Talim stick- scrollwheel instead of arrow keys?
 hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
