@@ -1,21 +1,21 @@
 # Power/Battery Status
 if [ "$( cat /sys/class/power_supply/AC/online )" -eq "1" ]; then
-        DWM_BATTERY="AC";
-        DWM_RENEW_INT=3;
+        POWERSOURCE="AC";
 else
-        DWM_BATTERY=$(( `cat /sys/class/power_supply/BAT0/charge_now` * 100 / `cat /sys/class/power_supply/BAT0/charge_full` ));
-        DWM_RENEW_INT=30;
+        POWERSOURCE="BATT";
 fi;
+BATTERYLEVEL=$(( `cat /sys/class/power_supply/BAT0/charge_now` * 100 / `cat /sys/class/power_supply/BAT0/charge_full` ));
 
 # Volume Level
-DWM_VOL=$( amixer sget Master | awk -vORS=' ' '/Mono:/ {print($6$4)}' );
+#VOLUME=$( amixer sget Master | awk -vORS=' ' '/Mono:/ {print($6$4)}' );
 
 # Network
 NETPROFILE=$(netctl list | sed -e '/\*/!d' -e 's/\* //')
 
 # Date and Time
-DWM_CLOCK=$( date '+%H:%M' );
+CLOCK=$( date '+%H:%M' );
 
 # Overall output command
-DWM_STATUS="[$DWM_BATTERY] | $DWM_VOL| $NETPROFILE | $DWM_CLOCK";
+#DWM_STATUS="[$POWERSOURCE][$BATTERYLEVEL] | $VOLUME| $NETPROFILE | $CLOCK";
+DWM_STATUS="[$POWERSOURCE][$BATTERYLEVEL] | $NETPROFILE | $CLOCK";
 xsetroot -name "$DWM_STATUS";

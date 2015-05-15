@@ -1,10 +1,10 @@
 MonBrightnessUp      text_with_bar    "Brightness" exec ~/.mmkeyosd/brightup.sh
 MonBrightnessDown    text_with_bar    "Brightness" exec ~/.mmkeyosd/brightdown.sh
 
-AudioLowerVolume     text_with_bar    "Volume" amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1 && exec ~/.bin/dwmstatus-trigger-update.sh
-AudioRaiseVolume     text_with_bar    "Volume" amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1 && exec ~/.bin/dwmstatus-trigger-update.sh
+AudioLowerVolume     text_with_bar    "Volume" amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1 #&& exec ~/.bin/dwmstatus-trigger-update.sh
+AudioRaiseVolume     text_with_bar    "Volume" amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1 #&& exec ~/.bin/dwmstatus-trigger-update.sh
 AudioMute            text_with_text   "Volume" amixer set Master toggle | sed -n -e 's/.*Playback.*\[\(on\|off\)\].*/\1/p' |\
-                                               head -n 1 | awk '{ if($0 == "off") print "Muted"; else print "Unmuted"}' && exec ~/.bin/dwmstatus-trigger-update.sh
+                                               head -n 1 | awk '{ if($0 == "off") print "Muted"; else print "Unmuted"}' #&& exec ~/.bin/dwmstatus-trigger-update.sh
 
 #toggle play/pause in mpd
 AudioPlay    text_with_text   "MPD"    printf '%s: %s\n' "$(mpc toggle | sed -n -e 's/^\[\(.*\)\].*/\1/' -e 's/^p/P/p')" "$(mpc current)"
