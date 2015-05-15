@@ -51,11 +51,10 @@ if has("gui_running")
 	set guifontwide=DFKai-SB:h12
 endif
 
-" Set pate mode for pasting things over ssh I guess
-" It doesn't appear to be necessary and turns off neocomplete
-"if has('win32') || has('win64')
-"	set paste
-"endif
+" Set pate mode under *nix
+if has('win32') || has('win64')
+	set paste
+endif
 
 " Syntax highlighting. If you turn it on more than once it screws up colors, hence the if statement
 if !exists("syntax_on")
