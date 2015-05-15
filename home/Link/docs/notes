@@ -39,6 +39,8 @@ dwm launches st with dvtm
 	Circular scrolling works better than vertical (should probably revisit vertical) and the two are incompatible
 		At least, natural scrolling breaks while Circular is on. Slide in from the right to circular scroll.
 	Mute key is hardwired to mute the speaker, no need to bind it.
+	/etc/X11/xorg.conf.d/20-intel.conf | Option	"TearFree"	"true"
+		fixes screen tearing but could introduce issues with games. https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
 
 [Todo]
 better tab location
