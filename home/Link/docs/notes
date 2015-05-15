@@ -63,5 +63,7 @@ keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
 		devilspie - wait for windows to appear, do things to them
 		fbgrab - VT screenshot
 		fbv - VT image viewer
+	-Files I'll never remember-
+		~/.gtkrc-2.0 for setting the font size in inkscape. Breaks xombrero fonts.
 	-Bad cat-
 		read -r var < file
