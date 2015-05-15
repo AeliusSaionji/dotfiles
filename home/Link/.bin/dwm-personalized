@@ -63,7 +63,7 @@ if [ $host = "Saya" ]; then
 	synclient MinSpeed=0.5
 	synclient MaxSpeed=3
 	synclient AccellFactor=0.5
-	# "Natural" scrolling
+	# "Natural" scrolling speed
 	synclient HorizScrollDelta=-100
 	synclient VertScrollDelta=-100
 elif [ $host = "GIR" ]; then
@@ -84,6 +84,10 @@ elif [ $host = "Talim" ]; then
 	synclient CircScrollTrigger=3
 	# Slow down scrolling (lower is faster)
 	synclient CircScrollDelta=0.7
+	# Side scroll area doesn't work with circular, disable it
+	synclient VertEdgeScroll=0
+	# "Natural" scrolling speed (does nothing with circular on)
+	synclient VertScrollDelta=-450
 fi
 
 # Startup processes
