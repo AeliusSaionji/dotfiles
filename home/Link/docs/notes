@@ -22,6 +22,7 @@ dwm launches st with dvtm
 [Necessities]
 	abs.git
 	zsh (sets path, is great)
+	grml-zsh-config (extreme convenience)
 	ttf-dejavu (browsers)
 	ttf-inconsolata (terminal)
 	xsel (for url launching, ranger, clipmenu)
