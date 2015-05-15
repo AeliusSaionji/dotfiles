@@ -6,6 +6,26 @@ compton -i 0.5 --detect-transient --focus-exclude 'class_i = "dmenu"' --focus-ex
 xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
 
+# Get device type
+chassis="$(hostnamectl | sed -e '/Chassis/!d' -e 's/^.*Chassis: //')"
+# laptop specific commands
+if [ $chassis = "laptop" ]; then
+	# Disable touchpad while typing
+	# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
+	syndaemon -t -k -i 2 &
+	# Pressure required for movement
+	synclient FingerHigh=45
+	# Speed
+	synclient MinSpeed=0.5
+	synclient MaxSpeed=3
+	synclient AccellFactor=0.5
+	# Random ass default
+	#synclient AccellFactor=0.0366905
+	# "Natural" scrolling
+	synclient HorizScrollDelta=-100
+	synclient VertScrollDelta=-100
+fi
+
 # Get the hostname
 host="$(hostnamectl status --static)"
 # Saya specific commands
@@ -32,38 +52,17 @@ if [ $host = "Saya" ]; then
 	synclient Clickfinger3=2
 	# Disable tap middle click
 	synclient TapButton3=-1
+	# Two finger horizontal scrolling
+	synclient HorizTwoFingerScroll=1
 	# Locked drags because mac touchpads are stupid
 	# synclient LockedDrags=1
 	# synclient LockedDragTimeout=2000
 elif [ $host = "GIR" ]; then
-	# where F13 is dvtm mod
+	# appskey=F13, where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
 elif [ $host = "Talim" ]; then
-	# where F13 is dvtm mod
+	# appskey=F13, where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
-	export DVTM_TERM=st
-fi
-
-# Get device type
-chassis="$(hostnamectl | sed -e '/Chassis/!d' -e 's/^.*Chassis: //')"
-# laptop specific commands
-if [ $chassis = "laptop" ]; then
-	# Disable touchpad while typing
-	# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
-	syndaemon -t -k -i 2 &
-	# Pressure required for movement
-	synclient FingerHigh=45
-	# Speed
-	synclient MinSpeed=0.5
-	synclient MaxSpeed=3
-	synclient AccellFactor=0.5
-	# Random ass default
-	#synclient AccellFactor=0.0366905
-	# Two finger horizontal scrolling
-	synclient HorizTwoFingerScroll=1
-	# "Natural" scrolling
-	synclient HorizScrollDelta=-100
-	synclient VertScrollDelta=-100
 fi
 
 # Startup processes
