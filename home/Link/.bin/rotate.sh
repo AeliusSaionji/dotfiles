@@ -5,11 +5,13 @@ if [ "$is_rotated" = "LVDS1 connected 1280x800+0+0 (normal left inverted right x
 	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen stylus' --type=float 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
 	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen eraser' --type=float 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
 	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen touch' --type=float 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
+	echo right
 else
 	xrandr --output LVDS1 --rotate normal
 	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen stylus' --type=float 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
 	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen eraser' --type=float 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
 	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen touch' --type=float 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
+	echo normal
 fi
 
 #rotate left
