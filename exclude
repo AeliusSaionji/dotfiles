@@ -2,6 +2,5 @@
 .config/ranger/bookmarks
 .config/ranger/history
 .git/
-.vim/bundle/
 cache
 history
