@@ -1,1 +1,1 @@
-xsel -co | xargs -r xomb-tabopen.sh
+xsel -co | xargs -r firefox
