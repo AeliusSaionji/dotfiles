@@ -70,8 +70,10 @@ elif [ $host = "GIR" ]; then
 	# appskey=F13, where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
 elif [ $host = "Talim" ]; then
-	# appskey=F13, where F13 is dvtm mod
+	# Appskey=F13, where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
+	# Rotate button keysym
+	xmodmap -e "keycode 161 = XF86Display"
 	# Speed 
 	synclient MinSpeed=0.5
 	synclient MaxSpeed=2
