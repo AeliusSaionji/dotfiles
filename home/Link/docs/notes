@@ -64,6 +64,6 @@ keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
 		fbgrab - VT screenshot
 		fbv - VT image viewer
 	-Files I'll never remember-
-		~/.gtkrc-2.0 for setting the font size in inkscape. Breaks xombrero fonts.
+		~/.gtkrc-2.0 for setting the font size in inkscape. Breaks xombrero, firefox fonts.
 	-Bad cat-
 		read -r var < file
