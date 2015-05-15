@@ -35,6 +35,9 @@ dwm launches st with dvtm
 
 [Todo]
 better tab location
+why is zsh evil?
+Talim touchpad
+Talim stick- scrollwheel instead of arrow keys?
 hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
 	or, remove X focus follows cursor functionality from dwm
 keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
