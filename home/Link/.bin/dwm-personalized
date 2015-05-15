@@ -13,14 +13,13 @@ if [ $chassis = "laptop" ]; then
 	# Disable touchpad while typing
 	# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
 	syndaemon -t -k -i 2 &
+	# The following is set against Saya's clickpad
 	# Pressure required for movement
 	synclient FingerHigh=45
 	# Speed
 	synclient MinSpeed=0.5
 	synclient MaxSpeed=3
 	synclient AccellFactor=0.5
-	# Random ass default
-	#synclient AccellFactor=0.0366905
 	# "Natural" scrolling
 	synclient HorizScrollDelta=-100
 	synclient VertScrollDelta=-100
@@ -52,17 +51,39 @@ if [ $host = "Saya" ]; then
 	synclient Clickfinger3=2
 	# Disable tap middle click
 	synclient TapButton3=-1
-	# Two finger horizontal scrolling
+	# Two finger scrolling
+	synclient VertTwoFingerScroll=1
 	synclient HorizTwoFingerScroll=1
 	# Locked drags because mac touchpads are stupid
 	# synclient LockedDrags=1
 	# synclient LockedDragTimeout=2000
+	# Pressure required for movement
+	synclient FingerHigh=45
+	# Speed
+	synclient MinSpeed=0.5
+	synclient MaxSpeed=3
+	synclient AccellFactor=0.5
+	# "Natural" scrolling
+	synclient HorizScrollDelta=-100
+	synclient VertScrollDelta=-100
 elif [ $host = "GIR" ]; then
 	# appskey=F13, where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
 elif [ $host = "Talim" ]; then
 	# appskey=F13, where F13 is dvtm mod
 	xmodmap -e "keycode 135 = F13"
+	# Speed 
+	synclient MinSpeed=0.5
+	synclient MaxSpeed=2
+	synclient AccellFactor=0.5
+	# Pressure required for movement
+	synclient FingerHigh=45
+	# Circular Scrolling
+	synclient CircularScrolling=1
+	# Detect from right edge only
+	synclient CircScrollTrigger=3
+	# Slow down scrolling (lower is faster)
+	synclient CircScrollDelta=0.7
 fi
 
 # Startup processes
