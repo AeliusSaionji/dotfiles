@@ -13,11 +13,14 @@ fi;
 # Volume Level
 DWM_VOL=$( amixer sget Master | awk -vORS=' ' '/Mono:/ {print($6$4)}' );
 
+# Network
+NETPROFILE=$(netctl list | sed -e '/\*/!d' -e 's/\* //')
+
 # Date and Time
 DWM_CLOCK=$( date '+%H:%M' );
 
 # Overall output command
-DWM_STATUS="Batt: [$DWM_BATTERY] | Vol: $DWM_VOL| $DWM_CLOCK";
+DWM_STATUS="[$DWM_BATTERY] | $DWM_VOL| $NETPROFILE | $DWM_CLOCK";
 xsetroot -name "$DWM_STATUS";
 sleep $DWM_REFRESH_INT;
 
