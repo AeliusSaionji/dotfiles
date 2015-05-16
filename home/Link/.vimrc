@@ -208,7 +208,7 @@ endfunction
 filetype off
 if has('win32') || has('win64')
         if !isdirectory(expand("~/vimfiles/bundle/vundle")) && executable('git')
-                !git clone https://github.com/gmarik/vundle.git ~/vimfiles/bundle/vundle
+                !git clone https://github.com/gmarik/Vundle.vim.git ~/vimfiles/bundle/Vundle.vim
                 so ~/.vimrc
         elseif !executable('git')
 		echo "You need git and curl for the vundle plugin, ignore if you don't care"
@@ -223,7 +223,7 @@ if has('win32') || has('win64')
 	call vundle#rc("~/vimfiles/bundle")
 else
 	if !isdirectory(expand("~/.vim/bundle/vundle")) && executable('git')
-		!git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+		!git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 		so ~/.vimrc
 	elseif or(!executable('git'), !executable('curl'))
 		echo "You need git and curl for the vundle plugin, ignore if you don't care"
