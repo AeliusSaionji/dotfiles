@@ -1,0 +1,6 @@
+.include /usr/lib/systemd/system/netctl@.service
+
+[Unit]
+Description=A basic dhcp ethernet connection
+BindsTo=sys-subsystem-net-devices-enp9s0.device
+After=sys-subsystem-net-devices-enp9s0.device
