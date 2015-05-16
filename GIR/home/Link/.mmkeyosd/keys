@@ -3,7 +3,7 @@ MonBrightnessDown    text_with_bar    "Brightness" exec ~/.mmkeyosd/brightdown.s
 
 AudioLowerVolume     text_with_bar    "Volume" amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1 #&& exec ~/.bin/dwmstatus-trigger-update.sh
 AudioRaiseVolume     text_with_bar    "Volume" amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1 #&& exec ~/.bin/dwmstatus-trigger-update.sh
-#AudioMute           text_with_text   "Volume" amixer set Master toggle | sed -n -e 's/.*Playback.*\[\(on\|off\)\].*/\1/p' | head -n 1 | awk '{ if($0 == "off") print "Muted"; else print "Unmuted"}' #&& exec ~/.bin/dwmstatus-trigger-update.sh
+AudioMute            text_with_text   "Volume" amixer set Master toggle | sed -n -e 's/.*Playback.*\[\(on\|off\)\].*/\1/p' | head -n 1 | awk '{ if($0 == "off") print "Muted"; else print "Unmuted"}' #&& exec ~/.bin/dwmstatus-trigger-update.sh
 
 XF86Display          text_with_text   "Rotating" exec ~/.bin/rotate.sh
 
