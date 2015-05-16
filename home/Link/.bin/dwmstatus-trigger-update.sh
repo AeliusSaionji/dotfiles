@@ -10,7 +10,7 @@ BATTERYLEVEL=$(( `cat /sys/class/power_supply/BAT0/charge_now` * 100 / `cat /sys
 #VOLUME=$( amixer sget Master | awk -vORS=' ' '/Mono:/ {print($6$4)}' );
 
 # Network
-NETPROFILE=$(netctl list | sed -e '/\*/!d' -e 's/\* //')
+NETPROFILE=$(netctl list | sed -e '/\*/!d' -e 's/^\* //')
 
 # Date and Time
 CLOCK=$( date '+%H:%M' );
