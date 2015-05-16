@@ -208,8 +208,8 @@ endfunction
 filetype off
 if has('win32') || has('win64')
         if !isdirectory(expand("~/vimfiles/bundle/vundle")) && executable('git')
-                !git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-                so ~/_vimrc
+                !git clone https://github.com/gmarik/vundle.git ~/vimfiles/bundle/vundle
+                so ~/.vimrc
         elseif !executable('git')
 		echo "You need git and curl for the vundle plugin, ignore if you don't care"
 		filetype plugin indent on
