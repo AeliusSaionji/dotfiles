@@ -1,5 +1,5 @@
 # Power/Battery Status
-if [ "$( cat /sys/class/power_supply/AC/online )" -eq "1" ]; then
+if [[ "$( cat /sys/class/power_supply/AC/online )" -eq "1" || "$( cat /sys/class/power_supply/ACAD/online )" -eq "1" ]]; then
         POWERSOURCE="+";
 else
         POWERSOURCE="-";
