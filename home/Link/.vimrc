@@ -52,9 +52,10 @@ if has("gui_running")
 endif
 
 " Set pate mode under *nix
-if has('unix')
-	set paste
-endif
+"if has("unix")
+"	inoremap <S-Insert> <ESC>:set paste<CR>i<S-Insert><ESC>:set nopaste<CR>i
+"	set paste
+"endif
 
 " Syntax highlighting. If you turn it on more than once it screws up colors, hence the if statement
 if !exists("syntax_on")
