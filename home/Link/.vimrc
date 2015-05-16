@@ -205,9 +205,10 @@ endfunction
 
 " ----------------------------------------------        
 " Vundle stuff
+set nocompatible
 filetype off
 if has('win32') || has('win64')
-        if !isdirectory(expand("~/vimfiles/bundle/vundle")) && executable('git')
+        if !isdirectory(expand("~/vimfiles/bundle/Vundle.vim")) && executable('git')
                 !git clone https://github.com/gmarik/Vundle.vim.git ~/vimfiles/bundle/Vundle.vim
                 so ~/.vimrc
         elseif !executable('git')
@@ -219,10 +220,10 @@ if has('win32') || has('win64')
 		filetype plugin indent on
 		finish
 	endif
-	set rtp+=~/vimfiles/bundle/vundle/
-	call vundle#rc("~/vimfiles/bundle")
+	set rtp+=~/vimfiles/bundle/Vundle.vim
+	call vundle#begin()
 else
-	if !isdirectory(expand("~/.vim/bundle/vundle")) && executable('git')
+	if !isdirectory(expand("~/.vim/bundle/Vundle.vim")) && executable('git')
 		!git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 		so ~/.vimrc
 	elseif or(!executable('git'), !executable('curl'))
@@ -230,34 +231,26 @@ else
 		filetype plugin indent on
 		finish
 	endif
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc("~/.vim/bundle")
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
 endif
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 " original repos on GitHub
-Bundle 'chilicuil/vim-sprunge'
-Bundle 'paradigm/SkyBison'
-Bundle 'AnsiEsc.vim'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'Shougo/vimfiler.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'bling/vim-airline'
-Bundle 'PProvost/vim-ps1'
-" Bundle 'irssilog.vim' this thing is mostly useless and broken by AnsiEsc
-" vim-scripts repos
-" Bundle 'sessionman.vim'
-" Bundle 'FuzzyFinder'
-" non-GitHub repos
-" Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
-" Bundle 'file:///Users/gmarik/path/to/plugin'
+Plugin 'chilicuil/vim-sprunge'
+Plugin 'paradigm/SkyBison'
+Plugin 'AnsiEsc.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'bling/vim-airline'
+Plugin 'PProvost/vim-ps1'
+call vundle#end()
 filetype plugin indent on     " required!
-" NOTE: comments after Bundle commands are not allowed.
-" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Plugin commands are not allowed.
 
