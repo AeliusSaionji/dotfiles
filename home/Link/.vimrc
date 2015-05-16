@@ -66,7 +66,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Call SkyBison with \;
 nnoremap <leader>; :<c-u>call SkyBison("")<cr>
 let g:skybison_fuzz = 2
-" Exit insert mode with ii
+" Exit insert mode with jj
 inoremap jj <Esc>
 " Hide vim pr0n
 "noremap <F3> mzggVGg?`z
