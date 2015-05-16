@@ -94,9 +94,10 @@ nnoremap <C-W>e :new \| VimShell<CR>
 nnoremap <C-W>E :vnew \| VimShell<CR>
 
 " Fix temp folder under Windows
-if has('win32') || has('win64')
-	let $TMP="$TEMP"
-endif
+" breaks vundle
+"if has('win32') || has('win64')
+"	let $TMP="$TEMP"
+"endif
 
 "Elevate vim under windows.
 if has('win32') || has('win64')
@@ -208,9 +209,9 @@ endfunction
 set nocompatible
 filetype off
 if has('win32') || has('win64')
-        if !isdirectory(expand("~/vimfiles/bundle/Vundle.vim")) && executable('git')
-                !git clone https://github.com/gmarik/Vundle.vim.git ~/vimfiles/bundle/Vundle.vim
-                so ~/.vimrc
+        if !isdirectory(expand("C:/Users/Link/vimfiles/bundle/Vundle.vim")) && executable('git')
+                !git clone https://github.com/gmarik/Vundle.vim.git C:/Users/Link/vimfiles/bundle/Vundle.vim
+                so C:/Users/Link/.vimrc
         elseif !executable('git')
 		echo "You need git and curl for the vundle plugin, ignore if you don't care"
 		filetype plugin indent on
@@ -220,8 +221,9 @@ if has('win32') || has('win64')
 		filetype plugin indent on
 		finish
 	endif
-	set rtp+=~/vimfiles/bundle/Vundle.vim
-	call vundle#begin()
+	set rtp+=~/vimfiles/bundle/Vundle.vim/
+	let path='~/vimfiles/bundle'
+	call vundle#begin(path)
 else
 	if !isdirectory(expand("~/.vim/bundle/Vundle.vim")) && executable('git')
 		!git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
