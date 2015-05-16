@@ -51,11 +51,10 @@ if has("gui_running")
 	set guifontwide=DFKai-SB:h12
 endif
 
-" Set pate mode for pasting things over ssh I guess
-" It doesn't appear to be necessary and turns off neocomplete
-"if has('win32') || has('win64')
-"	set paste
-"endif
+" Set pate mode under *nix
+if has('unix')
+	set paste
+endif
 
 " Syntax highlighting. If you turn it on more than once it screws up colors, hence the if statement
 if !exists("syntax_on")
@@ -93,6 +92,10 @@ nnoremap <C-W>e :new \| VimShell<CR>
 " Ctrl_W E opens up a vimshell in a vertically split window
 nnoremap <C-W>E :vnew \| VimShell<CR>
 
+" Fix temp folder under Windows
+if has('win32') || has('win64')
+	let $TMP="$TEMP"
+endif
 
 "Elevate vim under windows.
 if has('win32') || has('win64')
