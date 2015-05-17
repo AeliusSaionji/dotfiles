@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd scripts/autorun
+cd ~/.irssi/scripts/autorun
 ln -s ../adv_windowlist.pl .
 ln -s ../autorun-list .
 ln -s ../awaylogcnt.pl .
