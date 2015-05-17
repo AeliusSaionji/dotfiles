@@ -1,6 +1,7 @@
 .config/ranger/Trash
 .config/ranger/bookmarks
 .config/ranger/history
+etc/systemd/system/netctl*
 .git/
 cache
 history
