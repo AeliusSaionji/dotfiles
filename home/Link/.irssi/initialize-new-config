@@ -46,6 +46,7 @@
 /bind meta2-24;2~ key sF12
 /bind meta2-23;2~ key sF11
 /bind meta2-24;2~ key sF12
+/bind ^[[Z word_completion_backward
 /bind ^Z insert_text !waifu
 /bind meta-c /crapclear
 /bind meta-s command ^toggle hideshow_hide
