@@ -3,6 +3,17 @@ Link/.config/ranger/rc.conf
 Link/.config/ranger/rifle.conf
 Link/.config/user-dirs.dirs
 Link/.gtkrc-2.0
+Link/.irssi/FS.theme
+Link/.irssi/FS_base.theme
+Link/.irssi/emojis-db.dat
+Link/.irssi/initialize-new-config
+Link/.irssi/initialize-servers[vimcrypt]
+Link/.irssi/irssi.png
+Link/.irssi/link-autorun.sh
+Link/.irssi/log2ansi.pl
+Link/.irssi/notes
+Link/.irssi/scripts/
+Link/.irssi/synclogs.bat
 Link/.nethackrc
 Link/.vimrc
 Link/.xinitrc
