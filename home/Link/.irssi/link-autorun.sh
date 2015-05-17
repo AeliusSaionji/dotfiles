@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir -p ~/.irssi/scripts/autorun
 cd ~/.irssi/scripts/autorun
 ln -s ../adv_windowlist.pl .
 ln -s ../autorun-list .
