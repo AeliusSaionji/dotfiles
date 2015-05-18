@@ -52,13 +52,14 @@
 /set dcc_upload_path ~/dcc/
 /set dccstat_hide_sbar_when_inactive on
 /set dim_nicks_color X5E
-/set logresume_channel_lines 50
+/set logresume_channel_lines 200
 /set neat_colors rRgGybBmMcCX42X3AX4NX3HX3CX32
 /set recdep_use_hideshow on
 /set settings_autosave off
 /set show_cpm off
 /set show_names_on_join off
 /set vim_mode_cmd_seq j
+/statusbar dccstat add dccstat
 /statusbar window add -after user -priority 1 awaylogcnt
 /statusbar window add -after window nickbar
 /statusbar window add -alignment right -before barend position
