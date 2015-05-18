@@ -56,6 +56,7 @@
 /bind meta2-6;3~ /scrollback hlnext
 /alias crapclear scrollback LEVELCLEAR -level CLIENTCRAP,CLIENTNOTICES,CRAP ; lastlog -clear
 /alias fix_prompt statusbar prompt reset;statusbar prompt add -after input -alignment right wpm;statusbar prompt add -before wpm -alignment right vim_mode;statusbar prompt add -before input -alignment left vim_windows;statusbar prompt position 100
+/alias logtail clearable logtail $0
 /window new hidden
 /window name DCC
 /window level DCC DCCMSGS
