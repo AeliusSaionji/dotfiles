@@ -51,6 +51,7 @@
 /set dcc_download_path ~/dcc/
 /set dcc_upload_path ~/dcc/
 /set dccstat_hide_sbar_when_inactive on
+/set dim_nicks_color X5E
 /set logresume_channel_lines 50
 /set neat_colors rRgGybBmMcCX42X3AX4NX3HX3CX32
 /set recdep_use_hideshow on
