@@ -9,15 +9,17 @@
 /set -clear dcc_port
 /set dcc_upload_path ~/dcc/
 /set bell_beeps on
+/set settings_autosave off
+/set show_names_on_join off
 /set -clear ctcp_userinfo_reply
 /set -clear ctcp_version_reply
 /set -clear quit_message
-/set settings_autosave off
-/set recdep_use_hideshow on
 /set -clear nick
 /set -clear real_name
 /set -clear user_name
 /set dccstat_hide_sbar_when_inactive on
+/set recdep_use_hideshow on
+/set logresume_channel_lines 50
 /set show_cpm off
 /set vim_mode_cmd_seq j
 /bind meta2-P     key F1
