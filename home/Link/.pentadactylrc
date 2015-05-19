@@ -1,0 +1,168 @@
+" Loads plugins before trying to set options
+loadplugins '\.(js|penta)$'
+
+map -builtin -modes i jj <ESC>
+" Easy access to check for updates
+map -ex <F1> emenu Help.About Firefox
+
+" Set FlashGot to MPC-HC
+map -ex <F2> set! flashgot.defaultDM=MPC-HC
+
+" Set FlashGot to DTA
+map -ex <C-F2> set! flashgot.defaultDM=DTA
+
+" Open page in IE private browsing
+map -builtin <F4> O<HOME><C-S-Right><DEL>silent<SPACE>!<SPACE>start<SPACE>C:\PROGRA~1\INTERN~1\iexplore.exe<SPACE>-private<SPACE><CR>
+
+" View addons in the cmdline
+map -ex <C-A-a> addons
+
+" Replace penta's mapping with the firefox default action
+map -ex <C-b> emenu View.Sidebar.Bookmarks
+
+" Toggle site's permanently allowed status in Noscript 
+map -builtin <A-S-s> :set<Space>nss!=<A-Tab>
+
+" Toggle site's temporarily allowed status in Noscript 
+map -builtin <A-s> :set<Space>nst!=<A-Tab>
+
+" View Cookies
+map -builtin <A-c> :cookies<Space><Tab>
+
+" View Downloads
+map -ex <A-d> downloads
+
+" Ctrl shift p opens a private window
+map -ex <C-S-p> private winopen
+
+" Begin a 7s timer with sb, uses Imageforward extension
+map -javascript si pop = setInterval("gImageForward.iterateImageLinks()", 7000);
+
+" Finish the timer with sf
+map -javascript sf clearInterval(pop);
+
+" End image forward's slideshow
+map -javascript sb gImageForward.abortIteration();
+
+" We have s[x] mappings, disable the internal s map so we remember to not use it
+map -description 'Do not map me!' s <nop>
+
+" Toggle show/hide address bar with ctrl shift t and only turn on the QrCodr extension when we can see it
+map -ex <C-S-t> set guioptions!=T | :exttoggle QrCodeR
+
+" Toggle show/hide tabs with ctrl t. Toggles the tree autohide when tree is 'stowed'
+map -ex <C-t> set showtabline!=never,always
+" I think I can workaround the bug with :js command? Idk. Here's an alternative
+" st[owe] the tree!
+map -ex st set! extensions.treestyletab.tabbar.autoHide.mode=1
+" Se[e] the tree!
+map -ex se set! extensions.treestyletab.tabbar.autoHide.mode=0
+
+" Shift c closes the active window- because extension "minimize on start and close"
+map -ex -modes normal C winclose
+
+" Shift enter to run the first result
+map -builtin -modes command-line <S-Return> <Tab><Return>
+
+" Let firefox handle tab closes with the d key instead of pentadactyl, so 'set tabclose' can work
+"map -builtin -modes normal d <C-w>
+
+" Map x to search the firefox menu items
+map -builtin -modes normal x :emenu<Space>
+
+" Make it easier to add tags to bookmarks
+map -builtin -modes normal a a -tags 
+
+" Make sc center the selected text & draw a box
+map -modes normal -ex sc centerselect
+
+" De-hilight, deselect, unbox search terms on page redraw (ctrl l)
+map -builtin <C-l> :nohlfind | :removeselect<Return><C-l><Esc>
+
+" Make ctrl a select all in insert mode
+map -modes input -builtin <C-a> <C-v><C-a>
+
+" Make paste work the first time in insert mode
+map -modes input -builtin <C-v> <C-v><C-v>
+
+" Make undo work in insert mode
+map -modes input -builtin <C-z> <C-v><C-z>
+
+" Yank site url and title
+map -modes normal -ex Ya js util.copyToClipboard(buffer.URL+String.fromCharCode(10)+buffer.title)
+
+" Yank site title
+map -modes normal -ex Yt js util.copyToClipboard(buffer.title)
+
+" ZR restarts
+map -modes normal ZR -ex restart
+
+" For multi key mappings like st, wait infinitely after pressing the s key
+set notimeout
+
+" Sort downloads by whether or not they're currently downloading, and then the date the dl was initiated at, in descending order
+set downloadsort=-active,-date
+
+" Make sure scrollbars are removed, configure the statusbar, etc.
+set guioptions=s
+
+" Highlight all text matches when searching
+set hlfind
+
+" Disable bell beep on errors
+" javascript dactyl.beep = function() { return false; }
+
+" After closing a tab, display to the last viewed tab.
+"set tabclose=previous
+
+" Set the search provider
+set defsearch=bing
+
+" Tab complete engine names, bookmarks, things from firefox awesomebar, suggestions from specified engines, and local filesystem.
+" If the history option causes the browser to hang, sanitize history older than one year
+set complete=AlertBox,location,search,bookmark,file,suggestion
+
+" Define which engines to get suggestions from in a generic search
+set suggestengines=bing
+
+" Set the window titlestring
+" set titlestring=Palemoon
+
+" Smooth scrolling steps. Default is 5, 1 disables.
+set scrollsteps=3
+
+" Make sure cookies are rejected by default
+set cookieaccept=none
+
+" Set the cmd directory to home folder
+silent cd ~
+
+" Play a wav when downloads finish
+autocmd DownloadPost -javascript * Audio("file://c:/users/Link/pentadactyl/masseffectbeep.wav").play()
+
+" Type goi to open imgur...
+silent qmark 4 https://boards.4chan.org/h
+silent qmark l https://www.archlinux.org/
+silent qmark i http://imgur.com
+silent qmark h about:blank
+silent qmark o https://bay171.mail.live.com/default.aspx?id=64855&owa=1&owasuffix=owa/
+silent qmark w http://wallhaven.cc/
+
+" Newer pentadactyl broke colorscheme
+" colorscheme desert-mod
+
+" Hide tab close button
+style -name hide-tab-close-button chrome://* .tabbrowser-tab .tab-close-button { visibility: collapse !important; }
+" Wallpaper for about:blank
+style -name blank-wallpaper about:blank @-moz-document url("about:blank") {body:empty:not([style]):not([text]):not([class]):not([onresize]) { background: url("file:///C:/Users/Link/pentadactyl/cerberus.png") no-repeat !important; background-size: 100% !important; background-color: black !important; }}
+" Wallpaper for about:newtab
+style -name newtab-wallpaper about:newtab #newtab-scrollbox{ background: url("file:///C:/Users/Link/pentadactyl/cerberus.png") no-repeat !important; background-size: 100% !important; background-color: black !important; }
+" Temporary fix for newer pentadactyl fuqing up tabs
+style -name tabbrowser-height-fix chrome://* [dactyl-australis=true] .tabbrowser-tabs { max-height: unset !important; }
+
+" Set autoprivate domains (learn to sync stupid dev)
+set! extensions.autoprivate.domains=.pornhub.com;.xnxx.com;.xvideos.com;.redtube.com;.hentaistream.com;.xhamster.com;
+" Karmablocker forgets the sync address, so let's remind it
+set! extensions.kabl.sync_url=http://flamingsteel.net/a/kabl.ini
+" Image Forward, add gif and webm
+set! extensions.imageforward.linkURLRegExp=^[^#\\?]+\\.(jpg\|jpeg\|png\|gif\|webm)((#\|\\?).*)?$
