@@ -18,7 +18,3 @@ Link/.xinitrc
 Link/.xombrero.conf
 Link/.zshrc
 Link/docs/notes
-Link/dotfiles/backup.sh
-Link/dotfiles/exclude
-Link/dotfiles/include
-Link/dotfiles/restore.sh
