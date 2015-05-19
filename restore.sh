@@ -1,7 +1,7 @@
 #switch for each, run with delete/without/don't run
 #improve sed regex (numbers vs .*)
-NC='\033[0m' # No Color
 color='\033[1;35m'
+NC='\033[0m' # No Color
 rsync -avn --chown=Link:Link --exclude-from="exclude" ./home/Link/ /home/Link/ | sed -e '/^sent .* bytes.*bytes\/sec$/d' -e '/^total size is/d'
 printf "${color}global home > home? (yes/no) : ${NC}"
 read proceed
