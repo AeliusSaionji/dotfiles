@@ -1,1 +1,2 @@
-add a dry run and ask if you want to proceed
+see scripts
+symlink scripts instead of having duplicates that get overwritten
