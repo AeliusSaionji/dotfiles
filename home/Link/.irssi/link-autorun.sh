@@ -9,6 +9,7 @@ ln -s ../dccstat.pl .
 ln -s ../digraphs.pl .
 ln -s ../dim_nicks.pl .
 ln -s ../emojis.pl .
+ln -s ../fifo_remote-0.5.pl
 ln -s ../hideshow.pl .
 ln -s ../hilightwin.pl .
 ln -s ../hlscroll.pl .
