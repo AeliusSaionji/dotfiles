@@ -1,6 +1,6 @@
 # VIM swap files
 *.swp
-home/Link/.pentadactyl/info/Link/
+home/Link/.pentadactyl/info
 home/Link/.irssi/certs/
 home/Link/.irssi/scripts/autorun/
 home/Link/.irssi/away.log
