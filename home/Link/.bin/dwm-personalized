@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Transparency and fading
 compton -i 0.5 --detect-transient --focus-exclude 'class_i = "dmenu"' --focus-exclude 'class_i = "slock"' --focus-exclude 'class_i = "dwmstatus"' --focus-exclude 'class_g = "mpv"' -fb

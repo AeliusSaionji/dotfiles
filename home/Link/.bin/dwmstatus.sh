@@ -1,3 +1,4 @@
+#!/bin/sh
 DWM_REFRESH_INT="30s"
 while true; do
 

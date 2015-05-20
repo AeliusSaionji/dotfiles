@@ -1,9 +1,7 @@
-#!/bin/sh
-# maybe use find here
-ln -rs ~/dotfiles/home/Link/.* ~/
-ln -rs ~/dotfiles/home/Link/* ~/
+#!/bin/zsh
+# (*|.*) needs bash or zsh
+ln -s $HOME/dotfiles/home/Link/(*|.*) $HOME/
 host="$(hostnamectl status --static)"
-if [ -d ./$host ]; then
-	ln -rs ~/dotfiles/$host/home/Link/.* ~/
-#	ln -rs ~/dotfiles/$host/home/Link/* ~/
+if [ -d $HOME/dotfiles/$host ]; then
+	ln -s $HOME/dotfiles/$host/home/Link/(*|.*) $HOME/
 fi
