@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 mkdir -p ~/.irssi/scripts/autorun
 cd ~/.irssi/scripts/autorun
 ln -s ../adv_windowlist.pl .
