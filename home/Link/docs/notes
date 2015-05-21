@@ -68,3 +68,7 @@ keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
 		~/.config/user-dirs.dirs for telling firefox to not make the Desktop folder
 	-Bad cat-
 		read -r var < file
+	-Identify Hardlinks-
+		ls -i = inode #, find -inum <#>
+		find -printf "%n %p\n" %n is number of hardlinks
+		find -samefile <file>
