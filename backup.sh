@@ -1,4 +1,5 @@
 # separate machineconfig home and root backup
+# read -p, does it color?
 color='\033[1;35m'
 NC='\033[0m' # No Color
 # the following is depreciated, back up all machines then remove it in favor of symlinking
