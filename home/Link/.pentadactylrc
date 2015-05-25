@@ -10,6 +10,7 @@ map -builtin <A-c> :cookies<Space><Tab>
 map -ex <A-d> downloads
 map -ex <C-S-p> private winopen
 map -description 'Do not map me!' s <nop>
+map <F3> O<HOME><C-S-Right><DEL><HOME>silent !H:\OneDrive\MiscUt~1\youtube-dl.exe -g<SPACE><END><SPACE>1> %TEMP%\youtubedl.m3u && C:\Progra~1\MPC-HC\mpc-hc64.exe %TEMP%\youtubedl.m3u
 
 " Set FlashGot to MPC-HC
 "map -ex <F2> set! flashgot.defaultDM=MPC-HC
@@ -74,7 +75,7 @@ map -modes normal -ex Yt js util.copyToClipboard(buffer.title)
 set notimeout
 
 set downloadsort=-active,-date
-set guioptions=sM
+set guioptions=s
 set showtabline=never
 set hlfind
 
