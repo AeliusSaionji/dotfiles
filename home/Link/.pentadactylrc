@@ -6,10 +6,10 @@ map -builtin -modes i jj <ESC>
 map -ex <F1> emenu Help.About Firefox
 
 " Set FlashGot to MPC-HC
-map -ex <F2> set! flashgot.defaultDM=MPC-HC
+"map -ex <F2> set! flashgot.defaultDM=MPC-HC
 
 " Set FlashGot to DTA
-map -ex <C-F2> set! flashgot.defaultDM=DTA
+"map -ex <C-F2> set! flashgot.defaultDM=DTA
 
 " Open page in IE private browsing
 map -builtin <F4> O<HOME><C-S-Right><DEL>silent<SPACE>!<SPACE>start<SPACE>C:\PROGRA~1\INTERN~1\iexplore.exe<SPACE>-private<SPACE><CR>
@@ -19,12 +19,6 @@ map -ex <C-A-a> addons
 
 " Replace penta's mapping with the firefox default action
 map -ex <C-b> emenu View.Sidebar.Bookmarks
-
-" Toggle site's permanently allowed status in Noscript 
-map -builtin <A-S-s> :set<Space>nss!=<A-Tab>
-
-" Toggle site's temporarily allowed status in Noscript 
-map -builtin <A-s> :set<Space>nst!=<A-Tab>
 
 " View Cookies
 map -builtin <A-c> :cookies<Space><Tab>
@@ -36,36 +30,30 @@ map -ex <A-d> downloads
 map -ex <C-S-p> private winopen
 
 " Begin a 7s timer with sb, uses Imageforward extension
-map -javascript si pop = setInterval("gImageForward.iterateImageLinks()", 7000);
+"map -javascript si pop = setInterval("gImageForward.iterateImageLinks()", 7000);
 
 " Finish the timer with sf
-map -javascript sf clearInterval(pop);
+"map -javascript sf clearInterval(pop);
 
 " End image forward's slideshow
-map -javascript sb gImageForward.abortIteration();
+"map -javascript sb gImageForward.abortIteration();
 
 " We have s[x] mappings, disable the internal s map so we remember to not use it
 map -description 'Do not map me!' s <nop>
-
-" Toggle show/hide address bar with ctrl shift t and only turn on the QrCodr extension when we can see it
-map -ex <C-S-t> set guioptions!=T | :exttoggle QrCodeR
 
 " Toggle show/hide tabs with ctrl t. Toggles the tree autohide when tree is 'stowed'
 map -ex <C-t> set showtabline!=never,always
 " I think I can workaround the bug with :js command? Idk. Here's an alternative
 " st[owe] the tree!
-map -ex st set! extensions.treestyletab.tabbar.autoHide.mode=1
+"map -ex st set! extensions.treestyletab.tabbar.autoHide.mode=1
 " Se[e] the tree!
-map -ex se set! extensions.treestyletab.tabbar.autoHide.mode=0
+"map -ex se set! extensions.treestyletab.tabbar.autoHide.mode=0
 
 " Shift c closes the active window- because extension "minimize on start and close"
 map -ex -modes normal C winclose
 
 " Shift enter to run the first result
 map -builtin -modes command-line <S-Return> <Tab><Return>
-
-" Let firefox handle tab closes with the d key instead of pentadactyl, so 'set tabclose' can work
-"map -builtin -modes normal d <C-w>
 
 " Map x to search the firefox menu items
 map -builtin -modes normal x :emenu<Space>
@@ -104,7 +92,10 @@ set notimeout
 set downloadsort=-active,-date
 
 " Make sure scrollbars are removed, configure the statusbar, etc.
-set guioptions=s
+set guioptions=sM
+
+" Hide tabs
+set showtabline=never
 
 " Highlight all text matches when searching
 set hlfind
@@ -120,13 +111,11 @@ set defsearch=bing
 
 " Tab complete engine names, bookmarks, things from firefox awesomebar, suggestions from specified engines, and local filesystem.
 " If the history option causes the browser to hang, sanitize history older than one year
-set complete=AlertBox,location,search,bookmark,file,suggestion
+set complete=location,search,bookmark,file,suggestion
+"set complete=AlertBox,location,search,bookmark,file,suggestion
 
 " Define which engines to get suggestions from in a generic search
 set suggestengines=bing
-
-" Set the window titlestring
-" set titlestring=Palemoon
 
 " Smooth scrolling steps. Default is 5, 1 disables.
 set scrollsteps=3
@@ -142,7 +131,6 @@ autocmd DownloadPost -javascript * Audio("file://c:/users/Link/pentadactyl/masse
 
 " Type goi to open imgur...
 silent qmark 4 https://boards.4chan.org/h
-silent qmark l https://www.archlinux.org/
 silent qmark i http://imgur.com
 silent qmark h about:blank
 silent qmark o https://bay171.mail.live.com/default.aspx?id=64855&owa=1&owasuffix=owa/
@@ -158,11 +146,12 @@ style -name blank-wallpaper about:blank @-moz-document url("about:blank") {body:
 " Wallpaper for about:newtab
 style -name newtab-wallpaper about:newtab #newtab-scrollbox{ background: url("file:///C:/Users/Link/pentadactyl/cerberus.png") no-repeat !important; background-size: 100% !important; background-color: black !important; }
 " Temporary fix for newer pentadactyl fuqing up tabs
-style -name tabbrowser-height-fix chrome://* [dactyl-australis=true] .tabbrowser-tabs { max-height: unset !important; }
+"style -name tabbrowser-height-fix chrome://* [dactyl-australis=true] .tabbrowser-tabs { max-height: unset !important; }
 
-" Set autoprivate domains (learn to sync stupid dev)
-set! extensions.autoprivate.domains=.pornhub.com;.xnxx.com;.xvideos.com;.redtube.com;.hentaistream.com;.xhamster.com;
 " Karmablocker forgets the sync address, so let's remind it
-set! extensions.kabl.sync_url=http://flamingsteel.net/a/kabl.ini
+"set! extensions.kabl.sync_url=http://flamingsteel.net/a/kabl.ini
 " Image Forward, add gif and webm
-set! extensions.imageforward.linkURLRegExp=^[^#\\?]+\\.(jpg\|jpeg\|png\|gif\|webm)((#\|\\?).*)?$
+"set! extensions.imageforward.linkURLRegExp=^[^#\\?]+\\.(jpg\|jpeg\|png\|gif\|webm)((#\|\\?).*)?$
+" Don't close the window for the last tab
+"set! browser.tabs.closeWindowWithLastTab=false
+set! browser.newtab.url=about:blank
