@@ -1,9 +1,15 @@
 " Loads plugins before trying to set options
 loadplugins '\.(js|penta)$'
 
-map -builtin -modes i jj <ESC>
-" Easy access to check for updates
 map -ex <F1> emenu Help.About Firefox
+map -builtin -modes insert jj <ESC>
+map -ex -modes normal C winclose
+map -modes normal ZR -ex restart
+map -builtin -modes normal x :emenu<Space>
+map -builtin <A-c> :cookies<Space><Tab>
+map -ex <A-d> downloads
+map -ex <C-S-p> private winopen
+map -description 'Do not map me!' s <nop>
 
 " Set FlashGot to MPC-HC
 "map -ex <F2> set! flashgot.defaultDM=MPC-HC
@@ -20,15 +26,6 @@ map -ex <C-A-a> addons
 " Replace penta's mapping with the firefox default action
 map -ex <C-b> emenu View.Sidebar.Bookmarks
 
-" View Cookies
-map -builtin <A-c> :cookies<Space><Tab>
-
-" View Downloads
-map -ex <A-d> downloads
-
-" Ctrl shift p opens a private window
-map -ex <C-S-p> private winopen
-
 " Begin a 7s timer with sb, uses Imageforward extension
 "map -javascript si pop = setInterval("gImageForward.iterateImageLinks()", 7000);
 
@@ -38,9 +35,6 @@ map -ex <C-S-p> private winopen
 " End image forward's slideshow
 "map -javascript sb gImageForward.abortIteration();
 
-" We have s[x] mappings, disable the internal s map so we remember to not use it
-map -description 'Do not map me!' s <nop>
-
 " Toggle show/hide tabs with ctrl t. Toggles the tree autohide when tree is 'stowed'
 map -ex <C-t> set showtabline!=never,always
 " I think I can workaround the bug with :js command? Idk. Here's an alternative
@@ -49,14 +43,8 @@ map -ex <C-t> set showtabline!=never,always
 " Se[e] the tree!
 "map -ex se set! extensions.treestyletab.tabbar.autoHide.mode=0
 
-" Shift c closes the active window- because extension "minimize on start and close"
-map -ex -modes normal C winclose
-
 " Shift enter to run the first result
 map -builtin -modes command-line <S-Return> <Tab><Return>
-
-" Map x to search the firefox menu items
-map -builtin -modes normal x :emenu<Space>
 
 " Make it easier to add tags to bookmarks
 map -builtin -modes normal a a -tags 
@@ -82,22 +70,12 @@ map -modes normal -ex Ya js util.copyToClipboard(buffer.URL+String.fromCharCode(
 " Yank site title
 map -modes normal -ex Yt js util.copyToClipboard(buffer.title)
 
-" ZR restarts
-map -modes normal ZR -ex restart
-
 " For multi key mappings like st, wait infinitely after pressing the s key
 set notimeout
 
-" Sort downloads by whether or not they're currently downloading, and then the date the dl was initiated at, in descending order
 set downloadsort=-active,-date
-
-" Make sure scrollbars are removed, configure the statusbar, etc.
 set guioptions=sM
-
-" Hide tabs
 set showtabline=never
-
-" Highlight all text matches when searching
 set hlfind
 
 " Disable bell beep on errors
@@ -106,11 +84,7 @@ set hlfind
 " After closing a tab, display to the last viewed tab.
 "set tabclose=previous
 
-" Set the search provider
 set defsearch=bing
-
-" Tab complete engine names, bookmarks, things from firefox awesomebar, suggestions from specified engines, and local filesystem.
-" If the history option causes the browser to hang, sanitize history older than one year
 set complete=location,search,bookmark,file,suggestion
 "set complete=AlertBox,location,search,bookmark,file,suggestion
 
