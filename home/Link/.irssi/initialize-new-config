@@ -33,6 +33,7 @@
 /bind meta2-Q     key F2
 /bind meta2-R     key F3
 /bind meta2-S     key F4
+/neatcolor colors remove X5E
 /set -clear ctcp_userinfo_reply
 /set -clear ctcp_version_reply
 /set -clear dcc_port
@@ -53,7 +54,6 @@
 /set dccstat_hide_sbar_when_inactive on
 /set dim_nicks_color X5E
 /set logresume_channel_lines 200
-/set neat_colors rRgGybBmMcCX42X3AX4NX3HX3CX32
 /set recdep_use_hideshow on
 /set settings_autosave off
 /set show_cpm off
