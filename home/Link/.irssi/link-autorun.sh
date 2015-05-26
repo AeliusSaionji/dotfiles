@@ -23,7 +23,5 @@ ln -s ../sb_position.pl .
 ln -s ../send_scroll.pl .
 ln -s ../timer.pl .
 ln -s ../typofix.pl .
-ln -s ../uberprompt.pl .
-ln -s ../vim_mode.pl .
 ln -s ../windowtidy.pl .
 ln -s ../wpm.pl .

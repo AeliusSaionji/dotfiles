@@ -1,7 +1,5 @@
 /alias crapclear scrollback LEVELCLEAR -level CLIENTCRAP,CLIENTNOTICES,CRAP ; lastlog -clear
 /alias logtail clearable logtail $0
-/alias vm_add /^eval /^statusbar prompt add -before input -alignment left vim_windows ; /^statusbar prompt add -after input -alignment right wpm ; /^statusbar prompt add -before wpm -alignment right vim_mode
-/alias vm_del /^eval /^statusbar prompt remove vim_windows ; /^statusbar prompt remove wpm ; /^statusbar prompt remove vim_mode
 /bind ^Z insert_text !waifu
 /bind ^[[Z word_completion_backward
 /bind meta-c /crapclear
@@ -66,10 +64,12 @@
 /set uberprompt_unload_hook /^vm_del
 /set vim_mode_cmd_seq j
 /statusbar dccstat add dccstat
+/statusbar prompt add -after input -alignment right wpm
 /statusbar window add -after user -priority 1 awaylogcnt
 /statusbar window add -after window nickbar
 /statusbar window add -alignment right -before barend position
 /statusbar window remove act
+/statusbar prompt position 100
 /window new hidden
 /window name DCC
 /window level DCC DCCMSGS
