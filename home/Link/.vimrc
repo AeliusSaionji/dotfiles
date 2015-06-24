@@ -239,7 +239,7 @@ endif
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 " original repos on GitHub
 Plugin 'chilicuil/vim-sprunge'
 Plugin 'paradigm/SkyBison'
