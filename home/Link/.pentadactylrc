@@ -130,3 +130,21 @@ style -name newtab-wallpaper about:newtab #newtab-scrollbox{ background: url("fi
 " Don't close the window for the last tab
 "set! browser.tabs.closeWindowWithLastTab=false
 set! browser.newtab.url=about:blank
+
+" :[tab]open will suggest buffers for the current window and switch to them instead of creating a redundant tab
+js <<EOF
+overlay.overlayObject(dactyl, {
+    open: function open(urls, params, force) {
+        if (typeof urls === "string") {
+            let matches = urls.match(/^(\d+): /);
+            if (matches) {
+                tabs.switchTo(urls, true);
+                return;
+            }
+        }
+        open.superapply(this, arguments);
+    }
+});
+completion.addUrlCompleter("buffer", "Open Tabs", completion.buffer);
+options["complete"].splice(0, 0, "buffer");
+EOF
