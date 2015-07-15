@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.9b7'; # a78c6159844fc14
+our $VERSION = '0.9b7.1'; # 7e44a9138e39525
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -177,7 +177,7 @@ our %IRSSI = (
 # /set awl_custom_xform <perl code>
 # * specify a custom routine to transform window names
 #   example: s/^#// remove the #-mark of IRC channels
-#   the special variables $CHANNEL / $TAG / $QUERY / $NAME can be
+#   the special flags $CHANNEL / $TAG / $QUERY / $NAME can be
 #   tested in conditionals
 #
 # /set awl_last_line_shade <timeout>
@@ -210,6 +210,22 @@ our %IRSSI = (
 #     * redraws the windowlist. There may be occasions where the
 #       windowlist can get destroyed so you can use this command to
 #       force a redraw.
+
+# Viewer script
+# =============
+# When run from the command line, adv_windowlist acts as the viewer
+# script to be used together with the irssi script to display the
+# window list in a sidebar/terminal of its own.
+#
+# One optional parameter is accepted, the awl_path
+#
+# The viewer can be configured by two environment variables:
+#
+# AWL_HI9=1
+# * interpret %9 as high-intensity toggle instead of bold
+#
+# AWL_AUTOFOCUS=0
+# * disable auto-focus behaviour when activating a window
 
 # Nei =^.^= ( anti@conference.jabber.teamidiot.de )
 
@@ -753,8 +769,8 @@ sub _calculate_items {
 	}
 
 	$display = "$display%n";
-	my $num_ent = (' 'x($numPad - length $number)) . $number;
-	my $key_ent = exists $keymap{$number} ? ((' 'x($keyPad - length $keymap{$number})) . $keymap{$number}) : ' 'x$keyPad;
+	my $num_ent = (' 'x max(0,$numPad - length $number)) . $number;
+	my $key_ent = exists $keymap{$number} ? ((' 'x max(0,$keyPad - length $keymap{$number})) . $keymap{$number}) : ' 'x$keyPad;
 	if ($VIEWER_MODE or $S{sbar_maxlen} or $S{block} < 0) {
 	    my $baseLength = sb_length(_format_display(
 		'', $display, $cdisplay, $hilight,
@@ -1534,7 +1550,7 @@ UNITCHECK
 
   my $sockpath;
 
-  our $VERSION = '0.5';
+  our $VERSION = '0.6';
 
   our ($got_int, $resized, $timeout);
 
@@ -1723,8 +1739,9 @@ UNITCHECK
 	U => sub { my $n = 'ul'; my $e = ($term_state{$n} ^= 1) ? $n : "exit_$n"; Terminfo->can($e)->() },
 	# italic
 	I => sub { my $n = 'it'; my $e = ($term_state{$n} ^= 1) ? $n : "exit_$n"; Terminfo->can($e)->() },
-	# bold, used as colour modifier
-	9 => sub { $term_state{hicolor} ^= 1; '' },
+	# bold, used as colour modifier if AWL_HI9 is set
+	9 => $ENV{AWL_HI9} ? sub { $term_state{hicolor} ^= 1; '' }
+	    : sub { my $n = 'bold'; my $e = ($term_state{$n} ^= 1) ? $n : "exit_$n"; Terminfo->can($e)->() },
 	#      delete                other stuff
 	(map { $_ => sub { '' } } (split //, ':|>#[')),
 	#      escape
@@ -1776,7 +1793,7 @@ UNITCHECK
 	  my $ss = ' ' x $space;
 	  $str = join $ss, '', (split //, $str), '';
       }
-      my $pad = (abs $vars{block}) - length $str;
+      my $pad = (abs $vars{block}) - length $str; # XXX
       $str = ' ' x ($pad/2) . $str . ' ' x ($pad/2 + $pad%2);
       $str
   }
@@ -2027,7 +2044,7 @@ UNITCHECK
 
 # Changelog
 # =========
-# 0.9b7
+# 0.9b7.1
 # - fix endless loop in awin detection code!
 # - correct colour swap in awl_viewer
 # - fix passing of alternate socket path to the viewer
@@ -2037,6 +2054,8 @@ UNITCHECK
 # - run custom_xform on awl_prefer_name also
 # - avoid inconsistent active window state after awin detection
 #   reported by ss
+# - revert %9-hack in the viewer prompted by discussion with pierrot
+# - fix new warning in perl 5.22
 #
 # 0.8
 # - replace fifo mode with external viewer script

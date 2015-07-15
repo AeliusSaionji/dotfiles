@@ -82,6 +82,5 @@
 /window number 18
 /window goto 1
 /set theme FS
-/fix_prompt
 /layout save
 /save
