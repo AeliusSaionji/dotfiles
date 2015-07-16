@@ -74,8 +74,8 @@ inoremap jj <Esc>
 if has('win32') || has('win64')
 	" Build C++ amd64 binary with Visual Studio 2013
 	noremap <F7> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/PROGRA~2/MICROS~1.0/VC/bin/amd64/vcvars64.bat & cl /EHsc <C-r>=expand("%:t")<CR>")<CR>
-	" Build C++ binary with MinGW G++
-	noremap <F8> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/MinGW/bin/g++ -o gccbuild.exe <C-r>=expand("%:t")<CR>")<CR>
+	" Build C binary with MinGW GCC
+	noremap <F8> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/MinGW/bin/cc.exe <C-r>=expand("%:t")<CR>")<CR>
 endif
 " Show VimFiler
 noremap <F10> :VimFilerExplorer<CR>
