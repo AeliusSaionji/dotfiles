@@ -106,9 +106,9 @@ endif
 
 " Detects if vim is opened without a file, moves to my documents for easy saving.
 " add a || win64 when you can test it
-if argc() == 0 && has('vim_starting') && has('win32')
-  cd $OneDrive\Documents
-endif
+"if argc() == 0 && has('vim_starting') && has('win32')
+"  cd $OneDrive\Documents
+"endif
 
 " Stop vim from writing stuff to viminfo if an encrypted file is being edited.
 augroup Security

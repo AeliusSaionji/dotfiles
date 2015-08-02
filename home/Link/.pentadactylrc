@@ -11,6 +11,7 @@ map -ex <A-d> downloads
 map -ex <C-S-p> private winopen
 map -description 'Do not map me!' s <nop>
 map <F3> O<HOME><C-S-Right><DEL><HOME>silent !H:\OneDrive\MiscUt~1\youtube-dl.exe -g<SPACE><END><SPACE>1> %TEMP%\youtubedl.m3u && C:\Progra~1\MPC-HC\mpc-hc64.exe %TEMP%\youtubedl.m3u<CR>
+map -builtin -modes normal d <C-w>
 
 " Set FlashGot to MPC-HC
 "map -ex <F2> set! flashgot.defaultDM=MPC-HC
@@ -83,7 +84,7 @@ set hlfind
 " javascript dactyl.beep = function() { return false; }
 
 " After closing a tab, display to the last viewed tab.
-"set tabclose=previous
+set tabclose=previous
 
 set defsearch=bing
 set complete=location,search,bookmark,file,suggestion
