@@ -28,7 +28,6 @@ alias ll="ls -lh --color=auto"
 alias grep="grep -n --color=auto"
 alias rm='rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
-alias steam="STEAM_RUNTIME=0 steam"
 
 # Add ~/.bin to the path
 typeset -U path
