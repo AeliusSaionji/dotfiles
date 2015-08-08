@@ -10,7 +10,7 @@ map -builtin <A-c> :cookies<Space><Tab>
 map -ex <A-d> downloads
 map -ex <C-S-p> private winopen
 map -description 'Do not map me!' s <nop>
-map <F3> O<HOME><C-S-Right><DEL><HOME>silent !H:\OneDrive\MiscUt~1\youtube-dl.exe -g<SPACE><END><SPACE>1> %TEMP%\youtubedl.m3u && C:\Progra~1\MPC-HC\mpc-hc64.exe %TEMP%\youtubedl.m3u<CR>
+map -ex <F3> emenu View.Open with mpv
 map -builtin -modes normal d <C-w>
 
 " Set FlashGot to MPC-HC
@@ -18,9 +18,6 @@ map -builtin -modes normal d <C-w>
 
 " Set FlashGot to DTA
 "map -ex <C-F2> set! flashgot.defaultDM=DTA
-
-" Open page in IE private browsing
-map -builtin <F4> O<HOME><C-S-Right><DEL>silent<SPACE>!<SPACE>start<SPACE>C:\PROGRA~1\INTERN~1\iexplore.exe<SPACE>-private<SPACE><CR>
 
 " View addons in the cmdline
 map -ex <C-A-a> addons
