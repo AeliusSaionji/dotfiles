@@ -10,14 +10,11 @@ map -builtin <A-c> :cookies<Space><Tab>
 map -ex <A-d> downloads
 map -ex <C-S-p> private winopen
 map -description 'Do not map me!' s <nop>
+map -ex <F2> set! flashgot.defaultDM=curl
+map -ex <C-F2> set! flashgot.defaultDM=mpv
 map -ex <F3> emenu View.Open with mpv
+map -ex <F4> emenu View.Open with IE
 map -builtin -modes normal d <C-w>
-
-" Set FlashGot to MPC-HC
-"map -ex <F2> set! flashgot.defaultDM=MPC-HC
-
-" Set FlashGot to DTA
-"map -ex <C-F2> set! flashgot.defaultDM=DTA
 
 " View addons in the cmdline
 map -ex <C-A-a> addons

@@ -48,7 +48,7 @@ if has("gui_running")
 	" Set a consistent font size across all systems
 	set guifont=Courier_New:h10
 	" Set font for unicode characters
-	set guifontwide=DFKai-SB:h12
+	"set guifontwide=DFKai-SB:h12
 endif
 
 " Set pate mode under *nix
