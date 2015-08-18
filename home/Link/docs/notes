@@ -42,6 +42,7 @@ dwm launches st with dvtm
 	Mute key is hardwired to mute the speaker, no need to bind it.
 	/etc/X11/xorg.conf.d/20-intel.conf | Option	"TearFree"	"true"
 		fixes screen tearing but could introduce issues with games. https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
+	libva-intel-driver-g45-h264 video hw decoding
 
 [Todo]
 better tab location
