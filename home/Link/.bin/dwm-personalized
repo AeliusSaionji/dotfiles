@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Transparency and fading
-compton -i 0.5 --detect-transient --focus-exclude 'class_i = "Steam"' --focus-exclude 'class_i = "dmenu"' --focus-exclude 'class_i = "slock"' --focus-exclude 'class_i = "dwmstatus"' --focus-exclude 'class_g = "mpv"' -fb
+compton -i 0.5 --detect-transient --focus-exclude 'class_i = "Steam"' --focus-exclude 'class_i = "dmenu"' --focus-exclude 'class_i = "slock"' --focus-exclude 'class_i = "dwmstatus"' --focus-exclude 'class_g = "mpv"' -fb --backend glx --vsync opengl-swc
 # Right alt is considered mod4
 xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
