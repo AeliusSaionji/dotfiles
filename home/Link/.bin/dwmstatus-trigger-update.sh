@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # Power Status
-if [[ "$( cat /sys/class/power_supply/AC/online )" -eq "1" || "$( cat /sys/class/power_supply/ACAD/online )" -eq "1" ]]; then
+if [ "$(cat /sys/class/power_supply/AC/online)" -eq "1" ]; then
         POWERSOURCE="+";
 else
         POWERSOURCE="-";
 fi;
 
 # Battery Status
-BATTERYLEVEL=$(( `cat /sys/class/power_supply/BAT0/charge_now` * 100 / `cat /sys/class/power_supply/BAT0/charge_full` ));
+BATTERYLEVEL=$(cat /sys/class/power_supply/BAT0/capacity);
 if [ -d /sys/class/power_supply/BAT1 ]; then
-	SPAREBATTERYLEVEL=$(( `cat /sys/class/power_supply/BAT1/charge_now` * 100 / `cat /sys/class/power_supply/BAT1/charge_full` ));
+	SPAREBATTERYLEVEL=$(cat /sys/class/power_supply/BAT1/capacity);
 fi;
 
 # Network Status

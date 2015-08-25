@@ -46,6 +46,7 @@
 /set awl_sort refnum+-last_line
 /set awl_viewer off
 /set bell_beeps on
+/set beep_msg_level MSGS NOTICES INVITES DCC DCCMSGS HILIGHT
 /set dcc_autoget on
 /set dcc_autoresume on
 /set dcc_download_path ~/dcc/
