@@ -116,7 +116,7 @@ augroup Security
 augroup End
 
 " Copy sprunge urls to the external clipboard
-let sprunge_clipboard = 'external'
+let g:sprunge_clipboard = 'external'
 " Highlight strings inside C comments
 let c_comment_strings=1
 
