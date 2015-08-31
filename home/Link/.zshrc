@@ -25,7 +25,7 @@ PS1='%m%#[%~]>'
 # Command aliases
 alias ls="ls -h --color=auto"
 alias ll="ls -lh --color=auto"
-alias grep="grep -n --color=auto"
+alias grep="grep --color=auto"
 alias rm='rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
 alias sxiv="sxiv -faqo"
