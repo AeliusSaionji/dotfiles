@@ -45,7 +45,7 @@ dwm launches st with dvtm
 	libva-intel-driver-g45-h264 video hw decoding
 
 [Todo]
-better tab location
+better Tabkey location
 Talim stick- scrollwheel instead of arrow keys?
 hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
 	or, remove X focus follows cursor functionality from dwm
