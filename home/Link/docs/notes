@@ -32,9 +32,11 @@ dwm launches st with dvtm
 	xf86-input-synaptics (can't configure without)
 	aur/abduco (for irc)
 	aur/compton
-	aur/clipmenu-git
+	aur/clipmenu
 	aur/mmkeyosd-git (also handles keybindings)
 		could revert to dwm control, append dwmstatus-trigger-update.sh for real time update
+	xfce4-power-manager-settings & xfce4-power-manager
+		systemd is really shitty at handling power events. Until systemd *works*, I'll defer to this, as I already have xfce installed as a tablet interface
 
 [Talim]
 	Circular scrolling works better than vertical (should probably revisit vertical) and the two are incompatible
