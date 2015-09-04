@@ -97,7 +97,9 @@ fi
 # Startup processes
 feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 clipmenud &
-mmkeyosd &
+sxhkd &
+twmnd &
+xfce4-power-manager &
 redshift -l 42:-73 &
 dwmstatus.sh &
 

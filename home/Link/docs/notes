@@ -18,6 +18,7 @@
 	.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
 		dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
 dwm launches st with dvtm
+sxhkd listens for keys and adjusts volume/brightness/rotation on demand.
 
 [Necessities]
 	abs.git
@@ -33,8 +34,11 @@ dwm launches st with dvtm
 	aur/abduco (for irc)
 	aur/compton
 	aur/clipmenu
-	aur/mmkeyosd-git (also handles keybindings)
+?	aur/mmkeyosd-git (also handles keybindings)
 		could revert to dwm control, append dwmstatus-trigger-update.sh for real time update
+	sxhkd (key bindings)
+		replaces mmkeyosd functionality with the help of a notification daemon
+	aur/twmn-git (notification daemon)
 	xfce4-power-manager-settings & xfce4-power-manager
 		systemd is really shitty at handling power events. Until systemd *works*, I'll defer to this, as I already have xfce installed as a tablet interface
 
