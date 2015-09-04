@@ -1,0 +1,6 @@
+XF86Audio{Raise,Lower}Volume
+	vol_{raise,lower}.sh
+XF86MonBrightness{Up,Down}
+	bright{up,down}.sh
+XF86Display
+	rotate.sh
