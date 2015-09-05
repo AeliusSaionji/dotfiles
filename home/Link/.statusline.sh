@@ -7,13 +7,13 @@ if [ $# -eq 0 ]; then
 	fi;
 	
 	# Battery Status
-	BATTERYLEVEL=$(cat /sys/class/power_supply/BAT0/capacity);
+	BATTERYLEVEL=[$(cat /sys/class/power_supply/BAT0/capacity)];
 	if [ -d /sys/class/power_supply/BAT1 ]; then
-        	SPAREBATTERYLEVEL=$(cat /sys/class/power_supply/BAT1/capacity);
+        	SPAREBATTERYLEVEL=[$(cat /sys/class/power_supply/BAT1/capacity)];
 	fi;
 	
 	# Network Status
-	NETPROFILE=$(netctl list | sed -e '/\*/!d' -e 's/^\* //');
+	NETPROFILE="$(netctl list | sed -e '/\*/!d' -e 's/^\* //') |";
 
 	# Date and Time
 	CLOCK=$( date '+%H:%M' );
@@ -22,7 +22,7 @@ if [ $# -eq 0 ]; then
 	LOAD="`cat /proc/loadavg | awk '{print $1, $2, $3}'`";
 	
 	# Overall output command
-	echo "$LOAD | $NETPROFILE | [$SPAREBATTERYLEVEL][$POWERSOURCE][$BATTERYLEVEL] | $CLOCK";
+	echo "$LOAD | $NETPROFILE $SPAREBATTERYLEVEL[$POWERSOURCE]$BATTERYLEVEL | $CLOCK";
 else
     echo "NOTIFICATION: $1";
 fi
