@@ -1,6 +1,6 @@
 XF86Audio{Raise,Lower}Volume
-	vol_{raise,lower}.sh
+	vol_adjust.sh {+,-}
 XF86MonBrightness{Up,Down}
-	bright{up,down}.sh
+	bright_adjust.sh {inc,dec}
 XF86Display
 	rotate.sh
