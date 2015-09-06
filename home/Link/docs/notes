@@ -1,7 +1,9 @@
 [Notes]
 	-Transparency-
 		qiv doesn't set the background wallpaper in a way that works with transparency, which is why we keep feh around
+			* replaced qiv with sxiv, which can't set the background
 		st has transparency compiled in from the source (via a patch)
+			* had transparency, the patch breaks ranger's image previews, so I've removed it for now
 		compton is newer than xcompmgr, use compton
 	-Terminal-
 		terminal font: inconsolata
@@ -14,11 +16,10 @@
 		Open URLs: MOD-u opens selected text with ~/.bin/browser.sh
 
 [Flow]
-.zshrc adds ~/.bin to $PATH
-	.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
-		dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
-dwm launches st with dvtm
-sxhkd listens for keys and adjusts volume/brightness/rotation on demand.
+	.zshrc adds ~/.bin to $PATH
+		.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
+			dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
+	dwm launches st with dvtm
 
 [Necessities]
 	abs.git
@@ -34,11 +35,8 @@ sxhkd listens for keys and adjusts volume/brightness/rotation on demand.
 	aur/abduco (for irc)
 	aur/compton
 	aur/clipmenu
-?	aur/mmkeyosd-git (also handles keybindings)
-		could revert to dwm control, append dwmstatus-trigger-update.sh for real time update
-	sxhkd (key bindings)
-		replaces mmkeyosd functionality with the help of a notification daemon
-	aur/twmn-git (notification daemon)
+	statnot (xsetroot notification daemon)
+	aur/twmn-git (popup notification daemon)
 	xfce4-power-manager-settings & xfce4-power-manager
 		systemd is really shitty at handling power events. Until systemd *works*, I'll defer to this, as I already have xfce installed as a tablet interface
 
@@ -51,13 +49,13 @@ sxhkd listens for keys and adjusts volume/brightness/rotation on demand.
 	libva-intel-driver-g45-h264 video hw decoding
 
 [Todo]
-better Tabkey location
-Talim stick- scrollwheel instead of arrow keys?
-hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
-	or, remove X focus follows cursor functionality from dwm
-keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
-	for example, if we hide the statusbar, irssi could fifo it back on with a hilight
-		(tried patching this in, it compiled but crashed)
+	better Tabkey location
+	Talim stick- scrollwheel instead of arrow keys?
+	hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
+		or, remove X focus follows cursor functionality from dwm
+	keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
+		for example, if we hide the statusbar, irssi could fifo it back on with a hilight
+			(tried patching this in, it compiled but crashed)
 
 [Misc]
 	-Extract .deb-
@@ -70,6 +68,8 @@ keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
 		devilspie - wait for windows to appear, do things to them
 		fbgrab - VT screenshot
 		fbv - VT image viewer
+		mmkeyosd - key bindings with integrated OSD
+		sxhkd - better than xbindkeys
 	-Files I'll never remember-
 		~/.gtkrc-2.0 for setting the font size in inkscape. Breaks xombrero, firefox fonts.
 		~/.config/user-dirs.dirs for telling firefox to not make the Desktop folder

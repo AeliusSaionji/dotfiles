@@ -95,13 +95,11 @@ elif [ $host = "Talim" ]; then
 fi
 
 # Startup processes
-feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 clipmenud &
-sxhkd &
-twmnd &
-xfce4-power-manager &
 redshift -l 42:-73 &
-dwmstatus.sh &
+statnot &
+systemctl --user start feh-wallpaper.service
+xfce4-power-manager &
 
 while true; do
     # Log stderror to a file 
