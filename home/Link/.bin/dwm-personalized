@@ -97,9 +97,13 @@ fi
 # Startup processes
 clipmenud &
 redshift -l 42:-73 &
-statnot &
+#statnot &
 systemctl --user start feh-wallpaper.service
 xfce4-power-manager &
+while true; do
+	dwmstatus.sh
+	sleep 10
+done &
 
 while true; do
     # Log stderror to a file 
