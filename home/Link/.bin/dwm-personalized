@@ -98,6 +98,7 @@ fi
 clipmenud &
 redshift -l 42:-73 &
 #statnot &
+twmnd &
 systemctl --user start feh-wallpaper.service
 xfce4-power-manager &
 while true; do
