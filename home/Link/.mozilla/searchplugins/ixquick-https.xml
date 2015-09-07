@@ -7,7 +7,7 @@
 <UpdateUrl>https://ixquick.com/toolbar/searchbar/en/ixquick_ff_secure_en.xml</UpdateUrl>
 <IconUpdateUrl>https://ixquick.com/toolbar/searchbar/en/ixquick.png</IconUpdateUrl>
 <SearchForm>https://ixquick.com/</SearchForm>
-<os:Url type="text/html" method="POST" template="https://ixquick.com/do/search" resultDomain="ixquick.com">
+<os:Url type="text/html" method="POST" template="https://ixquick.com/do/dsearch" resultDomain="ixquick.com">
   <os:Param name="query" value="{searchTerms}"/>
   <os:Param name="cat" value="web"/>
   <os:Param name="pl" value="ff"/>
