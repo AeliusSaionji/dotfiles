@@ -1,5 +1,0 @@
-backup.sh
-	separate machineconfig home and root backup
-restore.sh
-	switch for each, run with delete/without/don't run
-	improve sed regex (numbers vs .*)

@@ -1,5 +1,0 @@
-etc/X11/xorg.conf.d/
-etc/modprobe.d/
-etc/sysctl.d/
-etc/systemd/system/
-home/Link/.mmkeyosd/
