@@ -19,6 +19,7 @@
 	.zshrc adds ~/.bin to $PATH
 		.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
 			dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
+			dwm-personalized can bind appskey to F13, enable per device as needed. systemd service is for VT.
 	dwm launches st with dvtm
 
 [Necessities]
@@ -32,6 +33,11 @@
 	rfkill (Talim's unfuck wifi needs this)
 	feh (sets the wallpaper)
 	xf86-input-synaptics (can't configure without)
+	xorg-xmodmap
+	xorg-xrandr
+	xorg-xsetroot
+	xorg-xbacklight
+	w3m (image preview in ranger)
 	aur/abduco (for irc)
 	aur/compton
 	aur/clipmenu
