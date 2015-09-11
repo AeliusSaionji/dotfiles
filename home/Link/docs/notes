@@ -24,27 +24,27 @@
 
 [Necessities]
 	abs.git
-	zsh (sets path, is great)
-	grml-zsh-config (extreme convenience)
-	ttf-dejavu (browsers)
-	ttf-inconsolata (terminal)
-	ttf-hanazono (everything else and maybe jpn letters?)
-	xsel (for url launching, ranger, clipmenu)
-	rfkill (Talim's unfuck wifi needs this)
-	feh (sets the wallpaper)
-	xf86-input-synaptics (can't configure without)
-	xorg-xmodmap
-	xorg-xrandr
-	xorg-xsetroot
-	xorg-xbacklight
-	w3m (image preview in ranger)
 	aur/abduco (for irc)
-	aur/compton
 	aur/clipmenu
-	statnot (xsetroot notification daemon)
+	aur/compton
 	aur/twmn-git (popup notification daemon)
-	xfce4-power-manager-settings & xfce4-power-manager
-		systemd is really shitty at handling power events. Until systemd *works*, I'll defer to this, as I already have xfce installed as a tablet interface
+	feh (sets the wallpaper)
+	grml-zsh-config (extreme convenience)
+	lxappearance (set gtk, mouse themes)
+	rfkill (Talim's unfuck wifi may need this)
+	#statnot (xsetroot notification daemon) (doesn't work with fullscreen programs)
+	ttf-dejavu (browsers)
+	ttf-hanazono (everything else and maybe jpn letters?)
+	ttf-inconsolata (terminal)
+	w3m (image preview in ranger)
+	xf86-input-synaptics (can't configure without)
+	xfce4-power-manager-settings & xfce4-power-manager (systemd is really shitty at handling power events. Until systemd *works*, I'll defer to this, as I already have xfce installed as a tablet interface)
+	xorg-xbacklight
+	xorg-xmodmap
+	xorg-xrandr (screen rotation, multi monitor display setting)
+	xorg-xsetroot
+	xsel (for url launching, ranger, clipmenu)
+	zsh (sets path, is great)
 
 [Talim]
 	Circular scrolling works better than vertical (should probably revisit vertical) and the two are incompatible
