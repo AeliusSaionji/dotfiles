@@ -9,7 +9,7 @@ if [ -d ../dotfiles ]; then
 	if [ -d ./$host ]; then
 		ln -s $cwd/$host/home/Link/(*|.*) $HOME/
 		if [ -d ./$host/etc ]; then
-			printf "\nChange etc ownership to root"
+			printf "\nChange etc ownership to root "
 			sudo chown -R root ./$host/etc
 			sudo chgrp -R root ./$host/etc
 			printf "\n\n----------> ls /etc/modprobe.d\n"
