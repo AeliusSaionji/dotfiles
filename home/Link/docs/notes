@@ -74,6 +74,7 @@
 		devilspie - wait for windows to appear, do things to them
 		fbgrab - VT screenshot
 		fbv - VT image viewer
+		llpp - mupdf with some conveniences
 		mmkeyosd - key bindings with integrated OSD
 		sxhkd - better than xbindkeys
 	-Files I'll never remember-
