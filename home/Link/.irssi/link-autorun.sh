@@ -3,6 +3,7 @@ mkdir -p ~/.irssi/scripts/autorun
 cd ~/.irssi/scripts/autorun
 ln -s ../adv_windowlist.pl .
 ln -s ../awaylogcnt.pl .
+ln -s ../cap_sasl.pl .
 ln -s ../clearable.pl .
 ln -s ../colorize_nicks.pl .
 ln -s ../dccstat.pl .
