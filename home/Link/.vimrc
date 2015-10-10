@@ -223,8 +223,8 @@ if has('win32') || has('win64')
 		finish
 	endif
 	set rtp+=~/vimfiles/bundle/Vundle.vim/
-	let path='~/vimfiles/bundle'
-	call vundle#begin(path)
+	"let path='~/vimfiles/bundle'
+	call vundle#begin()
 else
 	if !isdirectory(expand("~/.vim/bundle/Vundle.vim")) && executable('git')
 		!git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
