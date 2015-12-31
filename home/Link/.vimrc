@@ -16,7 +16,7 @@ set nonumber " disabled
 " Switch on search pattern highlighting.
 set hlsearch
 " Set enrcyption method to blowfish
-set cryptmethod=blowfish
+set cryptmethod=blowfish2
 " Spellcheck dictionary
 set spelllang=en
 " Turn spellcheck off
