@@ -6,3 +6,7 @@ RightClickAction=paste
 Scrollbar=none
 Columns=140
 Rows=40
+WindowShortcuts=no
+SwitchShortcuts=no
+AltFnShortcuts=no
+Term=xterm-256color
