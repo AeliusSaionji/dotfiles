@@ -103,7 +103,7 @@ autocmd DownloadPost -javascript * Audio("file://c:/users/Link/pentadactyl/masse
 silent qmark 4 https://boards.4chan.org/h
 silent qmark i http://imgur.com
 silent qmark h about:blank
-silent qmark o https://bay171.mail.live.com/default.aspx?id=64855&owa=1&owasuffix=owa/
+silent qmark o https://mail.live.com/
 silent qmark w http://wallhaven.cc/
 
 " Newer pentadactyl broke colorscheme
