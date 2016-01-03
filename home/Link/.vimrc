@@ -16,7 +16,7 @@ set nonumber " disabled
 " Switch on search pattern highlighting.
 set hlsearch
 " Set enrcyption method to blowfish
-set cryptmethod=blowfish
+set cryptmethod=blowfish2
 " Spellcheck dictionary
 set spelllang=en
 " Turn spellcheck off
@@ -209,34 +209,18 @@ endfunction
 " Vundle stuff
 set nocompatible
 filetype off
-if has('win32') || has('win64')
-        if !isdirectory(expand("C:/Users/Link/vimfiles/bundle/Vundle.vim")) && executable('git')
-                !git clone https://github.com/gmarik/Vundle.vim.git C:/Users/Link/vimfiles/bundle/Vundle.vim
-                so C:/Users/Link/.vimrc
-        elseif !executable('git')
-		echo "You need git and curl for the vundle plugin, ignore if you don't care"
-		filetype plugin indent on
-		finish
-	elseif !executable('curl')
-		echo "You need git and curl for the vundle plugin, ignore if you don't care"
-		filetype plugin indent on
-		finish
-	endif
-	set rtp+=~/vimfiles/bundle/Vundle.vim/
-	let path='~/vimfiles/bundle'
-	call vundle#begin(path)
-else
-	if !isdirectory(expand("~/.vim/bundle/Vundle.vim")) && executable('git')
-		!git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim")) && executable('git')
+		let vundlefolder = expand("~/.vim/bundle/Vundle.vim")
+		silent execute '!mkdir ' . vundlefolder
+		silent execute '!git clone https://github.com/gmarik/Vundle.vim.git ' . vundlefolder
 		so ~/.vimrc
-	elseif or(!executable('git'), !executable('curl'))
-		echo "You need git and curl for the vundle plugin, ignore if you don't care"
+elseif or(!executable('git'), !executable('curl'))
+		echo "git and/or curl not found [Vundle]"
 		filetype plugin indent on
 		finish
-	endif
+endif
 	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()
-endif
 
 " let Vundle manage Vundle
 " required! 
