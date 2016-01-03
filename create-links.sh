@@ -2,10 +2,10 @@
 color='\033[1;35m'
 NC='\033[0m' # No Color
 if [ -d ../dotfiles ]; then
-	# (*|.*) needs bash or zsh
-	ln -s home/Link/(*|.*) $HOME/
 	host="$(hostnamectl status --static)"
 	cwd="$(pwd)"
+	# (*|.*) needs bash or zsh
+	ln -s $cwd/home/Link/(*|.*) $HOME/
 	if [ -d ./$host ]; then
 		ln -s $cwd/$host/home/Link/(*|.*) $HOME/
 		if [ -d ./$host/etc ]; then
