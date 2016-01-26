@@ -1,0 +1,2 @@
+#!/bin/sh
+st -c ircterm -T ircterm abduco -A irc dvtm
