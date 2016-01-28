@@ -11,5 +11,6 @@
     <property name="critical-power-level" type="uint" value="15"/>
     <property name="handle-brightness-keys" type="bool" value="false"/>
     <property name="brightness-on-ac" type="uint" value="120"/>
+    <property name="dpms-enabled" type="bool" value="true"/>
   </property>
 </channel>
