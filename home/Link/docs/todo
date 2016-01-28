@@ -1,5 +1,10 @@
-on the fly transparency using compton trans in dwm or something
 find a way to remind me to do a monthly check of the git packages from aur
 	possibly just add that crap to rss
 instead of a screensaver, toggle all tags out of view after a certain timeout (xssstate?)
 add a partition for bootable recovery
+monitor timeout
+do something with the touchpad (make it middle click?)
+clipboard issues as always
+https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
+
+can wmctrl be used to replace dwm runorraise on multiple monitors?
