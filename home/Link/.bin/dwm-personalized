@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Transparency and fading
-###First exclude is dwm statusbar, second is dmenu. No clean way to isolate them natively- tweak the formula if this fails
-compton -fb -i 0.5 --detect-transient --focus-exclude 'id = 0x80000d' --focus-exclude 'x = 0 && override_redirect = true' --focus-exclude 'class_i = "Steam"' --focus-exclude 'class_i = "slock"' --focus-exclude 'class_g = "mpv"'
 # Right alt is considered mod4
 xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
@@ -96,6 +93,8 @@ elif [ $host = "Talim" ]; then
 fi
 
 # Startup processes
+cp ~/.config/compton.conf /tmp/compton.conf
+compton -b --config /tmp/compton.conf
 clipmenud &
 redshift -l 42:-73 &
 #statnot &
