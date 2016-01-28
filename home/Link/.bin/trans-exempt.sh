@@ -1,4 +1,5 @@
 #!/bin/sh
+# TODO - use active window instead of selecting with mouse
 
 dasWin=$(xprop | sed -e '/^WM_CLASS/!d' -e 's/^.*\,\s//' -e 's/\"/'\''/g')
 if grep $dasWin /tmp/compton.conf ; then
