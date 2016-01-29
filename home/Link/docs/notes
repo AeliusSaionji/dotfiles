@@ -76,6 +76,8 @@
 		fbv - VT image viewer
 		llpp - mupdf with some conveniences
 		mmkeyosd - key bindings with integrated OSD
+		okular - touch friendly viewer
+		remmina - A good frontend to freerdp
 		sxhkd - better than xbindkeys
 		unclutter-xfixes-git - hide mouse cursor after timeout
 	-Files I'll never remember-

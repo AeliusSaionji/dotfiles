@@ -7,5 +7,7 @@ do something with the touchpad (make it middle click?)
 clipboard issues as always
 volume bar I wrote appears to be very inaccurate
 https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
+calendar / email + notifications?
+fix slock delay
 
 can wmctrl be used to replace dwm runorraise on multiple monitors?
