@@ -1,5 +1,6 @@
 #!/bin/sh
 # TODO - use active window instead of selecting with mouse
+#      - figure out why using > redirect on compton.conf just produces an empty file
 
 dasWin=$(xprop | sed -e '/^WM_CLASS/!d' -e 's/^.*\,\s//' -e 's/\"/'\''/g')
 if grep $dasWin /tmp/compton.conf ; then
