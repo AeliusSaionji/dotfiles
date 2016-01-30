@@ -101,10 +101,8 @@ redshift -l 42:-73 &
 twmnd &
 systemctl --user start feh-wallpaper.service
 xfce4-power-manager &
-while true; do
-	dwmstatus.sh
-	sleep 10
-done &
+while true; do dwmstatus.sh; sleep 10; done &
+while true; do st -c st-256color -e dvtm -M; done &
 
 while true; do
     # Log stderror to a file 
