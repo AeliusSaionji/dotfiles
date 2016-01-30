@@ -11,5 +11,6 @@ calendar / email + notifications?
 fix slock delay
 note compton exclude on archwiki
 always running st term (while true; do st)
+rdp key
 
 can wmctrl be used to replace dwm runorraise on multiple monitors?
