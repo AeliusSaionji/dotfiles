@@ -8,9 +8,11 @@ clipboard issues as always
 volume bar I wrote appears to be very inaccurate
 https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
 calendar / email + notifications?
-fix slock delay
 note compton exclude on archwiki
 always running st term (while true; do st)
 rdp key
-
 can wmctrl be used to replace dwm runorraise on multiple monitors?
+
+fix slock delay
+	xss-lock -l slock
+	the above appears to do the trick, but also I cought it hanging eating 100% of the cpu not half an hour after installing...
