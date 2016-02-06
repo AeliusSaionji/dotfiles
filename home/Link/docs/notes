@@ -69,10 +69,7 @@
 		# ar vx package.deb
 		Everything is in data.tar.gz
 	-Programs I'll never remember-
-		apvlv - vim like document viewer
-		autofs - mount drives when they're plugged in, mount samba when you navigate to it
 		baobab - awesome disk usage visualizer
-		devilspie - wait for windows to appear, do things to them
 		fbgrab - VT screenshot
 		fbv - VT image viewer
 		llpp - mupdf with some conveniences
@@ -90,3 +87,12 @@
 		ls -i = inode #, find -inum <#>
 		find -printf "%n %p\n" %n is number of hardlinks
 		find -samefile <file>
+	-Samba share mounting-
+		Use fstab to auto mount predefined shares upon accessing, and auto unmount after idle timeout
+			https://wiki.archlinux.org/index.php/Fstab#Automount_with_systemd
+			https://wiki.archlinux.org/index.php/Samba#Add_Share_to_.2Fetc.2Ffstab
+		//server/share /mntpoint cifs credentials=file,uid=localLinuxUser,gid=users,noauto,x-systemd.automount,x-systemd.idle-timeout=1min,x-systemd.requires=network-online.target 0 0
+			Unless uid and gid are set, root will own the mount and all files
+			noauto prevents mounting at boot and mounting with mount -a
+			x-systemd.automount apparently mounts the entry when someone tries to access the mount point
+			x-systemd.idle-timeout=1min unmounts the entry when the mount point has not been touched in 1 minute
