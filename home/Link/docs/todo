@@ -4,7 +4,6 @@ add a partition for bootable recovery
 monitor timeout
 do something with the touchpad (make it middle click?)
 clipboard issues as always
-volume bar I wrote appears to be very inaccurate
 https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
 note compton exclude on archwiki
 RDP key
