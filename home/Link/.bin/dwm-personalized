@@ -99,10 +99,10 @@ clipmenud &
 redshift -l 42:-73 &
 #statnot &
 twmnd &
-systemctl --user start feh-wallpaper.service
 xss-lock -l slock &
 while true; do dwmstatus.sh; sleep 10; done &
-while true; do st -c st-256color -e dvtm -M; done &
+systemctl --user start feh-wallpaper.service
+#while true; do DISPLAY=:0.0 feh --bg-max --no-fehbg -z /home/Link/pictures/bg; sleep 180; done &
 
 while true; do
     # Log stderror to a file 
