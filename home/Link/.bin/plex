@@ -1,1 +1,18 @@
-chromium --app=http://192.168.1.182:32400/web/index.html
+#!/bin/sh
+
+chromium --app=http://192.168.1.182:32400/web/index.html & chromiumID=$!
+
+# Wait for Plex to become the name of the window
+while [ ! $(xwininfo -name Plex 2> /dev/null) ]; do
+	sleep 1
+done
+windowID=$(xwininfo -name Plex | grep "Window id:" | sed -e 's/^.*id:\s//' -e 's/\s"\w*"$//')
+
+while (ps -p $chromiumID > /dev/null); do 
+	if (xwininfo -id $windowID | grep "▶" > /dev/null); then
+		xdg-screensaver suspend $windowID
+	else
+		xdg-screensaver resume $windowID
+	fi
+	sleep 3
+done
