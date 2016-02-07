@@ -1,9 +1,9 @@
 #!/bin/sh
 
-chromium --app=https://netflix.com &
+chromium --app=https://netflix.com & chromiumID=$!
 
 # Wait for Netflix to become the name of the window
-while [ ! $(xwininfo -name Netflix 2> /dev/null) ]; do
+while [ ! $(xwininfo -name Netflix 2> /dev/null) ] && (ps -p $chromiumID > /dev/null); do
         sleep 1
 done
 windowID=$(xwininfo -name Netflix | grep "Window id:" | sed -e 's/^.*id:\s//' -e 's/\s"\w*"$//')
