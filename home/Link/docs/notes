@@ -38,7 +38,6 @@
 	ttf-hanazono (everything else and maybe jpn letters?)
 	ttf-inconsolata (terminal)
 	w3m (image preview in ranger)
-	xdg-utils (xdg-screensaver utilized by plex/netflix scripts and probably natively by mpv)
 	xf86-input-synaptics (can't configure without)
 	xorg-xbacklight
 	xorg-xmodmap
