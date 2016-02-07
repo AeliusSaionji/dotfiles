@@ -94,12 +94,14 @@ fi
 
 # Startup processes
 cp ~/.config/compton.conf /tmp/compton.conf
-compton -b --config /tmp/compton.conf
+compton --config /tmp/compton.conf & # built in fork -b makes GIR sad
 clipmenud &
 redshift -l 42:-73 &
 #statnot &
 twmnd &
-xss-lock -l slock &
+xss-lock -l slock & # Run slock on screensaver/monitor off/laptop lid close
+#xset s 600 # Screensaver timeout. Defaut is 600 (10 minutes). Will be reset by xdg-screensaver
+xset dpms 602 602 602 # Monitor timeout. Default is 600 (10 minutes). Allow 2s past screensaver timeout for slock to fade in (compton related?)
 while true; do dwmstatus.sh; sleep 10; done &
 systemctl --user start feh-wallpaper.service
 #while true; do DISPLAY=:0.0 feh --bg-max --no-fehbg -z /home/Link/pictures/bg; sleep 180; done &
