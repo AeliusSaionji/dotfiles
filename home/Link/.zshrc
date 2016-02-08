@@ -51,6 +51,12 @@ zle -N zle-keymap-select
 #	#nothing here yet
 #fi
 
+# qt programs use GTK themes
+export QT_STYLE_OVERRIDE=GTK+
+# fix hydrus; https://wiki.archlinux.org/index.php/GTK%2B#Wrong_focus_events_with_tiling_window_managers
+# should be removed when possible
+export GDK_CORE_DEVICE_EVENTS=1
+
 # Set the window title
 precmd () {
   print -Pn "\e]0;[%n@%M][%~]%#\a"
