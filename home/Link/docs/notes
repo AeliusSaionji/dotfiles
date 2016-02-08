@@ -27,13 +27,14 @@
 	aur/abduco (for irc)
 	aur/clipmenu
 	aur/compton
-	aur/twmn-git (popup notification daemon)
+	aur/statnot (xsetroot notification daemon) (doesn't work with fullscreen programs)
+	aur/twmn-git -or- dunst (notification daemon)
+	aur/xss-lock-git (for running slock when appropriate. non-git version eats 100% of CPU)
 	feh (sets the wallpaper)
 	grml-zsh-config (extreme convenience)
+	gtk-xfce-engine -and/or- aur/gtk-theme-windows10 (themes)
 	lxappearance (set gtk, mouse themes)
 	rfkill (Talim's unfuck wifi may need this)
-	statnot (xsetroot notification daemon) (doesn't work with fullscreen programs)
-	twmn-git (notification daemon)
 	ttf-dejavu (browsers)
 	ttf-hanazono (everything else and maybe jpn letters?)
 	ttf-inconsolata (terminal)
@@ -44,7 +45,6 @@
 	xorg-xrandr (screen rotation, multi monitor display setting)
 	xorg-xsetroot
 	xsel (for url launching, ranger, clipmenu)
-	xss-lock-git (for running slock when appropriate. non-git version eats 100% of CPU)
 	zsh (sets path, is great)
 
 [Talim]
