@@ -1,16 +1,18 @@
 [Notes]
 	-Transparency-
 		qiv doesn't set the background wallpaper in a way that works with transparency, which is why we keep feh around
-			* replaced qiv with sxiv, which can't set the background
+			* replaced qiv with sxiv, which also can't set the background
 		st has transparency compiled in from the source (via a patch)
-			* had transparency, the patch breaks ranger's image previews, so I've removed it for now
+			* the patch breaks ranger's image previews
 		compton is newer than xcompmgr, use compton
 	-Terminal-
 		terminal font: inconsolata
 		dvtm MOD-e loads the terminal buffer in vim
-		dvtm: on devices with Appkey, map Appskey to F13 (VT: systemd service, X11: xmodmap), compile dvtm with mod: Key_F(13)
+			* dvtm MOD is Ctrl-g
+		st MOD-u opens a dmenu based url launcher
+			* st MOD is Left Alt
 	-WM Usage-
-		MOD is Windows key or Right Alt
+		dwm MOD is Windows key or Right Alt
 		MOD-p is program launcher
 		clipboard history (program: clipmenu): ctrl` (like Ditto on Windows)
 		Open URLs: MOD-u opens selected text with ~/.bin/browser.sh
@@ -18,27 +20,26 @@
 [Flow]
 	.zshrc adds ~/.bin to $PATH
 		.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
-			dwm-personalized runs compton for transparency, all exclusions are classes which I have manually patched into slock/dwm/dmenu
-			dwm-personalized can bind appskey to F13, enable per device as needed. systemd service is for VT.
+			dwm-personalized runs compton for transparency
 	dwm launches st with dvtm
+	dwm handles keyboard shortcuts, no need for xbindkeys
 
 [Necessities]
 	abs.git
 	aur/abduco (for irc)
 	aur/clipmenu
-	aur/compton
 	aur/statnot (xsetroot notification daemon) (doesn't work with fullscreen programs)
 	aur/twmn-git -or- dunst (notification daemon)
 	aur/xss-lock-git (for running slock when appropriate. non-git version eats 100% of CPU)
+	compton
 	feh (sets the wallpaper)
 	grml-zsh-config (extreme convenience)
 	gtk-xfce-engine -and/or- aur/gtk-theme-windows10 (themes)
 	lxappearance (set gtk, mouse themes)
-	rfkill (Talim's unfuck wifi may need this)
+	trash-cli (interface to the standard trash)
 	ttf-dejavu (browsers)
 	ttf-hanazono (everything else and maybe jpn letters?)
 	ttf-inconsolata (terminal)
-	w3m (image preview in ranger)
 	xf86-input-synaptics (can't configure without)
 	xorg-xbacklight
 	xorg-xmodmap
@@ -48,21 +49,8 @@
 	zsh (sets path, is great)
 
 [Talim]
-	Circular scrolling works better than vertical (should probably revisit vertical) and the two are incompatible
-		At least, natural scrolling breaks while Circular is on. Slide in from the right to circular scroll.
 	Mute key is hardwired to mute the speaker, no need to bind it.
-	/etc/X11/xorg.conf.d/20-intel.conf | Option	"TearFree"	"true"
-		fixes screen tearing but could introduce issues with games. https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
-	libva-intel-driver-g45-h264 video hw decoding
-
-[Todo]
-	better Tabkey location
-	Talim stick- scrollwheel instead of arrow keys?
-	hacky solution to qiv / other img viewers losing focus: move the cursor to the center of the screen with xdotool or other
-		or, remove X focus follows cursor functionality from dwm
-	keep this in mind http://dwm.suckless.org/patches/dwm-6.1-dwmfifo.diff
-		for example, if we hide the statusbar, irssi could fifo it back on with a hilight
-			(tried patching this in, it compiled but crashed)
+	libva-intel-driver-g45-h264 - video hw decoding
 
 [Misc]
 	-Extract .deb-
@@ -77,8 +65,10 @@
 		mmkeyosd - key bindings with integrated OSD
 		okular - touch friendly viewer
 		remmina - A good frontend to freerdp
+		rfkill - Talim's unfuck wifi may need this
 		sxhkd - better than xbindkeys
 		unclutter-xfixes-git - hide mouse cursor after timeout
+		w3m - image preview in ranger
 	-Files I'll never remember-
 		~/.gtkrc-2.0 for setting the font size in inkscape. Breaks xombrero, firefox fonts.
 		~/.config/user-dirs.dirs for telling firefox to not make the Desktop folder
