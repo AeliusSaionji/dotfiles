@@ -17,6 +17,8 @@ irc notifications?
 sxiv trash-cli
 mpv trash-cli
 	trash wrapper on windows?
+udev rules
+	hibernate on low batt
 
 ----- Maybe fixed?-----
 
