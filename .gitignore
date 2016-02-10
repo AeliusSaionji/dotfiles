@@ -1,21 +1,7 @@
 # VIM swap files
 *.swp
-home/Link/.config/mimeapps.list
-home/Link/.config/ranger/bookmarks
-home/Link/.config/ranger/history
-home/Link/.config/ranger/tagged
-home/Link/.irssi/[sS]tartup
-home/Link/.irssi/_windowlist
-home/Link/.irssi/away.log
-home/Link/.irssi/certs/
-home/Link/.irssi/config
-home/Link/.irssi/default.theme
-home/Link/.irssi/remote-control
-home/Link/.irssi/saved_nick_colors
-home/Link/.irssi/scripts/autorun/
-home/Link/.irssi/triggers
-home/Link/.mozilla/extensions
-home/Link/.mozilla/firefox/
+home/Link/.config/
+home/Link/.mozilla/
 home/Link/.pentadactyl/info
 home/Link/.pentadactyl/sessions
 home/Link/.weechat/
