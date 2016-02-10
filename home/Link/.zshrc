@@ -56,6 +56,8 @@ export QT_STYLE_OVERRIDE=GTK+
 # fix hydrus; https://wiki.archlinux.org/index.php/GTK%2B#Wrong_focus_events_with_tiling_window_managers
 # should be removed when possible
 export GDK_CORE_DEVICE_EVENTS=1
+# for the benefit of ranger shell -t
+export TERMCMD=st
 
 # Set the window title
 precmd () {
