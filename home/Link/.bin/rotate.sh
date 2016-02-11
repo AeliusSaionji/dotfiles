@@ -1,24 +1,18 @@
 #!/bin/sh
-is_rotated=$(xrandr | sed -e '/LVDS1/!d')
-if [ "$is_rotated" = "LVDS1 connected 1280x800+0+0 (normal left inverted right x axis y axis) 261mm x 163mm" ]; then
-	xrandr --output LVDS1 --rotate right
-	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen stylus' --type=float 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
-	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen eraser' --type=float 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
-	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen touch' --type=float 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
+deviceName=$(xsetwacom --list devices | sed -e '/touch/!d' -e 's/\s\w\+\s\+id.*$//')
+# Needs to be tested in a multi monitor setup
+displayName=$(xrandr | sed -e '2!d' -e 's/\sconnected.*$//')
+orientation=$(xrandr | sed -e '/\sconnected/!d' -e 's/\w\+\sconnected\s[0-9]\+x[0-9]\++[0-9]\++[0-9]\+\s//' -e 's/(normal.*$//' -e '/^$/d')
+if [ -z $orientation ]; then
+	xrandr --output $displayName --rotate right
+	xsetwacom --set "$deviceName stylus" Rotate cw
+	xsetwacom --set "$deviceName eraser" Rotate cw
+	xsetwacom --set "$deviceName touch"  Rotate cw
 	echo right
 else
-	xrandr --output LVDS1 --rotate normal
-	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen stylus' --type=float 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
-	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen eraser' --type=float 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
-	xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen touch' --type=float 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
+	xrandr --output $displayName --rotate normal
+	xsetwacom --set "$deviceName stylus" Rotate none
+	xsetwacom --set "$deviceName eraser" Rotate none
+	xsetwacom --set "$deviceName touch"  Rotate none
 	echo normal
 fi
-
-#rotate left
-#xrandr --output LVDS1 --rotate left;xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen stylus' --type=float 'Coordinate Transformation Matrix' 0 -1 1 1 0 0 0 0 1
-#xrandr --output LVDS1 --rotate left;xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen eraser' --type=float 'Coordinate Transformation Matrix' 0 -1 1 1 0 0 0 0 1
-#xrandr --output LVDS1 --rotate left;xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen touch' --type=float 'Coordinate Transformation Matrix' 0 -1 1 1 0 0 0 0 1
-#rotate flip
-#xrandr --output LVDS1 --rotate inverted;xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen stylus' --type=float 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1
-#xrandr --output LVDS1 --rotate inverted;xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen eraser' --type=float 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1
-#xrandr --output LVDS1 --rotate inverted;xinput --set-prop 'Wacom Serial Penabled 1FG Touchscreen touch' --type=float 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1
