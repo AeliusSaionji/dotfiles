@@ -87,3 +87,6 @@
 			noauto prevents mounting at boot and mounting with mount -a
 			x-systemd.automount apparently mounts the entry when someone tries to access the mount point
 			x-systemd.idle-timeout=1min unmounts the entry when the mount point has not been touched in 1 minute
+	-Synclient can connect to synaptics driver-
+		Install xf86-input-evdev, uninstall xf86-input-libinput (which overrides synptics for some reason).
+		xorg-server depends on at least one of those, you can't uninstall one without having the other installed.
