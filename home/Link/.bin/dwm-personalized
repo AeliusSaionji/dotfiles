@@ -100,7 +100,8 @@ compton --config /tmp/compton.conf & # built in fork -b makes GIR sad
 clipmenud &
 redshift -l 42:-73 &
 #statnot &
-twmnd &
+#twmnd &
+dunst &
 xss-lock -n ~/.bin/dim-screen.sh -l -- slock & # Run slock on screensaver/monitor off/laptop lid close
 xset s 300 300 # Screensaver/cycle timeout. Defaut is 600 600 (10 minutes). Reset by xdg-screensaver, need to hard code to match this setting ~/.bin/xdg-screensaver
 xset dpms 602 602 602 # Monitor timeout. Default is 600 (10 minutes). Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
