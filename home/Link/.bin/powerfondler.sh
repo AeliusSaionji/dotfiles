@@ -11,14 +11,13 @@ done
 case "$1" in
 	"low")
 	        DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -u normal "low battery" ;;
+			notify-send -u normal "Low Battery" ;;
 	"critical")
 	        DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -u critical "low battery" "find power soon!" ;;
+			notify-send -u critical "Low Battery" "Find power soon!" ;;
 	"sleep")
 	        DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -u critical "suspend imminent" "the system is going down in 5 seconds!" \
-			&& sleep 5 && systemctl suspend ;;
+			notify-send -u critical "Suspend Imminent" "The system is going down in under two minutes!" ;;
 	"hibernate")
 		echo "not implemented" ;;
 esac
