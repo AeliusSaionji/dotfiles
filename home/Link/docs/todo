@@ -17,8 +17,7 @@ irc notifications?
 sxiv trash-cli
 mpv trash-cli
 	trash wrapper on windows?
-udev rules
-	hibernate on low batt
+custom system beep
 
 ----- Maybe fixed?-----
 
@@ -29,3 +28,5 @@ email
 	chromium webapp
 monitor timeout
 	netflix/plex script, mpv just works
+udev rules
+	hibernate on low batt

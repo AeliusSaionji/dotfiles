@@ -55,7 +55,7 @@
 [Misc]
 	-Extract .deb-
 		Extract contents of .deb
-		# ar vx package.deb
+		$ ar vx package.deb
 		Everything is in data.tar.gz
 	-Programs I'll never remember-
 		baobab - awesome disk usage visualizer
