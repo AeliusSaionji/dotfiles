@@ -1,0 +1,5 @@
+#!/bin/sh
+# Chromium suddenly stopped auto detecting  my touchscreen, so here we are...
+
+touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\s.*$//')
+/usr/bin/chromium --touch-devices=$touchID
