@@ -1,1 +1,4 @@
-chromium --app=https://outlook.com
+#!/bin/sh
+
+touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\s.*$//')
+/usr/bin/chromium --touch-devices=$touchID --app=https://outlook.com

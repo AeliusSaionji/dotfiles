@@ -1,6 +1,7 @@
 #!/bin/sh
 
-chromium --app=http://192.168.1.182:32400/web/index.html & chromiumID=$!
+touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\s.*$//')
+/usr/bin/chromium --touch-devices=$touchID --app=http://192.168.1.182:32400/web/index.html & chromiumID=$!
 
 # Wait for Plex to become the name of the window
 while [ ! $(xwininfo -name Plex 2> /dev/null) ] && (ps -p $chromiumID > /dev/null); do
