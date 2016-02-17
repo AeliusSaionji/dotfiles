@@ -4,10 +4,10 @@ machine=$(echo -e "NERV\nqemu\nRemote NERV" | dmenu -fn inconsolata:size=8 -l 5 
 
 case $machine in
 	"NERV")
-		xfreerdp /v:192.168.1.101 /u:Link /p:$pass /workarea /rfx +home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
+		xfreerdp /v:192.168.1.101 /u:Link /p:$pass /smart-sizing /workarea /rfx +home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 	"qemu")
-		xfreerdp /v:127.0.0.1     /u:Link /p:$pass /workarea /rfx +home-drive +multitouch +gestures -compression +clipboard +fonts +aero +window-drag +menu-anims ;;
+		xfreerdp /v:127.0.0.1     /u:Link /p:$pass /smart-sizing /workarea /rfx +home-drive +multitouch +gestures -compression +clipboard +fonts +aero +window-drag +menu-anims ;;
 	"Remote NERV")
 		remote=$(cat ~/.dmenu_cache_recent | dmenu -fn inconsolata:size=8 -l 5 -p "Remote address:")
-		xfreerdp /v:$remote       /u:Link /p:$pass /workarea /rfx -home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
+		xfreerdp /v:$remote       /u:Link /p:$pass /smart-sizing /workarea /rfx -home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 esac
