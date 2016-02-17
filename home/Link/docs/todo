@@ -9,15 +9,14 @@ do something with the touchpad (make it middle click?)
 clipboard issues as always
 https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
 note compton exclude on archwiki
-RDP login
 can wmctrl be used to replace dwm runorraise on multiple monitors?
 calendar + notifications?
-switch to dunst?
 irc notifications?
 sxiv trash-cli
 mpv trash-cli
 	trash wrapper on windows?
 custom system beep
+dwm status tell me when network is down!
 
 ----- Maybe fixed?-----
 
@@ -28,5 +27,7 @@ email
 	chromium webapp
 monitor timeout
 	netflix/plex script, mpv just works
-udev rules
-	hibernate on low batt
+udev rules - hibernate on low batt
+switch to dunst?
+RDP login
+	eh the dmenu script is good enough
