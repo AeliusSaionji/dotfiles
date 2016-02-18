@@ -16,6 +16,7 @@ sxiv trash-cli
 mpv trash-cli
 	trash wrapper on windows?
 custom system beep
+it looks like netctl can wield rfkill to unblock any given device- use this on Talim Mk-1
 
 dwm status tell me when network is down!
 
