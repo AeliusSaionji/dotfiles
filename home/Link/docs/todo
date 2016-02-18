@@ -16,7 +16,15 @@ sxiv trash-cli
 mpv trash-cli
 	trash wrapper on windows?
 custom system beep
+
 dwm status tell me when network is down!
+
+switch away from netctl and use wpa directly? netctl is in arch's base though...
+	still, take advantage of what we can. There's the wpa_cli -a script.sh for notify-send, but it will have to be tied to a service
+		because if netctl is turned off, wpa_supplicant is killed, and wpa_cli -a will die.
+	related- take advantage of netctl hooks to manipulate network-online.target (perhaps to bring the wpa_cli service up if we go that route, update dwmstatus, idk).
+	related- kick dhcpcd in the butt. At least with netctl-auto, if I toggle the physical wifi switch, everything reconnects fine but the ip is reset and dhcpcd doesn't renew it automatically
+	implement signal strength in dwm status, maybe ip address?
 
 ----- Maybe fixed?-----
 
