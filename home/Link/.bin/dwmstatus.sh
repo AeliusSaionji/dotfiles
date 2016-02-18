@@ -14,13 +14,18 @@ if [ -d /sys/class/power_supply/BAT1 ]; then
 fi;
 
 # Network Status
-NETPROFILE="$(netctl list | sed -e '/\*/!d' -e 's/^\* //')";
+NET=$(wpa_cli status | sed -e '/^wpa_state=/!d' -e 's/^wpa_state=//');
+if [ "$NET" = "COMPLETED" ]; then
+	NETPROFILE=$(wpa_cli status | sed -e '/^ssid=/!d' -e 's/^ssid=//');
+	SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {printf $2 "mbps"}');
+	NET="$NETPROFILE $SIGNALSTR";
+fi;
 
 # Date and Time
 CLOCK=$( date '+%H:%M' );
 
 # Load
-LOAD="`cat /proc/loadavg | awk '{print $1, $2, $3}'`";
+LOAD=$(cat /proc/loadavg | awk '{print $1, $2, $3}');
 
 # Overall output command
-xsetroot -name "$LOAD | $NETPROFILE | $SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL | $CLOCK";
+xsetroot -name "$LOAD | $NET | $SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL | $CLOCK";
