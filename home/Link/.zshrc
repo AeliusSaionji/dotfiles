@@ -29,7 +29,7 @@ alias grep="grep --color=auto"
 alias rm='rm -Iv --one-file-system'
 alias mv=' timeout 8 mv -iv'
 alias sxiv="sxiv -faqo"
-alias steam-de='xinit ./.bin/steam-session.sh -- :1 vt$XDG_VTNR'
+alias steam-de='xinit ~/.bin/steam-session.sh -- :1 vt$XDG_VTNR'
 alias touch-de='startx /usr/bin/startxfce4'
 
 # Add ~/.bin to the path
