@@ -6,4 +6,4 @@ OnUnitActiveSec=180s
 Unit=feh-wallpaper.service
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
