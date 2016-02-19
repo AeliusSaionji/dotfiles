@@ -17,26 +17,8 @@ mpv trash-cli
 	trash wrapper on windows?
 custom system beep
 it looks like netctl can wield rfkill to unblock any given device- use this on Talim Mk-1
-
-dwm status tell me when network is down!
-
-switch away from netctl and use wpa directly? netctl is in arch's base though...
-	still, take advantage of what we can. There's the wpa_cli -a script.sh for notify-send, but it will have to be tied to a service
-		because if netctl is turned off, wpa_supplicant is killed, and wpa_cli -a will die.
-	related- take advantage of netctl hooks to manipulate network-online.target (perhaps to bring the wpa_cli service up if we go that route, update dwmstatus, idk).
-	related- kick dhcpcd in the butt. At least with netctl-auto, if I toggle the physical wifi switch, everything reconnects fine but the ip is reset and dhcpcd doesn't renew it automatically
-	implement signal strength in dwm status, maybe ip address?
+kick dhcpcd in the butt. At least with netctl-auto, if I toggle the physical wifi switch, everything reconnects fine but the ip is reset and dhcpcd doesn't renew it automatically
 
 ----- Maybe fixed?-----
 
-fix slock delay
-	xss-lock -l slock
-	the above appears to do the trick, but also I cought it hanging eating 100% of the cpu not half an hour after installing...
-email
-	chromium webapp
-monitor timeout
-	netflix/plex script, mpv just works
 udev rules - hibernate on low batt
-switch to dunst?
-RDP login
-	eh the dmenu script is good enough
