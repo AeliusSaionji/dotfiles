@@ -8,4 +8,4 @@ RestartSec=10
 ExecStart=/usr/bin/ssh -F %h/.ssh/config -N tunneler
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

@@ -7,4 +7,4 @@ ExecStart=/usr/bin/feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 Environment=DISPLAY=:0
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
