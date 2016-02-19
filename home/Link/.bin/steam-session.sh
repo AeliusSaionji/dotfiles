@@ -1,3 +1,4 @@
-/usr/bin/steam && pkill xfwm4 &
-sleep 3
-exec /usr/bin/xfwm4
+#!/bin/sh
+# steam-de alias defined in zsh
+/usr/bin/steam -bigpicture && pkill xfwm4 &
+/usr/bin/xfwm4 --compositor=off
