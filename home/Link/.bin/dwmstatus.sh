@@ -19,6 +19,8 @@ if [ "$NET" = "COMPLETED" ]; then
 	NETPROFILE=$(wpa_cli status | sed -e '/^ssid=/!d' -e 's/^ssid=//');
 	SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {printf $2 "mbps"}');
 	NET="$NETPROFILE $SIGNALSTR";
+elif [ -z "$NET" ]; then
+	NET="offline";
 fi;
 
 # Date and Time
