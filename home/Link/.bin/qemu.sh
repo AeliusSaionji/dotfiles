@@ -5,6 +5,7 @@
 # RDP localhost, profit.
 
 qemu-system-x86_64 \
--drive file="/home/Link/WinX.img",index=0,media=disk,if=virtio,format=raw \
+-bios /usr/share/ovmf/ovmf_x64.bin  -net nic,model=virtio -net user \
 -cpu host -smp cores=2 -m 4096 -machine type=pc,accel=kvm -enable-kvm \
+-drive file="/home/Link/WinX.img",index=0,media=disk,if=virtio,format=raw \
 -nographic -soundhw hda -usbdevice tablet &
