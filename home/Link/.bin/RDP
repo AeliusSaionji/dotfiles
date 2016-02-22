@@ -4,10 +4,13 @@ machine=$(echo -e "NERV\nqemu\nRemote NERV" | dmenu -fn inconsolata:size=8 -l 5 
 
 case $machine in
 	"NERV")
-		echo $pass | xfreerdp /v:192.168.1.101 /u:Link /from-stdin /smart-sizing /workarea /rfx /sound +home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
+		echo $pass | xfreerdp /v:192.168.1.101 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
+			+home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 	"qemu")
-		echo $pass | xfreerdp /v:127.0.0.1     /u:Link /from-stdin /smart-sizing /workarea /rfx /sound +home-drive +multitouch +gestures -compression +clipboard +fonts +aero +window-drag +menu-anims ;;
+		echo $pass | xfreerdp /v:127.0.0.1     /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
+			+home-drive +multitouch +gestures -compression +clipboard +fonts +aero +window-drag +menu-anims ;;
 	"Remote NERV")
 		remote=$(cat ~/.dmenu_cache_recent | dmenu -fn inconsolata:size=8 -l 5 -p "Remote address:")
-		echo $pass | xfreerdp /v:$remote       /u:Link /from-stdin /smart-sizing /workarea /rfx        -home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
+		echo $pass | xfreerdp /v:$remote       /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw \
+			-home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 esac
