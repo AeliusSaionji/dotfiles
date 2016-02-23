@@ -2,7 +2,8 @@
 Description=dwm statusbar
 
 [Timer]
-OnUnitActiveSec=10s
+OnUnitActiveSec=10
+AccuracySec=2
 Unit=dwmstatus.service
 
 [Install]
