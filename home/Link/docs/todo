@@ -1,9 +1,7 @@
 better Tabkey location
 Talim stick- scrollwheel instead of arrow keys?
-hacky solution to img viewers losing focus: move the cursor to the center of the screen with xdotool or other
-	or, remove X focus follows cursor functionality from dwm
-find a way to remind me to do a monthly check of the git packages from aur
-	possibly just add that crap to rss
+hacky solution to img viewers losing focus: move the cursor to the center of the screen with xdotool or other. Or, remove X focus follows cursor functionality from dwm
+find a way to remind me to do a monthly check of the git packages from aur. Possibly just add that crap to rss
 add a partition for bootable recovery
 do something with the touchpad (make it middle click?)
 clipboard issues as always
@@ -11,14 +9,10 @@ https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv
 note compton exclude on archwiki
 can wmctrl be used to replace dwm runorraise on multiple monitors?
 calendar + notifications?
-irc notifications?
 sxiv trash-cli
-mpv trash-cli
-	trash wrapper on windows?
-custom system beep
+mpv trash-cli. trash wrapper on windows?
 it looks like netctl can wield rfkill to unblock any given device- use this on Talim Mk-1
 kick dhcpcd in the butt. At least with netctl-auto, if I toggle the physical wifi switch, everything reconnects fine but the ip is reset and dhcpcd doesn't renew it automatically
-
------ Maybe fixed?-----
-
-udev rules - hibernate on low batt
+[TRIALING FIX] udev rules - hibernate on low batt
+[TRIALING FIX] irc notifications
+[TRIALING FIX] custom system beep
