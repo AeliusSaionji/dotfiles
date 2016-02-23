@@ -1,0 +1,9 @@
+[Unit]
+Description=dwm statusbar
+
+[Timer]
+OnUnitActiveSec=10s
+Unit=dwmstatus.service
+
+[Install]
+WantedBy=default.target
