@@ -3,7 +3,7 @@ Description=notify-send connect/disconnect events
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/su -c - Link '/usr/bin/wpa_cli -a /home/Link/.bin/powerfondler.sh'
+ExecStart=/usr/bin/su -c - Link '/usr/bin/wpa_cli -a /home/Link/.bin/fondler.sh'
 
 [Install]
 WantedBy=netctl-auto@.service

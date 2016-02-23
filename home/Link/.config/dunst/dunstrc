@@ -208,10 +208,9 @@
 # to "".
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
-[volume]
+[fondler]
      appname = notify-send
-     summary = "Volume"
-     body = "volscript"
+     body = "fondler"
      format = "%s %p"
 
 #[espeak]
