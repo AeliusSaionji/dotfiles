@@ -9,8 +9,10 @@ fi;
 
 # Battery Status
 BATTERYLEVEL=$(cat /sys/class/power_supply/BAT0/capacity);
+POWER="[$POWERSOURCE] $BATTERYLEVEL"
 if [ -d /sys/class/power_supply/BAT1 ]; then
 	SPAREBATTERYLEVEL=$(cat /sys/class/power_supply/BAT1/capacity);
+	POWER="$SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL"
 fi;
 
 # Network Status
@@ -30,4 +32,4 @@ CLOCK=$( date '+%H:%M' );
 LOAD=$(cat /proc/loadavg | awk '{print $1, $2, $3}');
 
 # Overall output command
-xsetroot -name "$LOAD | $NET | $SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL | $CLOCK";
+xsetroot -name "$LOAD | $NET | $POWER | $CLOCK";
