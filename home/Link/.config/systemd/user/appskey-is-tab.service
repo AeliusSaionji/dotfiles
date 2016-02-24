@@ -1,9 +1,0 @@
-[Unit]
-Description=Appskey is Tab
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/setkeycodes e05d 15
-
-[Install]
-WantedBy=multi-user.target

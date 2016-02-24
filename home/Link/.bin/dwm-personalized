@@ -65,14 +65,14 @@ if [ $host = "Saya" ]; then
 	synclient HorizScrollDelta=-100
 	synclient VertScrollDelta=-100
 elif [ $host = "GIR" ]; then
-	# appskey=F13, where F13 is dvtm mod
-	xmodmap -e "keycode 135 = F13"
+	# appskey=Tab
+	xmodmap -e "keycode 135 = Tab"
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
 	synclient EmulateMidButtonTime=150
 elif [ $host = "Talim" ]; then
-	# Appskey=F13, where F13 is dvtm mod
-	xmodmap -e "keycode 135 = F13"
+	# Appskey=Tab
+	xmodmap -e "keycode 135 = Tab"
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
 	# Speed 

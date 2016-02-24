@@ -1,9 +1,0 @@
-[Unit]
-Description=Assign Talim's Extra Keys
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/setkeycodes e006 103
-
-[Install]
-WantedBy=multi-user.target
