@@ -16,9 +16,11 @@ case "$1" in
 	"critical")
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
 			notify-send -u critical "Low Battery" "Find power soon!" ;;
-	"sleep")
+	"suspend")
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -u critical "Suspend Imminent" "The system is going down in under two minutes!" ;;
+			notify-send -u critical "Suspend Imminent" "The system is going down in two minutes!"
+		sleep 120
+		systemctl suspend ;;
 	"hibernate")
 		echo "not implemented" ;;
 # dwm keybinds
