@@ -1,4 +1,3 @@
-better Tabkey location
 Talim stick- scrollwheel instead of arrow keys?
 hacky solution to img viewers losing focus: move the cursor to the center of the screen with xdotool or other. Or, remove X focus follows cursor functionality from dwm
 find a way to remind me to do a monthly check of the git packages from aur. Possibly just add that crap to rss
@@ -16,3 +15,7 @@ kick dhcpcd in the butt. At least with netctl-auto, if I toggle the physical wif
 [TRIALING FIX] udev rules - hibernate on low batt
 [TRIALING FIX] irc notifications
 [TRIALING FIX] custom system beep
+[TRIALING FIX] better Tabkey location
+ipfs choco
+foobar wakeup alarm
+libinput override for touch, or get libinput stylus support
