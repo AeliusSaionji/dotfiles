@@ -25,7 +25,7 @@ if [ $chassis = "laptop" ]; then
 	# Speed
 	synclient MinSpeed=0.5
 	synclient MaxSpeed=3
-	synclient AccellFactor=0.5
+	synclient AccelFactor=0.5
 	# "Natural" scrolling
 	synclient HorizScrollDelta=-100
 	synclient VertScrollDelta=-100
@@ -68,7 +68,7 @@ if [ $host = "Saya" ]; then
 	# Speed
 	synclient MinSpeed=0.5
 	synclient MaxSpeed=3
-	synclient AccellFactor=0.5
+	synclient AccelFactor=0.5
 	# "Natural" scrolling speed
 	synclient HorizScrollDelta=-100
 	synclient VertScrollDelta=-100
@@ -86,7 +86,7 @@ elif [ $host = "Talim" ]; then
 	# Speed 
 	synclient MinSpeed=0.5
 	synclient MaxSpeed=2
-	synclient AccellFactor=0.5
+	synclient AccelFactor=0.5
 	synclient EmulateMidButtonTime=150
 	# Pressure required for movement
 	synclient FingerHigh=45
