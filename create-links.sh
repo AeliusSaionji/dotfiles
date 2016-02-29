@@ -46,6 +46,15 @@ if [ -d ../dotfiles ]; then
 				sudo ln -sf $PWD/$host/etc/sysctl.d/* /etc/sysctl.d/
 			fi
 			proceed=""
+			printf "\n\n----------> ls /etc/systemd/system\n"
+			ls -l $PWD/$host/etc/systemd/system
+			printf "\n${color}symlink /etc/systemd/system (yes/no)?>${NC} "
+			read proceed
+			if [ "$proceed" = "yes" ]; then
+				sudo ln -sf $PWD/$host/etc/systemd/system/* /etc/systemd/system/
+			fi
+			proceed=""
+
 			printf "\n\n----------> ls /etc/X11/xorg.conf.d\n"
 			ls -l $PWD/$host/etc/X11/xorg.conf.d
 			printf "\n${color}symlink /etc/X11/xorg.conf.d (yes/no)?>${NC} "
