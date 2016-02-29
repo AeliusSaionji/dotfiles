@@ -1,5 +1,5 @@
 #!/bin/bash
-	# /bin/sh does not work
+	# yes, bash is required
 # Default networking settings
 # Create a scheduled task in the Windows guest to run the following at boot:
 # ssh 10.0.2.2 -R 3389:localhost:3389
