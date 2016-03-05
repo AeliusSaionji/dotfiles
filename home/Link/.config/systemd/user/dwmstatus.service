@@ -2,9 +2,10 @@
 Description=dwm statusbar
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/home/Link/.bin/dwmstatus.sh
 Environment=DISPLAY=:0
+Restart=always
 
 [Install]
 WantedBy=default.target
