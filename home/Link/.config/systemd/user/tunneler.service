@@ -3,9 +3,9 @@ Description=SSH tunnel
 
 [Service]
 Type=simple
+ExecStart=/usr/bin/ssh -F %h/.ssh/config -N tunneler
 Restart=always
 RestartSec=10
-ExecStart=/usr/bin/ssh -F %h/.ssh/config -N tunneler
 
 [Install]
 WantedBy=default.target

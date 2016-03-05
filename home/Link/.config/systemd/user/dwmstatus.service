@@ -3,8 +3,8 @@ Description=dwm statusbar
 
 [Service]
 Type=simple
-ExecStart=/home/Link/.bin/dwmstatus.sh
 Environment=DISPLAY=:0
+ExecStart=/home/Link/.bin/dwmstatus.sh
 Restart=always
 
 [Install]
