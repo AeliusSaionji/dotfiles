@@ -26,14 +26,14 @@
 	abs.git
 	aur/abduco (for irc)
 	aur/clipmenu
-	aur/statnot (xsetroot notification daemon) (doesn't work with fullscreen programs)
-	aur/twmn-git -or- dunst (notification daemon)
 	aur/xss-lock-git (for running slock when appropriate. non-git version eats 100% of CPU)
+	dunst
 	compton
 	feh (sets the wallpaper)
 	grml-zsh-config (extreme convenience)
 	gtk-xfce-engine -and/or- aur/gtk-theme-windows10 (themes)
 	lxappearance (set gtk, mouse themes)
+	sound-theme-freedesktop
 	trash-cli (interface to the standard trash)
 	ttf-dejavu (browsers)
 	ttf-hanazono (everything else and maybe jpn letters?)
@@ -48,6 +48,8 @@
 [Talim]
 	Mute key is hardwired to mute the speaker, no need to bind it.
 	libva-intel-driver-g45-h264 - video hw decoding
+[NERV]
+	Using pulseaudio to set default soundcard
 
 [Misc]
 	-Extract .deb-
@@ -59,11 +61,8 @@
 		fbgrab - VT screenshot
 		fbv - VT image viewer
 		llpp - mupdf with some conveniences
-		mmkeyosd - key bindings with integrated OSD
 		okular - touch friendly viewer
-		remmina - A good frontend to freerdp
 		rfkill - Talim's unfuck wifi may need this
-		sxhkd - better than xbindkeys
 		unclutter-xfixes-git - hide mouse cursor after timeout
 		w3m - image preview in ranger
 	-Files I'll never remember-
@@ -84,6 +83,6 @@
 			noauto prevents mounting at boot and mounting with mount -a
 			x-systemd.automount apparently mounts the entry when someone tries to access the mount point
 			x-systemd.idle-timeout=1min unmounts the entry when the mount point has not been touched in 1 minute
-	-Synclient can connect to synaptics driver-
+	-Synclient can't connect to synaptics driver-
 		Install xf86-input-evdev, uninstall xf86-input-libinput (which overrides synptics for some reason).
 		xorg-server depends on at least one of those, you can't uninstall one without having the other installed.
