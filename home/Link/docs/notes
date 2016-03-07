@@ -19,8 +19,6 @@
 
 [Flow]
 	.zshrc adds ~/.bin to $PATH
-		.xinitrc runs my sh script, [~/.bin/]dwm-personalized 
-			dwm-personalized runs compton for transparency
 	dwm launches st with dvtm
 	dwm handles keyboard shortcuts, no need for xbindkeys
 
@@ -42,7 +40,6 @@
 	ttf-inconsolata (terminal)
 	xf86-input-synaptics (can't configure without)
 	xorg-xbacklight
-	xorg-xmodmap
 	xorg-xrandr (screen rotation, multi monitor display setting)
 	xorg-xsetroot
 	xsel (for url launching, ranger, clipmenu)
