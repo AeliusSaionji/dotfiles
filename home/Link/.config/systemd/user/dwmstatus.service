@@ -5,6 +5,7 @@ Description=dwm statusbar
 Type=simple
 Environment=DISPLAY=:0
 ExecStart=/home/Link/.bin/dwmstatus.sh
+ExecStop=/usr/bin/xsetroot -name "dwm 6.1"
 Restart=always
 
 [Install]
