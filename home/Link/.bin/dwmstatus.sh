@@ -23,7 +23,12 @@ while true; do
 		SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {printf $2 "mbps"}');
 		NET="$NETPROFILE $SIGNALSTR";
 	elif [ -z "$NET" ]; then
-		NET="offline";
+		DEV=$(ip link | sed -e '/state UP/!d' | awk -F ': ' '{print $2}');
+		if [ -z "$NET" ]; then
+			NET="offline";
+		else
+			NET=ip addr | sed -e "/$DEV/\!d" | awk '{ print $2 }';
+		fi
 	fi;
 
 	# Date and Time
