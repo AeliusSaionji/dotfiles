@@ -13,7 +13,7 @@ while true; do
 		POWER="| [$POWERSOURCE] $BATTERYLEVEL "
 		if [ -d /sys/class/power_supply/BAT1 ]; then
 			SPAREBATTERYLEVEL=$(cat /sys/class/power_supply/BAT1/capacity)
-			POWER="$SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL"
+			POWER="| $SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL "
 		fi
 	fi
 	# Network Status
