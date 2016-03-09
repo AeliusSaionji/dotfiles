@@ -2,7 +2,7 @@
 
 while true; do
 	# Power Status
-	if [ -d /sys/class/power_supply/* ]; then
+	if [ -f /sys/class/power_supply/*/online ]; then
 		if [ "$(cat /sys/class/power_supply/*/online)" -eq "1" ]; then
 			POWERSOURCE="+"
 		else
@@ -10,7 +10,7 @@ while true; do
 		fi
 		# Battery Status
 		BATTERYLEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
-		POWER="| [$POWERSOURCE] $BATTERYLEVEL"
+		POWER="| [$POWERSOURCE] $BATTERYLEVEL "
 		if [ -d /sys/class/power_supply/BAT1 ]; then
 			SPAREBATTERYLEVEL=$(cat /sys/class/power_supply/BAT1/capacity)
 			POWER="$SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL"
