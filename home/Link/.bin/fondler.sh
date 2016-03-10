@@ -60,6 +60,15 @@ case "$1" in
 			xsetwacom --set "$deviceName touch"  Rotate none
 			echo normal
 		fi ;;
+	"foobnext")
+		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			wine ~/.foobar2000/foobar2000.exe /next ;;
+	"foobplay")
+		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			wine ~/.foobar2000/foobar2000.exe /playpause ;;
+	"foobprev")
+		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			wine ~/.foobar2000/foobar2000.exe /prev ;;
 	"voldown")
 		vol=$(amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
