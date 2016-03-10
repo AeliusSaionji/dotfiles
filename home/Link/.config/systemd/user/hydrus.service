@@ -1,0 +1,11 @@
+[Unit]
+Description=Hydrus Server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hydrus-server start
+ExecStop=/usr/bin/hydrus-server stop
+Restart=always
+
+[Install]
+WantedBy=default.target
