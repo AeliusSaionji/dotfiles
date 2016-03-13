@@ -104,13 +104,13 @@ fi
 
 # Startup processes
 cp ~/.config/compton.conf /tmp/compton.conf
-compton --config /tmp/compton.conf & # built in fork -b makes GIR sad
 dunst &
 xss-lock -n ~/.bin/dim-screen.sh -l -- slock & # Run slock on screensaver/monitor off/laptop lid close
 xset s 300 300 & # Screensaver/cycle timeout. Defaut is 600 600 (10 minutes). Reset by xdg-screensaver, need to hard code to match this setting ~/.bin/xdg-screensaver
 xset dpms 602 602 602 & # Monitor timeout. Default is 600 (10 minutes). Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
 pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga x11-bell && pactl load-module module-x11-bell sample=x11-bell display=$DISPLAY & # X11 Bell Noise
 systemctl --user start feh-wallpaper.service & # Set wallpaper instantly
+systemctl --user start compton.service & # Call here rather than Enable, only starts with X11
 systemctl --user start tunneler.service & # Call here rather than Enable, only starts with X11
 systemctl --user start dwmstatus.service & # Call here rather than Enable, only starts with X11
 systemctl --user start clipmenud.service & # Call here rather than Enable, only starts with X11

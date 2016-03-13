@@ -7,11 +7,12 @@ activeWin=$(xprop -root _NET_ACTIVE_WINDOW | sed -e 's/^.*id\s#\s//')
 dasWin=$(xprop -id $activeWin | sed -e '/^WM_CLASS/!d' -e 's/^.*\,\s//' -e 's/\"/'\''/g')
 if grep $dasWin /tmp/compton.conf ; then
 	sed /tmp/compton.conf -e '/'$dasWin'/d' > /tmp/compt
-	notify-send "Transparency Disabled" "$dasWin"
+	notifymsg="Transparency Enabled"
 else
 	sed /tmp/compton.conf -e '/class_g = '\''mpv'\''/i\\t"class_g = '$dasWin'",' > /tmp/compt
-	notify-send "Transparency Enabled" "$dasWin"
+	notifymsg="Transparency Disabled"
 fi
-pkill compton
 cp /tmp/compt /tmp/compton.conf
-compton -b --config /tmp/compton.conf
+systemctl --user restart compton.service
+sleep 1
+notify-send "$notifymsg" "$dasWin"
