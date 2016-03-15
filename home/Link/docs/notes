@@ -21,6 +21,7 @@
 	.zshrc adds ~/.bin to $PATH
 	dwm launches st with dvtm
 	dwm handles keyboard shortcuts, no need for xbindkeys
+	ldm.service handles drive automounting
 
 [Necessities]
 	abs.git
