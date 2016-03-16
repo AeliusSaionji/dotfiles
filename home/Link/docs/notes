@@ -21,7 +21,6 @@
 	.zshrc adds ~/.bin to $PATH
 	dwm launches st with dvtm
 	dwm handles keyboard shortcuts, no need for xbindkeys
-	ldm.service handles drive automounting
 
 [Necessities]
 	abs.git
@@ -45,6 +44,10 @@
 	xorg-xsetroot
 	xsel (for url launching, ranger, clipmenu)
 	zsh (sets path, is great)
+
+[systemctl]
+	enable fstrim.timer for SSDs
+	enable ldm.service for automounting
 
 [Talim]
 	Mute key is hardwired to mute the speaker, no need to bind it.
