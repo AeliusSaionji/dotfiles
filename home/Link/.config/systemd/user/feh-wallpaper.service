@@ -3,7 +3,6 @@ Description=Random wallpaper with feh
 
 [Service]
 Type=oneshot
-Environment=DISPLAY=:0
 ExecStart=/usr/bin/feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 
 [Install]
