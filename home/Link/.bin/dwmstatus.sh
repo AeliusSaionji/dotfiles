@@ -37,7 +37,14 @@ while true; do
 	# Load
 	LOAD=$(cat /proc/loadavg | awk '{print $1, $2, $3}')
 
+	# External info
+	if [ -f /tmp/dwmstatus.d/* ]; then
+		EXTRA=$(cat /tmp/dwmstatus.d/* | tr '\n' '|' | sed -e 's/|/ | /g' && echo -n "<<< | ")
+	else
+		unset EXTRA
+	fi
+
 	# Overall output command
-	xsetroot -name "$LOAD | $NET $POWER| $CLOCK"
+	xsetroot -name "$EXTRA$LOAD | $NET $POWER| $CLOCK"
 	sleep 10
 done
