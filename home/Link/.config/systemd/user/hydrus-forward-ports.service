@@ -1,0 +1,11 @@
+[Unit]
+Description=SSH tunnel to private hydrus server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ssh -F %h/.ssh/config -N hydrus
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
