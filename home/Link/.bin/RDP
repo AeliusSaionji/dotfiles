@@ -1,16 +1,14 @@
 #!/bin/sh
-machine=$(echo -e "NERV\nqemu\nRemote NERV" | dmenu -fn inconsolata:size=8 -l 5 -i -p "Choose a host")
-   pass=$(echo "..." | dmenu -fn inconsolata:size=8 -p "Password:" -nb "#222222" -nf "#222222")
+pass=$(echo "..." | dmenu -fn inconsolata:size=8 -p "Password:" -nb "#222222" -nf "#222222")
 
-case $machine in
+case $1 in
 	"NERV")
 		echo $pass | xfreerdp /v:192.168.1.101 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
 			+home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 	"qemu")
 		echo $pass | xfreerdp /v:127.0.0.1     /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
 			+home-drive +multitouch +gestures -compression +clipboard +fonts +aero +window-drag +menu-anims ;;
-	"Remote NERV")
-		remote=$(cat ~/.dmenu_cache_recent | dmenu -fn inconsolata:size=8 -l 5 -p "Remote address:")
-		echo $pass | xfreerdp /v:$remote       /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw \
+	"Remote")
+		echo $pass | xfreerdp /v:$2            /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw \
 			-home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 esac
