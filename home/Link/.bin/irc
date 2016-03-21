@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/st -c ircterm -T ircterm abduco -A irc $*
+SSH_ASKPASS=~/.bin/askpass.sh /usr/bin/st -c ircterm -T ircterm abduco -A irc $*
