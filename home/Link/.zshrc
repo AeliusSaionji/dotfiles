@@ -22,12 +22,17 @@ zstyle ':completion:*' menu select
 # Customize the shell prompt
 PS1='%m%#[%~]>'
 
+# qt programs use GTK themes
+export QT_STYLE_OVERRIDE=GTK+
+# for the benefit of ranger shell -t
+export TERMCMD=st
+export LESS=-R
+
 # Command aliases
-alias ls="ls -h --color=auto --quoting-style=literal"
-alias ll="ls -lh --color=auto --quoting-style=literal"
-alias grep="grep --color=auto"
+alias ls='ls --color=auto --quoting-style=literal'
+alias grep='grep --color=auto'
 alias rm='rm -Iv --one-file-system'
-alias mv=' timeout 8 mv -iv'
+alias mv='mv -iv'
 alias sxiv="sxiv -faqo"
 alias steam-de='xinit ~/.bin/steam-session.sh -- :1 vt$XDG_VTNR'
 alias touch-de='startx /usr/bin/startxfce4'
@@ -51,10 +56,42 @@ zle -N zle-keymap-select
 #	#nothing here yet
 #fi
 
-# qt programs use GTK themes
-export QT_STYLE_OVERRIDE=GTK+
-# for the benefit of ranger shell -t
-export TERMCMD=st
+# https://wiki.archlinux.org/index.php/Core_utilities/Tips_and_tricks#Colored_output_when_reading_from_stdin
+zmodload zsh/zpty
+
+pty() {
+	zpty pty-${UID} ${1+$@}
+	if [[ ! -t 1 ]];then
+		setopt local_traps
+		trap '' INT
+	fi
+	zpty -r pty-${UID}
+	zpty -d pty-${UID}
+}
+
+ptyless() {
+	pty $@ | less
+}
+
+# https://wiki.archlinux.org/index.php/Zsh#Dirstack
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+fi
+chpwd() {
+  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+
+DIRSTACKSIZE=20
+
+setopt autopushd pushdsilent pushdtohome
+
+## Remove duplicate entries
+setopt pushdignoredups
+
+## This reverts the +/- operators.
+setopt pushdminus
 
 # Set the window title
 precmd () {
@@ -63,10 +100,10 @@ precmd () {
 preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
 
 # run or raise ranger. rethink name- rg() maybe?
-nn() {
+ranger() {
     if [ -z "$RANGER_LEVEL" ]
     then
-        ranger
+        /usr/bin/ranger
     else
         exit
     fi
