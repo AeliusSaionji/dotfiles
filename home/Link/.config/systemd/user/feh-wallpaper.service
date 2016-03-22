@@ -1,5 +1,6 @@
 [Unit]
 Description=Random wallpaper with feh
+StartLimitBurst=20
 
 [Service]
 Type=oneshot
