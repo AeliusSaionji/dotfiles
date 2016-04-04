@@ -4,7 +4,7 @@ touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\
 /usr/bin/chromium --touch-devices=$touchID --app=https://app.plex.tv/web/app & chromiumID=$!
 
 # Wait for Plex to become the name of the window
-while [ ! $(xwininfo -name Plex 2> /dev/null) ] && (ps -p $chromiumID > /dev/null); do
+while [ ! "$(xwininfo -name Plex 2> /dev/null)" ] && (ps -p $chromiumID > /dev/null); do
 	sleep 1
 done
 windowID=$(xwininfo -name Plex | grep "Window id:" | sed -e 's/^.*id:\s//' -e 's/\s"\w*"$//')

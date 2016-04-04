@@ -36,6 +36,15 @@ case "$1" in
 			notify-send -t 1 -h int:value:$bright Brightness fondler ;;
 	"browser")
 		xsel -co | xargs -r qutebrowser ;;
+	"dunsttoggle")
+		if [ -f /tmp/dwmstatus.d/dunstpaused ]; then
+			killall -SIGUSR2 dunst && rm /tmp/dwmstatus.d/dunstpaused # resume
+			systemctl --user restart dwmstatus.service
+		else
+			mkdir -p /tmp/dwmstatus.d
+			killall -SIGUSR1 dunst && echo "dunst paused!" > /tmp/dwmstatus.d/dunstpaused # pause
+			systemctl --user restart dwmstatus.service
+		fi ;;
 	"lock")
 		xset s activate && sleep 2 && xset dpms force off ;;
 	"rotate")
@@ -68,10 +77,20 @@ case "$1" in
 		vol=$(amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
 			notify-send -t 1 -h int:value:$vol Volume fondler ;;
-	
+
 	"-m") # j4dmenu arguments
 		dmenuArgs=$(echo "$*" | sed -e 's/#/\\#/g')
 		j4-dmenu-desktop --dmenu="dmenu $dmenuArgs" ;;
+# NERV keybinds
+	"foobnext")
+		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			wine ~/.foobar2000/foobar2000.exe /next ;;
+	"foobplay")
+		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			wine ~/.foobar2000/foobar2000.exe /playpause ;;
+	"foobprev")
+		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+			wine ~/.foobar2000/foobar2000.exe /prev ;;
 esac
 
 # wpa_cli -a fondler.sh

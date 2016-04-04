@@ -1,0 +1,10 @@
+[Unit]
+Description=compton
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/compton --config /tmp/compton.conf
+Restart=always
+
+[Install]
+WantedBy=default.target

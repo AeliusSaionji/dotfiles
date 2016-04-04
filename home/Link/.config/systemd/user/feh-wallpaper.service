@@ -1,10 +1,10 @@
 [Unit]
 Description=Random wallpaper with feh
+StartLimitBurst=20
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/feh --bg-max --no-fehbg -z /home/Link/pictures/bg
-Environment=DISPLAY=:0
 
 [Install]
 WantedBy=default.target

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # pipe the output of curl to this script
-#	curl www.google.com | bashgot [searchpattern] [begin]
+#	curl www.google.com | bashgot [<searchpattern>] [begin]
 # Second argument passes output to curl
 if [ "$2" = "begin" ]; then 
 	grep -Po '(href\=.(//)?|src\=.(//)?)\K\S+\....(?=\")' | grep -P "$1" | xargs -P 4 curl --remote-name-all

@@ -14,8 +14,10 @@ it looks like netctl can wield rfkill to unblock any given device- use this on T
 kick dhcpcd in the butt. At least with netctl-auto, if I toggle the physical wifi switch, everything reconnects fine but the ip is reset and dhcpcd doesn't renew it automatically
 [TRIALING FIX] udev rules - hibernate on low batt
 [TRIALING FIX] irc notifications
-[TRIALING FIX] custom system beep
 [TRIALING FIX] better Tabkey location
 ipfs choco
 foobar wakeup alarm
 libinput override for touch, or get libinput stylus support
+AUR bitlbee-omegle-git
+qutebrowser lastpass and the password_fill userscript
+vim paste and vimpager space

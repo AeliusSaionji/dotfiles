@@ -1,0 +1,10 @@
+[Unit]
+Description=Clipmenud
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clipmenud
+Restart=always
+
+[Install]
+WantedBy=default.target
