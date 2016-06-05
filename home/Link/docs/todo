@@ -21,3 +21,8 @@ libinput override for touch, or get libinput stylus support
 AUR bitlbee-omegle-git
 qutebrowser lastpass and the password_fill userscript
 vim paste and vimpager space
+dmenu url curl > url list 
+clipmenud restart
+write your own automount with udev
+date in status
+write battery grapher gnuplot
