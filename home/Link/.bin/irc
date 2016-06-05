@@ -1,2 +1,9 @@
 #!/bin/sh
-SSH_ASKPASS=~/.bin/askpass.sh /usr/bin/st -c ircterm -T ircterm abduco -A irc $*
+
+if [ ! -S /tmp/ssh-irc ]; then
+	SSH_ASKPASS=/home/Link/.bin/askpass.sh setsid ssh $* -fMNS /tmp/ssh-irc & export sshID=$!
+fi
+while ( [ ! -S /tmp/ssh-irc ] ); do
+	sleep 1
+done
+/usr/bin/st -c ircterm -T ircterm ssh $* -S /tmp/ssh-irc -t abduco -A irc dvtm
