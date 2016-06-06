@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! -S /tmp/ssh-irc ]; then
-	SSH_ASKPASS=/home/Link/.bin/askpass.sh setsid ssh $* -fMNS /tmp/ssh-irc & export sshID=$!
+	SSH_ASKPASS=askpass.sh setsid ssh $* -fMNS /tmp/ssh-irc & export sshID=$!
 fi
 while ( [ ! -S /tmp/ssh-irc ] ); do
 	sleep 1
