@@ -26,3 +26,4 @@ clipmenud restart
 write your own automount with udev
 date in status
 write battery grapher gnuplot
+irc script have ssh know when it disconnected after sleep and delete the socket
