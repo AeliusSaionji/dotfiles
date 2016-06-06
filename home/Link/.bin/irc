@@ -5,10 +5,15 @@ if [ ! -S /tmp/ssh-irc ] && [ $DISPLAY ]; then
 	while ( [ ! -S /tmp/ssh-irc ] ); do
 		sleep 1
 	done
+elif [ ! -S /tmp/ssh-irc ]; then
+	ssh $* -fMNS /tmp/ssh-irc
+	while ( [ ! -S /tmp/ssh-irc ] ); do
+		sleep 1
+	done
 fi
 
 if [ $DISPLAY ]; then
-	/usr/bin/st -c ircterm -T ircterm ssh $* -S /tmp/ssh-irc -t abduco -A irc dvtm
+	st -c ircterm -T ircterm ssh $* -S /tmp/ssh-irc -t abduco -A irc dvtm
 else
-	ssh $* -t abduco -A irc dvtm
+	ssh $* -S /tmp/ssh-irc -t abduco -A irc dvtm
 fi
