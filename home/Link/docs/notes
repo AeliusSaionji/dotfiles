@@ -7,6 +7,7 @@
 		compton is newer than xcompmgr, use compton
 	-Terminal-
 		terminal font: inconsolata
+		alt terminal font recommended by diablo to consider: adobe source code pro
 		dvtm MOD-e loads the terminal buffer in vim
 			* dvtm MOD is Ctrl-g
 		st MOD-u opens a dmenu based url launcher
