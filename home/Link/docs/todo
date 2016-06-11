@@ -27,3 +27,6 @@ write your own automount with udev
 date in status
 write battery grapher gnuplot
 irc script have ssh know when it disconnected after sleep and delete the socket
+vimterm is currently www only; create a wwwvimterm and a general vimterm for etc tag
+dmenu systemctl
+ls \-p by default
