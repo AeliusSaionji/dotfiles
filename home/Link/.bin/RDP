@@ -1,4 +1,9 @@
 #!/bin/sh
+
+# TODO
+# - Accept certificates via dmenu
+
+echo "requesting password via askpass script"
 pass=$(askpass.sh)
 
 case $1 in
