@@ -13,7 +13,7 @@ elif [ ! -S /tmp/ssh-irc ]; then
 fi
 
 if [ $DISPLAY ]; then
-	st -c ircterm -T ircterm ssh $* -S /tmp/ssh-irc -t abduco -A irc dvtm
+	st -c ircterm -T ircterm ssh $* -S /tmp/ssh-irc -tt abduco -A irc dvtm
 else
-	ssh $* -S /tmp/ssh-irc -t abduco -A irc dvtm
+	ssh $* -S /tmp/ssh-irc -tt abduco -A irc dvtm
 fi
