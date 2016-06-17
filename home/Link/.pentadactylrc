@@ -20,13 +20,8 @@ map -ex <C-A-a> addons
 map -ex <C-b> emenu View.Sidebar.Bookmarks
 
 
-" Toggle show/hide tabs with ctrl t. Toggles the tree autohide when tree is 'stowed'
-"map -ex <C-t> set showtabline!=never,always
-" I think I can workaround the bug with :js command? Idk. Here's an alternative
-" st[owe] the tree!
-map -ex st set! extensions.treestyletab.tabbar.autoHide.mode=1
-" Se[e] the tree!
-map -ex se set! extensions.treestyletab.tabbar.autoHide.mode=0
+" Toggle show/hide tabs with ctrl t
+map -ex <C-t> set showtabline!=never,always | set guioptions!=T
 
 " Shift enter to run the first result
 map -builtin -modes command-line <S-Return> <Tab><Return>
@@ -60,6 +55,7 @@ set notimeout
 
 set downloadsort=-active,-date
 set guioptions=s
+set showtabline=never
 set hlfind
 
 
@@ -143,3 +139,8 @@ EOF
 
 " Temporary fix for newer pentadactyl fuqing up tabs
 "style -name tabbrowser-height-fix chrome://* [dactyl-australis=true] .tabbrowser-tabs { max-height: unset !important; }
+
+" st[owe] the tree!
+"map -ex st set! extensions.treestyletab.tabbar.autoHide.mode=1
+" Se[e] the tree!
+"map -ex se set! extensions.treestyletab.tabbar.autoHide.mode=0
