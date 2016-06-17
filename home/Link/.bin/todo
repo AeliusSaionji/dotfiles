@@ -1,7 +1,7 @@
 #!/bin/sh
 # Write/remove a task to do later.
 
-FILE=~/docs/todo
+FILE=~/documents/linux-environment/todo
 HEIGHT=$(cat $FILE | wc -l)
 PROMPT="Add/delete a task"
 
