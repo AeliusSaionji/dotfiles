@@ -10,10 +10,10 @@ while true; do
 		fi
 		# Battery Status
 		BATTERYLEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
-		POWER="| [$POWERSOURCE] $BATTERYLEVEL "
+		POWER="[$POWERSOURCE] $BATTERYLEVEL"
 		if [ -d /sys/class/power_supply/BAT1 ]; then
 			SPAREBATTERYLEVEL=$(cat /sys/class/power_supply/BAT1/capacity)
-			POWER="| $SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL "
+			POWER="$SPAREBATTERYLEVEL [$POWERSOURCE] $BATTERYLEVEL"
 		fi
 	fi
 	# Network Status
@@ -32,19 +32,19 @@ while true; do
 	fi
 
 	# Date and Time
-	CLOCK=$( date '+%H:%M' )
+	CLOCK=$( date '+%b %m/%d %a %H%M' )
 
 	# Load
 	LOAD=$(cat /proc/loadavg | awk '{print $1, $2, $3}')
 
 	# External info
 	if [ -f /tmp/dwmstatus.d/* ]; then
-		EXTRA=$(cat /tmp/dwmstatus.d/* | tr '\n' '|' | sed -e 's/|/ | /g' && echo -n "<<< | ")
+		EXTRA=$(cat /tmp/dwmstatus.d/* | tr '\n' '|' | sed -e 's/|/ | /g' && echo -n "<<<")
 	else
-		unset EXTRA
+		EXTRA='>'
 	fi
 
 	# Overall output command
-	xsetroot -name "$EXTRA$LOAD | $NET $POWER| $CLOCK"
+	xsetroot -name "$EXTRA | $LOAD | $NET | $POWER | $CLOCK"
 	sleep 10
 done
