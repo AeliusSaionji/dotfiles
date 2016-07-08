@@ -27,6 +27,9 @@ export QT_STYLE_OVERRIDE=GTK+
 # for the benefit of ranger shell -t
 export TERMCMD=st
 export LESS=-R
+# Steam fixes
+find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -delete
+export STEAM_RUNTIME=0
 
 # Command aliases
 alias ls='ls --color=auto --quoting-style=literal'
