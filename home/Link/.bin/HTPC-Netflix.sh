@@ -3,7 +3,8 @@
 if pgrep chromium > /dev/null; then
 	echo -e 'F1\n\t~/.bin/HTPC-Netflix.sh' > ~/.config/sxhkd/sxhkdrc
 	systemctl --user reload sxhkd.service
-	pkill chromium
+	pkill chromium &
+	xmodmap -e "keycode 172 = XF86AudioPlay"
 else
 	/usr/bin/chromium --app=https://netflix.com &
 	echo -e 'F1\n\t~/.bin/HTPC-Netflix.sh' > ~/.config/sxhkd/sxhkdrc
@@ -15,4 +16,6 @@ else
 	echo -e 'Prior\n\txdotool click 4' >> ~/.config/sxhkd/sxhkdrc
 	echo -e 'Next\n\txdotool click 5' >> ~/.config/sxhkd/sxhkdrc
 	systemctl --user reload sxhkd.service
+	xmodmap -e "keycode 172 = Page_Up"
+	#xmodmap pause pagedown
 fi
