@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Not meant to replace the lgogdownloader config file
+
+#TODO
+# - Accept multiple games
+# - Spawn a terminal to monitor download progress?
+
+font="inconsolata:size=8"
+rows="25" # Number of rows for dmenu output
+
+platform=$(echo -e 'Linux\nWindows\nMac\nAll' | dmenu -fn $font -p "platform")
+action=$(echo -e 'download\nrepair\nstatus' | dmenu -fn $font)
+
+case "$action" in
+	download)
+		game=$(lgogdownloader --list --platform $platform | dmenu -l $rows -fn $font -p "select game")
+		lgogdownloader --report --platform $platform --download --game $game
+		;;
+	repair)
+		game=$(lgogdownloader --list --platform $platform | dmenu -l $rows -fn $font -p "select game")
+		lgogdownloader --report --platform $platform --repair --game $game
+		;;
+	status) # Save status file to /tmp and print to dmenu
+		echo '*** Please Wait ***' | \
+			dmenu -fn $font  -p 'populating /tmp/gogstatus.log, this could take a while' & dmenuID=$! && \
+			lgogdownloader --status > /tmp/gogstatus.log && kill $dmenuID && \
+			cat /tmp/gogstatus.log | dmenu -l $rows -fn $font -p "cat /tmp/gogstatus.log"
+		;;
+esac
