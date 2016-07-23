@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/bin/chromium --app=https://web.skype.com/en/
