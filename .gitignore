@@ -1,7 +1,7 @@
 # VIM swap files
 *.swp
-home/Link/.config/
-home/Link/.mozilla/
-home/Link/.pentadactyl/info
-home/Link/.pentadactyl/sessions
-home/Link/.weechat/
+common/home/user/.config/
+common/home/user/.mozilla/
+common/home/user/.pentadactyl/info
+common/home/user/.pentadactyl/sessions
+common/home/user/.weechat/
