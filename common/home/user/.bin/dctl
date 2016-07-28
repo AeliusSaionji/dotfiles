@@ -14,18 +14,19 @@ action=$(echo -e 'start\nstop\nrestart\ndaemon reload\n--user start\n--user stop
 # if action is status
 #if [ "$action" = '--user status' -o "$action" = 'status' ]; then
 	# combine output of both --user and --system
-# if action contains '--user'
-if [ -z $(echo $action | sed -e '/--user/d') ]; then
-	# List --user units
+
+[ -z $action ] && exit 0 # if no action, quit
+if [ -z $(echo $action | sed -e '/--user/d') ]; then # if action contains '--user'
 	unit=$(systemctl --user list-unit-files --no-pager \
 		| grep -P 'enabled|enabled-runtime|linked|linked-runtime|masked|masked-runtime|static|indirect|disabled|generated|transient|bad' \
-		| dmenu -fn $font -l 20 | grep -o -P '^.*\.\w+')
+		| dmenu -fn $font -l 20 | grep -o -P '^.*\.\w+') # List --user units
+	[ -z $unit ] && exit 0 # if no unit, quit
 	systemctl $action $unit
 else # action for system
-	# List units
 	unit=$(systemctl list-unit-files --no-pager \
 		| grep -P 'enabled|enabled-runtime|linked|linked-runtime|masked|masked-runtime|static|indirect|disabled|generated|transient|bad' \
-		| dmenu -fn $font -l 20 | grep -o -P '^.*\.\w+')
+		| dmenu -fn $font -l 20 | grep -o -P '^.*\.\w+') # List units
+	[ -z $unit ] && exit 0 # if no unit, quit
 	sudo -A systemctl $action $unit
 fi
 
