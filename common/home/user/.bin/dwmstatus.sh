@@ -39,12 +39,13 @@ while true; do
 
 	# External info
 	if [ -f /tmp/dwmstatus.d/* ]; then
-		EXTRA=$(cat /tmp/dwmstatus.d/* | tr '\n' '|' | sed -e 's/|/ | /g' && echo -n "<<<")
+		# bug ; this breaks with more than one file
+		EXTRA=$(cat /tmp/dwmstatus.d/* | tr '\n' '|' | sed -e 's/|/ | /g' -e 's/^/ /' && echo "<<< |")
 	else
-		EXTRA='>'
+		EXTRA=''
 	fi
 
 	# Overall output command
-	xsetroot -name "$EXTRA | $LOAD | $NET | $POWER | $CLOCK"
+	xsetroot -name "$EXTRA $LOAD | $NET | $POWER | $CLOCK"
 	sleep 10
 done
