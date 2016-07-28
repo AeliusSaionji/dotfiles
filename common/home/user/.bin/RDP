@@ -7,13 +7,10 @@ echo "requesting password via askpass script"
 pass=$(askpass.sh)
 
 case $1 in
-	"NERV")
-		echo $pass | xfreerdp /v:192.168.1.101 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
+	"Local")
+		echo $pass | xfreerdp /v:$2 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
 			+home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
-	"qemu")
-		echo $pass | xfreerdp /v:127.0.0.1     /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
-			+home-drive +multitouch +gestures -compression +clipboard +fonts +aero +window-drag +menu-anims ;;
 	"Remote")
-		echo $pass | xfreerdp /v:$2            /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw \
+		echo $pass | xfreerdp /v:$2 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw \
 			-home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
 esac
