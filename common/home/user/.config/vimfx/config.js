@@ -7,9 +7,11 @@ Preferences.set({
 	'browser.tabs.closeWindowWithLastTab': false,
 	'browser.urlbar.suggest.searches': true, //Show search suggestions in location bar
 	'datareporting.healthreport.uploadEnabled': false,
-//	'pdfjs.disabled': true,
+	'extensions.https_everywhere._observatory.enabled': true,
 	'privacy.donottrackheader.enabled': true,
 	'signon.rememberSignons': false, //Disable internal password manager
+	'weboftrust.settingsui_searchlevel': "bad",
+//	'pdfjs.disabled': true,
 
 	/* VimFX Keybinds */
 	'extensions.VimFx.mode.normal.scroll_half_page_down': "<c-d>",

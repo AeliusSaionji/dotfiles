@@ -2,7 +2,7 @@
 # Requires netflix chrome "app"
 
 touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\s.*$//')
-/usr/bin/chromium --profile-directory=Default --app-id=deceagebecbceejblnlcjooeohmmeldh --touch-devices=$touchID & chromiumID=$!
+/usr/bin/chromium "--user-data-dir=$HOME/.config/chromium-netflix" --profile-directory=Default --app-id=deceagebecbceejblnlcjooeohmmeldh --touch-devices=$touchID & chromiumID=$!
 
 # Wait for Netflix to become the name of the window
 while [ ! $(xwininfo -name Netflix 2> /dev/null) ] && (ps -p $chromiumID > /dev/null); do
