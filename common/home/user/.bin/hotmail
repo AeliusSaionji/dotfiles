@@ -1,0 +1,4 @@
+#!/bin/sh
+
+touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\s.*$//')
+/usr/bin/chromium "--user-data-dir=$HOME/.config/chromium-hotmail" --profile-directory=Default --app-id=pfpeapihoiogbcmdmnibeplnikfnhoge --touch-devices=$touchID

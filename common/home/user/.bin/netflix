@@ -1,0 +1,12 @@
+#!/bin/sh
+# Requires netflix chrome "app"
+
+touchID=$(xinput list | sed -e '/Touchscreen touch/!d' -e 's/^.*\sid=//' -e 's/\s.*$//')
+/usr/bin/chromium "--user-data-dir=$HOME/.config/chromium-netflix" --profile-directory=Default --app-id=deceagebecbceejblnlcjooeohmmeldh --touch-devices=$touchID & chromiumID=$!
+
+# Wait for Netflix to become the name of the window
+while [ ! $(xwininfo -name Netflix 2> /dev/null) ] && (ps -p $chromiumID > /dev/null); do
+        sleep 1
+done
+windowID=$(xwininfo -name Netflix | grep "Window id:" | sed -e 's/^.*id:\s//' -e 's/\s"\w*"$//')
+xdg-screensaver suspend $windowID && notify-send Notice "Monitor timeout disabled while netflix is running"

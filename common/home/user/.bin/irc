@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ $DISPLAY ]; then
+	st -c ircterm -T ircterm abduco -A irc weechat
+else
+	abduco -A irc weechat
+fi
