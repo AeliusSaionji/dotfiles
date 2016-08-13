@@ -15,7 +15,7 @@ elif [ ! -S /tmp/ssh-cmd ]; then
 fi
 
 if [ $DISPLAY ]; then
-	st -c cmdterm -T cmdterm ssh $* -S /tmp/ssh-cmd -tt abduco -A cmd dvtm
+	st -c ircterm -T ircterm ssh $* -S /tmp/ssh-cmd -tt abduco -A irc dvtm
 else
-	ssh $* -S /tmp/ssh-cmd -tt abduco -A cmd dvtm
+	ssh $* -S /tmp/ssh-cmd -tt abduco -A irc dvtm
 fi

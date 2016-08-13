@@ -111,7 +111,6 @@ xset dpms 602 602 602 & # Monitor timeout. Default is 600 (10 minutes). Allow 2s
 pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga x11-bell && pactl load-module module-x11-bell sample=x11-bell display=$DISPLAY & # X11 Bell Noise
 systemctl --user start feh-wallpaper.service & # Set wallpaper instantly
 systemctl --user start compton.service & # Call here rather than Enable, only starts with X11
-systemctl --user start tunneler.service & # Call here rather than Enable, only starts with X11
 systemctl --user start dwmstatus.service & # Call here rather than Enable, only starts with X11
 systemctl --user start clipmenud.service & # Call here rather than Enable, only starts with X11
 systemctl --user start redshift.service & # Call here rather than Enable, so it doesn't start before DISPLAY is set
