@@ -7,7 +7,7 @@
 
 export SUDO_ASKPASS=~/.bin/daskpass
 font="inconsolata:size=8"
-action=$(echo -e 'start\nstop\nrestart\ndaemon reload\n--user start\n--user stop\n--user restart\n--user daemon reload' | dmenu -fn $font)
+action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable --now\ndaemon reload\n--user start\n--user stop\n--user restart\n--user enable\n--user enable --now\n--user disable\n--user disable --now\n--user daemon reload' | dmenu -fn $font)
 
 # if action is status
 #if [ "$action" = '--user status' -o "$action" = 'status' ]; then
