@@ -238,7 +238,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'bling/vim-airline'
 Plugin 'PProvost/vim-ps1'
-Plugin 'chrisbra/csv.vim'
+" Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
 filetype plugin indent on     " required!
