@@ -1,8 +1,9 @@
 #!/bin/sh
 
+#
+
 #TODO
 # - implement status, detailed info piped to dmenu
-# - implement enable, disable
 # - make failed list prettier
 
 export SUDO_ASKPASS=~/.bin/daskpass
@@ -13,7 +14,7 @@ action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable -
 #if [ "$action" = '--user status' -o "$action" = 'status' ]; then
 	# combine output of both --user and --system
 
-[ -z $action ] && exit 0 # if no action, quit
+[ -z "$action" ] && exit 0 # if no action, quit
 if [ -z $(echo $action | sed -e '/--user/d') ]; then # if action contains '--user'
 	systemctl --user --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
 	systemctl --user --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
