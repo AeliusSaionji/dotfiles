@@ -22,28 +22,14 @@ zstyle ':completion:*' menu select
 # Customize the shell prompt
 PS1='%m%#[%~]>'
 
-# qt programs use GTK themes
-export QT_STYLE_OVERRIDE=GTK+
 # for the benefit of ranger shell -t
 export TERMCMD=st
 export LESS=-R
-# Steam fixes
-find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -delete
-export STEAM_RUNTIME=0
 
 # Command aliases
 alias ls='ls --color=auto --quoting-style=literal'
 alias grep='grep --color=auto'
 alias rm='rm -Iv --one-file-system'
-alias mv='mv -iv'
-alias sxiv="sxiv -faqo"
-alias steam-de='xinit ~/.bin/steam-session.sh -- :1 vt$XDG_VTNR'
-alias touch-de='startx /usr/bin/startxfce4'
-
-# Add ~/.bin to the path
-typeset -U path
-path=(~/.bin $path)
-
 function zle-line-init zle-keymap-select {
 	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
 	RPS2=$RPS1

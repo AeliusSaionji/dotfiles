@@ -5,6 +5,8 @@ Description=compton
 Type=simple
 ExecStart=/usr/bin/compton --config /tmp/compton.conf
 Restart=always
+# Apparently the env doesn't get set fast enough when running X from zprofile ¯\_(ツ)_/¯
+Environment=DISPLAY=:0
 
 [Install]
 WantedBy=default.target
