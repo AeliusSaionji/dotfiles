@@ -27,9 +27,12 @@ export TERMCMD=st
 export LESS=-R
 
 # Command aliases
-alias ls='ls --color=auto --quoting-style=literal'
 alias grep='grep --color=auto'
+alias ls='ls --color=auto --quoting-style=literal --indicator-style=slash'
+alias ll='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
+alias  l='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias rm='rm -Iv --one-file-system'
+
 function zle-line-init zle-keymap-select {
 	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
 	RPS2=$RPS1
