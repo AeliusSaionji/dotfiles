@@ -1,1 +1,2 @@
 common/home/user/.config/lgogdownloader/config.cfg filter=clean-gog
+common/home/user/.bin/ssh-notify filter=clean-notify
