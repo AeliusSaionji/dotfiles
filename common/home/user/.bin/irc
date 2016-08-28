@@ -1,7 +1,6 @@
 #!/bin/sh
 
 if [ $DISPLAY ]; then
-	~/.bin/ssh-notify &
 	/usr/bin/st -c ircterm -T ircterm /usr/bin/mosh $1 --ssh="ssh $2" -- abduco -A irc
 else
 	/usr/bin/mosh $1 --ssh="ssh $2" -- abduco -A irc
