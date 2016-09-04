@@ -1,0 +1,11 @@
+Path: .mail/mh
+Aliasfile: aliases
+Signature: - Link
+#:
+#: Always store pick in a sequence 
+pick: -sequence picked
+#:
+#: Associate mimetypes with programs
+mhshow-show-text/html: /usr/bin/w3m -T text/html '%f'
+mhshow-show-image: /usr/bin/sxiv -a '%f'
+mhshow-show-audio: /usr/bin/mpv --vo=null '%f'
