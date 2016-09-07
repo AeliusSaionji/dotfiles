@@ -4,7 +4,7 @@
 # - Accept certificates via dmenu
 
 echo "requesting password via askpass script"
-pass=$(askpass.sh)
+pass=$(daskpass)
 
 case $1 in
 	"Local")

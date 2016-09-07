@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $DISPLAY ]; then
-	st -c ircterm -T ircterm abduco -A irc weechat
+	/usr/bin/st -c ircterm -T ircterm /usr/bin/mosh $1 --ssh="ssh $2" -- abduco -A irc
 else
-	abduco -A irc weechat
+	/usr/bin/mosh $1 --ssh="ssh $2" -- abduco -A irc
 fi

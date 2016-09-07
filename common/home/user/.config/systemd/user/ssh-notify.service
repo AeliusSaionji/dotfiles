@@ -1,0 +1,11 @@
+[Unit]
+Description=SSH irc notifications
+
+[Service]
+Type=simple
+ExecStart=/home/Link/.bin/ssh-notify
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

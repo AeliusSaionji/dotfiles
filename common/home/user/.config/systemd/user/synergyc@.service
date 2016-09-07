@@ -1,0 +1,10 @@
+[Unit]
+Description=Synergy Client
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/synergyc --no-daemon --enable-crypto --name Talim %i
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
