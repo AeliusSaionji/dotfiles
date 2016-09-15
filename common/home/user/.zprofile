@@ -18,7 +18,6 @@ export SUDO_ASKPASS=~/.bin/daskpass
 # for the benefit of ranger shell -t
 export TERMCMD=st
 export LESS=-R
-export PAGER=vimpager
 
 # Start X at VT1 login
 [ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx
