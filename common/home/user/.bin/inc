@@ -15,16 +15,6 @@ for i in ~/.mail/maildir/hotmail/Inbox/cur/* ; do
 	rm "$i"
 done &> /dev/null
 
-for i in ~/.mail/maildir/hotmail/Archive/new/* ; do
-	rcvstore +archive <"$i"
-	rm "$i"
-done &> /dev/null
-
-for i in ~/.mail/maildir/hotmail/Archive/cur/* ; do
-	rcvstore +archive <"$i"
-	rm "$i"
-done &> /dev/null
-
 for i in ~/.mail/maildir/hotmail/Junk/new/* ; do
 	rcvstore +junk <"$i"
 	rm "$i"
@@ -66,4 +56,4 @@ done &> /dev/null
 #done &> /dev/null
 
 # Print mail
-scan -form scan.time
+scan -form scan.meillo +inbox
