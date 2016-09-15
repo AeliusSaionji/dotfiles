@@ -12,5 +12,13 @@ export STEAM_RUNTIME=0
 # qt programs use GTK themes
 export QT_STYLE_OVERRIDE=GTK+
 
+# Various custom things
+export DMENU_FONT=inconsolata:size=8
+export SUDO_ASKPASS=~/.bin/daskpass
+# for the benefit of ranger shell -t
+export TERMCMD=st
+export LESS=-R
+export PAGER=vimpager
+
 # Start X at VT1 login
 [ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx

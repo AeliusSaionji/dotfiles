@@ -32,10 +32,6 @@ zstyle ':completion:*' menu select
 # Customize the shell prompt
 PS1='%m%#[%~]>'
 
-# for the benefit of ranger shell -t
-export TERMCMD=st
-export LESS=-R
-
 # Command aliases
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --quoting-style=literal --indicator-style=slash'
