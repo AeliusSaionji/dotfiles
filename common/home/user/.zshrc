@@ -38,9 +38,6 @@ alias ls='ls --color=auto --quoting-style=literal --indicator-style=slash'
 alias ll='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias  l='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias rm='rm -Iv --one-file-system'
-alias show='PAGER=~/.bin/vimpagermail /usr/bin/show'
-alias prev='PAGER=~/.bin/vimpagermail /usr/bin/show p'
-alias next='PAGER=~/.bin/vimpagermail /usr/bin/show n'
 
 # https://wiki.archlinux.org/index.php/Zsh#cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook

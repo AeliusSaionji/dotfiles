@@ -4,6 +4,8 @@ path=(~/.bin $path)
 
 # Establish mmh profile path
 export MMHP=~/.mmh-profile
+export MMHEDITOR=~/.bin/vimeditmail
+export MMHPAGER=~/.bin/vimpagermail
 
 # Steam fixes
 find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -delete
