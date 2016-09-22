@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# Create a centered floating terminal, cover a % of the screen
+#TODO
+# Make math sh/bash compatible
+# Figure out if the terminal columns and rows are consistent across resolutions
+
+
+# Store the resolution in an array, x,y::$res[1],$res[2]
+res=($(xrandr | awk '/current/ {gsub(/,/,""); print $8 " " $10}'))
+
+# Calculate x + y offset
+xoff=$(echo $(($res[1] /  7)))
+yoff=$(echo $(($res[2] / 10)))
+
+st -g 150x45+$xoff+$yoff -c popterm "$@"
