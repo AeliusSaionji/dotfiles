@@ -12,6 +12,16 @@ bindkey jj vi-cmd-mode
 # Idk
 zstyle :compinstall filename '/home/Link/.zshrc'
 
+# More Vim stuff?
+function zle-line-init zle-keymap-select {
+	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+	RPS2=$RPS1
+	zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # Enable autocompletion
 autoload -Uz compinit
 compinit
@@ -22,10 +32,6 @@ zstyle ':completion:*' menu select
 # Customize the shell prompt
 PS1='%m%#[%~]>'
 
-# for the benefit of ranger shell -t
-export TERMCMD=st
-export LESS=-R
-
 # Command aliases
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --quoting-style=literal --indicator-style=slash'
@@ -33,57 +39,9 @@ alias ll='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias  l='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias rm='rm -Iv --one-file-system'
 
-function zle-line-init zle-keymap-select {
-	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-	RPS2=$RPS1
-	zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-# Device specific settings
-#host="$(hostnamectl status --static)"
-#if [ $host = "GIR" ]; then
-#	#nothing here yet
-#fi
-
-# https://wiki.archlinux.org/index.php/Core_utilities/Tips_and_tricks#Colored_output_when_reading_from_stdin
-zmodload zsh/zpty
-
-pty() {
-	zpty pty-${UID} ${1+$@}
-	if [[ ! -t 1 ]];then
-		setopt local_traps
-		trap '' INT
-	fi
-	zpty -r pty-${UID}
-	zpty -d pty-${UID}
-}
-
-ptyless() {
-	pty $@ | less
-}
-
-# https://wiki.archlinux.org/index.php/Zsh#Dirstack
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1]
-fi
-chpwd() {
-  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
-
-DIRSTACKSIZE=20
-
-setopt autopushd pushdsilent pushdtohome
-
-## Remove duplicate entries
-setopt pushdignoredups
-
-## This reverts the +/- operators.
-setopt pushdminus
+# https://wiki.archlinux.org/index.php/Zsh#cdr
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
 
 # Set the window title
 precmd () {
@@ -91,7 +49,7 @@ precmd () {
 } 
 preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
 
-# run or raise ranger. rethink name- rg() maybe?
+# run or raise ranger. All args are lost. Should probably fix that
 ranger() {
     if [ -z "$RANGER_LEVEL" ]
     then
@@ -101,54 +59,3 @@ ranger() {
     fi
 }
 
-# Define a function to run things under or attach to existing tmux
-run_under_tmux() {
-	# Run $1 under session or attach if such session already exist.
-	# $2 is optional path, if no specified, will use $1 from $PATH.
-	# If you need to pass extra variables, use $2 for it as in example below..
-	# Example usage:
-	# 	torrent() { run_under_tmux 'rtorrent' '/usr/local/rtorrent-git/bin/rtorrent'; }
-	#	mutt() { run_under_tmux 'mutt'; }
-	#	irc() { run_under_tmux 'irssi' "TERM='screen' command irssi"; }
-
-
-	# There is a bug in linux's libevent...
-	# export EVENT_NOEPOLL=1
-
-	command -v tmux >/dev/null 2>&1 || return 1
-
-	if [ -z "$1" ]; then return 1; fi
-	local name="$1"
-	if [ -n "$2" ]; then
-		local file_path="$2"
-	else
-		local file_path="command ${name}"
-	fi
-
-	if tmux has-session -t "${name}" 2>/dev/null; then
-		tmux attach -d -t "${name}"
-	else
-		tmux new-session -s "${name}" "${file_path}" \; set-option status \; set set-titles-string "${name} (tmux@${HOST})"
-	fi
-}
-
-# Start irssi in or attach to existing tmux
-#irc() { run_under_tmux irssi; }
-#irc() { abduco -A irc dvtm }
-
-# So I think this is the framework for detecting if you're running ssh, and changing colors if true
-#over_ssh() {
-#	if [ -n "${SSH_CLIENT}" ]; then
-#		return 0
-#	else
-#		return 1
-#	fi
-#}
-#
-#if over_ssh && [ -z "${TMUX}" ]; then
-#	prompt_is_ssh='%F{blue}[%F{red}SSH%F{blue}] '
-#elif over_ssh; then
-#	prompt_is_ssh='%F{blue}[%F{253}SSH%F{blue}] '
-#else
-#	unset prompt_is_ssh
-#fi

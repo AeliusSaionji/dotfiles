@@ -51,19 +51,11 @@ if has("gui_running")
 	"set guifontwide=DFKai-SB:h12
 endif
 
-" Set pate mode under *nix
-"if has("unix")
-"	inoremap <S-Insert> <ESC>:set paste<CR>i<S-Insert><ESC>:set nopaste<CR>i
-"	set paste
-"endif
-
 " Syntax highlighting. If you turn it on more than once it screws up colors, hence the if statement
 if !exists("syntax_on")
 	syntax on
 endif
 
-" Redraw screen + search highlighting off until search
-nnoremap <C-L> :nohl<CR><C-L>
 " Call SkyBison with \;
 nnoremap <leader>; :<c-u>call SkyBison("")<cr>
 let g:skybison_fuzz = 2
@@ -71,27 +63,20 @@ let g:skybison_fuzz = 2
 inoremap jj <Esc>
 " Hide vim pr0n
 "noremap <F3> mzggVGg?`z
-if has('win32') || has('win64')
+"if has('win32') || has('win64')
 	" Build C++ amd64 binary with Visual Studio 2013
-	noremap <F7> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/PROGRA~2/MICROS~1.0/VC/bin/amd64/vcvars64.bat & cl /EHsc <C-r>=expand("%:t")<CR>")<CR>
+"	noremap <F7> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/PROGRA~2/MICROS~1.0/VC/bin/amd64/vcvars64.bat & cl /EHsc <C-r>=expand("%:t")<CR>")<CR>
 	" Build C binary with MinGW GCC
-	noremap <F8> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/MinGW/bin/cc.exe <C-r>=expand("%:t")<CR>")<CR>
-endif
-" Show VimFiler
-noremap <F10> :VimFilerExplorer<CR>
-" Unite search recently used, sub directories, and recent directories
+"	noremap <F8> :VimShellBufferDir -popup<CR><ESC>:wincmd p<CR>:call vimshell#interactive#send("C:/MinGW/bin/cc.exe <C-r>=expand("%:t")<CR>")<CR>
+"endif
+
+" Unite search recent files and directories
 nnoremap <C-p> :Unite -start-insert file_mru directory_mru<cr>
 " Unite quick select buffers
-nnoremap <space>s :Unite -quick-match buffer<cr>
+nnoremap <leader>b :Unite -quick-match buffer<cr>
 " Unite yank history
 let g:unite_source_history_yank_enable = 1
-nnoremap <space>y :Unite history/yank<cr>
-
-" VimShell. Shell window will be auto closed after termination
-" Ctrl_W e opens up a vimshell in a horizontally split window
-nnoremap <C-W>e :new \| VimShell<CR>
-" Ctrl_W E opens up a vimshell in a vertically split window
-nnoremap <C-W>E :vnew \| VimShell<CR>
+nnoremap <leader>y :Unite history/yank<cr>
 
 " Fix temp folder under Windows
 " breaks vundle
@@ -100,9 +85,10 @@ nnoremap <C-W>E :vnew \| VimShell<CR>
 "endif
 
 "Elevate vim under windows.
-if has('win32') || has('win64')
-	noremap <C-e> :mksession! ~/vimfiles/elevate.vim<Return>:silent exec '!elevate.exe ' . v:progname '-S C:/Users/Link/vimfiles/elevate.vim --cmd "let $HOME=''C:\Users\Link\''"'<Return>:q<Return>
-endif
+" Update me to use powershell elevation
+"if has('win32') || has('win64')
+"	noremap <C-e> :mksession! ~/vimfiles/elevate.vim<Return>:silent exec '!elevate.exe ' . v:progname '-S C:/Users/Link/vimfiles/elevate.vim --cmd "let $HOME=''C:\Users\Link\''"'<Return>:q<Return>
+"endif
 
 " Detects if vim is opened without a file, moves to my documents for easy saving.
 " add a || win64 when you can test it
@@ -175,35 +161,47 @@ highlight Comment ctermfg=8 guifg=#808080
 hi StatusLine   guibg=#c2bfa5 guifg=black  gui=none cterm=bold,reverse
 hi StatusLineNC guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
 
-" Vimshell stuff
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-"let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-if has('win32') || has('win64')
-	" Display user name on Windows.
-	let g:vimshell_prompt = $USERNAME."% "
-else
-	" Display user name on Linux.
-	let g:vimshell_prompt = $USER."% "
-endif
-" Initialize execute file list.
-let g:vimshell_execute_file_list = {}
-"call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
-let g:vimshell_execute_file_list['rb'] = 'ruby'
-let g:vimshell_execute_file_list['pl'] = 'perl'
-let g:vimshell_execute_file_list['py'] = 'python'
-"call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
-autocmd FileType vimshell
-\ call vimshell#altercmd#define('g', 'git')
-\| call vimshell#altercmd#define('i', 'iexe')
-\| call vimshell#altercmd#define('l', 'll')
-\| call vimshell#altercmd#define('ll', 'ls -l')
-\| call vimshell#hook#add('chpwd', 'my_chpwd', 'MyChpwd')
-function! MyChpwd(args, context)
-	call vimshell#execute('ls')
+" Ranger file chooser
+" Compatible with ranger 1.4.2 through 1.7.*
+"
+" Add ranger as a file chooser in vim
+"
+" If you add this code to the .vimrc, ranger can be started using the command
+" ":RangerChooser" or the keybinding "<leader>r".  Once you select one or more
+" files, press enter and ranger will quit again and vim will open the selected
+" files.
+
+function! RangeChooser()
+    let temp = tempname()
+    " The option "--choosefiles" was added in ranger 1.5.1. Use the next line
+    " with ranger 1.4.2 through 1.5.0 instead.
+    "exec 'silent !ranger --choosefile=' . shellescape(temp)
+    if has("gui_running")
+        exec 'silent !xterm -e ranger --choosefiles=' . shellescape(temp)
+    else
+        exec 'silent !ranger --choosefiles=' . shellescape(temp)
+    endif
+    if !filereadable(temp)
+        redraw!
+        " Nothing to read.
+        return
+    endif
+    let names = readfile(temp)
+    if empty(names)
+        redraw!
+        " Nothing to open.
+        return
+    endif
+    " Edit the first item.
+    exec 'edit ' . fnameescape(names[0])
+    " Add any remaning items to the arg list/buffer list.
+    for name in names[1:]
+        exec 'argadd ' . fnameescape(name)
+    endfor
+    redraw!
 endfunction
-autocmd FileType int-* call s:interactive_settings()
-function! s:interactive_settings()
-endfunction
+command! -bar RangerChooser call RangeChooser()
+nnoremap <leader>r :<C-U>RangerChooser<CR>
 
 " ----------------------------------------------        
 " Vundle stuff
@@ -222,20 +220,16 @@ endif
 	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()
 
-" let Vundle manage Vundle
-" required! 
+" let Vundle manage Vundle. Required! 
 Plugin 'gmarik/Vundle.vim'
-" original repos on GitHub
+" repos on GitHub
 Plugin 'chilicuil/vim-sprunge'
 Plugin 'paradigm/SkyBison'
-Plugin 'AnsiEsc.vim'
+"Plugin 'AnsiEsc.vim'
 Plugin 'spolu/dwm.vim'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
 Plugin 'bling/vim-airline'
 Plugin 'PProvost/vim-ps1'
 " Plugin 'chrisbra/csv.vim'
