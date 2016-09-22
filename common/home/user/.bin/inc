@@ -56,4 +56,4 @@ done &> /dev/null
 #done &> /dev/null
 
 # Print mail
-scan -form scan.meillo +inbox
+unseen
