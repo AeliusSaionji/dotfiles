@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+### Purpose
+# Present mail in a format compatible with the typical file manager
+
+### TODO
+# Optionally take advantage of ranger's new meta feature
+
+# If folder not specified, read from context
+if [ -z $1 ]; then
+	read -r context < $HOME/.mmh/context
+	# Trim 'Current-Folder: ' from file
+	context=${context/Current-Folder: /}
+else
+	# Trim '+' from input
+	context=${1/+/}
+fi
+
+# Clear the cache
+rm -rf $HOME/.cache/mmh && mkdir $HOME/.cache/mmh
+
+# Select mail files
+	# Extract content from each mail file
+find $HOME/.mail/mh/${context} -type f ! -name ".mh_sequences" -printf '%f\0' | xargs -0 mhstore +${context}
+
+# Collect Subject and From information
+scan +${context} -form $HOME/.bin/mmhfm.scan > $HOME/.cache/mmh/.scan
+
+while read -r scanline; do
+	# Mail number
+	#nmbr=${scanline:0:1}
+	# This can probably be done without sed
+	nmbr=$(echo $scanline | sed 's/\s.*$//')
+	# Prune fordward slash
+	scanline=${scanline//\//-}
+	# Prune # (w3m incompatibility)
+	scanline=${scanline//\#/}
+	# Give names to text/* content (other attachments don't need names)
+	mv $HOME/.cache/mmh/${nmbr}.*.html  "$HOME/.cache/mmh/${scanline}.html"
+	mv $HOME/.cache/mmh/${nmbr}.*.plain "$HOME/.cache/mmh/${scanline}.plain"
+	((i++))
+done <$HOME/.cache/mmh/.scan
+
+# Launch file manager
+/usr/bin/ranger $HOME/.cache/mmh
