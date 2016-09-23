@@ -1,11 +1,17 @@
 #!/bin/bash
 
-
 ### Purpose
 # Present mail in a format compatible with the typical file manager
 
 ### TODO
 # Optionally take advantage of ranger's new meta feature
+# Fix scan form to lead lesser digits with whitespace
+	#  9
+	# 10
+# It is not clear which mail belongs to what attachment
+# text/plain are not being moved correctly
+# Use rename instead of mv?
+###
 
 # If folder not specified, read from context
 if [ -z $1 ]; then
