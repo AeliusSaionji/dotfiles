@@ -2,7 +2,7 @@
 typeset -U path
 path=(~/.bin $path)
 
-# Establish mmh profile path
+# mmh tweaks
 export MMHP=~/.mmh-profile
 export MMHEDITOR=~/.bin/vimeditmail
 export MMHPAGER=~/.bin/vimpagermail
@@ -17,6 +17,7 @@ export QT_STYLE_OVERRIDE=GTK+
 # Various custom things
 export DMENU_FONT=inconsolata:size=8
 export SUDO_ASKPASS=~/.bin/daskpass
+
 # for the benefit of ranger shell -t
 export TERMCMD=st
 export LESS=-R

@@ -38,6 +38,8 @@ alias ls='ls --color=auto --quoting-style=literal --indicator-style=slash'
 alias ll='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias  l='ls --color=auto --quoting-style=literal --indicator-style=slash -l'
 alias rm='rm -Iv --one-file-system'
+alias vc='vimcat'
+alias vp='vimpager'
 
 # https://wiki.archlinux.org/index.php/Zsh#cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
