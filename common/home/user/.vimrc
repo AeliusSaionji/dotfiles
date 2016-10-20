@@ -37,6 +37,8 @@ set wrapmargin=0
 "set textwidth=75
 " Apply formatting options automatically (tw)
 set formatoptions-=a
+" Windows fix for context menu + msys2
+set directory+=./,~/tmp//,/var/tmp//,/tmp//
 " Set some GUI specific options
 if has("gui_running")
 	" Hide mouse while typing. GVIM only
