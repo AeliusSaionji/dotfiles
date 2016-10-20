@@ -2,15 +2,19 @@
 
 # TODO
 # - Accept certificates via dmenu
+# - Remove hardcoded username
+# - Libnotify errors
 
+username="Link"
 echo "requesting password via askpass script"
 pass=$(daskpass)
+baseArgs="/smart-sizing /workarea /gfx /gdi:hw +compression +clipboard +fonts -aero -window-drag -menu-anims"
 
-case $1 in
-	"Local")
-		echo $pass | xfreerdp /v:$2 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw /sound \
-			+home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
+case $2 in
 	"Remote")
-		echo $pass | xfreerdp /v:$2 /u:Link /from-stdin /smart-sizing /workarea /gfx /gdi:hw \
-			-home-drive +multitouch +gestures +compression +clipboard +fonts -aero -window-drag -menu-anims ;;
+		otherArgs="-home-drive +multitouch +gestures";;
+	*)
+		otherArgs="/sound +home-drive +multitouch +gestures";;
 esac
+
+echo $pass | xfreerdp /v:$1 /u:$username /from-stdin $baseArgs $otherArgs
