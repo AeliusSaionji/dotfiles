@@ -7,4 +7,5 @@ Type=oneshot
 ExecStart=/usr/bin/feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 
 [Install]
-WantedBy=default.target
+WantedBy=x11.target
+Requisite=x11.target

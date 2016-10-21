@@ -5,6 +5,8 @@ Description=Clipmenud
 Type=simple
 ExecStart=/usr/bin/clipmenud
 Restart=always
+RestartSec=30
 
 [Install]
-WantedBy=default.target
+WantedBy=x11.target
+Requisite=x11.target

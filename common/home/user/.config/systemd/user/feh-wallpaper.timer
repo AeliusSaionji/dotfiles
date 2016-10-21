@@ -6,4 +6,5 @@ OnUnitActiveSec=720
 Unit=feh-wallpaper.service
 
 [Install]
-WantedBy=default.target
+WantedBy=x11.target
+Requisite=x11.target

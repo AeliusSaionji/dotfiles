@@ -8,4 +8,5 @@ Restart=always
 RestartSec=10
 
 [Install]
-WantedBy=default.target
+WantedBy=x11.target
+Requisite=x11.target

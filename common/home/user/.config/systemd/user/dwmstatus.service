@@ -6,6 +6,8 @@ Type=simple
 ExecStart=/home/Link/.bin/dwmstatus.sh
 ExecStop=/usr/bin/xsetroot -name "dwm 6.1"
 Restart=always
+RestartSec=30
 
 [Install]
-WantedBy=default.target
+WantedBy=x11.target
+Requisite=x11.target
