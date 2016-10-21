@@ -1,12 +1,12 @@
 [Unit]
-Description=SSH irc notifications
+Description=dunst
 Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStart=/home/Link/.bin/ssh-notify
+ExecStart=/usr/bin/dunst
 Restart=always
-RestartSec=10
+RestartSec=30
 
 [Install]
 WantedBy=x11.target

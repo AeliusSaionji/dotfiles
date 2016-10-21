@@ -1,12 +1,13 @@
 [Unit]
 Description=compton
+Requisite=x11.target
 
 [Service]
 Type=simple
+ExecStartPre=/usr/bin/cp %h/.config/compton.conf /tmp/compton.conf
 ExecStart=/usr/bin/compton --config /tmp/compton.conf
 Restart=always
 RestartSec=30
 
 [Install]
 WantedBy=x11.target
-Requisite=x11.target

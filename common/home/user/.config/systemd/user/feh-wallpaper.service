@@ -1,6 +1,7 @@
 [Unit]
 Description=Random wallpaper with feh
 StartLimitBurst=20
+Requisite=x11.target
 
 [Service]
 Type=oneshot
@@ -8,4 +9,3 @@ ExecStart=/usr/bin/feh --bg-max --no-fehbg -z /home/Link/pictures/bg
 
 [Install]
 WantedBy=x11.target
-Requisite=x11.target

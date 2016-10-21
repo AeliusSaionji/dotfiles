@@ -1,5 +1,6 @@
 [Unit]
 Description=Synergy Client
+Requisite=x11.target
 
 [Service]
 Type=simple
@@ -8,4 +9,3 @@ Restart=on-failure
 
 [Install]
 WantedBy=x11.target
-Requisite=x11.target

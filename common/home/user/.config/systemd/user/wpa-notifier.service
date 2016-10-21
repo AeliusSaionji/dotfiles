@@ -1,10 +1,10 @@
 [Unit]
-Description=SSH irc notifications
+Description=notify-send connect/disconnect events
 Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStart=/home/Link/.bin/ssh-notify
+ExecStart=/usr/bin/wpa_cli -a /home/Link/.bin/fondler.sh
 Restart=always
 RestartSec=10
 

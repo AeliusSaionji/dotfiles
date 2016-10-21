@@ -1,5 +1,6 @@
 [Unit]
 Description=Random wallpaper with feh
+Requisite=x11.target
 
 [Timer]
 OnUnitActiveSec=720
@@ -7,4 +8,3 @@ Unit=feh-wallpaper.service
 
 [Install]
 WantedBy=x11.target
-Requisite=x11.target

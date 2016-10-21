@@ -1,5 +1,6 @@
 [Unit]
 Description=sxhkd
+Requisite=x11.target
 
 [Service]
 Type=simple
@@ -8,4 +9,3 @@ ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 
 [Install]
 WantedBy=x11.target
-Requisite=x11.target

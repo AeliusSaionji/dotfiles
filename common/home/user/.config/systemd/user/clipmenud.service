@@ -1,5 +1,6 @@
 [Unit]
 Description=Clipmenud
+Requisite=x11.target
 
 [Service]
 Type=simple
@@ -9,4 +10,3 @@ RestartSec=30
 
 [Install]
 WantedBy=x11.target
-Requisite=x11.target
