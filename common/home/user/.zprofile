@@ -9,7 +9,7 @@ export MMHPAGER=~/.bin/vimpagermail
 
 # Steam fixes
 find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -delete
-export STEAM_RUNTIME=0
+#export STEAM_RUNTIME=0 #may no longer be necessary, there's a steam native.desktop
 
 # qt programs use GTK themes
 export QT_STYLE_OVERRIDE=GTK+
