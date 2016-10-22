@@ -4,13 +4,17 @@
 # Present mail in a format compatible with the typical file manager
 
 ### TODO
+# Restore last selected message (currently bumps selection to last item)
 # Optionally take advantage of ranger's new meta feature
 # Fix scan form to lead lesser digits with whitespace
 	#  9
 	# 10
 # It is not clear which mail belongs to what attachment
+	# Move them to a folder $nmbr ?
 # text/plain are not being moved correctly
 # Use rename instead of mv?
+# this didnt work: Clickteam Fusion 2.5, exporters, games & more in our new bundle!
+# this didnt work: FreeCommander XE - donor release 729.plain
 ###
 
 # If folder not specified, read from context
@@ -42,10 +46,9 @@ while read -r scanline; do
 	scanline=${scanline//\//-}
 	# Prune # (w3m incompatibility)
 	scanline=${scanline//\#/}
-	# Give names to text/* content (other attachments don't need names)
+	# Give names to text/* content
 	mv $HOME/.cache/mmh/${nmbr}.*.html  "$HOME/.cache/mmh/${scanline}.html"
 	mv $HOME/.cache/mmh/${nmbr}.*.plain "$HOME/.cache/mmh/${scanline}.plain"
-	((i++))
 done <$HOME/.cache/mmh/.scan
 
 # Launch file manager
