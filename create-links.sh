@@ -8,6 +8,7 @@ if [ -d ../dotfiles ]; then
 	printf "\nLinking ${PWD}/common/home/user to ${HOME}\n"
 	find $PWD/common/home/user -maxdepth 1 -mindepth 1 \( ! -name '.config' \) -print0 | xargs -0 ln -sfvt ${HOME}/
 	find $PWD/common/home/user/.config -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -sfvt ${HOME}/.config/
+	find $PWD/common/home/user/.local/share/applications -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -sfvt ${HOME}/.local/share/applications/
 
 	printf "\nModifying ${PWD}/common/etc permissions and acls..."
 	sudo chown -R root:root ${PWD}/common/etc
