@@ -1,4 +1,9 @@
 #!/bin/sh
+
+# TODO
+# - consolidate dbus variable declaration
+
+
 user=$(whoami)
 pids=$(pgrep -u $user dunst)
 
@@ -35,7 +40,7 @@ case "$1" in
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
 			notify-send -t 1 -h int:value:$bright Brightness fondler ;;
 	"browser")
-		xsel -co | xargs -r qutebrowser ;;
+		xsel -co | xargs -r xdg-open ;;
 	"dunsttoggle")
 		if [ -f /tmp/dwmstatus.d/dunstpaused ]; then
 			killall -SIGUSR2 dunst && rm /tmp/dwmstatus.d/dunstpaused # resume
