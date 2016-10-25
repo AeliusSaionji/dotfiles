@@ -74,6 +74,12 @@ case "$1" in
 			xsetwacom --set "$deviceName touch"  Rotate none
 			echo normal
 		fi ;;
+	"dwgrep")
+		# Window switcher, displays all windows
+		wmctrl -l | sed -e 's/^0x[0-9a-f]\+[0-9 ]\+[^ ]\+\s//' | dmenu -p "Global window switch" -i -l 10 | xargs wmctrl -a ;;
+	"dwtaggrep")
+		# Window switcher, only displays currently visible windows
+		wmctrl -lG | sed -e '/0 0/!d' -e 's/^0x[0-9a-f]\+[0-9 ]\+[^ ]\+\s//' | dmenu -p "Visible window switch" -i -l 10 | xargs wmctrl -a ;;
 	"voldown")
 		vol=$(amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
@@ -84,8 +90,8 @@ case "$1" in
 			notify-send -t 1 -h int:value:$vol Volume fondler ;;
 
 	"-m") # j4dmenu arguments
-		dmenuArgs=$(echo "$*" | sed -e 's/#/\\#/g')
-		j4-dmenu-desktop --dmenu="dmenu $dmenuArgs" ;;
+		dmenuArgs=$(echo "$@" | sed -e 's/#/\\#/g')
+		j4-dmenu-desktop --dmenu="/usr/bin/dmenu $dmenuArgs" ;;
 # NERV keybinds
 	"foobnext")
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
