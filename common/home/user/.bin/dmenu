@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# These variables are defined in dwm's source
+
+/usr/bin/dmenu -fn $DMENU_FONT -nb $DMENU_COL_GRAY1 -nf $DMENU_COL_GRAY3 -sb $DMENU_COL_CYAN -sf $DMENU_COL_GRAY4 "$@"
