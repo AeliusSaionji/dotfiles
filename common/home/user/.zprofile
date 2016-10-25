@@ -14,8 +14,7 @@ find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "l
 # qt programs use GTK themes
 export QT_STYLE_OVERRIDE=GTK+
 
-# Various custom things
-export DMENU_FONT=inconsolata:size=8
+# Askpass script
 export SUDO_ASKPASS=~/.bin/daskpass
 
 # for the benefit of ranger shell -t
