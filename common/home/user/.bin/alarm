@@ -1,11 +1,10 @@
 #!/bin/sh
 
-# Set DMENU_FONT envirnomental variable in your profile, or define it here
 # visudo - add the following entry
 # %wheel ALL=(ALL) NOPASSWD: /usr/bin/rtcwake
 
-HH=$(echo '' | dmenu -fn $DMENU_FONT -i -p 'hours')
-MM=$(echo -e '00\n15\n30\n45' | dmenu -fn $DMENU_FONT -i -p 'minutes')
+HH=$(echo '' | dmenu -i -p 'hours')
+MM=$(echo -e '00\n15\n30\n45' | dmenu -i -p 'minutes')
 
 sudo rtcwake -m mem --date +${HH}hour${MM}min
 mpv ~/music/04\ Beast\ in\ the\ Vault.flac

@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "..." | dmenu -fn $DMENU_FONT -p "Password:" -nb "#222222" -nf "#222222"
+echo "..." | dmenu -p "Password:" -nb "#222222" -nf "#222222"

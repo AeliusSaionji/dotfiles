@@ -8,22 +8,22 @@
 
 rows="25" # Number of rows for dmenu output
 
-platform=$(echo -e 'Linux\nWindows\nMac\nAll' | dmenu -fn $DMENU_FONT -p "platform")
-action=$(echo -e 'download\nrepair\nstatus' | dmenu -fn $DMENU_FONT)
+platform=$(echo -e 'Linux\nWindows\nMac\nAll' | dmenu -p "platform")
+action=$(echo -e 'download\nrepair\nstatus' | dmenu)
 
 case "$action" in
 	download)
-		game=$(lgogdownloader --list --platform $platform | dmenu -l $rows -fn $DMENU_FONT -p "select game")
+		game=$(lgogdownloader --list --platform $platform | dmenu -l $rows -p "select game")
 		lgogdownloader --report --platform $platform --download --game $game
 		;;
 	repair)
-		game=$(lgogdownloader --list --platform $platform | dmenu -l $rows -fn $DMENU_FONT -p "select game")
+		game=$(lgogdownloader --list --platform $platform | dmenu -l $rows -p "select game")
 		lgogdownloader --report --platform $platform --repair --game $game
 		;;
 	status) # Save status file to /tmp and print to dmenu
 		echo '*** Please Wait ***' | \
-			dmenu -fn $DMENU_FONT  -p 'populating /tmp/gogstatus.log, this could take a while' & dmenuID=$! && \
+			dmenu  -p 'populating /tmp/gogstatus.log, this could take a while' & dmenuID=$! && \
 			lgogdownloader --status > /tmp/gogstatus.log && kill $dmenuID && \
-			cat /tmp/gogstatus.log | dmenu -l $rows -fn $DMENU_FONT -p "cat /tmp/gogstatus.log"
+			cat /tmp/gogstatus.log | dmenu -l $rows -p "cat /tmp/gogstatus.log"
 		;;
 esac

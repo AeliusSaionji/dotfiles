@@ -6,7 +6,7 @@
 # - implement status, detailed info piped to dmenu
 # - make failed list prettier
 
-action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable --now\ndaemon reload\n--user start\n--user stop\n--user restart\n--user enable\n--user enable --now\n--user disable\n--user disable --now\n--user daemon reload' | dmenu -fn $DMENU_FONT)
+action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable --now\ndaemon reload\n--user start\n--user stop\n--user restart\n--user enable\n--user enable --now\n--user disable\n--user disable --now\n--user daemon reload' | dmenu)
 
 # if action is status
 #if [ "$action" = '--user status' -o "$action" = 'status' ]; then
@@ -16,13 +16,13 @@ action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable -
 if [ -z $(echo $action | sed -e '/--user/d') ]; then # if action contains '--user'
 	systemctl --user --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
 	systemctl --user --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
-	unit=$(cat /tmp/dctl | dmenu -fn $DMENU_FONT -l 20 | sed 's/\s.*$//') # List --user units
+	unit=$(cat /tmp/dctl | dmenu -l 20 | sed 's/\s.*$//') # List --user units
 	[ -z $unit ] && exit 0 # if no unit, quit
 	systemctl $action $unit && notify-send 'dctl - success' "systemctl $action $unit"
 else # action for system
 	systemctl --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
 	systemctl --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
-	unit=$(cat /tmp/dctl | dmenu -fn $DMENU_FONT -l 20 | sed 's/\s.*$//') # List --user units
+	unit=$(cat /tmp/dctl | dmenu -l 20 | sed 's/\s.*$//') # List --user units
 	[ -z $unit ] && exit 0 # if no unit, quit
 	sudo -A systemctl $action $unit && notify-send 'dctl - success' "systemctl $action $unit"
 fi

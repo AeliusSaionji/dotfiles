@@ -1,7 +1,7 @@
 #!/bin/sh
 # end a command with ; to run in a terminal
 
-DMENU="dmenu -i"
+DMENU="/usr/bin/dmenu -i"
 TERMI="st -e"
 CACHE="$HOME/.dmenu_cache_recent"
 
