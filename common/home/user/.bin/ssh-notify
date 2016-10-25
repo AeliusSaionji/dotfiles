@@ -3,15 +3,15 @@
 #Yes, bash is necessary
 
 function nickmatch {
-	case "$*" in
+	case "$@" in
 		*"<ircnick>"*)
 			# Do not react to own messages!
 			;;
 		*"ircnick"*)
-			notify-send "irc" "$*"
+			notify-send "irc" "$@"
 			;;
 		*"ircnick"*)
-			notify-send "irc" "$*"
+			notify-send "irc" "$@"
 			;;
 	esac
 }
