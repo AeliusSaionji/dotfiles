@@ -52,4 +52,4 @@ while read -r scanline; do
 done <$HOME/.cache/mmh/.scan
 
 # Launch file manager
-/usr/bin/ranger $HOME/.cache/mmh
+xdg-open $HOME/.cache/mmh
