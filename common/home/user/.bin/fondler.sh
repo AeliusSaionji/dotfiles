@@ -91,7 +91,7 @@ case "$1" in
 
 	"-m") # j4dmenu arguments
 		dmenuArgs=$(echo "$@" | sed -e 's/#/\\#/g')
-		j4-dmenu-desktop --dmenu="/usr/bin/dmenu $dmenuArgs" ;;
+		j4-dmenu-desktop --dmenu="/usr/bin/dmenu $dmenuArgs" --usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st -e" ;;
 # NERV keybinds
 	"foobnext")
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
