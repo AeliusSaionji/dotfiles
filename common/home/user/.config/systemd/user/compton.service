@@ -4,10 +4,10 @@ Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/cp %h/.config/compton.conf /tmp/compton.conf
-ExecStart=/usr/bin/compton --config /tmp/compton.conf
+ExecStartPre=/usr/bin/sh -c "%h/.bin/trans-exempt.sh createcache"
+ExecStart=/usr/bin/compton --config %h/.cache/compton.conf
 Restart=always
-RestartSec=30
+RestartSec=5
 
 [Install]
 WantedBy=x11.target
