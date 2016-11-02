@@ -1,0 +1,6 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Terminal=false
+Type=Application
+Name=IRC
+Exec=/usr/bin/st -c ircterm -T ircterm /usr/bin/mosh irc -- abduco -A irc
