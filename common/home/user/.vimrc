@@ -234,6 +234,8 @@ Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'bling/vim-airline'
 Plugin 'PProvost/vim-ps1'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
