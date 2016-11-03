@@ -21,5 +21,8 @@ export SUDO_ASKPASS=~/.bin/daskpass
 export TERMCMD=st
 export LESS=-R
 
+# Enable the use of ssh-agent
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # Start X at VT1 login
 [ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx
