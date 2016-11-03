@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Yes, bash is necessary
+logfiles=$(find /var/lib/znc/.znc/moddata/log -type f -name "*.log")
 
 function nickmatch {
 	case "$@" in
@@ -16,4 +16,4 @@ function nickmatch {
 	esac
 }
 
-while read i; do nickmatch "$i"; done < <(ssh -i ~/.ssh/tunneler_rsa tunneler@<address> "tail -qfn0 /var/lib/znc/.znc/moddata/log/*/*/*/*")
+while read i; do nickmatch "$i"; done < <(ssh notify "tail -qfn0 $logfiles")
