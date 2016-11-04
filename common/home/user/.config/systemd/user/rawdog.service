@@ -1,0 +1,6 @@
+[Unit]
+Description=Update rawdog feeds
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rawdog -aw

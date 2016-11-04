@@ -1,0 +1,6 @@
+[Unit]
+Description=Update rawdog feeds
+
+[Timer]
+OnUnitActiveSec=3600
+Unit=rawdog.service
