@@ -3,4 +3,4 @@ Description=Update rawdog feeds
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/rawdog -aw
+ExecStart=/usr/bin/rawdog -uw -d %h/.config/rawdog
