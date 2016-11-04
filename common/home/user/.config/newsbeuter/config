@@ -1,0 +1,29 @@
+# Sort newest to oldest, top to bottom
+article-sort-order date-asc
+feed-sort-order date-asc
+
+# Minimal text
+feedlist-format "%n %t %> [%T]"
+articlelist-format "%t %> [%D]"
+
+# System browser
+browser xdg-open
+
+# Don't accidentally quit
+confirm-exit yes
+
+# Fetch new data
+auto-reload yes
+reload-time 30
+notify-beep yes
+
+# But not on startup
+suppress-first-reload yes
+
+# Vi navigation
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+bind-key J next-unread-feed
+bind-key K prev-unread-feed
