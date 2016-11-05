@@ -1,0 +1,112 @@
+" XDG Environment
+set directory=$HOME/.cache/vim,~/,/tmp
+set backupdir=$HOME/.cache/vim,~/,/tmp
+set viminfo+=n$HOME/.cache/vim/viminfo
+set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
+let $MYVIMRC="$HOME/.config/vim/vimrc"
+
+" vim-plug
+call plug#begin()
+Plug 'chilicuil/vim-sprunge'
+Plug 'paradigm/SkyBison'
+Plug 'bling/vim-airline'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+call plug#end()
+
+" Ranger file chooser
+source /usr/share/doc/ranger/examples/vim_file_chooser.vim
+
+" UTF-8
+set encoding=utf-8
+" When opening a new line and no filetype-specific indenting is enabled, keep the same indent as the line you're currently on.
+set autoindent
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+" Set the command window height to 2 lines, to avoid many cases of having to press <Enter> to continue
+set cmdheight=2
+" Display the cursor position on the last line of the screen or in the status line of a window
+set ruler
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+" Display line numbers on the left
+set nonumber " disabled
+" Switch on search pattern highlighting.
+set hlsearch
+" Set enrcyption method to blowfish
+set cryptmethod=blowfish2
+" Spellcheck dictionary
+set spelllang=en
+" Turn spellcheck off
+set nospell
+" Make vim case insensitive...
+set ignorecase
+" ...Except when we explicitly type a capital
+set smartcase
+" Jump to matches as you search
+set incsearch
+" Turn wrapping off
+set nowrap
+" Wrap per word, not character
+set lbr
+" Number of characters from right window border where newline is inserted (wrap long lines for copying). 0 disables.
+set wrapmargin=0
+" Max # of chars before newline autoinsert. Keeps text readable.
+"set textwidth=75
+" Apply formatting options automatically (tw)
+set formatoptions-=a
+" Windows fix for context menu + msys2
+set directory+=./,~/tmp//,/var/tmp//,/tmp//
+" Set some GUI specific options
+if has("gui_running")
+	" Hide mouse while typing. GVIM only
+	set mousehide
+	" Toggle menubar with \mb
+	nnore <expr><leader>mb &go =~# 'm' ? ":\<C-U>set go-=m\<CR>" : ":\<C-U>set go+=m\<CR>"
+	" tearoff menubar menus
+	set guioptions=t
+	" Set a consistent font size across all systems
+	set guifont=Courier_New:h10
+	" Set font for unicode characters
+	"set guifontwide=DFKai-SB:h12
+endif
+
+" Syntax highlighting. If you turn it on more than once it screws up colors, hence the if statement
+if !exists("syntax_on")
+	syntax on
+endif
+
+" Call SkyBison with \;
+nnoremap <leader>; :<c-u>call SkyBison("")<cr>
+let g:skybison_fuzz = 2
+" Exit insert mode with jj
+inoremap jj <Esc>
+
+"Elevate vim under windows.
+" Update me to use powershell elevation
+"if has('win32') || has('win64')
+"	noremap <C-e> :mksession! ~/vimfiles/elevate.vim<Return>:silent exec '!elevate.exe ' . v:progname '-S C:/Users/Link/vimfiles/elevate.vim --cmd "let $HOME=''C:\Users\Link\''"'<Return>:q<Return>
+"endif
+
+" Detects if vim is opened without a file, moves to my documents for easy saving.
+" add a || win64 when you can test it
+"if argc() == 0 && has('vim_starting') && has('win32')
+"  cd $OneDrive\Documents
+"endif
+
+" Stop vim from writing stuff to viminfo if an encrypted file is being edited.
+augroup Security
+	autocmd vimleavepre * if strlen(&key) | set viminfo= | endif
+augroup End
+
+" Copy sprunge urls to the external clipboard
+"let g:sprunge_clipboard = 'external'
+let g:sprunge_clipboard_cmd='xsel -i'
+" Highlight strings inside C comments
+let c_comment_strings=1
+
+" Theme stuff
+colorscheme torte
+highlight Comment ctermfg=8 guifg=#808080
+hi StatusLine   guibg=#c2bfa5 guifg=black  gui=none cterm=bold,reverse
+hi StatusLineNC guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
