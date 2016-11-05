@@ -17,6 +17,9 @@ export QT_STYLE_OVERRIDE=GTK+
 # Askpass script
 export SUDO_ASKPASS=~/.bin/daskpass
 
+# Enable vim to find the XDG compliant vimrc
+export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
+
 # for the benefit of ranger shell -t
 export TERMCMD=st
 export LESS=-R
