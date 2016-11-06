@@ -2,15 +2,17 @@
 
 # TODO
 # - Accept certificates via dmenu
-# - Remove hardcoded username
 # - Libnotify errors
+# RDP [example.com[:3389]] [user] [Remote]
 
-username="Link"
+[ $# -eq 0 ] && exec $(sed '/RDP/!d' .cache/run_recent | uniq | dmenu -i -l 20) && exit
+
+[ -n "$2" ] && username=$2 || username=$(whoami)
 echo "requesting password via askpass script"
 pass=$(daskpass)
 baseArgs="/smart-sizing /workarea /gfx /gdi:hw +compression +clipboard +fonts -aero -window-drag -menu-anims"
 
-case $2 in
+case $3 in
 	"Remote")
 		otherArgs="-home-drive +multitouch +gestures";;
 	*)
