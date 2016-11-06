@@ -1,9 +1,9 @@
 #!/bin/sh
 # end a command with ; to run in a terminal
 
-DMENU="/usr/bin/dmenu -i"
+DMENU="dmenu -i"
 TERMI="st -e"
-CACHE="$HOME/.dmenu_cache_recent"
+CACHE="$HOME/.cache/run_recent"
 
 touch $CACHE
 MOST_USED=`sort $CACHE | uniq -c | sort -rn | colrm 1 8`
