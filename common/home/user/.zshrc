@@ -51,13 +51,14 @@ precmd () {
 } 
 preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
 
-# run or raise ranger. All args are lost. Should probably fix that
+# Run or raise ranger
 ranger() {
-    if [ -z "$RANGER_LEVEL" ]
-    then
-        /usr/bin/ranger
-    else
-        exit
-    fi
+	if [ -z "$RANGER_LEVEL" ] && [ -z "$1" ]; then
+		/usr/bin/ranger
+	elif [ -n "$1" ]; then
+		/usr/bin/ranger "$1"
+	else
+		exit
+	fi
 }
 
