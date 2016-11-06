@@ -37,6 +37,8 @@ set guifont=Courier_New:h10
 let c_comment_strings=1
 " Theme
 colorscheme torte
+" My own mru solution using dmenu
+noremap <C-p> :wv<CR>:e <C-r>=system("mruvim p")<CR><CR>
 " Exit insert mode with jj
 inoremap jj <Esc>
 " Elevate vim under windows. Update me to use powershell elevation
@@ -60,7 +62,7 @@ call plug#end()
 " Call SkyBison with \;
 nnoremap <leader>; :<c-u>call SkyBison("")<cr>
 " Fuzzy search
-let g:skybison_fuzz = 2
+let g:skybison_fuzz=2
 " Ranger file chooser
 source /usr/share/doc/ranger/examples/vim_file_chooser.vim
 
