@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Terminal=false
+Type=Application
+Name=RDP
+Comment=Interactive interface to xfreerdp
+Exec=RDP
