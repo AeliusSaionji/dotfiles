@@ -5,6 +5,7 @@ Requisite=x11.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/clipmenud
+LimitNPROC=1
 Restart=always
 RestartSec=30
 
