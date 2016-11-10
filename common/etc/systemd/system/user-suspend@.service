@@ -1,0 +1,16 @@
+[Unit]
+Description=suspend.target of a systemd user session
+Before=suspend.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+# User ID, not name
+User=%I
+RemainAfterExit=yes
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%I/bus
+ExecStart=/usr/bin/systemctl --user start suspend.target
+ExecStop=/usr/bin/systemctl --user stop suspend.target
+
+[Install]
+WantedBy=suspend.target
