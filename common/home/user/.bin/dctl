@@ -16,13 +16,13 @@ action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable -
 if [ -z $(echo $action | sed -e '/--user/d') ]; then # if action contains '--user'
 	systemctl --user --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
 	systemctl --user --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
-	unit=$(cat /tmp/dctl | dmenu -l 20 | sed 's/\s.*$//') # List --user units
+	unit=$(dmenu -l 20 </tmp/dctl | sed 's/\s.*$//') # List --user units
 	[ -z $unit ] && exit 0 # if no unit, quit
 	systemctl $action $unit && notify-send 'dctl - success' "systemctl $action $unit"
 else # action for system
 	systemctl --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
 	systemctl --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
-	unit=$(cat /tmp/dctl | dmenu -l 20 | sed 's/\s.*$//') # List --user units
+	unit=$(dmenu -l 20 </tmp/dctl | sed 's/\s.*$//') # List --user units
 	[ -z $unit ] && exit 0 # if no unit, quit
 	sudo -A systemctl $action $unit && notify-send 'dctl - success' "systemctl $action $unit"
 fi
