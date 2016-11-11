@@ -6,7 +6,25 @@
 # - implement status, detailed info piped to dmenu
 # - make failed list prettier
 
-action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable --now\ndaemon reload\n--user start\n--user stop\n--user restart\n--user enable\n--user enable --now\n--user disable\n--user disable --now\n--user daemon reload' | dmenu)
+action=$(dmenu <<EOF
+start
+stop
+restart
+enable
+enable --now
+disable
+disable --now
+daemon reload
+--user start
+--user stop
+--user restart
+--user enable
+--user enable --now
+--user disable
+--user disable --now
+--user daemon reload
+EOF
+)
 
 # if action is status
 #if [ "$action" = '--user status' -o "$action" = 'status' ]; then
