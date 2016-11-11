@@ -1,6 +1,8 @@
 #!/bin/sh
 
-#
+# Purpose:
+# Provide basic, fast manipulation of services outside of a terminal
+
 
 #TODO
 # - implement status, detailed info piped to dmenu
