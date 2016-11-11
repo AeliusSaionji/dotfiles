@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart services after resume
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user --no-block restart clipmenud.service
+
+[Install]
+WantedBy=suspend.target

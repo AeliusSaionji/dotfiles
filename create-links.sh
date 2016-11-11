@@ -27,10 +27,10 @@ printf "\nDone."
 # Interactively choose to link /etc/systemd/system
 printf "\n\n----------> ls -l ${PWD}/common/etc/systemd/system\n"
 ls -l ${PWD}/common/etc/systemd/system
-printf "\n${color}symlink to /etc/systemd/system (yes/no)?>${NC} "
+printf "\n${color}copy to /etc/systemd/system (yes/no)?>${NC} "
 read proceed
 if [ "${proceed}" = "yes" ]; then
-	sudo ln -sfv ${PWD}/common/etc/systemd/system/* /etc/systemd/system/
+	sudo cp -r ${PWD}/common/etc/systemd/system/* /etc/systemd/system/
 fi
 
 # Interactively choose to link /etc/udev/rules.d
@@ -86,10 +86,10 @@ if [ -d ${PWD}/${host} ]; then
 		# Interactively choose to link /etc/systemd/system
 		printf "\n\n----------> ls -l ${PWD}/${host}/etc/systemd/system\n"
 		ls -l ${PWD}/${host}/etc/systemd/system
-		printf "\n${color}symlink to /etc/systemd/system (yes/no)?>${NC} "
+		printf "\n${color}copy to /etc/systemd/system (yes/no)?>${NC} "
 		read proceed
 		if [ "${proceed}" = "yes" ]; then
-			sudo ln -sfv ${PWD}/${host}/etc/systemd/system/* /etc/systemd/system/
+			sudo cp -r ${PWD}/${host}/etc/systemd/system/* /etc/systemd/system/
 		fi
 
 		# Interactively choose to link /etc/X11/xorg.conf.d
