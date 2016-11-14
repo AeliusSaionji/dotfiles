@@ -8,8 +8,19 @@
 
 rows="25" # Number of rows for dmenu output
 
-platform=$(echo -e 'Linux\nWindows\nMac\nAll' | dmenu -p "platform")
-action=$(echo -e 'download\nrepair\nstatus' | dmenu)
+platform=$(dmenu -p "platform" <<EOF
+Linux
+Windows
+Mac
+All
+EOF
+)
+action=$(dmenu <<EOF
+download
+repair
+status
+EOF
+)
 
 case "$action" in
 	download)

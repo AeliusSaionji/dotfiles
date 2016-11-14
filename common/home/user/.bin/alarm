@@ -3,9 +3,17 @@
 # visudo - add the following entry
 # %wheel ALL=(ALL) NOPASSWD: /usr/bin/rtcwake
 
-HH=$(echo '' | dmenu -i -p 'hours')
-MM=$(echo -e '00\n15\n30\n45' | dmenu -i -p 'minutes')
+HH=$(dmenu -i -p 'hours' <<EOF
+EOF
+)
+MM=$(dmenu -i -p 'minutes' <<EOF
+00
+15
+30
+45
+EOF
+)
 
+[ -z "$HH" ] || [ -z "$MM" ] && exit 0
 sudo rtcwake -m mem --date +${HH}hour${MM}min
 mpv ~/music/04\ Beast\ in\ the\ Vault.flac
-

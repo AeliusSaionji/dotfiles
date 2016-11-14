@@ -19,4 +19,6 @@ case $3 in
 		otherArgs="/sound +home-drive +multitouch +gestures";;
 esac
 
-echo $pass | xfreerdp /v:$1 /u:$username /from-stdin $baseArgs $otherArgs
+xfreerdp /v:$1 /u:$username /from-stdin $baseArgs $otherArgs <<EOF
+$pass
+EOF
