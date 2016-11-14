@@ -1,0 +1,40 @@
+#!/bin/sh
+
+while true; do
+
+# Power Status
+read -r AC </sys/class/power_supply/AC/online && \
+	POWER="[$AC]"
+read -r BAT0 </sys/class/power_supply/BAT0/capacity && \
+	POWER="[$AC] $BAT0"
+read -r BAT1 </sys/class/power_supply/BAT1/capacity && \
+	POWER="$BAT1 [$AC] $BAT0"
+
+
+# Network Status
+NET=$(wpa_cli status | awk -F '=' '/wpa_state=/ {print $2}')
+if [ "$NET" = "COMPLETED" ]; then
+	NETPROFILE=$(wpa_cli status | awk -F '=' '/^ssid/ {print $2}')
+	SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {print $2 "mbps"}')
+	NET="$NETPROFILE $SIGNALSTR"
+elif [ -z "$NET" ]; then
+	DEV=$(ip link | awk -F ': ' '/state UP/ {print $2}')
+	if [ -z "$DEV" ]; then
+		NET='offline'
+	else
+		NET=$(ip addr | awk "/$DEV\$/ {print \$7\":\",\$2}")
+	fi
+fi
+
+# Date and Time
+CLOCK=$(date '+%b %m/%d %a %H%M')
+
+# Load Average
+LOAD=$(awk '{print $1, $2, $3}' /proc/loadavg)
+
+# Overall output command
+xsetroot -name "$LOAD | $NET | $POWER | $CLOCK"
+
+sleep 10
+
+done
