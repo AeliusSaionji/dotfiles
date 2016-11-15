@@ -1,21 +1,45 @@
 #!/bin/sh
 
-if pgrep chromium > /dev/null; then
-	echo -e 'F1\n\t~/.bin/HTPC-Netflix.sh' > ~/.config/sxhkd/sxhkdrc
-	systemctl --user reload sxhkd.service
-	pkill chromium &
+# This script starts or stops netflix, and
+# toggles the function of various buttons on the IR remote
+
+unbind() {
+> ~/.config/sxhkd/sxhkdrc <<EOF
+F1
+        ~/.bin/HTPC-Netflix.sh
+EOF
+}
+
+mousekeys() {
+> ~/.config/sxhkd/sxhkdrc <<EOF
+F1
+	~/.bin/HTPC-Netflix.sh
+Left
+	xdotool mousemove_relative -- -35 0
+Right
+	xdotool mousemove_relative 35 0
+Up
+	xdotool mousemove_relative -- 0 -35
+Down
+	xdotool mousemove_relative 0 35
+Return
+	xdotool click 1
+Prior
+	xdotool click 4
+Next
+	xdotool click 5
+EOF
+}
+
+if pgrep chromium; then
+	pkill chromium
 	xmodmap -e "keycode 172 = XF86AudioPlay"
+	unbind
 else
 	/usr/bin/chromium --app=https://netflix.com &
-	echo -e 'F1\n\t~/.bin/HTPC-Netflix.sh' > ~/.config/sxhkd/sxhkdrc
-	echo -e 'Left\n\txdotool mousemove_relative -- -35 0' >> ~/.config/sxhkd/sxhkdrc
-	echo -e 'Right\n\txdotool mousemove_relative 35 0' >> ~/.config/sxhkd/sxhkdrc
-	echo -e 'Up\n\txdotool mousemove_relative -- 0 -35' >> ~/.config/sxhkd/sxhkdrc
-	echo -e 'Down\n\txdotool mousemove_relative 0 35' >> ~/.config/sxhkd/sxhkdrc
-	echo -e 'Return\n\txdotool click 1' >> ~/.config/sxhkd/sxhkdrc
-	echo -e 'Prior\n\txdotool click 4' >> ~/.config/sxhkd/sxhkdrc
-	echo -e 'Next\n\txdotool click 5' >> ~/.config/sxhkd/sxhkdrc
-	systemctl --user reload sxhkd.service
 	xmodmap -e "keycode 172 = Page_Up"
 	#xmodmap pause pagedown
+	mousekeys
 fi
+
+systemctl --user reload sxhkd.service
