@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ### Purpose
 # Present mail in a format compatible with the typical file manager
@@ -9,46 +9,44 @@
 # Fix scan form to lead lesser digits with whitespace
 	#  9
 	# 10
-# It is not clear which mail belongs to what attachment
-	# Move them to a folder $nmbr ?
-# text/plain are not being moved correctly
-# Use rename instead of mv?
-# this didnt work: Clickteam Fusion 2.5, exporters, games & more in our new bundle!
-# this didnt work: FreeCommander XE - donor release 729.plain
 ###
 
-# If folder not specified, read from context
-if [ -z $1 ]; then
-	read -r context < $HOME/.mmh/context
-	# Trim 'Current-Folder: ' from file
-	context=${context/Current-Folder: /}
-else
-	# Trim '+' from input
-	context=${1/+/}
-fi
+# If folder not specified, read folder from context
+[ -z "$1" ] && context=$(awk '{print $2}' <$HOME/.mmh/context)
+# Else, read folder from input
+[ -n "$1" ] && context=$(awk -F '+' '{print $2}' <<EOF
+$1
+EOF
+)
 
 # Clear the cache
 rm -rf $HOME/.cache/mmh && mkdir $HOME/.cache/mmh
 
 # Select mail files
 	# Extract content from each mail file
-find $HOME/.mail/mh/${context} -type f ! -name ".mh_sequences" -printf '%f\0' | xargs -0 mhstore +${context}
+find $HOME/.mail/mh/${context} -type f ! -name ".mh_sequences" -printf '%f\0' | \
+	xargs -0 mhstore +${context} 2> $HOME/.cache/mmh/.mhstore.log
+
+# Move attachments to a subdirectory of the mail number
+sed -i $HOME/.cache/mmh/.mhstore.log -e '/[0-9]\+\.[0-9]\./d' -e '/[0-9]\+\.plain/d'
+max=$(wc -l <$HOME/.cache/mmh/.mhstore.log)
+for i in `seq 1 $max`; do
+	nmbr=$(awk "NR==$i {print \$3}" $HOME/.cache/mmh/.mhstore.log)
+	attach=$(awk -F '/' "NR==$i {print \$6}" $HOME/.cache/mmh/.mhstore.log)
+	mkdir "$HOME/.cache/mmh/$nmbr"
+	mv "$HOME/.cache/mmh/$attach" "$HOME/.cache/mmh/$nmbr"
+done
 
 # Collect Subject and From information
 scan +${context} -form $HOME/.bin/mmhfm.scan > $HOME/.cache/mmh/.scan
 
 while read -r scanline; do
 	# Mail number
-	#nmbr=${scanline:0:1}
-	# This can probably be done without sed
-	nmbr=$(echo $scanline | sed 's/\s.*$//')
-	# Prune fordward slash
-	scanline=${scanline//\//-}
-	# Prune # (w3m incompatibility)
-	scanline=${scanline//\#/}
-	# Give names to text/* content
-	mv $HOME/.cache/mmh/${nmbr}.*.html  "$HOME/.cache/mmh/${scanline}.html"
-	mv $HOME/.cache/mmh/${nmbr}.*.plain "$HOME/.cache/mmh/${scanline}.plain"
+	nmbr=$(echo $scanline | awk '{print $1}')
+	# Prune fordward slash (invalid filename), # (w3m incompatibility)
+	scanline=$(echo $scanline | sed -e 's@/@@' -e 's/#//')
+	# Rename files to with subject and from information
+	find $HOME/.cache/mmh -type f -name "${nmbr}*" -execdir rename "$nmbr" "$scanline" '{}' \;
 done <$HOME/.cache/mmh/.scan
 
 # Launch file manager
