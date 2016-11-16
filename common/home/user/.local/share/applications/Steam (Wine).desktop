@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Steam (WINE)
+Name=Steam (Wine)
 Exec=env WINEPREFIX="$HOME/.steamwine" env WINEDEBUG="-all" /usr/bin/wine "C:\\\\Program Files (x86)\\\\Steam\\\\Steam.exe" "-no-cef-sandbox"
 Type=Application
 StartupNotify=true
