@@ -14,17 +14,21 @@ find $PWD/common/home/user/.config -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln
 # Link desktop files
 find $PWD/common/home/user/.local/share/applications -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -sfvt ${HOME}/.local/share/applications/
 
-printf "\nModifying ${PWD}/common/etc permissions and acls..."
-# Ensure correct owner and perms for etc files
-sudo chown -R root:root ${PWD}/common/etc
+printf "\nModifying ${PWD}/common/{etc,usr/local/bin} permissions and acls..."
+# Ensure correct owner and perms for etc, bin files
+sudo chown -R root:root ${PWD}/common/etc ${PWD}/common/usr
 find ${PWD}/common/etc -type d -execdir sudo chmod -R 755 {} +
 find ${PWD}/common/etc -type f -execdir sudo chmod -R 644 {} +
+find ${PWD}/common/usr -type d -execdir sudo chmod -R 755 {} +
+find ${PWD}/common/usr -type f -execdir sudo chmod -R 655 {} +
 # Give current user access to these files, or we can't back up to git
 find ${PWD}/common/etc -type d -execdir sudo setfacl -m u:${USER}:rwx {} +
 find ${PWD}/common/etc -type f -execdir sudo setfacl -m u:${USER}:rw {} +
+find ${PWD}/common/usr -type d -execdir sudo setfacl -m u:${USER}:rwx {} +
+find ${PWD}/common/usr -type f -execdir sudo setfacl -m u:${USER}:rw {} +
 printf "\nDone."
 
-# Interactively choose to link /etc/systemd/system
+# Interactively choose to copy /etc/systemd/system
 printf "\n\n----------> ls -l ${PWD}/common/etc/systemd/system\n"
 ls -l ${PWD}/common/etc/systemd/system
 printf "\n${color}copy to /etc/systemd/system (yes/no)?>${NC} "
@@ -40,6 +44,15 @@ printf "\n${color}symlink to /etc/udev/rules.d (yes/no)?>${NC} "
 read proceed
 if [ "${proceed}" = "yes" ]; then
 	sudo ln -sfv ${PWD}/common/etc/udev/rules.d/* /etc/udev/rules.d/
+fi
+
+# Interactively choose to copy /usr/local/bin
+printf "\n\n----------> ls -l ${PWD}/common/usr/local/bin\n"
+ls -l ${PWD}/common/usr/local/bin
+printf "\n${color}copy to /usr/local/bin (yes/no)?>${NC} "
+read proceed
+if [ "${proceed}" = "yes" ]; then
+	sudo cp -r ${PWD}/common/usr/local/bin/* /usr/local/bin/
 fi
 
 # Per-machine config
