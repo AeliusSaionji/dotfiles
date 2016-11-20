@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Display a notification for each logged in user
+
+user_notify() {
+	users=$(who | awk '{print $1}')
+	for user in $users; do
+		# find DBUS session bus
+		pid=$(pgrep -u $user dunst)
+		export DBUS_SESSION_BUS_ADDRESS=$(sed -z -e '/DBUS_SESSION_BUS_ADDRESS/!d' \
+			-e 's/DBUS_SESSION_BUS_ADDRESS=//' /proc/$pid/environ)
+		su -c - $user "$@"
+	done
+}
+
+case "$1" in
+# udev 99-lowbat.rules
+	"low")
+		user_notify "notify-send -u normal 'Low Battery'" ;;
+	"critical")
+		user_notify "notify-send -u critical 'Low Battery' 'Find power soon!'" ;;
+	"suspend")
+		user_notify "notify-send -u critical 'Suspend Imminent' 'The system is going down in two minutes!'"
+		sleep 120
+		systemctl suspend ;;
+	"hibernate")
+		echo "not implemented" ;;
+esac
