@@ -19,13 +19,11 @@ printf "\nModifying ${PWD}/common/{etc,usr/local/bin} permissions and acls..."
 sudo chown -R root:root ${PWD}/common/etc ${PWD}/common/usr
 find ${PWD}/common/etc -type d -execdir sudo chmod -R 755 {} +
 find ${PWD}/common/etc -type f -execdir sudo chmod -R 644 {} +
-find ${PWD}/common/usr -type d -execdir sudo chmod -R 755 {} +
-find ${PWD}/common/usr -type f -execdir sudo chmod -R 655 {} +
+find ${PWD}/common/usr -execdir sudo chmod -R 755 {} +
 # Give current user access to these files, or we can't back up to git
 find ${PWD}/common/etc -type d -execdir sudo setfacl -m u:${USER}:rwx {} +
 find ${PWD}/common/etc -type f -execdir sudo setfacl -m u:${USER}:rw {} +
-find ${PWD}/common/usr -type d -execdir sudo setfacl -m u:${USER}:rwx {} +
-find ${PWD}/common/usr -type f -execdir sudo setfacl -m u:${USER}:rw {} +
+find ${PWD}/common/usr -execdir sudo setfacl -m u:${USER}:rwx {} +
 printf "\nDone."
 
 # Interactively choose to copy /etc/systemd/system
