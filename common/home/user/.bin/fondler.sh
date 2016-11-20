@@ -33,12 +33,12 @@ case "$1" in
 		xbacklight -dec 10
 		bright=$(xbacklight -get)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -t 1 -h int:value:$bright Brightness fondler ;;
+			notify-send -u low -t 1 -h int:value:$bright Brightness fondler ;;
 	"brightup")
 		xbacklight -inc 10
 		bright=$(xbacklight -get)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -t 1 -h int:value:$bright Brightness fondler ;;
+			notify-send -u low -t 1 -h int:value:$bright Brightness fondler ;;
 	"browser")
 		xsel -co | xargs -r xdg-open ;;
 	"dunsttoggle")
@@ -83,11 +83,11 @@ case "$1" in
 	"voldown")
 		vol=$(amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -t 1 -h int:value:$vol Volume fondler ;;
+			notify-send -u low -t 1 -h int:value:$vol Volume fondler ;;
 	"volup")
 		vol=$(amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
 		DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-			notify-send -t 1 -h int:value:$vol Volume fondler ;;
+			notify-send -u low -t 1 -h int:value:$vol Volume fondler ;;
 
 	"-m") # j4dmenu arguments
 		dmenuArgs=$(echo "$@" | sed -e 's/#/\\#/g')
