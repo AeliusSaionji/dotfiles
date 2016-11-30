@@ -5,8 +5,6 @@
 # Add this to your vimrc
 #  noremap <C-p> :wv<CR>:e <C-r>=system("mruvim p")<CR><CR>
 
-
-
 filename=$(awk '/^'\>'/{ print $2 }' $HOME/.cache/vim/viminfo | uniq | sed "s@~@$HOME@g" | dmenu -i -l 20) || exit
 
 if [ "$1" = "p" ]; then
