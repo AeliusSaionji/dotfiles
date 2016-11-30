@@ -28,7 +28,13 @@ wid=$(xwininfo -root -children | awk '/"popwww" "qutebrowser"/ {print $1}')
 
 # Start first instance, open urls in existing instance
 browser_args() {
-	qutebrowser --basedir $HOME/.config/qutebrowser-popwww --backend webengine --target tab --override-restore --loglevel critical --qt-arg geometry ${width}x${height}+${xoff}+${yoff} --qt-arg name popwww "$@" &
+	qutebrowser --basedir $HOME/.config/qutebrowser-popwww \
+		--backend webengine \
+		--target tab \
+		--override-restore \
+		--loglevel critical \
+		--qt-arg geometry ${width}x${height}+${xoff}+${yoff} \
+		--qt-arg name popwww "$@" &
 	if [ "$wid" ]; then mapw -m $wid; fi
 }
 
