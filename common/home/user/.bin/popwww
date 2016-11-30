@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Run or raise qutebrowser with specific dimensions
+
+# The math below attempts to create a small window,
+# centered horizontally, and slightly raised vertically
+
+# Determine res_x and res_y
+read -r res_x res_y << EOF
+        $(xrandr | awk '/current/ { print 0+$8, 0+$10 }')
+EOF
+
+# Calculate window size
+ width=$(($res_x / 2 + $res_x / 5))
+height=$(($res_y / 2 + $res_y / 5))
+
+# Calculate x + y offset
+xoff=$(($res_x /  7))
+yoff=$(($res_y / 10))
+
+# Get window id if it exists
+wid=$(xwininfo -root -children | awk '/"popwww" "qutebrowser"/ {print $1}')
+
+# Start first instance, open urls in existing instance
+browser_args() {
+	qutebrowser --basedir $HOME/.config/qutebrowser-popwww --backend webengine --target tab -R --qt-arg geometry ${width}x${height}+${xoff}+${yoff} --qt-arg name popwww "$@" &
+	mapw -m $wid
+}
+
+# Toggle mapped/unmapped, start qutebrowser if necessary
+toggle_visibility() {
+	[ "$wid" ] && mapw -t $wid || browser_args
+}
+
+# Toggle mapped/unmapped else pass urls to existing instance
+if [ "$#" -eq 0 ]; then
+	toggle_visibility
+else
+	browser_args "$@"
+fi
