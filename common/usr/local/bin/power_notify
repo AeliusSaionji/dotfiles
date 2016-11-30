@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Display a notification for each logged in user
-
 user_notify() {
 	users=$(who | awk '{print $1}')
 	for user in $users; do
@@ -13,8 +12,8 @@ user_notify() {
 	done
 }
 
-case "$1" in
 # udev 99-lowbat.rules
+case "$1" in
 	"low")
 		user_notify "notify-send -u normal 'Low Battery'" ;;
 	"critical")
