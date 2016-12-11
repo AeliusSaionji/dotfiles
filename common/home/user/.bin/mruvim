@@ -8,7 +8,7 @@
 filename=$(awk '/^'\>'/{ print $2 }' $HOME/.cache/vim/viminfo | uniq | sed "s@~@$HOME@g" | dmenu -i -l 20) || exit
 
 if [ "$1" = "p" ]; then
-	echo $filename
+	printf '%s' "$filename"
 else
 	vim "$filename"
 fi
@@ -28,7 +28,7 @@ filename=$(awk '/^'\>'/{ print $2 }' $HOME/.cache/vim/viminfo | uniq | sed "s@~@
 filename=$(cat $mrufile)
 
 if [ "$1" = "p" ]; then
-	echo $filename
+	printf '%s' "$filename"
 else
 	vim "$filename"
 fi
