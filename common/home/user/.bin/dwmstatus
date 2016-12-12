@@ -12,17 +12,17 @@ read -r BAT1 </sys/class/power_supply/BAT1/capacity && \
 
 
 # Network Status
-NET=$(wpa_cli status | awk -F '=' '/wpa_state=/ {print $2}')
+NET=$(wpa_cli status | awk -F '=' '/wpa_state=/ {printf $2}')
 if [ "$NET" = "COMPLETED" ]; then
-	NETPROFILE=$(wpa_cli status | awk -F '=' '/^ssid/ {print $2}')
-	SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {print $2 "mbps"}')
+	NETPROFILE=$(wpa_cli status | awk -F '=' '/^ssid/ {printf $2}')
+	SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {printf $2 "mbps"}')
 	NET="$NETPROFILE $SIGNALSTR"
 elif [ -z "$NET" ]; then
-	DEV=$(ip link | awk -F ': ' '/state UP/ {print $2}')
+	DEV=$(ip link | awk -F ': ' '/state UP/ {printf $2}')
 	if [ -z "$DEV" ]; then
 		NET='offline'
 	else
-		NET=$(ip addr | awk "/$DEV\$/ {print \$7\":\",\$2}")
+		NET=$(ip addr | awk "/$DEV\$/ {printf \$7\":\",\$2}")
 	fi
 fi
 
@@ -30,7 +30,7 @@ fi
 CLOCK=$(date '+%b %m/%d %a %H%M')
 
 # Load Average
-LOAD=$(awk '{print $1, $2, $3}' /proc/loadavg)
+LOAD=$(awk '{printf " " $1 " " $2 " " $3}' /proc/loadavg)
 
 # Overall output command
 xsetroot -name "$LOAD | $NET | $POWER | $CLOCK"
