@@ -7,11 +7,11 @@ LOAD=$(awk '{print "", $1, $2, $3}' /proc/loadavg)
 
 # Network Status
 WPASTATUS=$(wpa_cli status)
-STATE=$(echo $WPASTATUS | awk -F '=' '/wpa_state/ {print $2}')
+STATE=$(printf '%s\n' $WPASTATUS | awk -F '=' '/wpa_state/ {print $2}')
 
 if [ "$STATE" = 'COMPLETED' ]; then
 	# Wifi connection info
-	SSID=$(echo $WPASTATUS | awk -F '=' '/^ssid/ {print $2}')
+	SSID=$(printf '%s\n' $WPASTATUS | awk -F '=' '/^ssid/ {print $2}')
 	SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {print $2 "mbps"}')
 	NET="${SSID:+$SSID}${SIGNALSTR:+ $SIGNALSTR}"
 elif [ -z "$STATE" ]; then
