@@ -1,0 +1,2 @@
+mpv %U
+  ^https?://(www.)?youtu(.be/|be.com/watch\?.*v=)
