@@ -2,6 +2,7 @@
 
 # TODO
 # - Move j4 to dwm config.h
+# -  Replace wmctrl with wmutils
 
 case "$1" in
 # dwm keybinds

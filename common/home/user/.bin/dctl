@@ -6,6 +6,7 @@
 
 #TODO
 # - implement status, detailed info piped to dmenu
+#    use 'paste' or 'join'
 # - make failed list prettier
 
 action=$(dmenu <<EOF
