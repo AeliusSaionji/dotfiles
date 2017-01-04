@@ -4,6 +4,7 @@
 # Present mail in a format compatible with the typical file manager
 
 ### TODO
+# Fix handling of multiple emails with same name attachments. Might be mhstore's problem
 # Restore last selected message (currently bumps selection to last item)
 # Optionally take advantage of ranger's new meta feature
 # Fix scan form to lead lesser digits with whitespace
@@ -32,8 +33,8 @@ sed -i $HOME/.cache/mmh/.mhstore.log -e '/[0-9]\+\.[0-9]\./d' -e '/[0-9]\+\.plai
 max=$(wc -l <$HOME/.cache/mmh/.mhstore.log)
 for i in `seq 1 $max`; do
 	nmbr=$(awk "NR==$i {print \$3}" $HOME/.cache/mmh/.mhstore.log)
-	attach=$(awk -F '/' "NR==$i {print \$6}" $HOME/.cache/mmh/.mhstore.log)
-	mkdir "$HOME/.cache/mmh/$nmbr"
+	attach=$(awk -F '/' "NR==$i {print \$NF}" $HOME/.cache/mmh/.mhstore.log)
+	mkdir -p "$HOME/.cache/mmh/$nmbr"
 	mv "$HOME/.cache/mmh/$attach" "$HOME/.cache/mmh/$nmbr"
 done
 
@@ -42,9 +43,15 @@ scan +${context} -form $HOME/.bin/mmhfm.scan > $HOME/.cache/mmh/.scan
 
 while read -r scanline; do
 	# Mail number
-	nmbr=$(echo $scanline | awk '{print $1}')
-	# Prune fordward slash (invalid filename), # (w3m incompatibility)
-	scanline=$(echo $scanline | sed -e 's@/@@' -e 's/#//')
+	nmbr=$(awk '{print $1}' <<EOF
+$scanline
+EOF
+)
+	# Prune / (invalid filename), # (w3m incompatibility)
+	scanline=$(echo $scanline | sed -e 's@/@@g' -e 's/#//g' <<EOF
+$scanline
+EOF
+)
 	# Rename files to with subject and from information
 	find $HOME/.cache/mmh -type f -name "${nmbr}*" -execdir rename "$nmbr" "$scanline" '{}' \;
 done <$HOME/.cache/mmh/.scan

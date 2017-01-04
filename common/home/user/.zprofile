@@ -28,4 +28,6 @@ export LESS=-R
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Start X at VT1 login
-[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+	exec startx
+fi
