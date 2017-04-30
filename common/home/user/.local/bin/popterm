@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Create a centered floating terminal, cover a % of the screen
+
+# TODO
+#  - Figure out if the terminal columns and rows are consistent across resolutions
+
+# Determine res_x and res_y
+read -r res_x res_y << EOF
+	$(xrandr | awk '/current/ { print 0+$8, 0+$10 }')
+EOF
+
+# Calculate window size
+# width=$(($res_x /  9))
+#height=$(($res_y / 18))
+
+# Calculate x + y offset
+xoff=$(($res_x /  7))
+yoff=$(($res_y / 10))
+
+st -g 150x45+$xoff+$yoff -c popterm "$@"
+#st -g ${width}x${height}+${xoff}+${yoff} -c popterm "$@"

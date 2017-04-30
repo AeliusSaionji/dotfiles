@@ -1,6 +1,6 @@
 # Add ~/.bin to the path
 typeset -U path
-path=(~/.bin $path)
+path=(~/.local/bin $path)
 
 # mmh tweaks
 export MMHP=~/.mmh-profile

@@ -1,0 +1,4 @@
+#!/bin/sh
+dmenu -p "Password:" -nb "#222222" -nf "#222222" << EOF
+...
+EOF
