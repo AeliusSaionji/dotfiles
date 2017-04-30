@@ -1,5 +1,0 @@
-#!/bin/sh
-# This wrapper for vimpager exists until I can figure out another way to
-# set ft=mail gracefully with mmh's show.
-
-/usr/bin/vimpager -c 'set ft=mail' "$@"
