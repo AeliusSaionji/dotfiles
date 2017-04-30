@@ -1,7 +1,2 @@
-# VIM swap files
-*.swp
-common/home/user/.config/
-common/home/user/.mozilla/
-common/home/user/.pentadactyl/info
-common/home/user/.pentadactyl/sessions
 common/home/user/.weechat/
+common/home/user/.config/
