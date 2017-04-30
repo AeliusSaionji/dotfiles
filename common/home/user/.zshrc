@@ -5,26 +5,8 @@ SAVEHIST=1000
 # Ignore duplicate commands in history
 setopt HIST_IGNORE_DUPS
 
-# Use vi style keys
-bindkey -v
-bindkey jj vi-cmd-mode
-
-# Idk
-zstyle :compinstall filename '/home/Link/.zshrc'
-
-# More Vim stuff?
-function zle-line-init zle-keymap-select {
-	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-	RPS2=$RPS1
-	zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-
 # Enable autocompletion
 autoload -Uz compinit
-compinit
 
 # Press tab twice for arrow key driven selection
 zstyle ':completion:*' menu select
