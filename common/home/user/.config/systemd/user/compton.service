@@ -4,7 +4,7 @@ Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/sh -c "%h/.bin/trans-exempt.sh createcache"
+ExecStartPre=/usr/bin/sh -c "%h/.local/bin/trans-exempt.sh createcache"
 ExecStart=/usr/bin/compton --config %h/.cache/compton.conf
 Restart=always
 RestartSec=5

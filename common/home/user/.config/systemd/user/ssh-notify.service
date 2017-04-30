@@ -4,7 +4,7 @@ Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStart=/home/Link/.bin/ssh-notify
+ExecStart=/usr/bin/sh -c %h/.local/bin/ssh-notify
 Restart=always
 RestartSec=10
 

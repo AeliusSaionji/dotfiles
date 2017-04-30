@@ -4,7 +4,7 @@ Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/wpa_cli -a /home/Link/.bin/fondler.sh
+ExecStart=/usr/bin/wpa_cli -a %h/local/.bin/fondler.sh
 Restart=always
 RestartSec=10
 

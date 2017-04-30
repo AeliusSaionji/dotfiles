@@ -4,7 +4,7 @@ Requisite=x11.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/sh -c %h/.bin/dwmstatus
+ExecStart=/usr/bin/sh -c %h/.local/bin/dwmstatus
 ExecStop=/usr/bin/xsetroot -name 'dwm 6.1'
 Restart=always
 RestartSec=30
