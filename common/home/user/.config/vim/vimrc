@@ -1,6 +1,7 @@
 " --- Base config --- "
 
 " XDG compliant environment
+silent !mkdir -p $HOME/.cache/vim
 set directory=$HOME/.cache/vim,~/,/tmp
 set backupdir=$HOME/.cache/vim,~/,/tmp
 set viminfo+=n$HOME/.cache/vim/viminfo
