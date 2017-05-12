@@ -103,11 +103,11 @@ elif [ $host = "Talim" ]; then
 fi
 
 # Startup processes
-xset s 300 300 & # Screensaver/cycle timeout. Defaut is 600 600 (10 minutes). Reset by xdg-screensaver, need to hard code to match this setting ~/.local/bin/xdg-screensaver
-xset dpms 602 602 602 & # Monitor timeout. Default is 600 (10 minutes). Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
 pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga x11-bell && pactl load-module module-x11-bell sample=x11-bell display=$DISPLAY & # X11 Bell Noise
-xss-lock -n ~/.local/bin/dim-screen.sh -l -- slock & # Run slock on screensaver/monitor off/laptop lid close
 systemctl --user start x11.target & # Tell services X11 has been started
+xset s 300 300 & # Screensaver/cycle timeout. Defaut is 600 600 (10 minutes)
+xset dpms 602 602 602 & # Monitor timeout. Default is 600 (10 minutes). Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
+xss-lock -n ~/.local/bin/dim-screen.sh -l -- slock & # Run slock on screensaver/monitor off/laptop lid close
 
 while true; do
     # Log stderror to a file 
