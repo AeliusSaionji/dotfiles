@@ -1,4 +1,4 @@
-# Add ~/.bin to the path
+# Add ~/.local/bin to the path
 typeset -U path
 path=(~/.local/bin $path)
 

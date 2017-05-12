@@ -39,7 +39,7 @@ for i in `seq 1 $max`; do
 done
 
 # Collect Subject and From information
-scan +${context} -form $HOME/.bin/mmhfm.scan > $HOME/.cache/mmh/.scan
+scan +${context} -form $HOME/.local/bin/mmhfm.scan > $HOME/.cache/mmh/.scan
 
 while read -r scanline; do
 	# Mail number
