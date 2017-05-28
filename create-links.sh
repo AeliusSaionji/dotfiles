@@ -3,6 +3,7 @@
 # TODO
 # make consistent use of ln
 # script is twice as long as it needs to be; utilize functions, reuse code
+# fix nerv pulse; daemon wouldnt start with symlinked .config/pulse, need to create folder and symlink config
 
 # Exit if not run from correct directory
 [ -d ../dotfiles ] || exit 1
