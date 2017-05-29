@@ -24,7 +24,10 @@ export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
 
 # for the benefit of ranger shell -t
 export TERMCMD=st
+
+# Misc
 export LESS=-R
+export EDITOR=/usr/bin/vim
 
 # Enable the use of ssh-agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
