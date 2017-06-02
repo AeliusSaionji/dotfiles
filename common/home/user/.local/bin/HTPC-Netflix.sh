@@ -6,14 +6,14 @@
 unbind() {
 > ~/.config/sxhkd/sxhkdrc <<EOF
 F1
-        ~/.bin/HTPC-Netflix.sh
+        ~/.local/bin/HTPC-Netflix.sh
 EOF
 }
 
 mousekeys() {
 > ~/.config/sxhkd/sxhkdrc <<EOF
 F1
-	~/.bin/HTPC-Netflix.sh
+	~/.local/bin/HTPC-Netflix.sh
 Left
 	xdotool mousemove_relative -- -35 0
 Right

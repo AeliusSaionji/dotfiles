@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Plex
-Exec=/usr/bin/chromium --user-data-dir=$HOME/.config/chromium-plex --app-id=fpniocchabmgenibceglhnfeimmdhdfm
-Icon=chrome-fpniocchabmgenibceglhnfeimmdhdfm-Default
-StartupWMClass=crx_fpniocchabmgenibceglhnfeimmdhdfm

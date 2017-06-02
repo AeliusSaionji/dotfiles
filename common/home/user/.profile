@@ -1,14 +1,16 @@
-# Add ~/.local/bin to the path
-typeset -U path
-path=(~/.local/bin $path)
+# Specify dash rc
+ENV=$HOME/.shinit; export ENV
+
+# Add bin to path
+export PATH=$HOME/.local/bin:$PATH
 
 # mmh tweaks
 export MMHP=~/.mmh-profile
 export MMHEDITOR=vimeditmail
 export MMHPAGER=vimpagermail
 
-# Steam fixes
-find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -delete
+# Force steam into native mode
+#find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -delete
 #export STEAM_RUNTIME=0 #may no longer be necessary, there's a steam native.desktop
 
 # qt programs use GTK themes
@@ -22,7 +24,10 @@ export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
 
 # for the benefit of ranger shell -t
 export TERMCMD=st
+
+# Misc
 export LESS=-R
+export EDITOR=/usr/bin/vim
 
 # Enable the use of ssh-agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

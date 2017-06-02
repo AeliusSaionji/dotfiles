@@ -55,6 +55,8 @@ case "$1" in
 	"j4") # j4dmenu arguments
 		j4-dmenu-desktop --dmenu="dmenu -m \"$2\" -i" \
 			--usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st -e" ;;
+	"maim")
+		maim $HOME/$(date +%s).png ;;
 # NERV keybinds
 	"foobnext")
 			wine ~/.foobar2000/foobar2000.exe /next ;;

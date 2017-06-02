@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Chromium (work)
+Exec=/usr/bin/chromium --user-data-dir=$HOME/.config/chromium-work

@@ -1,2 +1,2 @@
 .include /etc/pulse/default.pa
-set-default-sink alsa_output.pci-0000_03_00.0.analog-stereo
+set-default-sink alsa_output.usb-Audio-gd_Audio-gd-00.analog-stereo
