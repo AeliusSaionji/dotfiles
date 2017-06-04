@@ -59,6 +59,7 @@ Plug 'bling/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'ervandew/supertab'
+Plug 'PProvost/vim-ps1'
 call plug#end()
 " Call SkyBison with \;
 nnoremap <leader>; :<c-u>call SkyBison("")<cr>
