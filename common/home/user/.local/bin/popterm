@@ -4,10 +4,11 @@
 
 # TODO
 #  - Figure out if the terminal columns and rows are consistent across resolutions
+#  - Center per display, not across all displays. xdpyinfo?
 
 # Determine res_x and res_y
 read -r res_x res_y << EOF
-	$(xrandr | awk '/current/ { print 0+$8, 0+$10 }')
+	$(xwininfo -root | awk '{ORS=" "} /Width/ {print $2} /Height/ {print $2}')
 EOF
 
 # Calculate window size
