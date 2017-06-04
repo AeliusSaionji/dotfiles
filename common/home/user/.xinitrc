@@ -12,28 +12,9 @@ fi
 xmodmap -e "keycode 108 = Super_L"
 xmodmap -e "remove mod1 = Super_L"
 
-# Get device type
-chassis="$(hostnamectl | sed -e '/Chassis/!d' -e 's/^.*Chassis: //')"
-# laptop specific commands
-if [ $chassis = "laptop" ]; then
-	# Disable touchpad while typing
-	# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
-	syndaemon -t -k -i 2 &
-	# The following is set against Saya's clickpad
-	# Pressure required for movement
-	synclient FingerHigh=45
-	# Speed
-	synclient MinSpeed=0.5
-	synclient MaxSpeed=3
-	synclient AccelFactor=0.5
-	# "Natural" scrolling
-	synclient HorizScrollDelta=-100
-	synclient VertScrollDelta=-100
-fi
-
 # Get the hostname
 host="$(hostnamectl status --static)"
-# Saya specific commands
+
 if [ $host = "Saya" ]; then
 	# Power button is Insert
 	xmodmap -e "keycode 124 = Insert"
@@ -49,29 +30,6 @@ if [ $host = "Saya" ]; then
 	xmodmap -e "keycode 74 = XF86AudioMute"
 	xmodmap -e "keycode 75 = XF86AudioLowerVolume"
 	xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
-	# This is a clickpad but for some reason I have to lie
-	synclient ClickPad=0
-	# Two finger tap is right click
-	synclient TapButton2=3
-	# Three finger click is middle click
-	synclient Clickfinger3=2
-	# Disable tap middle click
-	synclient TapButton3=-1
-	# Two finger scrolling
-	synclient VertTwoFingerScroll=1
-	synclient HorizTwoFingerScroll=1
-	# Locked drags because mac touchpads are stupid
-	# synclient LockedDrags=1
-	# synclient LockedDragTimeout=2000
-	# Pressure required for movement
-	synclient FingerHigh=45
-	# Speed
-	synclient MinSpeed=0.5
-	synclient MaxSpeed=3
-	synclient AccelFactor=0.5
-	# "Natural" scrolling speed
-	synclient HorizScrollDelta=-100
-	synclient VertScrollDelta=-100
 elif [ $host = "GIR" ]; then
 	# appskey=Tab
 	xmodmap -e "keycode 135 = Tab"
@@ -83,23 +41,6 @@ elif [ $host = "Talim" ]; then
 	xmodmap -e "keycode 135 = Tab"
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
-	# Speed 
-	synclient MinSpeed=0.5
-	synclient MaxSpeed=2
-	synclient AccelFactor=0.5
-	synclient EmulateMidButtonTime=150
-	# Pressure required for movement
-	synclient FingerHigh=45
-	# Circular Scrolling
-	synclient CircularScrolling=1
-	# Detect from right edge only
-	synclient CircScrollTrigger=3
-	# Slow down scrolling (lower is faster)
-	synclient CircScrollDelta=0.7
-	# Side scroll area doesn't work with circular, disable it
-	synclient VertEdgeScroll=0
-	# "Natural" scrolling speed (does nothing with circular on)
-	synclient VertScrollDelta=-450
 fi
 
 # Startup processes
