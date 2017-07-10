@@ -4,6 +4,4 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Netflix
-Exec=/usr/bin/chromium --user-data-dir=$HOME/.config/chromium-netflix --app-id=deceagebecbceejblnlcjooeohmmeldh
-Icon=chrome-deceagebecbceejblnlcjooeohmmeldh-Default
-StartupWMClass=crx_deceagebecbceejblnlcjooeohmmeldh
+Exec=/usr/bin/chromium --user-data-dir=$HOME/.config/chromium-netflix --app=https://netflix.com
