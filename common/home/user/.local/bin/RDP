@@ -10,7 +10,7 @@
 [ -n "$2" ] && username=$2 || username=$(whoami)
 echo "requesting password via askpass script"
 pass=$(daskpass)
-baseArgs="/smart-sizing /workarea /gfx-h264:AVC420 /gdi:hw +compression +clipboard +fonts -aero -window-drag -menu-anims"
+baseArgs="/smart-sizing /workarea /gfx /gdi:hw +compression +clipboard +fonts -aero -window-drag -menu-anims"
 
 case $3 in
 	"Remote")
