@@ -8,9 +8,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Right alt is considered mod4
-xmodmap -e "keycode 108 = Super_L"
-xmodmap -e "remove mod1 = Super_L"
+# Appskey = MOD4
+xmodmap -e "keycode 135 = Super_L"
 
 # Get the hostname
 host="$(hostnamectl status --static)"
@@ -31,14 +30,9 @@ if [ $host = "Saya" ]; then
 	xmodmap -e "keycode 75 = XF86AudioLowerVolume"
 	xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
 elif [ $host = "GIR" ]; then
-	# appskey=Tab
-	xmodmap -e "keycode 135 = Tab"
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
-	synclient EmulateMidButtonTime=150
 elif [ $host = "Talim" ]; then
-	# Appskey=Tab
-	xmodmap -e "keycode 135 = Tab"
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
 fi
@@ -52,7 +46,7 @@ xss-lock -n ~/.local/bin/dim-screen.sh -l -- slock & # Run slock on screensaver/
 
 while true; do
     # Log stderror to a file 
-    dwm 2> ~/.dwm.log
+    #dwm 2> ~/.dwm.log
     # No error logging
-    #dwm >/dev/null 2>&1
+    dwm >/dev/null 2>&1
 done
