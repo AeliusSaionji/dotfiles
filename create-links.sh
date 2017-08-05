@@ -19,15 +19,15 @@ dotdir="${PWD}"
 
 printf "\nLinking ${dotdir}/common/home/user to ${HOME}\n"
 # Link the contents of upstream $HOME, excluding .config
-find ${dotdir}/common/home/user -maxdepth 1 -mindepth 1 \( ! -name '.config' \) \( ! -name '.local' \) -print0 | xargs -0 ln -sfvt ${HOME}/
+find ${dotdir}/common/home/user -maxdepth 1 -mindepth 1 \( ! -name '.config' \) \( ! -name '.local' \) -print0 | xargs -0 ln -srfvt ${HOME}/
 # Link the contents of upstream .config
 mkdir -p ${HOME}/.config
-find ${dotdir}/common/home/user/.config -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -sfvt ${HOME}/.config/
+find ${dotdir}/common/home/user/.config -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -srfvt ${HOME}/.config/
 # Link upstream desktop files
 mkdir -p ${HOME}/.local/share/applications
-find ${dotdir}/common/home/user/.local/share/applications -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -sfvt ${HOME}/.local/share/applications/
+find ${dotdir}/common/home/user/.local/share/applications -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -srfvt ${HOME}/.local/share/applications/
 # Link upstream bin files
-ln -sfvt ${HOME}/.local/ ${dotdir}/common/home/user/.local/bin
+ln -srfvt ${HOME}/.local/ ${dotdir}/common/home/user/.local/bin
 
 
 ###
@@ -80,9 +80,9 @@ if [ -d ${dotdir}/${host} ]; then
 	if [ -d ${dotdir}/${host}/home ]; then
 		printf "\nLinking ${dotdir}/${host}/home/user to ${HOME}\n"
 		# Link the contents of $HOME, excluding .config
-		find ${dotdir}/${host}/home/user -maxdepth 1 -mindepth 1 \( ! -name '.config' \) -print0 | xargs -0 ln -sfvt ${HOME}/
+		find ${dotdir}/${host}/home/user -maxdepth 1 -mindepth 1 \( ! -name '.config' \) -print0 | xargs -0 ln -srfvt ${HOME}/
 		# Link the contents of .config
-		find ${dotdir}/${host}/home/user/.config -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -sfvt ${HOME}/.config/
+		find ${dotdir}/${host}/home/user/.config -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -srfvt ${HOME}/.config/
 	fi
 
 	if [ -d ${dotdir}/${host}/etc ]; then
