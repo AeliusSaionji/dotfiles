@@ -6,7 +6,7 @@ while true; do
 	LOAD=$(awk '{print "", $1, $2, $3}' /proc/loadavg)
 
 	# Network Status
-	if [ -e /usr/bin/wpa_cli ]; then WPASTATUS=$(wpa_cli status); fi
+	if [ -e /usr/bin/wpa_cli ]; then WPASTATUS=$(wpa_cli status 2>/dev/null); fi
 	STATE=$(printf '%s\n' $WPASTATUS | awk -F '=' '/wpa_state/ {print $2}')
 
 	if [ "$STATE" = 'COMPLETED' ]; then
