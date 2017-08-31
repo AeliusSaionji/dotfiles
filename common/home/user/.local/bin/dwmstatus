@@ -3,7 +3,7 @@
 while true; do
 
 	# Load Average
-	LOAD=$(awk '{print "", $1, $2, $3}' /proc/loadavg)
+	LOAD=$(awk '{print $1, $2, $3}' /proc/loadavg)
 
 	# Network Status
 	if [ -e /usr/bin/wpa_cli ]; then WPASTATUS=$(wpa_cli status 2>/dev/null); fi
@@ -33,15 +33,17 @@ while true; do
 		read -r AC </sys/class/power_supply/AC/online
 		read -r BAT0 </sys/class/power_supply/BAT0/capacity
 		POWER="[$AC]$BAT0"
-	else
-		POWER="<==+==>"
 	fi
 
 	# Date and Time
 	CLOCK=$(date '+%b %m/%d %a %H%M')
 
 	# Overall output command
-	xsetroot -name "$LOAD | $NET | $POWER | $CLOCK"
+	for ITEM in "$LOAD" "$NET" "$POWER" "$CLOCK"; do
+		STATUSFINAL="${STATUSFINAL}${ITEM:+ | $ITEM}"
+	done
+	xsetroot -name "$STATUSFINAL"
+	unset STATUSFINAL
 
 	sleep 10
 
