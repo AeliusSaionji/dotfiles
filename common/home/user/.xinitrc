@@ -52,9 +52,14 @@ pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga x11-bell && pa
 systemctl --user start x11.target & # Tell services X11 has been started
 xss-lock -n ~/.local/bin/dim-screen.sh -l -- slock & # Run slock on screensaver/monitor off/laptop lid close
 
+# Be certain no errant quitWM exists on the system. Accident == lost work!
+rm ~/.cache/quitWM
+# Restart WM upon exit unless quitWM exists
 while true; do
-    # Log stderror to a file 
-    #dwm 2> ~/.dwm.log
-    # No error logging
-    dwm >/dev/null 2>&1
+	dwm >/dev/null 2>&1
+	if [ -e ~/.cache/quitWM ]; then
+		# Clean up quitWM
+		rm ~/.cache/quitWM
+		break
+	fi
 done
