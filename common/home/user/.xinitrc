@@ -11,8 +11,10 @@ fi
 # Appskey = MOD4
 xmodmap -e "keycode 135 = Super_L"
 
-# Get the hostname
-host="$(hostnamectl status --static)"
+# Get the hostname and chassis
+read -r host chassis << EOF
+	$(hostnamectl status | awk '{ORS=" "} /Chassis:/ {print $2} /Static hostname:/ {print $3}')
+EOF
 
 if [ $host = "Saya" ]; then
 	# Power button is Insert
