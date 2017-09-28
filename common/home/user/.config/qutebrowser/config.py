@@ -17,9 +17,6 @@ c.url.searchengines['g'] = 'https://www.google.com/search?q={}'
 c.url.searchengines['w'] = 'https://en.wikipedia.org/w/index.php?search={}'
 c.url.start_pages = ["about:blank"]
 
-# Do not preserve changes made outside this config
-config.load_autoconfig = False
-
 # Bindings
 config.bind('<F3>', 'spawn --detach mpv {url}', mode='normal')
 config.bind('O', 'set-cmd-text :open {url:pretty}', mode='normal', force=True)
