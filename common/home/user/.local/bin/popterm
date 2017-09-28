@@ -12,12 +12,12 @@ read -r res_x res_y << EOF
 EOF
 
 # Calculate window size
-# width=$(($res_x /  9))
-#height=$(($res_y / 18))
+ width=$(($res_x /  9))
+height=$(($res_y / 18))
 
 # Calculate x + y offset
 xoff=$(($res_x /  7))
 yoff=$(($res_y / 10))
 
-st -g 150x45+$xoff+$yoff -c popterm "$@"
-#st -g ${width}x${height}+${xoff}+${yoff} -c popterm "$@"
+#st -g 150x45+$xoff+$yoff -c popterm "$@"
+st -g ${width}x${height}+${xoff}+${yoff} -c popterm "$@"
