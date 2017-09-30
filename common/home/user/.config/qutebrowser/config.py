@@ -12,6 +12,7 @@ c.tabs.show = "never"
 c.url.default_page = "about:blank"
 c.url.searchengines = {'DEFAULT': 'https://www.bing.com/search?q={}'}
 c.url.searchengines['a'] = 'https://smile.amazon.com/s/url=search-alias%3Daps&field-keywords={}'
+c.url.searchengines['aur'] = 'https://aur.archlinux.org/packages/?O=0&K={}'
 c.url.searchengines['aw'] = 'https://wiki.archlinux.org/index.php?search={}'
 c.url.searchengines['g'] = 'https://www.google.com/search?q={}'
 c.url.searchengines['w'] = 'https://en.wikipedia.org/w/index.php?search={}'
