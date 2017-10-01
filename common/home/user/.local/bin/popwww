@@ -6,25 +6,24 @@
 ## centered horizontally, and slightly raised vertically
 
 ### script deps
-### - wmutils (https://github.com/wmutils/core)
+### - xdotool
 ### - xwininfo
 ### - qutebrowser
 
-# Determine res_x and res_y
+get_dimensions() {
+	# Determine res_x and res_y
 read -r res_x res_y << EOF
 	$(xwininfo -root | awk '{ORS=" "} /Width/ {print $2} /Height/ {print $2}')
 EOF
 
-# Calculate window size
- width=$(($res_x / 2 + $res_x / 5))
-height=$(($res_y / 2 + $res_y / 5))
+	# Calculate window size
+	 width=$(($res_x / 2 + $res_x / 5))
+	height=$(($res_y / 2 + $res_y / 5))
 
-# Calculate x + y offset
-xoff=$(($res_x /  7))
-yoff=$(($res_y / 10))
-
-# Get window id if it exists
-wid=$(xwininfo -root -children | awk '/"popwww" "qutebrowser"/ {print $1}')
+	# Calculate x + y offset
+	xoff=$(($res_x /  7))
+	yoff=$(($res_y / 10))
+}
 
 # Start first instance, open urls in existing instance
 browser_args() {
@@ -35,21 +34,30 @@ browser_args() {
 		--loglevel critical \
 		--qt-arg geometry ${width}x${height}+${xoff}+${yoff} \
 		--qt-arg name popwww "$@" &
-	if [ "$wid" ]; then mapw -m $wid; fi
+	if [ "$wid" ]; then xdotool windowmap $wid; fi
 }
 
 # Toggle mapped/unmapped, start qutebrowser if necessary
 toggle_visibility() {
 	if [ "$wid" ]; then 
-		mapw -t $wid
+		if xdotool search --onlyvisible --classname popwww; then
+			xdotool windowunmap $wid
+		else
+			xdotool windowmap $wid
+		fi
 	else
+		get_dimensions
 		browser_args
 	fi
 }
+
+# Get window id if it exists
+wid=$(xwininfo -root -children | awk '/"popwww" "qutebrowser"/ {print $1}')
 
 # Toggle mapped/unmapped else pass urls to existing instance
 if [ "$#" -eq 0 ]; then
 	toggle_visibility
 else
+	get_dimensions
 	browser_args "$@"
 fi
