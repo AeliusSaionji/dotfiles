@@ -2,7 +2,6 @@
 
 # TODO
 # - Move j4 to dwm config.h
-# -  Replace wmctrl with wmutils
 
 case "$1" in
 # dwm keybinds
@@ -39,12 +38,6 @@ case "$1" in
 			xsetwacom --set "$deviceName touch"  Rotate none
 			echo normal
 		fi ;;
-	"dwgrep")
-		# Window switcher, displays all windows
-		wmctrl -l | sed -e 's/^0x[0-9a-f]\+[0-9 ]\+[^ ]\+\s//' | dmenu -p "Global window switch" -i -l 10 | xargs wmctrl -a ;;
-	"dwtaggrep")
-		# Window switcher, only displays currently visible windows
-		wmctrl -lG | sed -e '/0 -/!d' -e 's/^0x[0-9a-f]\+[0-9 ]\+[^ ]\+\s//' | dmenu -p "Visible window switch" -i -l 10 | xargs wmctrl -a ;;
 	"voldown")
 		vol=$(amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
 		notify-send -u low -t 1 -h int:value:$vol Volume fondler ;;
