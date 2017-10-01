@@ -7,13 +7,13 @@
 
 ### script deps
 ### - xdotool
-### - xwininfo
 ### - qutebrowser
 
 get_dimensions() {
 	# Determine res_x and res_y
 read -r res_x res_y << EOF
-	$(xwininfo -root | awk '{ORS=" "} /Width/ {print $2} /Height/ {print $2}')
+	$(xdotool search --maxdepth 0 '^.*$' getwindowgeometry --shell \
+		| awk '{FS="="} {ORS=" "} /WIDTH/ {print $2} /HEIGHT/ {print $2}')
 EOF
 
 	# Calculate window size
@@ -52,7 +52,7 @@ toggle_visibility() {
 }
 
 # Get window id if it exists
-wid=$(xwininfo -root -children | awk '/"popwww" "qutebrowser"/ {print $1}')
+wid=$(xdotool search --classname popwww)
 
 # Toggle mapped/unmapped else pass urls to existing instance
 if [ "$#" -eq 0 ]; then
