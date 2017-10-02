@@ -50,13 +50,6 @@ case "$1" in
 			--usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st" ;;
 	"maim")
 		maim $HOME/$(date +%s).png ;;
-# NERV keybinds
-	"foobnext")
-			wine ~/.foobar2000/foobar2000.exe /next ;;
-	"foobplay")
-			wine ~/.foobar2000/foobar2000.exe /playpause ;;
-	"foobprev")
-			wine ~/.foobar2000/foobar2000.exe /prev ;;
 esac
 
 # wpa_cli -a fondler.sh
