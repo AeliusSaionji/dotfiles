@@ -47,7 +47,7 @@ case "$1" in
 
 	"j4") # j4dmenu arguments
 		j4-dmenu-desktop --dmenu="dmenu -m \"$2\" -i" \
-			--usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st -e" ;;
+			--usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st" ;;
 	"maim")
 		maim $HOME/$(date +%s).png ;;
 # NERV keybinds
