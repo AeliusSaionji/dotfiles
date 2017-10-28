@@ -22,6 +22,7 @@ c.url.start_pages = ["about:blank"]
 
 # Bindings
 config.bind('<F3>', 'spawn --detach mpv {url}', mode='normal')
+config.bind('<Shift-F3>', 'hint links spawn --detach mpv {hint-url}', mode='normal')
 config.bind('<F1>', 'spawn --detach passmenu --type', mode='insert')
 config.bind('pf', 'spawn --detach passmenu', mode='normal')
 config.bind('O', 'set-cmd-text :open {url:pretty}', mode='normal')
