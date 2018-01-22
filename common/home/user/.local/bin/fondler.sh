@@ -8,11 +8,11 @@ case "$1" in
 	"brightdown")
 		xbacklight -dec 10
 		bright=$(xbacklight -get)
-		notify-send -u low -t 1 -h int:value:$bright Brightness fondler ;;
+		notify-send -u low -t 1000 -h int:value:$bright Brightness fondler ;;
 	"brightup")
 		xbacklight -inc 10
 		bright=$(xbacklight -get)
-		notify-send -u low -t 1 -h int:value:$bright Brightness fondler ;;
+		notify-send -u low -t 1000 -h int:value:$bright Brightness fondler ;;
 	"browser")
 		xsel -co | xargs -r xdg-open ;;
 	"lock")
@@ -40,10 +40,10 @@ case "$1" in
 		fi ;;
 	"voldown")
 		vol=$(amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
-		notify-send -u low -t 1 -h int:value:$vol Volume fondler ;;
+		notify-send -u low -t 1000 -h int:value:$vol Volume fondler ;;
 	"volup")
 		vol=$(amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
-		notify-send -u low -t 1 -h int:value:$vol Volume fondler ;;
+		notify-send -u low -t 1000 -h int:value:$vol Volume fondler ;;
 
 	"j4") # j4dmenu arguments
 		j4-dmenu-desktop --dmenu="dmenu -m \"$2\" -i" \
