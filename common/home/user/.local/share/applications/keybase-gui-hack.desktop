@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Terminal=false
+Type=Application
+Name=Keybase GUI (Hack)
+Comment=Start keybase gui without restarting the entire set of processes
+Exec=/usr/bin/sh -c /opt/keybase/Keybase &>> %h/.cache/keybase/Keybase.app.log
