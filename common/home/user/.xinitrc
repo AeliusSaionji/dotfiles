@@ -37,6 +37,13 @@ elif [ $host = "GIR" ]; then
 elif [ $host = "Talim" ]; then
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
+elif [ $host = "BOOK" ]; then
+	# Alt_R = MOD4
+	xmodmap -e "remove mod1 = Alt_R"
+	xmodmap -e "add mod4 = Alt_R"
+	# Appskey = Control_R
+	xmodmap -e "keycode 135 = Control_R"
+	xmodmap -e "add control = Control_R"
 fi
 
 if [ $chassis = "desktop" ]; then
