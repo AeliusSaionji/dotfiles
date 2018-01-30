@@ -31,6 +31,9 @@ if [ $host = "Saya" ]; then
 	xmodmap -e "keycode 74 = XF86AudioMute"
 	xmodmap -e "keycode 75 = XF86AudioLowerVolume"
 	xmodmap -e "keycode 76 = XF86AudioRaiseVolume"
+	# Alt_R = MOD4
+	xmodmap -e "remove mod1 = Alt_R"
+	xmodmap -e "add mod4 = Alt_R"
 elif [ $host = "GIR" ]; then
 	# Rotate button keysym
 	xmodmap -e "keycode 161 = XF86Display"
