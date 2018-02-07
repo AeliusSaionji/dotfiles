@@ -46,7 +46,7 @@ find ${dotdir}/common/etc -type f -execdir sudo setfacl -m u:${USER}:rw  {} +
 find ${dotdir}/common/usr         -execdir sudo setfacl -m u:${USER}:rwx {} +
 printf "\nDone."
 
-# Interactively choose to copy /etc
+# Interactively choose to link /etc
 printf "\n\n----------> ls -l ${dotdir}/common/etc\n"
 find ${dotdir}/common/etc -maxdepth 1 -type f -print
 printf "\n${color}symlink to /etc (yes/no)?>${NC} "
@@ -106,7 +106,7 @@ if [ -d ${dotdir}/${host} ]; then
 		find ${dotdir}/${host}/etc -type f -execdir sudo setfacl -m u:${USER}:rw {} +
 		printf "\nDone."
 
-		# Interactively choose to copy /etc
+		# Interactively choose to link /etc
 		printf "\n\n----------> ls -l ${dotdir}/${host}/etc\n"
 		find ${dotdir}/${host}/etc -maxdepth 1 -type f -print
 		printf "\n${color}symlink to /etc (yes/no)?>${NC} "
@@ -141,6 +141,15 @@ if [ -d ${dotdir}/${host} ]; then
 		read proceed
 		if [ "${proceed}" = "yes" ]; then
 			sudo cp -r ${dotdir}/${host}/etc/systemd/system/* /etc/systemd/system/
+		fi
+
+		# Interactively choose to link /etc/udev/rules.d
+		printf "\n\n----------> ls -l ${dotdir}/${host}/etc/udev/rules.d\n"
+		ls -l ${dotdir}/${host}/etc/udev/rules.d
+		printf "\n${color}symlink to /etc/udev/rules.d (yes/no)?>${NC} "
+		read proceed
+		if [ "${proceed}" = "yes" ]; then
+			sudo ln -sfv ${dotdir}/${host}/etc/udev/rules.d/* /etc/udev/rules.d/
 		fi
 
 		# Interactively choose to link /etc/X11/xorg.conf.d
