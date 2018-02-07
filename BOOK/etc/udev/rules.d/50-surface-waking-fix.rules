@@ -1,0 +1,3 @@
+# https://www.reddit.com/r/SurfaceLinux/comments/6p3jrz/wake_up_after_echo_freezesyspowerstate_sb/
+ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="091a", ATTR{power/wakeup}="enabled", ATTR{driver/1-1/power/wakeup}="enabled"
+ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="07cd", ATTR{power/wakeup}="enabled", ATTR{driver/1-1.4/power/wakeup}="enabled"
