@@ -1,7 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Terminal=false
-Type=Application
-Name=keybase.gui.service
-Comment=Start keybase gui without restarting the entire set of processes
-Exec=/usr/bin/systemctl --user start keybase.gui.service
