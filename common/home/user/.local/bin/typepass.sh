@@ -20,5 +20,4 @@ username=$(find $prefix -wholename "*$site*" -printf '%f' | sed 's/\.gpg$//')
 # Simpler code, but adds dependency on awk
 #username=$(printf '%s' "$site" | awk -F / '{print $2}')
 pstr=$(printf '%s\t%s' "$username" "$password")
-echo $pstr
-#xdotool type "$pstr"
+xdotool type "$pstr"
