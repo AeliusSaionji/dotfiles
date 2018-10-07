@@ -17,7 +17,7 @@ while true; do
 	elif [ -z "$STATE" ]; then
 		# Generic info
 		DEV=$(ip link | awk -F ': ' '/state UP/ {print $2}')
-		NET=$(ip addr show dev $DEV | awk '/inet / {print $7 ":" $2}')
+		NET=$(ip addr show dev $DEV | awk '/inet / {print $8 ":" $2}')
 	else
 		# Wifi attempting to connect info
 		NET=$STATE
