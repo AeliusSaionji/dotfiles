@@ -23,7 +23,9 @@ function Set (t)
 end
 
 EXTENSIONS = Set {
-    'mp4', 'webm', 'png', 'gif', 'jpg', 'jpeg', 'bmp', 'ico',
+    'mkv', 'avi', 'mp4', 'ogv', 'webm', 'rmvb', 'flv', 'wmv', 'mpeg', 'mpg', 'm4v', '3gp',
+    'mp3', 'wav', 'ogm', 'flac', 'm4a', 'wma', 'ogg', 'opus',
+    'png', 'gif', 'jpg', 'jpeg', 'bmp', 'ico',
 }
 
 function add_files_at(index, files)
@@ -91,6 +93,7 @@ function find_and_add_entries()
     msg.trace(("dir: %s, filename: %s"):format(dir, filename))
     if o.disabled then
         msg.verbose("stopping: autoload disabled")
+        return
     elseif #dir == 0 then
         msg.verbose("stopping: not a local path")
         return
