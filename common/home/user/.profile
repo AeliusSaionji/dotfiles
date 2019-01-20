@@ -2,7 +2,7 @@
 ENV=$HOME/.shinit; export ENV
 
 # Add bin to path
-export PATH=$HOME/.local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # mmh tweaks
 export MMHP=~/.mmh-profile
