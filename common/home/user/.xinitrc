@@ -20,12 +20,12 @@ if [ $chassis = "desktop" ]; then
 	xset s 3540 60 & # Timeout 1 hour
 	#xset dpms 3602 3602 3602 & # DPMS timeout. Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
 else
-	xset s 240 60 & # Timeout 5 minutes
+	xset s 270 30 & # Timeout 5 minutes
 	#xset dpms 302 302 302 & # DPMS timeout. Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
 fi
 
 # Run slock on screensaver/monitor off/laptop lid close
-xss-lock -n ~/.local/bin/dim-screen.sh -l -- slock & 
+xss-lock -n ~/.local/bin/suspend-countdown.sh -l -- slock &
 
 # Be certain no errant quitWM exists on the system. Accident == lost work!
 rm ~/.cache/quitWM
