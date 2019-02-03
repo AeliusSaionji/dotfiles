@@ -13,7 +13,7 @@ while [ $(grep -lr 'RUNNING' /proc/asound) ]; do
 	sleep 10
 done
 
-# Obtain the cycle setting
+# Obtain the cycle setting.
 cycle=$(xset q | awk '/timeout/ {print $4}')
 # Offset cycle so we can correctly structure the race condition.
 start=$(($cycle - 5))
