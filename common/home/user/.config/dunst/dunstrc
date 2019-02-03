@@ -290,6 +290,11 @@
      body = "fondler"
      format = "%s %p"
 
+[countdown]
+    appname = notify-send
+    body = "countdown"
+    format = "%s %n"
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
