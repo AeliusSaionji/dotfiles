@@ -10,6 +10,9 @@
 # thus the test statement is TRUE if audio is playing.
 while [ $(grep -lr 'RUNNING' /proc/asound) ]; do
 	#notify-send -u critical 'Suspend inhibited by playing audio'
+	# In this loop we indefinitely delay the below suspend, but this script is only
+	# the [timeout] part of xset s [timeout] [cycle]. Input prevents screen blank.
+	xdotool key F24
 	sleep 10
 done
 
