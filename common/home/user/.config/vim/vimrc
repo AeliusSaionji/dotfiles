@@ -1,11 +1,16 @@
 " --- Base config --- "
 
 " XDG compliant environment
-silent !mkdir -p $HOME/.cache/vim
-set directory=$HOME/.cache/vim,~/,/tmp
-set backupdir=$HOME/.cache/vim,~/,/tmp
-set viminfo+=n$HOME/.cache/vim/viminfo
-set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
+if has("unix")
+	silent !mkdir -p $HOME/.cache/vim
+	set directory=$HOME/.cache/vim,~/,/tmp
+	set backupdir=$HOME/.cache/vim,~/,/tmp
+	set viminfo+=n$HOME/.cache/vim/viminfo
+	set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
+else
+" Windows cd to HOME
+	cd ~
+endif
 " Enforce UTF-8
 set encoding=utf-8
 " When no filetype-specific indenting is enabled, new lines inherit above indentation
@@ -30,16 +35,22 @@ set showbreak=>\
 set breakindent
 " Wrap per word, not character (configured with 'breakat')
 set linebreak
+" Indent tabs less
+set tabstop=4
+set shiftwidth=4
 " Hide mouse while typing in GVIM
 set mousehide
 " Set font+size for GVIM
 set guifont=Courier_New:h10
+" Minimal GUI
+set guioptions-=T
+set guioptions-=m
 " Highlight strings inside C comments
 let c_comment_strings=1
 " Theme
 colorscheme torte
 " My own mru solution using dmenu
-noremap <C-p> :wv<CR>:e <C-r>=system("mruvim p")<CR><CR>
+"noremap <C-p> :wv<CR>:e <C-r>=system("mruvim p")<CR><CR>
 " Exit insert mode with jj
 inoremap jj <Esc>
 " Elevate vim under windows. Update me to use powershell elevation
@@ -60,13 +71,18 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'ervandew/supertab'
 Plug 'PProvost/vim-ps1'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'tpope/vim-vinegar'
 call plug#end()
 " Call SkyBison with \;
 nnoremap <leader>; :<c-u>call SkyBison("")<cr>
 " Fuzzy search
 let g:skybison_fuzz=2
 " Ranger file chooser
-source /usr/share/doc/ranger/examples/vim_file_chooser.vim
+"source /usr/share/doc/ranger/examples/vim_file_chooser.vim
 
 " Grey comments, must be declared after Vim-plug
 highlight Comment ctermfg=8 guifg=#808080
