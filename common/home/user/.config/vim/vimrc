@@ -38,13 +38,6 @@ set linebreak
 " Indent tabs less
 set tabstop=4
 set shiftwidth=4
-" Hide mouse while typing in GVIM
-set mousehide
-" Set font+size for GVIM
-set guifont=Courier_New:h10
-" Minimal GUI
-set guioptions-=T
-set guioptions-=m
 " Highlight strings inside C comments
 let c_comment_strings=1
 " Theme
