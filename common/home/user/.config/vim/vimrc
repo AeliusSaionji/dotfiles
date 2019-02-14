@@ -7,9 +7,6 @@ if has("unix")
 	set backupdir=$HOME/.cache/vim,~/,/tmp
 	set viminfo+=n$HOME/.cache/vim/viminfo
 	set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
-else
-" Windows cd to HOME
-	cd ~
 endif
 " Enforce UTF-8
 set encoding=utf-8
