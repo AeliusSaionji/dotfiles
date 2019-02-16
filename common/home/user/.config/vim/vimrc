@@ -66,6 +66,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'Konfekt/FastFold'
 call plug#end()
 " Call SkyBison with \;
 nnoremap <leader>; :<c-u>call SkyBison("")<cr>
