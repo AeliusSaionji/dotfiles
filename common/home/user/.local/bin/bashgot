@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $# -eq 0 ]; then
+if [ $# -eq 0 ] && [ -t 0 ]; then
 	printf '%s\n' 'pipe the output of curl to this script'
 	printf '%s\n' 'curl www.google.com | bashgot [<searchpattern>] [begin]'
 	printf '%s\n' '"begin" argument passes output to curl'
