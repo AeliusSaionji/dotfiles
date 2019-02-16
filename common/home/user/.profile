@@ -2,7 +2,7 @@
 ENV=$HOME/.shinit; export ENV
 
 # Add bin to path
-export PATH=$HOME/.local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # mmh tweaks
 export MMHP=~/.mmh-profile
@@ -15,6 +15,12 @@ export MMHPAGER=vimpagermail
 
 # qt programs use GTK themes
 export QT_STYLE_OVERRIDE=GTK+
+
+# HiDPI
+if [ $(cat /etc/hostname) = 'BOOK' ]; then
+	export QT_AUTO_SCREEN_SCALE_FACTOR=1
+	export GDK_SCALE=2
+fi
 
 # Askpass script
 export SUDO_ASKPASS=daskpass
@@ -32,7 +38,8 @@ export EDITOR=/usr/bin/vim
 # Enable the use of ssh-agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# This can interfere with the displaymanager and probably is redundant anyway
 # Start X at VT1 login
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-	exec startx
-fi
+#if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+#	exec startx
+#fi

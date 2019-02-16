@@ -1,0 +1,9 @@
+" Set a comfy initial window size
+set lines=50 columns=100
+" Hide mouse while typing
+set mousehide
+" Set font+size
+set guifont=Courier_New:h10
+" Minimal GUI
+set guioptions-=T
+set guioptions-=m

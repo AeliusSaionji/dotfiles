@@ -46,6 +46,16 @@ find ${dotdir}/common/etc -type f -execdir sudo setfacl -m u:${USER}:rw  {} +
 find ${dotdir}/common/usr         -execdir sudo setfacl -m u:${USER}:rwx {} +
 printf "\nDone."
 
+# Interactively choose to link /etc
+printf "\n\n----------> ls -l ${dotdir}/common/etc\n"
+find ${dotdir}/common/etc -maxdepth 1 -type f -print
+printf "\n${color}symlink to /etc (yes/no)?>${NC} "
+read proceed
+if [ "${proceed}" = "yes" ]; then
+	find ${dotdir}/common/etc -maxdepth 1 -type f \
+	-execdir sudo ln -sfvt /etc "${dotdir}/common/etc/{}" \;
+fi
+
 # Interactively choose to copy /etc/systemd/system
 printf "\n\n----------> ls -l ${dotdir}/common/etc/systemd/system\n"
 ls -l ${dotdir}/common/etc/systemd/system
@@ -96,6 +106,16 @@ if [ -d ${dotdir}/${host} ]; then
 		find ${dotdir}/${host}/etc -type f -execdir sudo setfacl -m u:${USER}:rw {} +
 		printf "\nDone."
 
+		# Interactively choose to link /etc
+		printf "\n\n----------> ls -l ${dotdir}/${host}/etc\n"
+		find ${dotdir}/${host}/etc -maxdepth 1 -type f -print
+		printf "\n${color}symlink to /etc (yes/no)?>${NC} "
+		read proceed
+		if [ "${proceed}" = "yes" ]; then
+			find ${dotdir}/${host}/etc -maxdepth 1 -type f \
+			-execdir sudo ln -sfvt /etc "${dotdir}/${host}/etc/{}" \;
+		fi
+
 		# Interactively choose to link /etc/modprobe.d
 		printf "\n\n----------> ls -l ${dotdir}/${host}/etc/modprobe.d\n"
 		ls -l ${dotdir}/${host}/etc/modprobe.d
@@ -121,6 +141,15 @@ if [ -d ${dotdir}/${host} ]; then
 		read proceed
 		if [ "${proceed}" = "yes" ]; then
 			sudo cp -r ${dotdir}/${host}/etc/systemd/system/* /etc/systemd/system/
+		fi
+
+		# Interactively choose to link /etc/udev/rules.d
+		printf "\n\n----------> ls -l ${dotdir}/${host}/etc/udev/rules.d\n"
+		ls -l ${dotdir}/${host}/etc/udev/rules.d
+		printf "\n${color}symlink to /etc/udev/rules.d (yes/no)?>${NC} "
+		read proceed
+		if [ "${proceed}" = "yes" ]; then
+			sudo ln -sfv ${dotdir}/${host}/etc/udev/rules.d/* /etc/udev/rules.d/
 		fi
 
 		# Interactively choose to link /etc/X11/xorg.conf.d

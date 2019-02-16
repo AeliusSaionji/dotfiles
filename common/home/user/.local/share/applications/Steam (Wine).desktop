@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Steam (Wine)
-Exec=env WINEPREFIX="$HOME/.steamwine" env WINEDEBUG="-all" /usr/bin/wine "C:\\\\Program Files (x86)\\\\Steam\\\\Steam.exe" "-no-cef-sandbox"
-Type=Application
-StartupNotify=true
-Path=$HOME/.steamwine/dosdevices/c:/Program Files (x86)/Steam
-Icon=10B4_steam.0

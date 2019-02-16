@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Outlook
-Exec=/usr/bin/chromium --user-data-dir=$HOME/.config/chromium-outlook --app-id=pfpeapihoiogbcmdmnibeplnikfnhoge
-Icon=chrome-pfpeapihoiogbcmdmnibeplnikfnhoge-Default
-StartupWMClass=crx_pfpeapihoiogbcmdmnibeplnikfnhoge
