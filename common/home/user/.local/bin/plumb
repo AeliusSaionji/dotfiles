@@ -1,3 +1,4 @@
 #!/bin/sh
 
-xdg-open "$@"
+psel="$(xsel -po)"
+nohup xdg-open "$psel" >/dev/null
