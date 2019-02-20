@@ -2,8 +2,11 @@
 set lines=50 columns=100
 " Hide mouse while typing
 set mousehide
-" Set font+size
-set guifont=Courier_New:h10
+if !has("unix")
+	" Set font+size
+	set guifont=Courier_New:h10
+endif
 " Minimal GUI
 set guioptions-=T
 set guioptions-=m
+set guioptions-=r

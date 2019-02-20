@@ -7,6 +7,9 @@ if has("unix")
 	set backupdir=$HOME/.cache/vim,~/,/tmp
 	set viminfo+=n$HOME/.cache/vim/viminfo
 	set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
+	if has("gui_running")
+		source $HOME/.config/vim/gvimrc
+	endif
 endif
 " Enforce UTF-8
 set encoding=utf-8
