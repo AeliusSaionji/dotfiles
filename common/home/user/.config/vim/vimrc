@@ -57,26 +57,32 @@ augroup End
 
 " Vim-plug package manager
 call plug#begin()
-Plug 'chilicuil/vim-sprunge'
-Plug 'paradigm/SkyBison'
-Plug 'bling/vim-airline'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'ervandew/supertab'
-Plug 'PProvost/vim-ps1'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'tpope/vim-vinegar'
-Plug 'Konfekt/FastFold'
+" UI
+Plug 'bling/vim-airline' "Fancy statusbar
+Plug 'junegunn/goyo.vim' "Distraction free reading and writing
+Plug 'junegunn/limelight.vim' "Highlight current paragraph
+" Tools
+Plug 'ervandew/supertab' "Tab completion
+Plug 'godlygeek/tabular' "Format tables
+Plug 'reedes/vim-pencil' "Auto apply textwidth formatting in real time
+Plug 'chilicuil/vim-sprunge' "Dump buffer to a pastebin
+Plug 'tpope/vim-vinegar' "Improve internal file browser
+Plug 'junegunn/fzf' "Navigate buffers, history, etc
+Plug 'junegunn/fzf.vim' "Navigate buffers, history, etc
+Plug 'Konfekt/FastFold' "Probably improves performance with many folds??
+Plug 'tpope/vim-commentary' "Comment/uncomment a range
+Plug 'tpope/vim-surround' "Commands to manipulate surrounding tags/quotes/other
+" Syntax
+Plug 'plasticboy/vim-markdown' "Markdown support
+Plug 'PProvost/vim-ps1' "Powershell support
 call plug#end()
-" Call SkyBison with \;
-nnoremap <leader>; :<c-u>call SkyBison("")<cr>
-" Fuzzy search
-let g:skybison_fuzz=2
-" Ranger file chooser
-"source /usr/share/doc/ranger/examples/vim_file_chooser.vim
+
+" Fzf buffers
+nnoremap <silent> <Leader>b :Buffers<CR>
+" Fzf history
+nnoremap <silent> <Leader>h :History<CR>
+" Fzf commands
+nnoremap <silent> <Leader>; :Commands<CR>
 
 " Grey comments, must be declared after Vim-plug
 highlight Comment ctermfg=8 guifg=#808080
