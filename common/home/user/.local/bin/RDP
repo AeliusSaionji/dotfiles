@@ -5,7 +5,7 @@
 # - Libnotify errors
 # RDP [example.com[:3389]] [user] [Remote]
 
-[ $# -eq 0 ] && exec $(sed '/RDP/!d' .cache/run_recent | uniq | dmenu -i -l 20) && exit
+[ $# -eq 0 ] && exec $(sed '/RDP/!d' ~/.cache/run_recent | uniq | dmenu -i -l 20) && exit
 
 [ -n "$2" ] && username=$2 || username=$(whoami)
 echo "requesting password via askpass script"
