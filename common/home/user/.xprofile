@@ -26,12 +26,6 @@ if [ $host = "Saya" ]; then
 	# Alt_R = MOD4
 	xmodmap -e "remove mod1 = Alt_R"
 	xmodmap -e "add mod4 = Alt_R"
-elif [ $host = "GIR" ]; then
-	# Rotate button keysym
-	xmodmap -e "keycode 161 = XF86Display"
-elif [ $host = "Talim" ]; then
-	# Rotate button keysym
-	xmodmap -e "keycode 161 = XF86Display"
 elif [ $host = "BOOK" ]; then
 	# Alt_R = MOD4
 	xmodmap -e "keycode 108 = Super_L"
