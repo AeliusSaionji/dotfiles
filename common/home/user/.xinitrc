@@ -24,6 +24,10 @@ else
 	#xset dpms 302 302 302 & # DPMS timeout. Allow 2s past screensaver[+cycle] timeout (if using cycle with xss-lock) for slock to fade in (compton related?)
 fi
 
+# Startup processes
+pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga x11-bell && pactl load-module module-x11-bell sample=x11-bell display=$DISPLAY & # X11 Bell Noise
+systemctl --user start x11.target & # Tell services X11 has been started
+
 # Run slock on screensaver/monitor off/laptop lid close
 xss-lock -n ~/.local/bin/suspend-countdown.sh -l -- slock &
 
