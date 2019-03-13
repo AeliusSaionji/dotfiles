@@ -1,23 +1,52 @@
 #!/bin/sh
 
 # Create a centered floating terminal, cover a % of the screen
+# Autohide terminal when mouse leaves window
+
+## Unfortunately, autohide on focus lost ("blur") doesn't work,
+## since focus can apparently never be regained when unhiding.
+## So an incredible hack is used to kill xdotool after hiding,
+## preventing it from interfering with subsequent unhiding.
+
+## Previous iterations of this script relied on abduco to manage
+## sessions, and the actual terminal was just started/killed.
+## This had the undesirable effect of clearing the selection and
+## clipboard buffers.
 
 # TODO
-#  - Figure out if the terminal columns and rows are consistent across resolutions
-#  - Center per display, not across all displays. xdpyinfo?
+## - Center per display, not across all displays. xdpyinfo?
 
-# Determine res_x and res_y
-read -r res_x res_y << EOF
-	$(xwininfo -root | awk '{ORS=" "} /Width/ {print $2} /Height/ {print $2}')
+startterm() {
+	# Determine res_x and res_y
+	read -r res_x res_y << EOF
+		$(xwininfo -root | awk '{ORS=" "} /Width/ {print $2} /Height/ {print $2}')
 EOF
 
-# Calculate window size
- width=$(($res_x /  9))
-height=$(($res_y / 18))
+	# Terminal rows and columns, NOT window pixels
+	 width=150
+	height=20
 
-# Calculate x + y offset
-xoff=$(($res_x /  7))
-yoff=$(($res_y / 10))
+	# Calculate window x + y offset, in pixels
+	xoff=$(($res_x /  7))
+	yoff=$(($res_y / 10))
 
-#st -g 150x45+$xoff+$yoff -c popterm "$@"
-st -g ${width}x${height}+${xoff}+${yoff} -c popterm "$@"
+	# Start st
+	st -g ${width}x${height}+${xoff}+${yoff} -c popterm "$@" &
+}
+
+xdotoolmonitor() {
+	# Define regex used to make xdotool kill itself
+	killCMD="^xdotool search --class .popterm. behave %@ blur.*"
+	# Wait a bit for the process to start or window to be unhidden
+	sleep 0.5 
+	# Hide terminal when focus lost
+	xdotool search --class '^popterm$' behave %@ blur windowunmap exec pkill -fx "$killCMD" &
+}
+
+
+# If popterm window doesn't exist, initialize the terminal
+# If the window does exist, start xdotoolmonitor
+if ! $(xdotool search --class '^popterm$' windowmap && xdotoolmonitor); then
+	startterm "$@"
+	xdotoolmonitor
+fi
