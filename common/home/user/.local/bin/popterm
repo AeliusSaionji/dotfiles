@@ -4,7 +4,7 @@
 # Autohide terminal when mouse leaves window
 
 ## Unfortunately, autohide on focus lost ("blur") doesn't work,
-## since focus can apparently never be regained when unhiding.
+## since focus is also "lost" when unhiding. X11 or xdotoolbug.
 ## So an incredible hack is used to kill xdotool after hiding,
 ## preventing it from interfering with subsequent unhiding.
 
