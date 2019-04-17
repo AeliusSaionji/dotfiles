@@ -96,7 +96,7 @@ let s:plug_src = 'https://github.com/junegunn/vim-plug.git'
 let s:plug_tab = get(s:, 'plug_tab', -1)
 let s:plug_buf = get(s:, 'plug_buf', -1)
 let s:mac_gui = has('gui_macvim') && has('gui_running')
-let s:is_win = has('win32') || has('win64')
+let s:is_win = has('win32')
 let s:nvim = has('nvim-0.2') || (has('nvim') && exists('*jobwait') && !s:is_win)
 let s:vim8 = has('patch-8.0.0039') && exists('*job_start')
 let s:me = resolve(expand('<sfile>:p'))
@@ -2224,7 +2224,7 @@ function! s:upgrade()
   let new = tmp . '/plug.vim'
 
   try
-    let out = s:system(printf('git clone --depth 1 %s %s', s:plug_src, tmp))
+    let out = s:system(printf('git clone --depth 1 %s %s', s:shellesc(s:plug_src), s:shellesc(tmp)))
     if v:shell_error
       return s:err('Error upgrading vim-plug: '. out)
     endif
