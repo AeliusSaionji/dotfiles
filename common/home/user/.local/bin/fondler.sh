@@ -2,27 +2,24 @@
 
 # TODO
 # - Move j4 to dwm config.h
+#bar() { seq -s '#' "$1" | tr '[0-9]' '#'; }
+
+nsh() { notify-send -u low -t 1000 -h "int:value:$1" "$2" fondler; }
+vol() { amixer set Master "5%$1" | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1; }
+brt() { xbacklight "$1" 10; xbacklight -get; }
 
 case "$1" in
 # dwm keybinds
 	"brightdown")
-		xbacklight -dec 10
-		bright=$(xbacklight -get)
-		notify-send -u low -t 1000 -h int:value:$bright Brightness fondler ;;
+		nsh "$(brt -dec)" Brightness ;;
 	"brightup")
-		xbacklight -inc 10
-		bright=$(xbacklight -get)
-		notify-send -u low -t 1000 -h int:value:$bright Brightness fondler ;;
+		nsh "$(brt -inc)" Brightness ;;
 	"browser")
 		xsel -co | xargs -r xdg-open ;;
-	"lock")
-		xset s activate && sleep 2 && xset dpms force off ;;
 	"voldown")
-		vol=$(amixer set Master 5%- | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
-		notify-send -u low -t 1000 -h int:value:$vol Volume fondler ;;
+		nsh "$(vol -)" Volume  ;;
 	"volup")
-		vol=$(amixer set Master 5%+ | sed -n -e 's/.*Playback.*\[\([0-9]*\)%\].*/\1/p' | head -n 1)
-		notify-send -u low -t 1000 -h int:value:$vol Volume fondler ;;
+		nsh "$(vol +)" Volume ;;
 	"j4") # j4dmenu arguments
 		j4-dmenu-desktop --dmenu="dmenu -m \"$2\" -i" \
 			--usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st" ;;
