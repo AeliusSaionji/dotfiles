@@ -2,9 +2,15 @@
 
 # This script is meant to be run by xss-lock as a "notifier",
 # to be used with xset s [timeout] [cycle].
+## Behavior and syntax of xss-lock combined with xset:
+## xset s [seconds before notifier runs] [seconds before systemctl suspend]
+## The 2nd arg starts counting AFTER the 1st arg,
+## eg. `xset s 2 5` would put the system to sleep in 7 seconds.
+
 # Beware! Race condition!
 # This script is killed when [cycle] is reached, so the countdown loop
 # must complete before then, lest the following statements never be executed.
+# [cycle] must be greater than 5 to prevent the race condition.
 
 # Check if audio is playing. grep -l returns 1 if nothing is found;
 # thus the test statement is TRUE if audio is playing.
