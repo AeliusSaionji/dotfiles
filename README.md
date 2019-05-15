@@ -6,6 +6,7 @@
 
 * Display Manager sddm boots into X11 via a 'session' file from `/usr/share/xsessions`
 * Session `xinitrc` configures input devices, screensaver/lockscreen timeout, pulseaudio error bell, x11.target hook (for user services depending on x11), runs dwm in a loop
+	+ Session provided by my custom dwm. See <https://github.com/AeliusSaionji/abs/dwm-git>
 * dwm itself sets environment vars for `~/.local/bin/dmenu` via `config.h`
 	+ Rather than exporting a font just for dmenu in `~/.profile`, dmenu will inherit the user configured font for dwm.
 * dwm handles keyboard shortcuts, no need for xbindkeys
@@ -19,7 +20,7 @@
 		1. The environment config becomes a permanent and portable part of the system, and users need not worry about correctly porting it to their preferred shell.
 		2. Some arch startup scripts rely on an sh compatible shell interpretter, so it makes sense to drop into a secondary shell only after login.
 
-### Terminal: st
+### Terminal: st <https://github.com/AeliusSaionji/abs/st-git>
 * `MOD` is Left Alt (not currently used by anything)
 * `Ctrl-Shift-l` opens a dmenu based url launcher
 * `Ctrl-Shift-c` copy to clipboard
@@ -27,10 +28,10 @@
 * terminal font: inconsolata
 	+ font recommended by diablo to consider: adobe source code pro
 
-### WM: dwm
-* `MOD` is Windows key or Right Alt
-* `MOD-p` activates dmenu via j4-dmenu-desktop, a shortcut/desktop launcher
-* `MOD-Shift-p` activates dmenu via ~/.local/bin/run-recent, a program launcher
+### WM: dwm <https://github.com/AeliusSaionji/abs/dwm-git>
+* `MOD` is Windows key or the Appskey aka menukey
+* `MOD-Space` activates dmenu via j4-dmenu-desktop, a shortcut/desktop launcher
+* `MOD-Alt-Space` activates dmenu via ~/.local/bin/run-recent, a program launcher
 * `MOD-Shift-Enter` launches the terminal, st
 * `MOD-Ctrl-Enter` launches st in a popup window
 * Open URLs: `MOD-u` opens selected text with `~/.local/bin/fondler.sh` via `xdg-open`
