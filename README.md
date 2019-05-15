@@ -1,73 +1,101 @@
-## Notes
+# FSDE
 
-- Automatic sleep / suspend
-	xfce, mate, lxqt, kde all have power managers you can install- but they
-	seem to implement their own idle detection, and will put the computer to
-	sleep in the middle of you watching a movie. In theory, the display manager
-	should enable the X11 session to report to logind whether or not the
-	current session is idle, and logind can perform idleactions. Seems like a
-	nice official solution, but I can't get it to work at all.  I think I found
-	a better solution, though! Somehow, programs are correctly inhibiting the
-	X11 screensaver. Not sure when this started working or by what mechanism. I
-	wrote the script `suspend-countdown.sh`, to be used by `xss-lock`. My
-	screensaver is just a script that shows a countdown and puts the computer
-	to sleep when finished. `xss-lock` takes care of all the complicated
-	aspects and this works flawlsesly. The script at the time of writing will
-	not start the countdown if audio is playing, specifically because
-	plexmediaplayer doesn't inhibit the screensaver (the only app I know of
-	which doesn't have this worked out ;-_-). `xss-lock` also of course ensures
-	that the lockscreen is activated whenever the computer goes to sleep.
-	Lidswitch actions are handled by logind, probably. I begrudgingly installed
-	`mate-power-manager`, because it's the only power manager that lets you
-	configure it to NOT do things. The only thing it needs to do is hibernate
-	the PC when the battery is at critical level. I tried to write udev rules
-	and scripts for this in years past, but using shell scripting to create a
-	generic solution for different devices which might have multiple batteries
-	turned out to be pretty complicated. Also udev rules kind of suck. So, I
-	let someone else do the work. Last, on systems for which you have enabled
-	hibernation, you can make use of `suspend-then-hibernate`. Configure the
-	delay in `/etc/systemd/sleep.conf` and symlimk `sudo ln -s
-	/usr/lib/systemd/system/systemd-suspend-then-hibernate.service
-	/etc/systemd/system/systemd-suspend.service` to make sure this always
-	happens even when just 'suspend' is invoked.
+## Overview
 
-- Transparency
-	* qiv doesn't set the background wallpaper in a way that works with transparency, which is why we keep feh around (obsolete tidbit. Still use feh to set the wallpaper, though)
-		+ replaced qiv with sxiv, which also can't set the background
-	* st has transparency compiled in from the source (via a patch)
-		+ the patch breaks ranger's image previews
-		+ hopefully st will get libsixel soon, and both will work
-	* compton is newer than xcompmgr, use compton
-- Terminal: st
-	* `MOD` is Left Alt (not currently used by anything)
-	* `Ctrl-Shift-l` opens a dmenu based url launcher
-	* `Ctrl-Shift-c` copy to clipboard
-	* `Ctrl-Shift-v` pastes from clipboard
-	* terminal font: inconsolata
-		+ font recommended by diablo to consider: adobe source code pro
-- WM: dwm
-	* `MOD` is Windows key or Right Alt
-	* `MOD-p` activates dmenu via j4-dmenu-desktop, a shortcut/desktop launcher
-	* `MOD-Shift-p` activates dmenu via ~/.local/bin/run-recent, a program launcher
-	* `MOD-Shift-Enter` launches the terminal, st
-	* `MOD-Ctrl-Enter` launches st in a popup window
-	* Open URLs: `MOD-u` opens selected text with `~/.local/bin/fondler.sh` via `xdg-open`
+### Logical Flow
 
-- Flow
-	* Display Manager sddm boots into X11 via a 'session' file from `/usr/share/xsessions`
-	* Session `xinitrc` configures input devices, screensaver/lockscreen timeout, pulseaudio error bell, x11.target hook (for user services depending on x11), runs dwm in a loop
-	* dwm itself sets environment vars for `~/.local/bin/dmenu` via `config.h`
-		+ Rather than exporting a font just for dmenu in `~/.profile`, dmenu will inherit the user configured font for dwm.
-	* dwm handles keyboard shortcuts, no need for xbindkeys
-	* `~/.local/bin/fondler.sh` interprets many dwm keybinds
-    	+ Default shell is sh/dash
-	* `~/.profile` sets up the environment
-	 	+ Adds `~/.local/bin` to `$PATH`
-		+ Exports various environment variables
-	* `~/.shinit` (the configrc of sh/dash) is used to launch another shell
-		+ Launching our preferred interactive shell in this way has two benefits:
-			1. The environment config becomes a permanent and portable part of the system, and users need not worry about correctly porting it to their preferred shell.
-			2. Some arch startup scripts rely on an sh compatible shell interpretter, so it makes sense to drop into a secondary shell only after login.
+* Display Manager sddm boots into X11 via a 'session' file from `/usr/share/xsessions`
+* Session `xinitrc` configures input devices, screensaver/lockscreen timeout, pulseaudio error bell, x11.target hook (for user services depending on x11), runs dwm in a loop
+* dwm itself sets environment vars for `~/.local/bin/dmenu` via `config.h`
+	+ Rather than exporting a font just for dmenu in `~/.profile`, dmenu will inherit the user configured font for dwm.
+* dwm handles keyboard shortcuts, no need for xbindkeys
+* `~/.local/bin/fondler.sh` interprets many dwm keybinds
+	+ Default shell is sh/dash
+* `~/.profile` sets up the environment
+	+ Adds `~/.local/bin` to `$PATH`
+	+ Exports various environment variables
+* `~/.shinit` (the configrc of sh/dash) is used to launch another shell
+	+ Launching our preferred interactive shell in this way has two benefits:
+		1. The environment config becomes a permanent and portable part of the system, and users need not worry about correctly porting it to their preferred shell.
+		2. Some arch startup scripts rely on an sh compatible shell interpretter, so it makes sense to drop into a secondary shell only after login.
+
+### Terminal: st
+* `MOD` is Left Alt (not currently used by anything)
+* `Ctrl-Shift-l` opens a dmenu based url launcher
+* `Ctrl-Shift-c` copy to clipboard
+* `Ctrl-Shift-v` pastes from clipboard
+* terminal font: inconsolata
+	+ font recommended by diablo to consider: adobe source code pro
+
+### WM: dwm
+* `MOD` is Windows key or Right Alt
+* `MOD-p` activates dmenu via j4-dmenu-desktop, a shortcut/desktop launcher
+* `MOD-Shift-p` activates dmenu via ~/.local/bin/run-recent, a program launcher
+* `MOD-Shift-Enter` launches the terminal, st
+* `MOD-Ctrl-Enter` launches st in a popup window
+* Open URLs: `MOD-u` opens selected text with `~/.local/bin/fondler.sh` via `xdg-open`
+
+## Misc Notes
+
+### Automatic sleep / suspend
+
+xfce, mate, lxqt, kde all have power managers you can install- but they seem to
+implement their own idle detection, and will put the computer to sleep in the
+middle of you watching a movie. In theory, the display manager should enable
+the X11 session to report to logind whether or not the current session is idle,
+and logind can perform idleactions. Seems like a nice official solution, but I
+can't get it to work at all.  I think I found a better solution, though!
+Somehow, programs are correctly inhibiting the X11 screensaver. Not sure when
+this started working or by what mechanism, but this is the basis for how I
+handle sleeping. I wrote the script `suspend-countdown.sh`, to be used by
+`xss-lock`. My "screensaver" is just a script that shows a countdown and puts
+the computer to sleep when finished. `xss-lock` takes care of all the
+complicated aspects and this works flawlsesly. The script at the time of
+writing will not start the countdown if audio is playing, specifically because
+plexmediaplayer doesn't inhibit the screensaver (the only app I know of which
+doesn't have this worked out ;-_-). `xss-lock` also of course ensures that the
+lockscreen is activated whenever the computer goes to sleep.  Lidswitch actions
+are handled by logind, because you want laptops to go to sleep even while in
+the display manager. I begrudgingly installed `mate-power-manager`, because
+it's the only power manager that lets you configure it to NOT do things.  The
+only thing it needs to do is hibernate the PC when the battery is at critical
+level. I tried to write udev rules and scripts for this in years past, but
+using shell scripting to create a generic solution for different devices which
+might have multiple batteries turned out to be pretty complicated. Also udev
+rules kind of suck. So, I let someone else do the work. Last, on systems for
+which you have enabled hibernation, you can make use of
+`suspend-then-hibernate`. Configure the delay in `/etc/systemd/sleep.conf` and
+symlimk `sudo ln -s
+/usr/lib/systemd/system/systemd-suspend-then-hibernate.service
+/etc/systemd/system/systemd-suspend.service` to make sure this always happens
+even when just 'suspend' is invoked.
+
+### Autostarting X11 programs with systemd services
+
+Somehow the X11 display is unavailable early in the startup process and many
+services will fail to start, or start but not actually function as intended.
+The solution I have come up for this is to just create an override for every
+such service. In the `.xinitrc` we manually start `x11.target`, which is a
+target of my own creation. Create overrides for all problem services to ensure
+they do not start until `x11.target` is started by running `systemctl --user
+edit whatever.service` and adding the following to the file:
+
+```
+[Unit]
+Requisite=x11.target
+
+[Install]
+WantedBy=x11.target
+```
+
+### Transparency
+
+* qiv doesn't set the background wallpaper in a way that works with transparency
+	+ I no longer use qiv at all, but this note is useful
+* st has transparency compiled in from the source (via a patch)
+	+ the patch breaks ranger's image previews
+	+ hopefully st will get libsixel soon, and both will work
+* compton is newer than xcompmgr, use compton
 
 ## Necessities & Deps
 
@@ -158,24 +186,6 @@
 - Using pulseaudio to set default soundcard
 
 ## Misc
-
-### Autostarting X11 programs with systemd services
-
-Somehow the X11 display is unavailable early in the startup process and many
-services will fail to start, or start but not actually function as intended.
-The solution I have come up for this is to just create an override for every
-such service. In the `.xinitrc` we manually start `x11.target`, which is a
-target of my own creation. Create overrides for all problem services to ensure
-they do not start until `x11.target` is started by running `systemctl --user
-edit whatever.service` and adding the following to the file:
-
-```
-[Unit]
-Requisite=x11.target
-
-[Install]
-WantedBy=x11.target
-```
 
 ### Extract `.deb`
 
