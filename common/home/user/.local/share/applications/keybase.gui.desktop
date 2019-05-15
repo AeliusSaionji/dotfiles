@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Keybase GUI
-Exec=systemctl --user restart keybase.gui.service
-Icon=keybase
-Terminal=false
-Type=Application
-Categories=Network;
-StartupNotify=false
