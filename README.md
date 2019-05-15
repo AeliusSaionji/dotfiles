@@ -45,7 +45,7 @@ implement their own idle detection, and will put the computer to sleep in the
 middle of you watching a movie. In theory, the display manager should enable
 the X11 session to report to logind whether or not the current session is idle,
 and logind can perform idleactions. Seems like a nice official solution, but I
-can't get it to work at all.  I think I found a better solution, though!
+can't get it to work at all. I think I found a better solution, though!
 Somehow, programs are correctly inhibiting the X11 screensaver. Not sure when
 this started working or by what mechanism, but this is the basis for how I
 handle sleeping. I wrote the script `suspend-countdown.sh`, to be used by
@@ -55,18 +55,20 @@ complicated aspects and this works flawlsesly. The script at the time of
 writing will not start the countdown if audio is playing, specifically because
 plexmediaplayer doesn't inhibit the screensaver (the only app I know of which
 doesn't have this worked out ;-_-). `xss-lock` also of course ensures that the
-lockscreen is activated whenever the computer goes to sleep.  Lidswitch actions
-are handled by logind, because you want laptops to go to sleep even while in
-the display manager. I begrudgingly installed `mate-power-manager`, because
-it's the only power manager that lets you configure it to NOT do things.  The
-only thing it needs to do is hibernate the PC when the battery is at critical
-level. I tried to write udev rules and scripts for this in years past, but
-using shell scripting to create a generic solution for different devices which
-might have multiple batteries turned out to be pretty complicated. Also udev
-rules kind of suck. So, I let someone else do the work. Last, on systems for
-which you have enabled hibernation, you can make use of
-`suspend-then-hibernate`. Configure the delay in `/etc/systemd/sleep.conf` and
-symlimk `sudo ln -s
+lockscreen is activated whenever the computer goes to sleep. Do configure
+lidswitch and powerbutton actions by logind, because you want laptops to go to
+sleep even while in the display manager. I begrudgingly installed
+`mate-power-manager`, because it's the only power manager that lets you
+configure it to NOT do things. The only thing it needs to do is hibernate the
+PC when the battery is at critical level. However, you must also configure it
+to handle the lidswitch and powerbutton because it inhibits logind's handling
+of these (after leaving the display manager of course). I tried to write udev
+rules and scripts for this in years past, but using shell scripting to create a
+generic solution for different devices which might have multiple batteries
+turned out to be pretty complicated. Also udev rules kind of suck. So, I let
+someone else do the work. Last, on systems for which you have enabled
+hibernation, you can make use of `suspend-then-hibernate`. Configure the delay
+in `/etc/systemd/sleep.conf` and symlimk `sudo ln -s
 /usr/lib/systemd/system/systemd-suspend-then-hibernate.service
 /etc/systemd/system/systemd-suspend.service` to make sure this always happens
 even when just 'suspend' is invoked.
@@ -96,7 +98,7 @@ focused will be transparent. Create exclusions on the fly with `Mod-e`. I've
 done this because I like seeing my wallpaper and because I also find dwm's
 rendering of the active window not easy to spot. All it does is change the
 color of the window border. So, I've eliminated the border entirely (set to 0
-pixels) and rely on transparency to highligh which window is the active window.
+pixels) and rely on transparency to highlight which window is the active window.
 I also set a pretty hard glow around the active window to really make it clear.
 
 #### Transparency Notes
