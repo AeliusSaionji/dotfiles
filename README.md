@@ -91,6 +91,15 @@ WantedBy=x11.target
 
 ### Transparency
 
+I'm using inactive window transparency from compton. Every window which is not
+focused will be transparent. Create exclusions on the fly with `Mod-e`. I've
+done this because I like seeing my wallpaper and because I also find dwm's
+rendering of the active window not easy to spot. All it does is change the
+color of the window border. So, I've eliminated the border entirely (set to 0
+pixels) and rely on transparency to highligh which window is the active window.
+I also set a pretty hard glow around the active window to really make it clear.
+
+#### Transparency Notes
 * qiv doesn't set the background wallpaper in a way that works with transparency
 	+ I no longer use qiv at all, but this note is useful
 * st has transparency compiled in from the source (via a patch)
