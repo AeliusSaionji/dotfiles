@@ -40,17 +40,17 @@
 	* compton is newer than xcompmgr, use compton
 - Terminal: st
 	* `MOD` is Left Alt (not currently used by anything)
-	* `Ctrl-S-l` opens a dmenu based url launcher
-	* `Ctrl-S-c` copy to clipboard
-	* `Ctrl-S-v` pastes from clipboard
+	* `Ctrl-Shift-l` opens a dmenu based url launcher
+	* `Ctrl-Shift-c` copy to clipboard
+	* `Ctrl-Shift-v` pastes from clipboard
 	* terminal font: inconsolata
 		+ font recommended by diablo to consider: adobe source code pro
 - WM: dwm
 	* `MOD` is Windows key or Right Alt
 	* `MOD-p` activates dmenu via j4-dmenu-desktop, a shortcut/desktop launcher
-	* `MOD-P` activates dmenu via ~/.local/bin/run-recent, a program launcher
-	* `MOD-S-Enter` launches the terminal, st
-	* `MOD-\ ` launches st in a popup window
+	* `MOD-Shift-p` activates dmenu via ~/.local/bin/run-recent, a program launcher
+	* `MOD-Shift-Enter` launches the terminal, st
+	* `MOD-Ctrl-Enter` launches st in a popup window
 	* Open URLs: `MOD-u` opens selected text with `~/.local/bin/fondler.sh` via `xdg-open`
 
 - Flow
@@ -72,7 +72,6 @@
 ## Necessities & Deps
 
 - abduco
-- aur/clipmenu
 - compton
 	* handles transparency and flashy effects
 - dash
@@ -83,6 +82,8 @@
 	* recently deprecated
 - aur/dvtm-git
 	* git version because title/corruption fix
+	* probably phasing this out for tmux, since development has stopped,
+	  and the problems with dvtm are accumulating.
 - feh
 	* sets the wallpaper
 - aur/j4-dmenu-desktop
@@ -150,7 +151,7 @@
 ### Talim
 
 - Mute key is hardwired to mute the speaker, no need to bind it.
-- libva-intel-driver-g45-h264 - video hw decoding
+- libva-intel-driver-g45-h264 - video hw decoding for ancient gpu
 
 ### NERV
 
