@@ -2,29 +2,28 @@
 
 # This script is meant to be run by xss-lock as a "notifier",
 # to be used with xset s [timeout] [cycle].
-## Behavior and syntax of xss-lock combined with xset:
+
+# Behavior and syntax of xss-lock combined with xset:
 ## xset s [seconds before notifier runs] [seconds before systemctl suspend]
 ## The 2nd arg starts counting AFTER the 1st arg,
-## eg. `xset s 2 5` would put the system to sleep in 7 seconds.
+## eg. `xset s 2 5` would run this script in 2s and suspend the system in 7s.
+## xss-lock will kill this script upon any user activity.
 
 # Beware! Race condition!
-# This script is killed when [cycle] is reached, so the countdown loop
-# must complete before then, lest the following statements never be executed.
-# [cycle] must be greater than 5 to prevent the race condition.
+## This script is killed when [cycle] is reached, so the countdown loop
+## must complete before then, lest the following statements never be executed.
+## [cycle] must be greater than 5 to prevent the race condition.
 
-# Check if audio is playing. grep -l returns 1 if nothing is found;
-# thus the test statement is TRUE if audio is playing.
-while [ $(grep -lr 'RUNNING' /proc/asound) ]; do
-	#notify-send -u critical 'Suspend inhibited by playing audio'
-	# In this loop we indefinitely delay the below suspend, but this script is only
-	# the [timeout] part of xset s [timeout] [cycle]. Input prevents screen blank.
-	xdotool key F24
-	sleep 10
-done
+# grep -l returns 1 if nothing is found; the test statement is TRUE if audio is playing.
+if [ $(grep -lr 'RUNNING' /proc/asound) ]; then
+	# Reset timer to avoid [cycle], which would lock the screen.
+	# This reset will kill this script.
+	xset s reset
+fi
 
-# Obtain the cycle setting.
+# Obtain the configured [cycle] time.
 cycle=$(xset q | awk '/timeout/ {print $4}')
-# Offset cycle so we can correctly structure the race condition.
+# Offset [cycle] so we can rig the race (condition).
 start=$(($cycle - 5))
 
 # Countdown with visual notification.
