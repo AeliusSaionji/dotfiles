@@ -20,6 +20,7 @@
 		1. The environment config becomes a permanent and portable part of the system, and users need not worry about correctly porting it to their preferred shell.
 		2. Some arch startup scripts rely on an sh compatible shell interpretter, so it makes sense to drop into a secondary shell only after login.
 
+
 ### Terminal: st <https://github.com/AeliusSaionji/abs/tree/master/st-git>
 * `MOD` is Left Alt (not currently used by anything)
 * `Ctrl-Shift-l` opens a dmenu based url launcher
@@ -28,6 +29,7 @@
 * terminal font: inconsolata
 	+ font recommended by diablo to consider: adobe source code pro
 
+
 ### WM: dwm <https://github.com/AeliusSaionji/abs/tree/master/dwm-git>
 * `MOD` is Windows key or the Appskey aka menukey
 * `MOD-Space` activates dmenu via j4-dmenu-desktop, a shortcut/desktop launcher
@@ -35,6 +37,7 @@
 * `MOD-Shift-Enter` launches the terminal, st
 * `MOD-Ctrl-Enter` launches st in a popup window
 * Open URLs: `MOD-u` opens selected text with `~/.local/bin/fondler.sh` via `xdg-open`
+
 
 ## Misc Notes
 
@@ -51,10 +54,7 @@ this started working or by what mechanism, but this is the basis for how I
 handle sleeping. I wrote the script `suspend-countdown.sh`, to be used by
 `xss-lock`. My "screensaver" is just a script that shows a countdown and puts
 the computer to sleep when finished. `xss-lock` takes care of all the
-complicated aspects and this works flawlsesly. The script at the time of
-writing will not start the countdown if audio is playing, specifically because
-plexmediaplayer doesn't inhibit the screensaver (the only app I know of which
-doesn't have this worked out ;-_-). `xss-lock` also of course ensures that the
+complicated aspects and this works flawlsesly. `xss-lock` also of course ensures that the
 lockscreen is activated whenever the computer goes to sleep. Do configure
 lidswitch and powerbutton actions by logind, because you want laptops to go to
 sleep even while in the display manager. I begrudgingly installed
@@ -72,6 +72,27 @@ in `/etc/systemd/sleep.conf` and symlimk `sudo ln -s
 /usr/lib/systemd/system/systemd-suspend-then-hibernate.service
 /etc/systemd/system/systemd-suspend.service` to make sure this always happens
 even when just 'suspend' is invoked.
+
+
+### suspend-countdown.sh and xss-lock and xset
+
+Behavior and syntax of xss-lock combined with xset:
+`xset s [seconds before notifier runs] [seconds before systemctl suspend]`
+This is repurposing the ancient outmoded concept of `xset s [timeout] [cycle]`.
+The 2nd arg starts counting AFTER the 1st arg, eg. `xset s 2 5` would run the
+countdown script in 2s and suspend the system in 7s. xss-lock will kill the
+script upon any user activity.
+
+As mentioned, the script starts at [timeout] and will use libnotify to count
+down to [cycle], which is when the system will be suspended. The countdown will
+not start if audio is playing, specifically as a workaround for plexmediaplayer
+which doesn't inhibit the screensaver (the only app I know of which doesn't
+have this worked out ;-_-). Also that's default behavior for Windows and other
+DEs, so the idea is not unconventional. Previously I would just send key F24 to
+keep the system awake while audio is playing, but this wasn't the best solution
+becuse plexmediaplayer annoyingly responds to any and all keypresses. So, I
+make use of `xset s reset`, which appears to be the cleanest option.
+
 
 ### Autostarting X11 programs with systemd services
 
@@ -91,6 +112,7 @@ Requisite=x11.target
 WantedBy=x11.target
 ```
 
+
 ### Transparency
 
 I'm using inactive window transparency from compton. Every window which is not
@@ -101,6 +123,7 @@ color of the window border. So, I've eliminated the border entirely (set to 0
 pixels) and rely on transparency to highlight which window is the active window.
 I also set a pretty hard glow around the active window to really make it clear.
 
+
 #### Transparency Notes
 * qiv doesn't set the background wallpaper in a way that works with transparency
 	+ I no longer use qiv at all, but this note is useful
@@ -108,6 +131,7 @@ I also set a pretty hard glow around the active window to really make it clear.
 	+ the patch breaks ranger's image previews
 	+ hopefully st will get libsixel soon, and both will work
 * compton is newer than xcompmgr, use compton
+
 
 ## Necessities & Deps
 
@@ -171,6 +195,7 @@ I also set a pretty hard glow around the active window to really make it clear.
 	* for running slock when appropriate.
 	* script relies on this to suspend-on-idle
 
+
 ## Good Software
 
 - ranger
@@ -180,11 +205,13 @@ I also set a pretty hard glow around the active window to really make it clear.
 - zathura
 	* pdf / other viewer
 
+
 ## systemctl enables
 
 - enable fstrim.timer for SSDs maybe
 - enable tlp for laptop power saving
 - missing a lot here
+
 
 ## Device Considerations
 
@@ -193,9 +220,11 @@ I also set a pretty hard glow around the active window to really make it clear.
 - Mute key is hardwired to mute the speaker, no need to bind it.
 - libva-intel-driver-g45-h264 - video hw decoding for ancient gpu
 
+
 ### NERV
 
 - Using pulseaudio to set default soundcard
+
 
 ## Misc
 
@@ -204,6 +233,7 @@ I also set a pretty hard glow around the active window to really make it clear.
 * Extract contents of `.deb`
 * `ar vx package.deb`
 * `tar xf data.tar.gz`
+
 
 ### Programs I'll never remember
 
@@ -220,15 +250,18 @@ I also set a pretty hard glow around the active window to really make it clear.
 * unclutter-xfixes-git
 	+ hide mouse cursor after timeout
 
+
 ### Files I'll never remember
 
 * `~/.config/user-dirs.dirs` for telling firefox to not make the Desktop folder
+
 
 ### Identify Hardlinks
 
 	ls -i = inode #, find -inum <#>
 	find -printf "%n %p\n" %n is number of hardlinks
 	find -samefile <file>
+
 
 ### Samba share mounting
 
@@ -251,14 +284,17 @@ There are a few ways- topmost entry is what I'm currently trialing
 	x-systemd.idle-timeout=1min unmounts the entry when the mount point has not been touched in 1 minute
 	x-systemd.device-timeout does not apply to cifs
 
+
 ### Skype for linux won't stay logged in
 
 Install gnome-keyring
+
 
 ### Synclient can't connect to synaptics driver
 
 Install `xf86-input-evdev`, uninstall `xf86-input-libinput` (which overrides synptics).
 `xorg-server` depends on at least one of those, you can't uninstall one without having the other installed.
+
 
 ### Scripting
 
