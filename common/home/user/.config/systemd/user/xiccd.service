@@ -1,0 +1,12 @@
+[Unit]
+Description=xiccd
+Requisite=x11.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xiccd
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=x11.target
