@@ -135,32 +135,33 @@ I also set a pretty hard glow around the active window to really make it clear.
 
 ## Necessities & Deps
 
-- abduco
+- aur/j4-dmenu-desktop
+	* primary launcher
+- aur/mimeo
+	* xdg-open sucks
+- aur/xdg-utils-mimeo
+	* xdg-open sucks
+	* this replaces xdg-utils
+- aur/xiccd
+	* Apply monitor color profiles
 - compton
 	* handles transparency and flashy effects
 - dash
 - dex
+	* Handles .desktop-style startup files
 - dmenu
 - dunst
 	* displays popup notifications
-	* recently deprecated
-- aur/dvtm-git
-	* git version because title/corruption fix
-	* probably phasing this out for tmux, since development has stopped,
-	  and the problems with dvtm are accumulating.
 - feh
 	* sets the wallpaper
-- aur/j4-dmenu-desktop
-	* primary launcher
 - libnotify
 - lxappearance
 	* set gtk, mouse themes
 - mate-power-manager
 	* low battery actions, maybe battery stats?
-- aur/mimeo
-	* xdg-open sucks
 - perl-file-mimeinfo
 	* without this, xdg-open uses 'file' to decide what a file is, which sucks
+- slock
 - sound-theme-freedesktop
 - tlp
 	* install and forget power manager; need to enable systemd service though
@@ -172,26 +173,20 @@ I also set a pretty hard glow around the active window to really make it clear.
 	* terminal
 - udevil
 	* mount everything as a user, automount devices
-- aur/xdg-utils-mimeo
-	* xdg-open sucks
-	* this replaces xdg-utils
 - xf86-input-synaptics
 	* can't configure touchpad without this
 	* try dumping for libinput
 - xorg-xbacklight
 - xorg-xprop
-	* scripts
-- xorg-xrandr
-	* screen rotation
-	* multi monitor display setting
+	* trans-exempt script
 - xorg-xsetroot
 	* dwm statusbar
 - xorg-xwininfo
-	* scripts
+	* used by popterm and potentially other scripts
 - xsel
 	* `fondler.sh` url launching
 	* ranger
-- aur/xss-lock
+- xss-lock
 	* for running slock when appropriate.
 	* script relies on this to suspend-on-idle
 
@@ -315,3 +310,9 @@ executed, another problem we run into is bad return codes. If a `test`
 statement returns `1`, so does the entire script. While this doesn't hurt
 anything, a script which runs successfully shouldn't be spitting out nonzero
 returns; an `if` statement will allow better control of the return codes.
+
+
+### tmux vs dvtm vs st scrollback patch
+
+st has no scrollback, and it doesn't gracefully handle the window being resized (which is pretty crazy coming from developers who make a dynamic tiling window manager????). Specifically, buffer content is deleted if no longer shown, which is why the st scrollback patch doesn't cut it. A multiplexer is necessary.
+I want to use dvtm, but the project has been abandoned. There are rendering bugs. Rarely- there are crashes. The dev wants to scrap his own code and just use some other emulator backend, but hasn't made any progress on this in years. Which is a shame- I love dvtm. I especially love that "copy mode" just opens the scrollback in your $EDITOR. Maybe one day someone will revive the project. Until then, tmux it is.
