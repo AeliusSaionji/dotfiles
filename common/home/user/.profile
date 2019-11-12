@@ -12,8 +12,8 @@ export MMHPAGER=vimpagermail
 # qt programs use GTK themes
 export QT_STYLE_OVERRIDE=GTK+
 
-# HiDPI
-if [ $(cat /etc/hostname) = 'BOOK' ]; then
+# HiDPI - do not also scale with Xresources
+if [ -f ~/.config/hidpi ]; then
 	export QT_AUTO_SCREEN_SCALE_FACTOR=1
 	export GDK_SCALE=2
 fi

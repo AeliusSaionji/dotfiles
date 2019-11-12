@@ -45,6 +45,10 @@ elif [ $host = "BOOK" ]; then
 	# Appskey = Control_R
 	xmodmap -e "keycode 135 = Control_R"
 	xmodmap -e "add control = Control_R"
+elif [ $host = "meerkat" ]; then
+	# Alt_R = MOD4
+	xmodmap -e "keycode 113 = Super_L"
+	xmodmap -e "remove mod1 = Super_L"
 fi
 
 # Behavior and syntax of xss-lock combined with xset:
@@ -60,6 +64,7 @@ else
 fi
 
 # Startup processes
+xrdp -merge ~/.Xresources & # Scaling settings
 pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga x11-bell && pactl load-module module-x11-bell sample=x11-bell display=$DISPLAY & # X11 Bell Noise
 systemctl --user start x11.target & # Tell services X11 has been started
 dex -a & # XDG autostart
