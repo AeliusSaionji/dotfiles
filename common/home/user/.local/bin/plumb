@@ -1,4 +1,4 @@
 #!/bin/sh
 
-psel="$(xsel -po)"
+psel="$(xclip -o -selection primary)"
 nohup xdg-open "$psel" >/dev/null

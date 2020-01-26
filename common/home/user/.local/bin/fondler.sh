@@ -15,7 +15,7 @@ case "$1" in
 	"brightup")
 		nsh "$(brt -inc)" Brightness ;;
 	"browser")
-		xsel -co | xargs -r xdg-open ;;
+		xclip -o -selection primary | xargs -r xdg-open ;;
 	"voldown")
 		nsh "$(vol -)" Volume  ;;
 	"volup")

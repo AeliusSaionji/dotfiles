@@ -183,7 +183,7 @@ I also set a pretty hard glow around the active window to really make it clear.
 	* dwm statusbar
 - xorg-xwininfo
 	* used by popterm and potentially other scripts
-- xsel
+- xclip
 	* `fondler.sh` url launching
 	* ranger
 - xss-lock
