@@ -24,7 +24,7 @@ case "$1" in
 		j4-dmenu-desktop --dmenu="dmenu -m \"$2\" -i" \
 			--usage-log=${HOME}/.cache/j4-dmenu-desktop-cache --term="st" ;;
 	"maim")
-		maim $HOME/$(date +%s).png ;;
+		maim -s | xclip -selection clipboard -t image/png ;;
 esac
 
 # wpa_cli -a fondler.sh
