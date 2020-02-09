@@ -15,12 +15,14 @@
             "cursorShape": "filledBox",
             "backgroundImage": "ms-appdata:///Local/bg.jpg",
             "backgroundImageOpacity": 0.2,
-            "source": "Windows.Terminal.PowershellCore"
+            "source": "Windows.Terminal.PowershellCore",
+            "experimental.retroTerminalEffect": false
         },
         {
             "name": "ssh meerkat",
-            "commandline": "ssh meerkat",
-            "useAcrylic": true
+            "commandline": "ssh meerkat -t abduco -A ssh tmux -f ~/.config/tmux/tmux.conf",
+            "useAcrylic": true,
+            "acrylicOpacity": 0.75
 		},
         {
             // Make changes here to the powershell.exe profile
