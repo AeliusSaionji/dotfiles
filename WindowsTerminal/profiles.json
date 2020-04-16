@@ -16,6 +16,7 @@
             "backgroundImage": "ms-appdata:///Local/bg.jpg",
             "backgroundImageOpacity": 0.2,
             "source": "Windows.Terminal.PowershellCore",
+            "antialiasingMode": "cleartype",
             "experimental.retroTerminalEffect": false
         },
         {
@@ -23,7 +24,7 @@
             "commandline": "ssh meerkat -t abduco -A ssh tmux -f ~/.config/tmux/tmux.conf",
             "useAcrylic": true,
             "acrylicOpacity": 0.75
-		},
+        },
         {
             // Make changes here to the powershell.exe profile
             "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
