@@ -1,0 +1,160 @@
+﻿<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:zones="clr-namespace:LostTech.Stack.Zones;assembly=Stack"
+    mc:Ignorable="d"
+    zones:Layout.Version="2"
+    Width="1024" Height="576"
+    d:DesignWidth="1024"
+    d:DesignHeight="576"
+>
+
+  <!-- ===================================================================== -->
+
+  <Grid.Resources>
+    <ResourceDictionary>
+      <sys:Double x:Key="GripSize">80</sys:Double>
+      <sys:Double x:Key="GripFontSize">40</sys:Double>
+    </ResourceDictionary>
+  </Grid.Resources>
+
+  <!-- ===================================================================== -->
+  <!-- Define columns -->
+  <Grid.ColumnDefinitions>
+
+  <!-- Column 0: Margin of zero width, or of equivalent size to an empty SecondaryStack -->
+    <ColumnDefinition>
+      <ColumnDefinition.Style>
+        <Style>
+          <Setter Property="ColumnDefinition.Width" Value="0"/>
+          <Style.Triggers>
+            <!-- Redefine width if nothing is in SecondaryStack -->
+            <DataTrigger Binding="{Binding Windows.Count, ElementName=SecondaryStack}" Value="0">
+              <Setter Property="ColumnDefinition.Width" Value="2*"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </ColumnDefinition.Style>
+    </ColumnDefinition>
+
+  <!-- Column 1: MasterStack -->
+    <ColumnDefinition>
+      <ColumnDefinition.Style>
+        <Style>
+          <Setter Property="ColumnDefinition.Width" Value="3*"/>
+          <Style.Triggers>
+            <!-- Redefine width if nothing is in SecondaryStack -->
+            <DataTrigger Binding="{Binding Windows.Count, ElementName=SecondaryStack}" Value="0">
+              <Setter Property="ColumnDefinition.Width" Value="100*"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </ColumnDefinition.Style>
+    </ColumnDefinition>
+
+  <!-- Column 2: Gridgripper -->
+    <ColumnDefinition Width="Auto"/>
+
+  <!-- Column 3: SecondaryStack -->
+    <ColumnDefinition Width="2*"/>
+
+  </Grid.ColumnDefinitions>
+
+  <!-- ===================================================================== -->
+
+  <!-- Describe column 1 -->
+  <Grid Grid.Column="1">
+    <!-- Define rows within column 0 -->
+    <Grid.RowDefinitions>
+      <!-- Row 0 automatic sizing (for tab bar) -->
+      <RowDefinition Height="Auto"/>
+      <!-- Row 1 sizing use remainder of screen (where windows go) -->
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <!-- Create tab bar (row 0) -->
+    <zones:WindowTabs x:Name="MasterTabs" VisibilityCondition="AlwaysVisible" ItemsSource="{Binding Windows, Source={x:Reference MasterStack}}"/>
+    <!-- Create window zone -->
+    <zones:Zone x:Name="MasterStack" Grid.Row="1"/>
+
+    <!-- GUI hints for drag-capture -->
+    <Border Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+            zones:Layout.IsHint="True"
+            Width="160" Height="160" Background="#44F">
+      <!-- Find more symbols from Segoe UI Symbol in Character Map app -->
+      <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                 FontFamily="Segoe UI Symbol" Foreground="White" Text="" FontSize="80"/>
+    </Border>
+    <!-- GUI is interactable by default, this just binds action to appropriate zone -->
+    <zones:Zone Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="160" Height="160"
+                Target="{Binding ElementName=MasterStack}"/>
+  </Grid>
+
+  <!-- ===================================================================== -->
+
+  <!-- Describe column 3 -->
+  <Grid Grid.Column="3">
+    <!-- Define rows within column 1 -->
+    <Grid.RowDefinitions>
+      <!-- Row 0 automatic sizing (for tab bar) -->
+      <RowDefinition Height="Auto"/>
+      <!-- Row 1 sizing use remainder of screen (where windows go) -->
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <!-- Create tab bar (row 0) -->
+    <zones:WindowTabs x:Name="SecondaryTabs" VisibilityCondition="AlwaysVisible" ItemsSource="{Binding Windows, Source={x:Reference SecondaryStack}}"/>
+    <!-- Describe row 1 -->
+    <Grid Grid.Row="1">
+      <zones:Zone x:Name="SecondaryStack">
+        <zones:Zone.Layout>
+          <ItemsPanelTemplate>
+            <!-- Autosize windows in 1 column -->
+            <UniformGrid Columns="1"/>
+          </ItemsPanelTemplate>
+        </zones:Zone.Layout>
+      </zones:Zone>
+
+      <!-- GUI hints for drag-capture -->
+      <Border Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+              zones:Layout.IsHint="True"
+              Width="160" Height="160" Background="#44F">
+        <!-- Find more symbols from Segoe UI Symbol in Character Map app -->
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontFamily="Segoe UI Symbol" Foreground="White" Text="" FontSize="80"/>
+      </Border>
+      <!-- GUI is interactable by default, this just binds action to appropriate zone -->
+      <zones:Zone Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Width="160" Height="160"
+                  Target="{Binding ElementName=SecondaryStack}"/>
+    </Grid>
+  </Grid>
+
+  <!-- ===================================================================== -->
+
+  <!-- Describe column 2 -->
+  <!-- Create a resizegrip for column resizing -->
+  <!-- The SecondaryStack tab bar (above) mostly exists to make clicking this easier -->
+  <!-- This is listed last because StackWM assigns highest ZIndex to the last item defined -->
+  <!-- Without ShowPreview, resize is 'realtime' which sucks on laptop -->
+  <GridSplitter Grid.Column="2" ResizeBehavior="PreviousAndNext"
+                Margin="-10 0 -10 0"
+                Width="20"
+                ShowsPreview="True">
+    <GridSplitter.Style>
+      <Style TargetType="GridSplitter">
+        <Setter Property="Opacity" Value="0"/>
+        <Style.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Opacity" Value="1"/>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+    </GridSplitter.Style>
+  </GridSplitter>
+
+  <!-- ===================================================================== -->
+
+</Grid>
