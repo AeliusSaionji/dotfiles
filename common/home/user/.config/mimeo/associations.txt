@@ -1,5 +1,0 @@
-mpv %U
-  ^https?://(www.)?youtu(.be/|be.com/watch\?.*v=)
-
-mpv --no-ytdl --profile=image %U
-  ^https?://.*(jpg|png|gif|webm)$
