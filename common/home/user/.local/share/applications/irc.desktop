@@ -4,4 +4,4 @@ Terminal=false
 Type=Application
 Name=IRC
 Comment=Open a terminal explicitly for irc over mosh
-Exec=/usr/bin/st -c ircterm -T ircterm /usr/bin/mosh optiplex -- abduco -A irc weechat
+Exec=/usr/bin/st -c ircterm -T ircterm /usr/bin/mosh meerkat -- abduco -A irc weechat
