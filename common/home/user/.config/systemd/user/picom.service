@@ -1,11 +1,11 @@
 [Unit]
-Description=compton
+Description=picom
 Requisite=x11.target
 
 [Service]
 Type=simple
 ExecStartPre=/usr/bin/sh -c "%h/.local/bin/trans-exempt.sh createcache"
-ExecStart=/usr/bin/compton --config %h/.cache/compton.conf
+ExecStart=/usr/bin/picom --config %h/.cache/picom.conf
 Restart=always
 RestartSec=5
 

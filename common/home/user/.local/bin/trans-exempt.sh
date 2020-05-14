@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # The runtime temporary config
-volatileConfig="$HOME/.cache/compton.conf"
+volatileConfig="$HOME/.cache/picom.conf"
 
-# Ensure cache config exists via compton.service ExecStartPre
+# Ensure cache config exists via picom.service ExecStartPre
 case $1 in
 	createcache)
-		[ -e $volatileConfig ] || cp $HOME/.config/compton.conf $volatileConfig
+		[ -e $volatileConfig ] || cp $HOME/.config/picom.conf $volatileConfig
 		exit ;;
 esac
 
@@ -24,7 +24,7 @@ else
 	notifymsg="Transparency Disabled"
 fi
 
-# Restart compton to apply changes
-systemctl --user restart compton.service
+# Restart picom to apply changes
+systemctl --user restart picom.service
 sleep 1
 notify-send "$notifymsg" "$activeClass"
