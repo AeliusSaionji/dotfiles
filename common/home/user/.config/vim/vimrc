@@ -1,15 +1,21 @@
 " --- Base config --- "
 
 " XDG compliant environment
-if has("unix")
-	silent !mkdir -p $HOME/.cache/vim
-	set directory=$HOME/.cache/vim,~/,/tmp
-	set backupdir=$HOME/.cache/vim,~/,/tmp
-	set viminfo+=n$HOME/.cache/vim/viminfo
-	set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
-	if has("gui_running")
-		source $HOME/.config/vim/gvimrc
-	endif
+if has('unix')
+  silent !mkdir -p $HOME/.cache/vim
+  set directory=$HOME/.cache/vim,~/,/tmp
+  set backupdir=$HOME/.cache/vim,~/,/tmp
+  set viminfo+=n$HOME/.cache/vim/viminfo
+  set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
+  if has('gui_running')
+    source $HOME/.config/vim/gvimrc
+  endif
+endif
+if has('win32') || has('win64')
+  silent !mkdir "%HOME%\.cache\vim"
+  set directory=~/.cache/vim,~/
+  set backupdir=~/.cache/vim,~/
+  set viminfo+=n~/.cache/vim/viminfo
 endif
 " Enforce UTF-8
 set encoding=utf-8
@@ -36,8 +42,12 @@ set breakindent
 " Wrap per word, not character (configured with 'breakat')
 set linebreak
 " Indent tabs less
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+" Use spaces instead of tabs
+set expandtab
+" Make backspace work as expected
+set backspace=indent,eol,start
 " Highlight strings inside C comments
 let c_comment_strings=1
 " Theme
@@ -50,7 +60,7 @@ inoremap jj <Esc>
 "noremap <C-e> :mksession! ~/vimfiles/elevate.vim<Return>:silent exec '!elevate.exe ' . v:progname '-S C:/Users/Link/vimfiles/elevate.vim --cmd "let $HOME=''C:\Users\Link\''"'<Return>:q<Return>
 " Don't write viminfo while editing an encrypted file
 augroup Security
-	autocmd vimleavepre * if strlen(&key) | set viminfo= | endif
+  autocmd vimleavepre * if strlen(&key) | set viminfo= | endif
 augroup End
 
 " --- Plugin config --- "
