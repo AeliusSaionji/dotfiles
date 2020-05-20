@@ -12,8 +12,9 @@ endif
 let &g:directory=$HOME . '/.cache/vim'
 let &g:undodir=&g:directory . '/undo//'
 let &g:backupdir=&g:directory . '/backup//'
-"set viminfo+=n expand( &g:directory ) . '/viminfo'
-let &g:directory.='/swap//'                                                                                             " Create directories if they doesn't exist
+let &viminfo=&viminfo . ',n' . &g:directory . '/viminfo'
+let &g:directory.='/swap//'
+" Create directories if they don't exist
 if ! isdirectory(expand(&g:directory))
   silent! call mkdir(expand(&g:directory), 'p', 0700)
 endif
