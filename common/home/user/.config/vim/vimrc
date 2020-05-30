@@ -1,21 +1,28 @@
 " --- Base config --- "
 
 " XDG compliant environment
-if has('unix')
-  silent !mkdir -p $HOME/.cache/vim
-  set directory=$HOME/.cache/vim,~/,/tmp
-  set backupdir=$HOME/.cache/vim,~/,/tmp
-  set viminfo+=n$HOME/.cache/vim/viminfo
-  set runtimepath=$HOME/.config/vim,$HOME/.config/vim/after,$VIM,$VIMRUNTIME
-  if has('gui_running')
-    source $HOME/.config/vim/gvimrc
-  endif
+set runtimepath^=$HOME/.config/vim
+set runtimepath+=$HOME/.config/vim/after
+" Do not process vimfiles dir on Windows
+set runtimepath-=$HOME/vimfiles
+set runtimepath-=$HOME/vimfiles/after
+if has('gui_running')
+  source $HOME/.config/vim/gvimrc
 endif
-if has('win32') || has('win64')
-  silent !mkdir "%HOME%\.cache\vim"
-  set directory=~/.cache/vim,~/
-  set backupdir=~/.cache/vim,~/
-  set viminfo+=n~/.cache/vim/viminfo
+let &g:directory=$HOME . '/.cache/vim'
+let &g:undodir=&g:directory . '/undo//'
+let &g:backupdir=&g:directory . '/backup//'
+let &viminfo=&viminfo . ',n' . &g:directory . '/viminfo'
+let &g:directory.='/swap//'
+" Create directories if they don't exist
+if ! isdirectory(expand(&g:directory))
+  silent! call mkdir(expand(&g:directory), 'p', 0700)
+endif
+if ! isdirectory(expand(&g:backupdir))
+  silent! call mkdir(expand(&g:backupdir), 'p', 0700)
+endif
+if ! isdirectory(expand(&g:undodir))
+  silent! call mkdir(expand(&g:undodir), 'p', 0700)
 endif
 " Enforce UTF-8
 set encoding=utf-8
