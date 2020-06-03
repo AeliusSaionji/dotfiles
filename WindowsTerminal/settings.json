@@ -37,6 +37,7 @@
             {
                 "name": "ssh meerkat",
                 "commandline": "ssh meerkat -t abduco -A ssh tmux -f ~/.config/tmux/tmux.conf",
+                "colorScheme": "Tango Dark",
                 "useAcrylic": true,
                 "acrylicOpacity": 0.75
             },
