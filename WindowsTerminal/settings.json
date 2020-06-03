@@ -12,6 +12,9 @@
 
     // You can add more global application settings here.
     // To learn more about global settings, visit https://aka.ms/terminal-global-settings
+    
+    // Prevent azure cloud shell profile from generating
+    "disabledProfileSources": ["Windows.Terminal.Azure"],
 
     // If enabled, selections are automatically copied to your clipboard.
     "copyOnSelect": false,
@@ -65,12 +68,6 @@
                 "cursorShape": "filledBox",
                 "backgroundImage": "ms-appdata:///Local/bg.jpg",
                 "backgroundImageOpacity": 0.075
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
             }
         ]
     },
