@@ -38,7 +38,7 @@
                 "name": "ssh meerkat",
                 "commandline": "ssh meerkat -t abduco -A ssh tmux -f ~/.config/tmux/tmux.conf",
                 "colorScheme": "Tango Dark",
-                "useAcrylic": true,
+                "useAcrylic": false,
                 "acrylicOpacity": 0.75
             },
             {
@@ -46,6 +46,7 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell",
                 "commandline": "powershell.exe",
+                "colorScheme": "Ocean",
                 "hidden": false
             },
             {
@@ -75,7 +76,29 @@
 
     // Add custom color schemes to this array.
     // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
-    "schemes": [],
+    "schemes": [
+      {
+        "name": "Ocean",
+        "black": "#000000",
+        "red": "#990000",
+        "green": "#00a600",
+        "yellow": "#999900",
+        "blue": "#0000b2",
+        "purple": "#b200b2",
+        "cyan": "#00a6b2",
+        "white": "#bfbfbf",
+        "brightBlack": "#666666",
+        "brightRed": "#e50000",
+        "brightGreen": "#00d900",
+        "brightYellow": "#e5e500",
+        "brightBlue": "#0000ff",
+        "brightPurple": "#e500e5",
+        "brightCyan": "#00e5e5",
+        "brightWhite": "#e5e5e5",
+        "background": "#224fbc",
+        "foreground": "#ffffff"
+      }
+    ],
 
     // Add custom keybindings to this array.
     // To unbind a key combination from your defaults.json, set the command to "unbound".
