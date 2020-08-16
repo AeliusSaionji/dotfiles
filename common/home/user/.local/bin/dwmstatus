@@ -6,21 +6,15 @@ while true; do
 	LOAD=$(awk '{print $1, $2, $3}' /proc/loadavg)
 
 	# Network Status
-	if [ -e /usr/bin/wpa_cli ]; then WPASTATUS=$(wpa_cli status 2>/dev/null); fi
-	STATE=$(printf '%s\n' $WPASTATUS | awk -F '=' '/wpa_state/ {print $2}')
-
-	if [ "$STATE" = 'COMPLETED' ]; then
+	DEV=$(ip link | awk -F ': ' '/state UP/ {print $2}')
+	if [ -e /usr/bin/iw ]; then IWSTATUS=$(iw dev $DEV link | tr '\n' '`'); fi
+	if ( printf '%s ' $IWSTATUS | grep -Fiq 'ssid' ); then
 		# Wifi connection info
-		SSID=$(printf '%s\n' $WPASTATUS | awk -F '=' '/^ssid/ {print $2}')
-		SIGNALSTR=$(wpa_cli signal_poll | awk -F '=' '/^RSSI=/ {printf $2 "dBm/"} /^LINKSPEED=/ {print $2 "mbps"}')
+		SSID=$(printf '%s ' $IWSTATUS | tr '`' '\n' | awk '/SSID/ {print $2}')
+		SIGNALSTR=$(printf '%s ' $IWSTATUS | tr '`' '\n' | awk '/signal/ {printf $2 "dBm/"} /rx/ {print $3$4}')
 		NET="${SSID:+$SSID}${SIGNALSTR:+ $SIGNALSTR}"
-	elif [ -z "$STATE" ]; then
-		# Generic info
-		DEV=$(ip link | awk -F ': ' '/state UP/ {print $2}')
-		NET=$(ip addr show dev $DEV | awk '/inet / {print $8 ":" $2}')
 	else
-		# Wifi attempting to connect info
-		NET=$STATE
+		NET=$(ip addr show dev $DEV | awk '/inet / {print $8 ":" $2}')
 	fi
 
 	# Power Status
