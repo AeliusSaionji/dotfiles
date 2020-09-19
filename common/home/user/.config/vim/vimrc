@@ -59,6 +59,9 @@ set backspace=indent,eol,start
 let c_comment_strings=1
 " Theme
 colorscheme torte
+" quick run terminal
+nnoremap <silent> <Leader>r :.terminal ++noclose ++eof=exit ++shell<CR>
+vnoremap <silent> <Leader>r :'<,'>terminal ++noclose ++eof=exit ++shell<CR>
 " My own mru solution using dmenu
 "noremap <C-p> :wv<CR>:e <C-r>=system("mruvim p")<CR><CR>
 " Exit insert mode with jj
