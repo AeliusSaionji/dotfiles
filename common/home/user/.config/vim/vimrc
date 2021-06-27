@@ -89,7 +89,6 @@ Plug 'chilicuil/vim-sprunge' "Dump buffer to a pastebin
 Plug 'tpope/vim-vinegar' "Improve internal file browser
 Plug 'junegunn/fzf' "Navigate buffers, history, etc
 Plug 'junegunn/fzf.vim' "Navigate buffers, history, etc
-Plug 'Konfekt/FastFold' "Probably improves performance with many folds??
 Plug 'tpope/vim-commentary' "Comment/uncomment a range
 Plug 'tpope/vim-surround' "Commands to manipulate surrounding tags/quotes/other
 " Syntax
@@ -103,6 +102,18 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>h :History<CR>
 " Fzf commands
 nnoremap <silent> <Leader>; :Commands<CR>
+
+" Marry goyo and limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" Load certain plugins for Markdown
+" Todo: add toolbar maybe, toggle things
+augroup pencil
+  autocmd!
+  autocmd FileType markdown call pencil#init()
+    \| Goyo 80
+augroup END
 
 " Grey comments, must be declared after Vim-plug
 highlight Comment ctermfg=8 guifg=#808080
