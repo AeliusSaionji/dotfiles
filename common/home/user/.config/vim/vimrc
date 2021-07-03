@@ -82,13 +82,12 @@ Plug 'bling/vim-airline' "Fancy statusbar
 Plug 'junegunn/goyo.vim' "Distraction free reading and writing
 Plug 'junegunn/limelight.vim' "Highlight current paragraph
 " Tools
-Plug 'ervandew/supertab' "Tab completion
+" Plug 'ervandew/supertab' "Tab completion
 Plug 'godlygeek/tabular' "Format tables
 Plug 'reedes/vim-pencil' "Auto apply textwidth formatting in real time
 Plug 'chilicuil/vim-sprunge' "Dump buffer to a pastebin
+Plug 'gpanders/vim-oldfiles' "Improve internal file history
 Plug 'tpope/vim-vinegar' "Improve internal file browser
-Plug 'junegunn/fzf' "Navigate buffers, history, etc
-Plug 'junegunn/fzf.vim' "Navigate buffers, history, etc
 Plug 'tpope/vim-commentary' "Comment/uncomment a range
 Plug 'tpope/vim-surround' "Commands to manipulate surrounding tags/quotes/other
 " Syntax
@@ -96,23 +95,23 @@ Plug 'plasticboy/vim-markdown' "Markdown support
 Plug 'PProvost/vim-ps1' "Powershell support
 call plug#end()
 
-" Fzf buffers
-nnoremap <silent> <Leader>b :Buffers<CR>
-" Fzf history
-nnoremap <silent> <Leader>h :History<CR>
-" Fzf commands
-nnoremap <silent> <Leader>; :Commands<CR>
+" Close Oldfiles split after use
+augroup oldfiles
+    autocmd!
+    autocmd FileType qf if w:quickfix_title =~# 'Oldfiles' | nnoremap <buffer> <CR> <CR>:cclose<CR> | endif
+augroup END
 
 " Marry goyo and limelight
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " Load certain plugins for Markdown
-" Todo: add toolbar maybe, toggle things
+  " TODO: add toolbar maybe, toggle things
 augroup pencil
   autocmd!
   autocmd FileType markdown call pencil#init()
     \| Goyo 80
+    \| set spell
 augroup END
 
 " Grey comments, must be declared after Vim-plug
