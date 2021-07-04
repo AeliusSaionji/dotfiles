@@ -61,25 +61,25 @@ augroup End
 
 " Vim-plug package manager
 call plug#begin()
-" UI
-  Plug 'bling/vim-airline'           " Fancy statusbar
-  Plug 'junegunn/goyo.vim'           " Distraction free reading and writing
-  Plug 'junegunn/limelight.vim'      " Highlight current paragraph
-" Tools
-  Plug 'chilicuil/vim-sprunge'       " Dump buffer to a pastebin
-  Plug 'christoomey/vim-sort-motion' " Sort motion
-  Plug 'christoomey/vim-titlecase'   " Capitalize operator
- "Plug 'ervandew/supertab'           " Tab completion
-  Plug 'godlygeek/tabular'           " Format tables
-  Plug 'gpanders/vim-oldfiles'       " Improve internal file history
- "Plug 'kana/vim-textobj-indent'     " sort motion
-  Plug 'reedes/vim-pencil'           " Auto apply textwidth formatting in real time
-  Plug 'tpope/vim-commentary'        " Comment/uncomment a range
-  Plug 'tpope/vim-surround'          " Commands to manipulate surrounding tags/quotes/other
-  Plug 'tpope/vim-vinegar'           " Improve internal file browser
-" Syntax
-  Plug 'PProvost/vim-ps1'            " Powershell support
-  Plug 'plasticboy/vim-markdown'     " Markdown support
+"UI
+  Plug 'bling/vim-airline'               " Fancy statusbar
+  Plug 'junegunn/goyo.vim'               " Distraction free reading and writing
+  Plug 'junegunn/limelight.vim'          " Highlight current paragraph
+"Tools
+  Plug 'chilicuil/vim-sprunge'           " Dump buffer to a pastebin
+  Plug 'christoomey/vim-titlecase'       " Capitalize operator
+  Plug 'godlygeek/tabular'               " Format tables
+  Plug 'gpanders/vim-oldfiles'           " Improve internal file history
+  Plug 'reedes/vim-pencil'               " Auto apply textwidth formatting in real time
+  Plug 'tpope/vim-commentary'            " Comment/uncomment a range
+  Plug 'tpope/vim-surround'              " Commands to manipulate surrounding tags/quotes/other
+  Plug 'tpope/vim-vinegar'               " Improve internal file browser
+"Words
+  Plug 'christoomey/vim-sort-motion'     " Sort motion
+  Plug 'michaeljsmith/vim-indent-object' " Indent object
+"Syntax
+  Plug 'PProvost/vim-ps1'                " Powershell support
+  Plug 'plasticboy/vim-markdown'         " Markdown support
 call plug#end()
 
 " Close Oldfiles split after use
