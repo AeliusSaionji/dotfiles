@@ -89,6 +89,7 @@ augroup oldfiles
 augroup END
 
 " Marry goyo and limelight
+  " TODO call pencil and set spell here?
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
