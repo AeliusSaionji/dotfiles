@@ -1,26 +1,10 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "copyFormatting": "none",
-    "copyOnSelect": false,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-    "disableAnimations": true,
-    // You can add more global application settings here.
-    // To learn more about global settings, visit https://aka.ms/terminal-global-settings
-    // Prevent azure cloud shell profile from generating
-    "disabledProfileSources": 
-    [
-        "Windows.Terminal.Azure"
-    ],
-    // Add custom keybindings to this array.
+    // Add custom actions and keybindings to this array.
     // To unbind a key combination from your defaults.json, set the command to "unbound".
-    // To learn more about keybindings, visit https://aka.ms/terminal-keybindings
-    "keybindings": 
+    // To learn more about actions and keybindings, visit https://aka.ms/terminal-keybindings
+    "actions": 
     [
-        // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
-        // To learn more about selection, visit https://aka.ms/terminal-selection
-        // { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        // { "command": "paste", "keys": "ctrl+v" },
         // Press Ctrl+Shift+F to open the search box
         {
             "command": "find",
@@ -40,6 +24,10 @@
             "keys": "alt+shift+d"
         }
     ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "disableAnimations": false,
     "profiles": 
     {
         "defaults": {},
@@ -69,7 +57,6 @@
                 "startingDirectory": "%USERPROFILE%"
             },
             {
-                "colorScheme": "Ocean",
                 "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
@@ -91,19 +78,17 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "cursorShape": "filledBox",
-                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
-                "hidden": false,
-                "name": "Arch",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
                 "commandline": "C:/tools/msys64/usr/bin/env.exe MSYSTEM=MSYS HOME=/c/Users/aelius /usr/bin/dash -lc \"/usr/bin/mosh -- meerkat tmux -L weechat attach -d\"",
                 "cursorShape": "filledBox",
-                "experimental.retroTerminalEffect": false,
                 "hidden": true,
                 "name": "IRC",
                 "useAcrylic": true
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
             }
         ]
     },
@@ -341,5 +326,11 @@
         }
     ],
     "startOnUserLogin": true,
-    "windowingBehavior": "useExisting"
+    "tabSwitcherMode": "disabled",
+    "tabWidthMode": "titleLength",
+    "windowingBehavior": "useExisting",
+    "disabledProfileSources": 
+    [
+        "Windows.Terminal.Azure"
+    ]
 }
