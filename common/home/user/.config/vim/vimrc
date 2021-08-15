@@ -24,39 +24,23 @@ endif
 if ! isdirectory(expand(&g:undodir))
   silent! call mkdir(expand(&g:undodir), 'p', 0700)
 endif
-" Enforce UTF-8
-set encoding=utf-8
-" When no filetype-specific indenting is enabled, new lines inherit above indentation
-set autoindent
-" Set the command window height to 2 lines, to avoid many cases of having to press <Enter> to continue
-set cmdheight=2
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-" Switch on search pattern highlighting.
-set hlsearch
-" Set enrcyption method to blowfish
-set cryptmethod=blowfish2
-" Make vim case insensitive...
-set ignorecase
-" ...Except when we explicitly type a capital
-set smartcase
-" Jump to matches as you search
-set incsearch
-" Indicate a line is wrapped with '> '
-set showbreak=>\ 
-" Indent a wrapped line
-set breakindent
-" Wrap per word, not character (configured with 'breakat')
-set linebreak
-" Indent tabs less
-set tabstop=2
-set shiftwidth=2
-" Use spaces instead of tabs
-set expandtab
-" Make backspace work as expected
-set backspace=indent,eol,start
-" Highlight strings inside C comments
-let c_comment_strings=1
+set encoding=utf-8             " Enforce UTF-8
+set autoindent                 " Absent filetype-specific indenting, new lines inherit above indentation
+set cmdheight=2                " Command window height 2 lines avoids many cases of <Enter> to continue
+set laststatus=2               " Always display the status line, even if only one window is displayed
+set hlsearch                   " Switch on search pattern highlighting.
+set cryptmethod=blowfish2      " Set enrcyption method to blowfish
+set ignorecase                 " Make vim case insensitive...
+set smartcase                  " ...Except when we explicitly type a capital
+set incsearch                  " Jump to matches as you search
+set showbreak=>\               " Indicate a line is wrapped with '> '
+set breakindent                " Indent a wrapped line
+set linebreak                  " Wrap per word, not character (configured with 'breakat')
+set tabstop=2                  " Indent tabs less
+set shiftwidth=2               " Indent tabs less
+set expandtab                  " Use spaces instead of tabs
+set backspace=indent,eol,start " Make backspace work as expected
+let c_comment_strings=1        " Highlight strings inside C comments
 " Theme
 colorscheme torte
 " quick run terminal
@@ -77,32 +61,46 @@ augroup End
 
 " Vim-plug package manager
 call plug#begin()
-" UI
-Plug 'bling/vim-airline' "Fancy statusbar
-Plug 'junegunn/goyo.vim' "Distraction free reading and writing
-Plug 'junegunn/limelight.vim' "Highlight current paragraph
-" Tools
-Plug 'ervandew/supertab' "Tab completion
-Plug 'godlygeek/tabular' "Format tables
-Plug 'reedes/vim-pencil' "Auto apply textwidth formatting in real time
-Plug 'chilicuil/vim-sprunge' "Dump buffer to a pastebin
-Plug 'tpope/vim-vinegar' "Improve internal file browser
-Plug 'junegunn/fzf' "Navigate buffers, history, etc
-Plug 'junegunn/fzf.vim' "Navigate buffers, history, etc
-Plug 'Konfekt/FastFold' "Probably improves performance with many folds??
-Plug 'tpope/vim-commentary' "Comment/uncomment a range
-Plug 'tpope/vim-surround' "Commands to manipulate surrounding tags/quotes/other
-" Syntax
-Plug 'plasticboy/vim-markdown' "Markdown support
-Plug 'PProvost/vim-ps1' "Powershell support
+"UI
+  Plug 'bling/vim-airline'               " Fancy statusbar
+  Plug 'junegunn/goyo.vim'               " Distraction free reading and writing
+  Plug 'junegunn/limelight.vim'          " Highlight current paragraph
+"Tools
+  Plug 'chilicuil/vim-sprunge'           " Dump buffer to a pastebin
+  Plug 'christoomey/vim-titlecase'       " Capitalize operator
+  Plug 'godlygeek/tabular'               " Format tables
+  Plug 'gpanders/vim-oldfiles'           " Improve internal file history
+  Plug 'reedes/vim-pencil'               " Auto apply textwidth formatting in real time
+  Plug 'tpope/vim-commentary'            " Comment/uncomment a range
+  Plug 'tpope/vim-surround'              " Commands to manipulate surrounding tags/quotes/other
+  Plug 'tpope/vim-vinegar'               " Improve internal file browser
+"Words
+  Plug 'christoomey/vim-sort-motion'     " Sort motion
+  Plug 'michaeljsmith/vim-indent-object' " Indent object
+"Syntax
+  Plug 'PProvost/vim-ps1'                " Powershell support
+  Plug 'plasticboy/vim-markdown'         " Markdown support
 call plug#end()
 
-" Fzf buffers
-nnoremap <silent> <Leader>b :Buffers<CR>
-" Fzf history
-nnoremap <silent> <Leader>h :History<CR>
-" Fzf commands
-nnoremap <silent> <Leader>; :Commands<CR>
+" Close Oldfiles split after use
+augroup oldfiles
+  autocmd!
+  autocmd FileType qf if w:quickfix_title =~# 'Oldfiles' | nnoremap <buffer> <CR> <CR>:cclose<CR> | endif
+augroup END
+
+" Marry goyo and limelight
+  " TODO call pencil and set spell here?
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" Load certain plugins for Markdown
+  " TODO: add toolbar maybe, toggle things
+augroup pencil
+  autocmd!
+  autocmd FileType markdown call pencil#init()
+    \| Goyo 80
+    \| set spell
+augroup END
 
 " Grey comments, must be declared after Vim-plug
 highlight Comment ctermfg=8 guifg=#808080
