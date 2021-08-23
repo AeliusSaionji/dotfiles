@@ -18,6 +18,15 @@
     <ResourceDictionary>
       <sys:Double x:Key="GripSize">80</sys:Double>
       <sys:Double x:Key="GripFontSize">40</sys:Double>
+      <!-- Define fixed tab width -->
+      <Style TargetType="zones:WindowButton">
+        <Setter Property="Width" Value="100"/>
+        <Style.Resources>
+          <Style TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+          </Style>
+        </Style.Resources>
+      </Style>
     </ResourceDictionary>
   </Grid.Resources>
 
