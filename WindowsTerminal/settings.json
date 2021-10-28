@@ -1,19 +1,11 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    // Add custom actions and keybindings to this array.
-    // To unbind a key combination from your defaults.json, set the command to "unbound".
-    // To learn more about actions and keybindings, visit https://aka.ms/terminal-keybindings
     "actions": 
     [
-        // Press Ctrl+Shift+F to open the search box
         {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
-        // Press Alt+Shift+D to open a new pane.
-        // - "split": "auto" makes this pane open in the direction that provides the most surface area.
-        // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
-        // To learn more about panes, visit https://aka.ms/terminal-panes
         {
             "command": 
             {
@@ -27,7 +19,7 @@
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-    "disableAnimations": false,
+    "disableAnimations": true,
     "disabledProfileSources": 
     [
         "Windows.Terminal.Azure"
@@ -40,7 +32,7 @@
             {
                 "acrylicOpacity": 0.75,
                 "colorScheme": "Tango Dark",
-                "commandline": "C:/tools/msys64/usr/bin/env.exe MSYSTEM=MSYS HOME=/c/Users/aelius /usr/bin/dash -lc \"/usr/bin/mosh -- meerkat\"",
+                "commandline": "C:/tools/msys64/usr/bin/ssh.exe meerkat",
                 "cursorShape": "filledBox",
                 "name": "ssh meerkat"
             },
@@ -61,7 +53,6 @@
                 "startingDirectory": "%USERPROFILE%"
             },
             {
-                "colorScheme": "Ocean",
                 "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
@@ -83,11 +74,18 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "commandline": "C:/tools/msys64/usr/bin/env.exe MSYSTEM=MSYS HOME=/c/Users/aelius /usr/bin/dash -lc \"/usr/bin/mosh -- meerkat tmux -L weechat attach -d\"",
+                "acrylicOpacity": 0.75,
+                "colorScheme": "Tango Dark",
+                "commandline": "C:/tools/msys64/usr/bin/ssh.exe kaguya",
                 "cursorShape": "filledBox",
-                "hidden": true,
-                "name": "IRC",
-                "useAcrylic": true
+                "name": "ssh kaguya"
+            },
+            {
+                "acrylicOpacity": 0.75,
+                "colorScheme": "Tango Dark",
+                "commandline": "C:/tools/msys64/usr/bin/ssh.exe pyrrha",
+                "cursorShape": "filledBox",
+                "name": "ssh pyrrha"
             }
         ]
     },
@@ -324,8 +322,8 @@
             "yellow": "#808000"
         }
     ],
-    "startOnUserLogin": true,
-    "tabSwitcherMode": "disabled",
+    "startOnUserLogin": false,
+    "tabSwitcherMode": "mru",
     "tabWidthMode": "titleLength",
     "windowingBehavior": "useExisting"
 }
