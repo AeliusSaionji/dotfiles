@@ -9,7 +9,8 @@
 
 [ -n "$2" ] && username=$2 || username=$(whoami)
 echo "requesting password via askpass script"
-pass=$(daskpass)
+# pass=$(daskpass)
+pass=$(passmenu >/dev/null 2>&1 && xclip -selection clipboard -o)
 baseArgs="/smart-sizing /workarea /gfx /gdi:hw +compression +clipboard +fonts -aero -window-drag -menu-anims"
 
 case $3 in
