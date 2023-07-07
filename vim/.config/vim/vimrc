@@ -41,6 +41,7 @@ set tabstop=2                  " Indent tabs less
 set shiftwidth=2               " Indent tabs less
 set expandtab                  " Use spaces instead of tabs
 set backspace=indent,eol,start " Make backspace work as expected
+set mouse=a                    " Enables mouse scrolling within ssh/tmux, prevents terminal scroll
 let c_comment_strings=1        " Highlight strings inside C comments
 " Theme
 colorscheme torte
