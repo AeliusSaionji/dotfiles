@@ -3,6 +3,7 @@
 " XDG compliant environment
 set runtimepath^=$HOME/.config/vim
 set runtimepath+=$HOME/.config/vim/after
+let g:netrw_home=$HOME.'/.cache/vim'
 " Do not process vimfiles dir on Windows
 set runtimepath-=$HOME/vimfiles
 set runtimepath-=$HOME/vimfiles/after
