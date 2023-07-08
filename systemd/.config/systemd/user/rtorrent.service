@@ -1,0 +1,15 @@
+[Unit]
+Description=rTorrent
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/rtorrent
+# Modify the next line to the absolute path for rtorrent.lock, for example
+ExecStartPre=-/bin/rm -f %h/.local/rtorrent/rtorrent.lock
+ExecStart=/usr/bin/rtorrent -o system.daemon.set=true
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

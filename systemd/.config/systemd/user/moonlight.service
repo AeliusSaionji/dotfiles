@@ -1,0 +1,8 @@
+[Unit]
+Description=Xorg server
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0.0
+SuccessExitStatus=0 1
+ExecStart=/usr/bin/flatpak run com.moonlight_stream.Moonlight

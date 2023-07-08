@@ -1,0 +1,12 @@
+[Unit]
+Description=tmux session at boot
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux -f %h/.config/tmux/tmux.conf new-session -s %u -d
+ExecStop=/usr/bin/tmux kill-session -t %u
+Restart=always
+
+[Install]
+WantedBy=default.target

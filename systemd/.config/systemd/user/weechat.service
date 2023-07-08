@@ -1,0 +1,12 @@
+[Unit]
+Description=Weechat in abduco
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux -L weechat new -d -s weechat weechat 
+ExecStop=/usr/bin/tmux -L weechat kill-session -t weechat
+Restart=always
+
+[Install]
+WantedBy=default.target

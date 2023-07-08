@@ -1,0 +1,11 @@
+[Unit]
+Description=aria2 rpc daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aria2c
+Restart=always
+
+[Install]
+WantedBy=default.target

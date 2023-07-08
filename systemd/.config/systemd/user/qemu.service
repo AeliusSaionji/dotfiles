@@ -1,0 +1,10 @@
+[Unit]
+Description=Windows VM
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/qemu.sh
+
+[Install]
+WantedBy=default.target
