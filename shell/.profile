@@ -25,9 +25,12 @@ export SUDO_ASKPASS=daskpass
 export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
 
 # Misc
-export LESS=-R
+export LESS='--mouse -R'
 export EDITOR=/usr/bin/vim
 export COLORTERM=24bit
+
+# Enable symlinks on Windows (requires devmode)
+export MSYS=winsymlinks:nativestrict
 
 # Enable the use of ssh-agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
