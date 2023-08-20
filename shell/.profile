@@ -32,5 +32,8 @@ export COLORTERM=24bit
 # Enable symlinks on Windows (requires devmode)
 export MSYS=winsymlinks:nativestrict
 
+# Use msys packages during compilation
+export SETUPTOOLS_USE_DISTUTILS=stdlib
+
 # Enable the use of ssh-agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
