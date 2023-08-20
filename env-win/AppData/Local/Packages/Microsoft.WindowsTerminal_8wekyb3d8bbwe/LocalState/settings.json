@@ -71,6 +71,36 @@
         "list": 
         [
             {
+                "colorScheme": "One Half Dark",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -ucrt64 -shell dash -l",
+                "experimental.connection.passthroughMode": true,
+                "guid": "{063ff8d8-a8bf-41a8-a5d6-89b2edcd98fb}",
+                "hidden": false,
+                "icon": "C:\\msys64\\ucrt64.ico",
+                "name": "ucrt64"
+            },
+            {
+                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -msys2 -shell dash -l",
+                "experimental.connection.passthroughMode": true,
+                "guid": "{30e1c60d-46ee-4f90-8db6-a2be57e45fdb}",
+                "hidden": false,
+                "icon": "C:\\msys64\\msys2.ico",
+                "name": "msys"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe meerkat",
+                "guid": "{aa475803-62b3-4d56-ada0-f5b242490706}",
+                "hidden": false,
+                "icon": "\ud83e\uddff",
+                "name": "meerkat"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe pyrrha",
+                "guid": "{bd203fc1-6d0a-4be3-9053-f31c7ff16620}",
+                "hidden": false,
+                "name": "pyrrha"
+            },
+            {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "powershell"
@@ -100,19 +130,6 @@
                 "source": "nu"
             },
             {
-                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe meerkat",
-                "guid": "{aa475803-62b3-4d56-ada0-f5b242490706}",
-                "hidden": false,
-                "icon": "\ud83e\uddff",
-                "name": "meerkat"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe pyrrha",
-                "guid": "{bd203fc1-6d0a-4be3-9053-f31c7ff16620}",
-                "hidden": false,
-                "name": "pyrrha"
-            },
-            {
                 "guid": "{c397f356-5e7b-55bc-956b-8cb4b9762c26}",
                 "hidden": false,
                 "name": "nix",
@@ -123,23 +140,6 @@
                 "hidden": false,
                 "name": "arch",
                 "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -msys2 -shell dash -l",
-                "experimental.connection.passthroughMode": true,
-                "guid": "{30e1c60d-46ee-4f90-8db6-a2be57e45fdb}",
-                "hidden": false,
-                "icon": "C:\\msys64\\msys2.ico",
-                "name": "msys"
-            },
-            {
-                "colorScheme": "One Half Dark",
-                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -ucrt64 -shell dash -l",
-                "experimental.connection.passthroughMode": true,
-                "guid": "{063ff8d8-a8bf-41a8-a5d6-89b2edcd98fb}",
-                "hidden": false,
-                "icon": "C:\\msys64\\ucrt64.ico",
-                "name": "ucrt64"
             },
             {
                 "colorScheme": "Dracula",
