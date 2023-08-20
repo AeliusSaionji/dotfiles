@@ -1,3 +1,18 @@
 [submodule "vis/.config/vis/plugins/vis-plug"]
 	path = vis/.config/vis/plugins/vis-plug
 	url = https://github.com/erf/vis-plug
+[submodule "mpv/.config/mpv/scripts/mpv_sponsorblock_minimal"]
+	path = mpv/.config/mpv/scripts/mpv_sponsorblock_minimal
+	url = https://codeberg.org/jouni/mpv_sponsorblock_minimal
+[submodule "mpv/.config/mpv/scripts/mpv-quality-menu"]
+	path = mpv/.config/mpv/scripts/mpv-quality-menu
+	url = https://github.com/christoph-heinrich/mpv-quality-menu
+[submodule "mpv/.config/mpv/scripts/evafast"]
+	path = mpv/.config/mpv/scripts/evafast
+	url = https://github.com/po5/evafast
+[submodule "mpv/.config/mpv/scripts/groupwatch_sync"]
+	path = mpv/.config/mpv/scripts/groupwatch_sync
+	url = https://github.com/po5/groupwatch_sync
+[submodule "mpv/.config/mpv/scripts/PureMPV"]
+	path = mpv/.config/mpv/scripts/PureMPV
+	url = https://github.com/4ndrs/PureMPV
