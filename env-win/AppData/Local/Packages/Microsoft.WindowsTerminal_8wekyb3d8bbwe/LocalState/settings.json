@@ -72,7 +72,7 @@
         [
             {
                 "colorScheme": "One Half Dark",
-                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -ucrt64 -shell dash -l",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -ucrt64 -shell dash",
                 "experimental.connection.passthroughMode": true,
                 "guid": "{063ff8d8-a8bf-41a8-a5d6-89b2edcd98fb}",
                 "hidden": false,
@@ -80,7 +80,7 @@
                 "name": "ucrt64"
             },
             {
-                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -msys2 -shell dash -l",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -msys2 -shell dash",
                 "experimental.connection.passthroughMode": true,
                 "guid": "{30e1c60d-46ee-4f90-8db6-a2be57e45fdb}",
                 "hidden": false,
