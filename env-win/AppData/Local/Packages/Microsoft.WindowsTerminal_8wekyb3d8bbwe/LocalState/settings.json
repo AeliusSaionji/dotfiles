@@ -38,6 +38,70 @@
             "keys": "alt+enter"
         },
         {
+            "command": "unbound",
+            "keys": "f11"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+d"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+comma"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+alt+comma"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+down"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+left"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+right"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+up"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+n"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+comma"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+alt+left"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+space"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+left"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+down"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+right"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+up"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -88,14 +152,14 @@
                 "name": "msys"
             },
             {
-                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe meerkat",
+                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe meerkat.lan",
                 "guid": "{aa475803-62b3-4d56-ada0-f5b242490706}",
                 "hidden": false,
                 "icon": "\ud83e\uddff",
                 "name": "meerkat"
             },
             {
-                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe pyrrha",
+                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe pyrrha.lan",
                 "guid": "{bd203fc1-6d0a-4be3-9053-f31c7ff16620}",
                 "hidden": false,
                 "name": "pyrrha"
