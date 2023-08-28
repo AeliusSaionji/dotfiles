@@ -47,6 +47,7 @@ user_pref("font.name.sans-serif.x-western", "Sylfaen"); //serif font for sans se
 user_pref("browser.display.use_document_fonts", 0); //override web page fonts
 user_pref("devtools.editor.keymap", "vim"); //binds for source editor
 user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); //load userChrome.css
 
 ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
 user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS",   12);//NSS    [120]
