@@ -28,6 +28,7 @@ export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
 export LESS='--mouse -R'
 export EDITOR=/usr/bin/vim
 export COLORTERM=24bit
+export RIPGREP_CONFIG_PATH=~/.config/ripgreprc
 
 # Enable symlinks on Windows (requires devmode)
 export MSYS=winsymlinks:nativestrict
