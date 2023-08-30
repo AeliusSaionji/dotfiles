@@ -144,14 +144,6 @@
                 "name": "ucrt64"
             },
             {
-                "commandline": "C:\\msys64\\msys2_shell.cmd -use-full-path -defterm -no-start -msys2 -shell dash",
-                "experimental.connection.passthroughMode": true,
-                "guid": "{30e1c60d-46ee-4f90-8db6-a2be57e45fdb}",
-                "hidden": false,
-                "icon": "C:\\msys64\\msys2.ico",
-                "name": "msys"
-            },
-            {
                 "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe meerkat.lan",
                 "guid": "{aa475803-62b3-4d56-ada0-f5b242490706}",
                 "hidden": false,
