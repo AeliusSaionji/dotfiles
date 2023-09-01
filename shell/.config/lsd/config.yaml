@@ -5,7 +5,6 @@
 blocks:
   - permission
   - user
-  - group
   - size
   - date
   - git
