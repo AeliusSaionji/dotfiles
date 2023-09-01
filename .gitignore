@@ -2,4 +2,3 @@ common/home/user/.config/
 common/home/user/.local/
 weechat/**/sec.conf
 vim/**/plugged
-shell/.config/fish/functions/br.fish
