@@ -1,1 +1,0 @@
-/c/Users/aelius/AppData/Roaming/dystroy/broot/data/launcher/fish/br.fish
