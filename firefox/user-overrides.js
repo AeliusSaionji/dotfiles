@@ -48,6 +48,7 @@ user_pref("browser.display.use_document_fonts", 0); //override web page fonts
 user_pref("devtools.editor.keymap", "vim"); //binds for source editor
 user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); //load userChrome.css
+user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", true); //tab-stash restore tabs w/ history
 
 ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
 user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS",   12);//NSS    [120]
