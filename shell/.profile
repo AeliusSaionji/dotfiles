@@ -30,11 +30,18 @@ export EDITOR=/usr/bin/vim
 export COLORTERM=24bit
 export RIPGREP_CONFIG_PATH=~/.config/ripgreprc
 
-# Enable symlinks on Windows (requires devmode)
-export MSYS=winsymlinks:nativestrict
+if [ "$OS" = 'Windows_NT' ]; then
+  # Git for Windows is far more performant than msys2/git
+    # Scrub from path first; then place at beginning
+  gitless=$(printf '%s\n' "$PATH" | sed -e 's@/c/Program Files/Git/cmd@@' -e 's/::/:/g')
+  export PATH="/c/Program Files/Git/cmd:$gitless"
 
-# Use msys packages during compilation
-export SETUPTOOLS_USE_DISTUTILS=stdlib
+  # Enable symlinks on Windows (requires devmode)
+  export MSYS=winsymlinks:nativestrict
+
+  # Use msys packages during compilation
+  export SETUPTOOLS_USE_DISTUTILS=stdlib
+fi
 
 # Enable the use of ssh-agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
