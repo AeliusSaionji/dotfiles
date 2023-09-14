@@ -1,7 +1,9 @@
+/* Dependencies first */
+@import url(chrome/window_control_placeholder_support.css); /* Dependency */
+/* Dependencies first */
+@import url(chrome/button_effect_scale_onclick.css);        /* Buttons animate when clicked */
+@import url(chrome/compact_extensions_panel.css);           /* Sensible row height for addons popup */
+@import url(chrome/hide_tabs_toolbar_w_alltabs_button.css); /* Hide tabs, retain alltabs button */
+@import url(chrome/loading_indicator_rotating_image.css);   /* Loading overlay */
 @import url(chrome/urlbar_centered_text.css);               /* URLbar center text when inactive */
 @import url(chrome/urlbar_popup_full_width.css);            /* URLbar suggestions box spans the full width of browser window */
-@import url(chrome/compact_extensions_panel.css);           /* Sensible row height for addons popup */
-@import url(chrome/button_effect_scale_onclick.css);        /* Buttons animate when clicked */
-@import url(chrome/loading_indicator_rotating_image.css);   /* Loading overlay */
-@import url(chrome/window_control_placeholder_support.css); /* Dependency */
-@import url(chrome/hide_tabs_toolbar_w_alltabs_button.css); /* Hide tabs, retain alltabs button */
