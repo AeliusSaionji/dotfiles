@@ -1,0 +1,137 @@
+# For documentation, see https://www.sumatrapdfreader.org/settings/settings3-4-6.html
+FixedPageUI [
+	TextColor = #000000
+	BackgroundColor = #edd1b0
+	SelectionColor = #f5fc0c
+	WindowMargin = 2 4 2 4
+	PageSpacing = 4 4
+	GradientColors = #96adfc #dbe1f1 #b987dc
+	HideScrollbars = false
+]
+ComicBookUI [
+	WindowMargin = 0 0 0 0
+	PageSpacing = 4 4
+	CbxMangaMode = false
+]
+ChmUI [
+	UseFixedPageUI = false
+]
+
+SelectionHandlers [
+	[
+		URL = https://search.brave.com/search?q=${selection}
+		Name = Search With &Brave
+	]
+]
+ExternalViewers [
+]
+
+ZoomLevels = 8.33 12.5 18 25 33.33 50 66.67 75 100 125 150 200 300 400 600 800 1000 1200 1600 2000 2400 3200 4800 6400
+ZoomIncrement = 0
+
+PrinterDefaults [
+	PrintScale = shrink
+]
+ForwardSearch [
+	HighlightOffset = 0
+	HighlightWidth = 15
+	HighlightColor = #6581ff
+	HighlightPermanent = false
+]
+Annotations [
+	HighlightColor = #ffff00
+	UnderlineColor = #00ff00
+	TextIconColor = #ffff00
+	TextIconType = 
+	DefaultAuthor = 
+]
+
+RememberOpenedFiles = true
+RememberStatePerDocument = true
+RestoreSession = true
+UiLanguage = en
+EnableTeXEnhancements = false
+DefaultDisplayMode = automatic
+DefaultZoom = fit page
+Shortcuts [
+	[
+		Cmd = CmdFindNext
+		Key = n
+	]
+	[
+		Cmd = CmdFindPrev
+		Key = N
+	]
+	[
+		Cmd = CmdFindNextSel
+		Key = *
+	]
+	[
+		Cmd = CmdNavigateBack
+		Key = H
+	]
+	[
+		Cmd = CmdNavigateForward
+		Key = L
+	]
+	[
+		Cmd = CmdGoToPage
+		Key = :
+	]
+	[
+		Cmd = CmdGoToFirstPage
+		Key = g
+	]
+	[
+		Cmd = CmdGoToLastPage
+		Key = G
+	]
+	[
+		Cmd =  CmdScrollUpHalfPage
+		Key = Ctrl + u
+	]
+	[
+		Cmd =  CmdScrollDownHalfPage
+		Key = Ctrl + d
+	]
+	[
+		Cmd =  CmdScrollUpPage
+		Key = Ctrl + b
+	]
+	[
+		Cmd =  CmdScrollDownPage
+		Key = Ctrl + f
+	]
+]
+EscToExit = false
+ReuseInstance = false
+ReloadModifiedDocuments = true
+
+MainWindowBackground = #80fff200
+FullPathInTitle = false
+ShowMenubar = false
+ShowToolbar = false
+ShowFavorites = true
+ShowToc = true
+TocDy = 0
+SidebarDx = 153
+ToolbarSize = 18
+TabWidth = 300
+TreeFontSize = 0
+SmoothScroll = true
+ShowStartPage = true
+CheckForUpdates = false
+WindowState = 1
+WindowPos = 73 0 956 2007
+UseTabs = false
+UseSysColors = false
+CustomScreenDPI = 0
+
+FileStates [
+]
+SessionData [
+]
+TimeOfLastUpdateCheck = 0 0
+OpenCountWeek = 663
+
+# Settings below are not recognized by the current version

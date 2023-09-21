@@ -1,2 +1,3 @@
 common/home/user/.config/lgogdownloader/config.cfg filter=clean-gog
 common/home/user/.local/bin/ssh-notify filter=clean-notify
+env-win/AppData/Local/SumatraPDF/SumatraPDF-settings.txt filter=sumatra
