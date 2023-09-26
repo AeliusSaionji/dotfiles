@@ -11,11 +11,28 @@
             }
         },
         {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "right"
+            },
+            "keys": "ctrl+alt+n"
+        },
+        {
             "command": "paste"
         },
         {
             "command": "find",
             "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
         },
         {
             "command": "unbound",
@@ -102,13 +119,20 @@
             "keys": "alt+shift+up"
         },
         {
+            "command": "unbound",
+            "keys": "alt+shift+plus"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+minus"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
+                "split": "down"
             },
-            "keys": "alt+shift+d"
+            "keys": "ctrl+alt+shift+n"
         }
     ],
     "copyFormatting": "none",
