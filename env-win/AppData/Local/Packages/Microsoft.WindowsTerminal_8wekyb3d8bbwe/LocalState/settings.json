@@ -148,6 +148,7 @@
     {
         "defaults": 
         {
+            "adjustIndistinguishableColors": "always",
             "cursorShape": "filledBox",
             "font": 
             {
@@ -209,12 +210,6 @@
                 "hidden": false,
                 "name": "nu",
                 "source": "nu"
-            },
-            {
-                "guid": "{c397f356-5e7b-55bc-956b-8cb4b9762c26}",
-                "hidden": false,
-                "name": "nix",
-                "source": "Windows.Terminal.Wsl"
             },
             {
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
