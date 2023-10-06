@@ -11,6 +11,7 @@ user_pref("extensions.formautofill.creditCards.enabled", false); // 5017
 user_pref("extensions.formautofill.heuristics.enabled", false); // 5017
 
 
+user_pref("browser.startup.homepage", "about:firefoxview"); //0103
 /* 1003: disable storing extra session data [SETUP-CHROME]
  * define on which sites to save extra session data such as form content, cookies and POST data
  * 0=everywhere, 1=unencrypted sites, 2=nowhere ***/
@@ -24,6 +25,9 @@ user_pref("toolkit.winRegisterApplicationRestart", true);
  * If set to false then the shortcuts use a generic Firefox icon ***/
 user_pref("browser.shell.shortcutFavicons", true);
 
+user_pref("privacy.userContext.ui.enabled", false): //1701
+
+user_pref("pdfjs.disabled", true); //2620
 /* 2651: enable user interaction for security by always asking where to download
  * [SETUP-CHROME] On Android this blocks longtapping and saving images
  * [SETTING] General>Downloads>Always ask you where to save files ***/
@@ -33,8 +37,23 @@ user_pref("browser.download.alwaysOpenPanel", true);
 
 
 //aelius
-user_pref("extensions.pocket.enabled", false);
+user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
+user_pref("browser.display.use_document_fonts", 0); //override web page fonts
+user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
+user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", true); //tab-stash restore tabs w/ history
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+user_pref("browser.tabs.inTitlebar", 1);
+user_pref("browser.taskbar.previews.enable", false);
 user_pref("config.trim_on_minimize", true); //Windows trim memory when fx minimized
+user_pref("devtools.editor.keymap", "vim"); //binds for source editor
+user_pref("extensions.pocket.enabled", false);
+user_pref("font.name.sans-serif.x-western", "Sylfaen"); //serif font for sans serif
+//user_pref("font.name.serif.x-western", "Sitka Display");
+user_pref("font.name.serif.x-unicode", "GohuFont 14 Nerd Font");
+user_pref("font.name.serif.x-western", "GohuFont 14 Nerd Font");
+user_pref("font.size.variable.x-western", 14);
+user_pref("font.size.variable.x-unicode", 14);
+user_pref("intl.regional_prefs.use_os_locales", true);
 user_pref("network.http.windows-sso.enabled", true);
 user_pref("reader.color_scheme", "sepia");
 user_pref("reader.content_width", 5);
@@ -42,13 +61,7 @@ user_pref("reader.font_size", 3);
 user_pref("reader.font_type", "serif");
 user_pref("reader.line_height", 2);
 user_pref("reader.parse-on-load.force-enabled", true); //readability always available
-user_pref("font.name.sans-serif.x-western", "Sylfaen"); //serif font for sans serif
-//user_pref("font.name.serif.x-western", "Sitka Display");
-user_pref("browser.display.use_document_fonts", 0); //override web page fonts
-user_pref("devtools.editor.keymap", "vim"); //binds for source editor
-user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); //load userChrome.css
-user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", true); //tab-stash restore tabs w/ history
 
 ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
 user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS",   12);//NSS    [120]
