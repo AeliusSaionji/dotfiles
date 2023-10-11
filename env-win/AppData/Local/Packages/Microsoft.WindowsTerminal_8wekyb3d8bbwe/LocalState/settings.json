@@ -200,6 +200,11 @@
             },
             {
                 "colorScheme": "One Half Dark",
+                "font": 
+                {
+                    "face": "Terminess Nerd Font",
+                    "size": 16.0
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "pwsh",
@@ -223,6 +228,20 @@
                 "guid": "{fe60f61c-cf5c-4b48-9642-a67f2f555236}",
                 "hidden": false,
                 "name": "senpai"
+            },
+            {
+                "closeOnExit": "never",
+                "colorScheme": "Solarized Light",
+                "commandline": "C:\\msys64\\msys2_shell.cmd -no-start -defterm -msys2 -shell bash -c \"pacman -Syuu\"",
+                "experimental.connection.passthroughMode": true,
+                "font": 
+                {
+                    "face": "ProggyCleanSZ Nerd Font"
+                },
+                "guid": "{d7410b39-2211-4075-835e-bd573f3c948a}",
+                "hidden": false,
+                "icon": "\u2699\ufe0f",
+                "name": "pacman"
             }
         ]
     },
