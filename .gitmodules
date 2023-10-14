@@ -4,8 +4,8 @@
 [submodule "mpv/.config/mpv/scripts/mpv_sponsorblock_minimal"]
 	path = mpv/.config/mpv/scripts/mpv_sponsorblock_minimal
 	url = https://codeberg.org/jouni/mpv_sponsorblock_minimal
-[submodule "mpv/.config/mpv/scripts/mpv-quality-menu"]
-	path = mpv/.config/mpv/scripts/mpv-quality-menu
+[submodule "mpv/.config/mpv/scripts/quality-menu"]
+	path = mpv/.config/mpv/scripts/quality-menu
 	url = https://github.com/christoph-heinrich/mpv-quality-menu
 [submodule "mpv/.config/mpv/scripts/evafast"]
 	path = mpv/.config/mpv/scripts/evafast
@@ -16,3 +16,9 @@
 [submodule "mpv/.config/mpv/scripts/PureMPV"]
 	path = mpv/.config/mpv/scripts/PureMPV
 	url = https://github.com/4ndrs/PureMPV
+[submodule "mpv/.config/mpv/scripts/uosc"]
+	path = mpv/.config/mpv/scripts/uosc
+	url = https://github.com/tomasklaen/uosc
+[submodule "mpv/.config/mpv/scripts/thumbfast"]
+	path = mpv/.config/mpv/scripts/thumbfast
+	url = https://github.com/po5/thumbfast
