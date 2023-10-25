@@ -188,6 +188,11 @@
                 "name": "powershell"
             },
             {
+                "colorScheme": "Vintage",
+                "font": 
+                {
+                    "face": "FantasqueSansM Nerd Font"
+                },
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "cmd"
@@ -200,11 +205,6 @@
             },
             {
                 "colorScheme": "One Half Dark",
-                "font": 
-                {
-                    "face": "Terminess Nerd Font",
-                    "size": 16.0
-                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "pwsh",
@@ -215,12 +215,6 @@
                 "hidden": false,
                 "name": "nu",
                 "source": "nu"
-            },
-            {
-                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
-                "hidden": false,
-                "name": "arch",
-                "source": "Windows.Terminal.Wsl"
             },
             {
                 "colorScheme": "Dracula",
