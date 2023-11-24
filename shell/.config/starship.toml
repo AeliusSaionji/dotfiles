@@ -1,4 +1,5 @@
 #right_format = """$time"""
+format = '$env_var$all'
 
 [time]
 disabled = true
@@ -16,7 +17,7 @@ format = '[$env_value]($style)'
 
 [env_var.msys]
 variable = 'MSYSTEM'
-format = '[$env_value](bold yellow)'
+format = '\[[$env_value](bold yellow)\]'
 
 [git_metrics]
 disabled = false
