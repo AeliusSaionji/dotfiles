@@ -30,6 +30,7 @@ set autoindent                 " Absent filetype-specific indenting, new lines i
 set cmdheight=2                " Command window height 2 lines avoids many cases of <Enter> to continue
 set laststatus=2               " Always display the status line, even if only one window is displayed
 set hlsearch                   " Switch on search pattern highlighting.
+set visualbell                 " audio bell is incredibly annoying
 set cryptmethod=blowfish2      " Set enrcyption method to blowfish
 set ignorecase                 " Make vim case insensitive...
 set smartcase                  " ...Except when we explicitly type a capital
