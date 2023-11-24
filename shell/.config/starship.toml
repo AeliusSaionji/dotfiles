@@ -1,12 +1,22 @@
-right_format = """$time"""
-[env_var.pwshViMode]
-variable = 'PSVIMode'
-format = '[$env_value]($style)'
+#right_format = """$time"""
 
 [time]
 disabled = true
 time_format = '%R'
 format = '🕙[\[$time\]]($style) '
+
+[character]
+error_symbol = '[✗](bold red) '
+vimcmd_symbol = '[❮](bold yellow)'
+
+[env_var.pwshViMode]
+disabled = true
+variable = 'PSVIMode'
+format = '[$env_value]($style)'
+
+[env_var.msys]
+variable = 'MSYSTEM'
+format = '[$env_value](bold yellow)'
 
 [git_metrics]
 disabled = false
@@ -37,8 +47,10 @@ renamed = '👅'
 deleted = '🗑'
 
 [shell]
-fish_indicator = '󰈺 '
-powershell_indicator = '_'
+nu_indicator='󰟆'
+fish_indicator = '󰈺'
+powershell_indicator = '󰨊'
+cmd_indicator = '[](bold white)'
 unknown_indicator = 'mystery shell'
 style = 'cyan bold'
 disabled = false
@@ -56,5 +68,6 @@ disabled = false
 style = "bold blue"
 
 [os.symbols]
-Windows = " "
-Arch = "Arch is the best! "
+Windows = "[](bold blue) "
+Android = "[](bold green) "
+Arch = "[](bold cyan)"
