@@ -71,4 +71,4 @@ style = "bold blue"
 [os.symbols]
 Windows = "[](bold blue) "
 Android = "[](bold green) "
-Arch = "[](bold cyan)"
+Arch = "[](bold cyan) "
