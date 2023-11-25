@@ -10,6 +10,9 @@ format = '🕙[\[$time\]]($style) '
 error_symbol = '[✗](bold red) '
 vimcmd_symbol = '[❮](bold yellow)'
 
+[cmd_duration]
+format = ' [$duration]($style)'
+
 [env_var.pwshViMode]
 disabled = true
 variable = 'PSVIMode'
@@ -46,6 +49,15 @@ modified = '📝'
 staged = '[++\($count\)](green)'
 renamed = '👅'
 deleted = '🗑'
+
+[username]
+format = '[$user]($style)'
+
+[hostname]
+ssh_only = true
+ssh_symbol = '@'
+format = '[$ssh_symbol$hostname]($style)'
+
 
 [shell]
 nu_indicator='󰟆'
