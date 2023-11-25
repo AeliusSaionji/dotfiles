@@ -1,13 +1,36 @@
 #right_format = """$time"""
 format = '$env_var$all'
 
+[directory.substitutions]
+"Documents" = "󰈙 "
+"documents" = "󰈙 "
+"Downloads" = " "
+"downloads" = " "
+"Music" = " "
+"music" = " "
+"Pictures" = " "
+"pictures" = " "
+"Videos" = "󰕧 "
+"videos" = "󰕧 "
+
+[status]
+disabled = false
+map_symbol = true
+pipestatus = true
+pipestatus_separator = '| '
+pipestatus_format = '\[ $pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style) '
+symbol = ''
+
+[sudo]
+disabled = false
+format = '[$symbol]($style)'
+
 [time]
 disabled = true
 time_format = '%R'
 format = '🕙[\[$time\]]($style) '
 
 [character]
-error_symbol = '[✗](bold red) '
 vimcmd_symbol = '[❮](bold yellow)'
 
 [cmd_duration]
