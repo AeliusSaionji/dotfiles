@@ -1,42 +1,29 @@
-/* override recipe: enable session restore ***/
 user_pref("browser.startup.page", 3); // 0102
+
+user_pref("browser.sessionstore.privacy_level", 0); // 1003
+user_pref("toolkit.winRegisterApplicationRestart", true); // 1005
+user_pref("browser.shell.shortcutFavicons", true); // 1006
+
+user_pref("privacy.userContext.ui.enabled", false); // 1701
+
+user_pref("pdfjs.disabled", true); // 2620
+user_pref("browser.download.useDownloadDir", true); // 2651
+user_pref("browser.download.alwaysOpenPanel", true); // 2652
+user_pref("extensions.webextensions.restrictedDomains", ""); // 2662
 user_pref("privacy.clearOnShutdown.history", false); // 2811
-user_pref("privacy.cpd.history", false); // 2820 optional to match when you use Ctrl-Shift-Del
+user_pref("privacy.cpd.history", false); // 2820
 
-user_pref("webgl.disabled", false); //4520
-user_pref("signon.rememberSignons", false); //5003
-user_pref("browser.taskbar.previews.enable", false); //5015
-user_pref("extensions.formautofill.addresses.enabled", false); // 5017
-user_pref("extensions.formautofill.creditCards.enabled", false); // 5017
-user_pref("extensions.formautofill.heuristics.enabled", false); // 5017
+user_pref("privacy.resistFingerprinting", false); // 4501
+user_pref("privacy.resistFingerprinting.block_mozAddonManager", false); // 4503
+user_pref("privacy.resistFingerprinting.letterboxing", false); // 4504
+user_pref("webgl.disabled", false); // 4520 [mostly pointless if not verwenden RFP]
 
 
-user_pref("browser.startup.homepage", "about:firefoxview"); //0103
-/* 1003: disable storing extra session data [SETUP-CHROME]
- * define on which sites to save extra session data such as form content, cookies and POST data
- * 0=everywhere, 1=unencrypted sites, 2=nowhere ***/
-user_pref("browser.sessionstore.privacy_level", 0);
-/* 1005: disable automatic Firefox start and session restore after reboot [FF62+] [WINDOWS]
- * [1] https://bugzilla.mozilla.org/603903 ***/
-user_pref("toolkit.winRegisterApplicationRestart", true);
-/* 1006: disable favicons in shortcuts
- * URL shortcuts use a cached randomly named .ico file which is stored in your
- * profile/shortcutCache directory. The .ico remains after the shortcut is deleted
- * If set to false then the shortcuts use a generic Firefox icon ***/
-user_pref("browser.shell.shortcutFavicons", true);
-
-user_pref("privacy.userContext.ui.enabled", false): //1701
-
-user_pref("pdfjs.disabled", true); //2620
-/* 2651: enable user interaction for security by always asking where to download
- * [SETUP-CHROME] On Android this blocks longtapping and saving images
- * [SETTING] General>Downloads>Always ask you where to save files ***/
-user_pref("browser.download.useDownloadDir", true);
-/* 2652: disable downloads panel opening on every download [FF96+] ***/
-user_pref("browser.download.alwaysOpenPanel", true);
-
+user_pref("browser.urlbar.maxRichResults", 0);
+user_pref("browser.urlbar.clickSelectsAll", true);
 
 //aelius
+user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
 user_pref("browser.display.use_document_fonts", 0); //override web page fonts
 user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
