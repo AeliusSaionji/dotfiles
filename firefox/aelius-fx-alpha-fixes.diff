@@ -1,0 +1,53 @@
+diff --git a/chrome/userChrome.css b/chrome/userChrome.css
+index 0fe78d6..b9bc003 100644
+--- a/chrome/userChrome.css
++++ b/chrome/userChrome.css
+@@ -41,7 +41,7 @@ video {
+ 
+ /* ❌ Hide Items ❌ */
+ /* ❌ Tooltips ❌ */
+-tooltip,
++/* tooltip, */
+ 
+ /* ❌ Empty Space */
+ spacer,.titlebar-spacer,
+@@ -49,7 +49,7 @@ spacer,.titlebar-spacer,
+ /* ❌ Tab List */
+ #alltabs-button,
+ 
+-/* ❌ Extensions Menu */
++/* ❌ Extensions Menu
+ #unified-extensions-button,
+ 
+ /* ❌ #PanelUI-button */
+@@ -125,6 +125,7 @@ menuitem[disabled], menu[disabled],
+   border-radius: var(--6) !important;
+   margin: var(--8) !important;
+   background-color: blue !important;
++  color: white !important;
+ }
+ 
+ /* ℹ️ Findbar Ctrl+F */
+@@ -347,7 +348,7 @@ tab:not([pinned]):hover .tab-close-button {
+   transition: transform 0.1s linear;
+   transform: none !important;
+   font-size: 1rem !important;
+-  color: lightgrey !important;
++  /*color: lightgrey !important;*/
+   padding-inline: 0px !important;
+ }
+ 
+@@ -362,7 +363,12 @@ tab:not([pinned]):hover .tab-close-button {
+   z-index: -1 !important;
+ }
+ #alltabs-button,
+-#unified-extensions-button,
++#unified-extensions-button {
++  position: fixed !important;
++  top: 0px;
++  left: 0px;
++  z-index: -1 !important;
++}
+ #PanelUI-button,
+ #nav-bar-overflow-button {
+   z-index: 2;

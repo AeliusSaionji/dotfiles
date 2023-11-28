@@ -1,9 +1,7 @@
 /* Dependencies first */
-@import url(chrome/window_control_placeholder_support.css); /* Dependency
+/* @import url(chrome/window_control_placeholder_support.css); */ /* Dependency */
 /* Dependencies first */
-@import url(chrome/button_effect_scale_onclick.css); /* Buttons animate when clicked */
-@import url(chrome/compact_extensions_panel.css); /* Sensible row height for addons popup */
+/* @import url(chrome/button_effect_scale_onclick.css); */ /* Buttons animate when clicked */
+@import url(fx-alpha/chrome/userChrome.css);
+@import url(chrome/compact_extensions_panel.css); /* Sensible row height */
 @import url(chrome/loading_indicator_rotating_image.css);   /* Loading overlay */
-@import url(chrome/tabs_on_bottom.css);
-@import url(chrome/autohide_tabstoolbar.css);
-@import url(chrome/autohide_sidebar.css);

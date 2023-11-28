@@ -18,11 +18,18 @@ user_pref("privacy.resistFingerprinting.block_mozAddonManager", false); // 4503
 user_pref("privacy.resistFingerprinting.letterboxing", false); // 4504
 user_pref("webgl.disabled", false); // 4520 [mostly pointless if not verwenden RFP]
 
-
-user_pref("browser.urlbar.maxRichResults", 0);
-user_pref("browser.urlbar.clickSelectsAll", true);
+user_pref("media.eme.enabled", false); // 5508
+//user_pref("browser.urlbar.maxRichResults", 0); // 5011
+user_pref("privacy.resistFingerprinting.pbmode", true); // 4501
+user_pref("extensions.formautofill.addresses.enabled", false); // 5017
+user_pref("extensions.formautofill.creditCards.enabled", false); // 5017
 
 //aelius
+user_pref("browser.urlbar.maxRichResults", 0);
+user_pref("browser.urlbar.clickSelectsAll", true);
+user_pref("privacy.globalprivacycontrol.enabled", true);
+user_pref("browser.urlbar.clickSelectsAll", true);
+user_pref("signon.firefoxRelay.feature", "disabled");
 user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
 user_pref("browser.display.use_document_fonts", 0); //override web page fonts
