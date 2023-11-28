@@ -14,23 +14,16 @@ user_pref("privacy.clearOnShutdown.history", false); // 2811
 user_pref("privacy.cpd.history", false); // 2820
 
 user_pref("privacy.resistFingerprinting", false); // 4501
-user_pref("privacy.resistFingerprinting.block_mozAddonManager", false); // 4503
+user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // 4503
 user_pref("privacy.resistFingerprinting.letterboxing", false); // 4504
 user_pref("webgl.disabled", false); // 4520 [mostly pointless if not verwenden RFP]
 
 user_pref("media.eme.enabled", false); // 5508
-//user_pref("browser.urlbar.maxRichResults", 0); // 5011
 user_pref("privacy.resistFingerprinting.pbmode", true); // 4501
 user_pref("extensions.formautofill.addresses.enabled", false); // 5017
 user_pref("extensions.formautofill.creditCards.enabled", false); // 5017
 
 //aelius
-user_pref("browser.urlbar.maxRichResults", 0);
-user_pref("browser.urlbar.clickSelectsAll", true);
-user_pref("privacy.globalprivacycontrol.enabled", true);
-user_pref("browser.urlbar.clickSelectsAll", true);
-user_pref("signon.firefoxRelay.feature", "disabled");
-user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
 user_pref("browser.display.use_document_fonts", 0); //override web page fonts
 user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
@@ -38,23 +31,28 @@ user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", true); //
 user_pref("browser.tabs.closeWindowWithLastTab", false);
 user_pref("browser.tabs.inTitlebar", 1);
 user_pref("browser.taskbar.previews.enable", false);
+user_pref("browser.taskbar.previews.enable", false);
+user_pref("browser.urlbar.clickSelectsAll", true);
+user_pref("browser.urlbar.maxRichResults", 0);
 user_pref("config.trim_on_minimize", true); //Windows trim memory when fx minimized
 user_pref("devtools.editor.keymap", "vim"); //binds for source editor
 user_pref("extensions.pocket.enabled", false);
 user_pref("font.name.sans-serif.x-western", "Sylfaen"); //serif font for sans serif
-//user_pref("font.name.serif.x-western", "Sitka Display");
 user_pref("font.name.serif.x-unicode", "GohuFont 14 Nerd Font");
 user_pref("font.name.serif.x-western", "GohuFont 14 Nerd Font");
-user_pref("font.size.variable.x-western", 14);
 user_pref("font.size.variable.x-unicode", 14);
+user_pref("font.size.variable.x-western", 14);
 user_pref("intl.regional_prefs.use_os_locales", true);
 user_pref("network.http.windows-sso.enabled", true);
+user_pref("privacy.globalprivacycontrol.enabled", true);
 user_pref("reader.color_scheme", "sepia");
 user_pref("reader.content_width", 5);
 user_pref("reader.font_size", 3);
 user_pref("reader.font_type", "serif");
 user_pref("reader.line_height", 2);
 user_pref("reader.parse-on-load.force-enabled", true); //readability always available
+user_pref("signon.firefoxRelay.feature", "disabled");
+user_pref("signon.rememberSignons", false); // 5003
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); //load userChrome.css
 
 ///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
