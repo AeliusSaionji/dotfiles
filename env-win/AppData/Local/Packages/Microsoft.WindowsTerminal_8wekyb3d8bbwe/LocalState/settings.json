@@ -176,7 +176,7 @@
                 "name": "reServer"
             },
             {
-                "commandline": "%SystemRoot%\\System32\\OpenSSH\\ssh.exe pyrrha.lan",
+                "commandline": "C:\\Program Files\\OpenSSH\\ssh.exe Pyrrha.lan",
                 "guid": "{bd203fc1-6d0a-4be3-9053-f31c7ff16620}",
                 "hidden": false,
                 "name": "Pyrrha"
