@@ -3,8 +3,7 @@
 /* Loading overlay */
 @import url(chrome/loading_indicator_rotating_image.css);
 
-
-/* customized from https://github.com/Dook97/firefox-qutebrowser-userchrome */
+/* Tridactyl */
 tabs {
   counter-reset: tab-counter;
 }
@@ -14,13 +13,17 @@ tabs {
   content: counter(tab-counter) " - ";
 }
 
+
+/* from https://github.com/Tagggar/Firefox-Alpha------------------------ */
+/* and https://github.com/Dook97/firefox-qutebrowser-userchrome--------- */
 :root {
+	--red: #ff000070;
 	--tab-font: 'Jetbrains Mono';
 	--urlbar-font: 'Jetbrains Mono';
 
 	/* try increasing if you encounter problems */
-	--urlbar-height-setting: 24px;
-	--tab-min-height: 16px !important;
+	--urlbar-height-setting: 26px;
+	--tab-min-height: 26px !important;
 
 	/* I don't recommend you touch this unless you know what you're doing */
 	--arrowpanel-menuitem-padding: 2px !important;
@@ -139,7 +142,6 @@ toolbar .toolbarbutton-1 { padding: 0 0 !important; }
 #reader-mode-button{ display: none !important; }
 */
 #urlbar-zoom-button { display: none; }
-#star-button-box:hover { background: inherit !important; }
 
 /* Go to arrow button at the end of the urlbar when searching */
 #urlbar-go-button { display: none; }
@@ -186,6 +188,11 @@ tab {
 	overflow-clip-margin: 0px !important;
 }
 
+/* Tab: selected colors */
+#tabbrowser-tabs .tabbrowser-tab[selected] .tab-content {
+	background: #6699ff !important;
+}
+
 /* hide window controls */
 .titlebar-buttonbox-container { display: none; }
 
@@ -225,3 +232,9 @@ tab {
 	display: none;
 }
 
+/* taken from-https://github.com/Tagggar/Firefox-Alpha------------------- */
+/* Tabs Audio */
+#tabbrowser-tabs .tabbrowser-tab:is([soundplaying]) .tab-background {
+  background-color: var(--red) !important;
+  transition: background-color 0.1s ease !important;
+}
