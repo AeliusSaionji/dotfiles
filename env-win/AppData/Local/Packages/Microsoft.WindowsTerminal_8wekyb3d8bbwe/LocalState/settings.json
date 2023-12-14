@@ -236,6 +236,20 @@
                 "hidden": false,
                 "icon": "\u2699\ufe0f",
                 "name": "pacman"
+            },
+            {
+                "closeOnExit": "never",
+                "colorScheme": "Solarized Light",
+                "commandline": "winget.exe update --all --accept-package-agreements",
+                "experimental.connection.passthroughMode": true,
+                "font": 
+                {
+                    "face": "ProggyCleanSZ Nerd Font"
+                },
+                "guid": "{aaef7e06-c7ad-468a-8512-34ca3e141c22}",
+                "hidden": false,
+                "icon": "\u2699\ufe0f",
+                "name": "winget"
             }
         ]
     },
