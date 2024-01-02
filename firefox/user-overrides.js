@@ -16,7 +16,7 @@ user_pref("privacy.cpd.history", false); // 2820
 user_pref("privacy.resistFingerprinting", false); // 4501
 user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // 4503
 user_pref("privacy.resistFingerprinting.letterboxing", false); // 4504
-user_pref("webgl.disabled", false); // 4520 [mostly pointless if not verwenden RFP]
+user_pref("webgl.disabled", false); // 4520 [mostly pointless if not using RFP]
 
 user_pref("media.eme.enabled", false); // 5508
 user_pref("privacy.resistFingerprinting.pbmode", true); // 4501
@@ -33,7 +33,7 @@ user_pref("browser.tabs.inTitlebar", 1);
 user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.urlbar.clickSelectsAll", true);
-user_pref("browser.urlbar.maxRichResults", 0);
+user_pref("browser.urlbar.maxRichResults", 5);
 user_pref("config.trim_on_minimize", true); //Windows trim memory when fx minimized
 user_pref("devtools.editor.keymap", "vim"); //binds for source editor
 user_pref("extensions.pocket.enabled", false);
