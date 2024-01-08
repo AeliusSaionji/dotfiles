@@ -65,18 +65,32 @@ augroup End
 " Vim-plug package manager
 call plug#begin()
 "UI
-  Plug 'bling/vim-airline'               " Fancy statusbar
+  Plug 'vim-airline/vim-airline'         " Fancy statusbar
+    set noshowmode " remove internal statusline
+  " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+    " let g:airline_theme = 'catppuccin_mocha'
+  Plug 'airblade/vim-gitgutter'
+    set updatetime=1000 " updates plugin/swap faster
+    let g:gitgutter_grep = 'rg'
+    function! GitStatus()
+      let [a,m,r] = GitGutterGetHunkSummary()
+      return printf('+%d ~%d -%d', a, m, r)
+    endfunction
+    set statusline+=%{GitStatus()}
+
   Plug 'junegunn/goyo.vim'               " Distraction free reading and writing
   Plug 'junegunn/limelight.vim'          " Highlight current paragraph
 "Tools
-  Plug 'chilicuil/vim-sprunge'           " Dump buffer to a pastebin
+  Plug 'jreybert/vimagit'
+  Plug 'mbbill/undotree'
   Plug 'christoomey/vim-titlecase'       " Capitalize operator
   Plug 'godlygeek/tabular'               " Format tables
   Plug 'gpanders/vim-oldfiles'           " Improve internal file history
   Plug 'reedes/vim-pencil'               " Auto apply textwidth formatting in real time
-  Plug 'tpope/vim-commentary'            " Comment/uncomment a range
-  Plug 'tpope/vim-surround'              " Commands to manipulate surrounding tags/quotes/other
-  Plug 'tpope/vim-vinegar'               " Improve internal file browser
+  Plug 'https://tpope.io/vim/repeat.git'
+  Plug 'https://tpope.io/vim/commentary.git' " Comment/uncomment a range
+  Plug 'https://tpope.io/vim/surround.git'   " Commands to manipulate surrounding tags/quotes/other
+  Plug 'https://tpope.io/vim/vinegar.git'    " Improve internal file browser
 "Words
   Plug 'christoomey/vim-sort-motion'     " Sort motion
   Plug 'michaeljsmith/vim-indent-object' " Indent object
