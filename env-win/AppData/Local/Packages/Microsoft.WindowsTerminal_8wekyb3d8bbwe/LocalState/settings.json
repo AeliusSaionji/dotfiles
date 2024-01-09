@@ -169,14 +169,14 @@
                 "name": "ucrt64"
             },
             {
-                "commandline": "C:\\Program Files\\OpenSSH\\ssh.exe reServer.lan",
+                "commandline": "C:\\Program Files\\OpenSSH\\ssh.exe reServer",
                 "guid": "{aa475803-62b3-4d56-ada0-f5b242490706}",
                 "hidden": false,
                 "icon": "\ud83e\uddff",
                 "name": "reServer"
             },
             {
-                "commandline": "C:\\Program Files\\OpenSSH\\ssh.exe Pyrrha.lan",
+                "commandline": "C:\\Program Files\\OpenSSH\\ssh.exe Pyrrha",
                 "guid": "{bd203fc1-6d0a-4be3-9053-f31c7ff16620}",
                 "hidden": false,
                 "name": "Pyrrha"

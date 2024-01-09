@@ -42,9 +42,9 @@ tabs {
 menupopup, panel { --panel-border-radius: 0px !important; }
 menu, menuitem, menucaption { border-radius: 0px !important; }
 
-/* no stupid large buttons in right-click menu */
-menupopup > #context-navigation { display: none !important; }
-menupopup > #context-sep-navigation { display: none !important; }
+/* no large buttons in right-click menu */
+/* menupopup > #context-navigation { display: none !important; } */
+/* menupopup > #context-sep-navigation { display: none !important; } */
 
 /* --- DEBLOAT NAVBAR ----------------------------------- */
 
@@ -142,6 +142,7 @@ toolbar .toolbarbutton-1 { padding: 0 0 !important; }
 #reader-mode-button{ display: none !important; }
 */
 #urlbar-zoom-button { display: none; }
+#pageAction-urlbar-firefoxpwa_filips_si { display: none; }
 
 /* Go to arrow button at the end of the urlbar when searching */
 #urlbar-go-button { display: none; }
