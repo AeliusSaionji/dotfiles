@@ -13,7 +13,10 @@ endif
 let &g:directory=$HOME . '/.cache/vim'
 let &g:undodir=&g:directory . '/undo//'
 let &g:backupdir=&g:directory . '/backup//'
-let &viminfo=&viminfo . ',n' . &g:directory . '/viminfo'
+" viminfo cannot be shared
+if ! has ('nvim')
+  let &viminfo=&viminfo . ',n' . &g:directory . '/nviminfo'
+endif
 let &g:directory.='/swap//'
 " Create directories if they don't exist
 if ! isdirectory(expand(&g:directory))
@@ -32,7 +35,9 @@ set laststatus=2               " Always display the status line, even if only on
 set hlsearch                   " Switch on search pattern highlighting.
 set undofile                   " Remember undo across sessions
 set visualbell                 " audio bell is incredibly annoying
-set cryptmethod=blowfish2      " Set enrcyption method to blowfish
+if ! has ('nvim')
+  set cryptmethod=blowfish2    " Set enrcyption method to blowfish
+endif
 set ignorecase                 " Make vim case insensitive...
 set smartcase                  " ...Except when we explicitly type a capital
 set incsearch                  " Jump to matches as you search
@@ -58,7 +63,9 @@ inoremap jj <Esc>
 "noremap <C-e> :mksession! ~/vimfiles/elevate.vim<Return>:silent exec '!elevate.exe ' . v:progname '-S C:/Users/Link/vimfiles/elevate.vim --cmd "let $HOME=''C:\Users\Link\''"'<Return>:q<Return>
 " Don't write viminfo while editing an encrypted file
 augroup Security
-  autocmd vimleavepre * if strlen(&key) | set viminfo= | endif
+  if ! has ('nvim')
+    autocmd vimleavepre * if strlen(&key) | set viminfo= | endif
+  endif
 augroup End
 
 " --- Plugin config --- "
