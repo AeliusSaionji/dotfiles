@@ -25,8 +25,23 @@ binds.keybinds = {
 binds.mouse_bindings = {
   {
     event = { Down = { streak = 3, button = 'Left' } },
-    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
     mods = 'NONE',
+    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'CTRL',
+    action = wezterm.action.IncreaseFontSize,
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'CTRL',
+    action = wezterm.action.DecreaseFontSize,
   },
 }
 
