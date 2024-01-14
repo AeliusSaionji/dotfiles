@@ -8,19 +8,20 @@ end
 
 
 config.visual_bell = {
-  fade_in_function = {CubicBezier={0.0, 0.0, 0.58, 1.0}},
-  fade_in_duration_ms = 150,
-  fade_out_function = 'Linear',
-  fade_out_duration_ms = 1500,
-
+  fade_in_function = 'Linear',
+  fade_in_duration_ms = 250,
 }
 config.colors = {
-  visual_bell = '#FF2020',
+  visual_bell = '#FFFFFF',
 }
 
-config.font = wezterm.font('Hack Nerd Font')
-config.font_size = 12
-config.line_height = 1.2
+-- config.font = wezterm.font 'Fira code'
+-- config.font = wezterm.font 'GohuFont 14 Nerd Font'
+config.font = wezterm.font 'VictorMono Nerd Font'
+config.font_size = 14
+config.line_height = 1.0
+-- config.allow_square_glyphs_to_overflow_width = "Never"
+config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
 config.adjust_window_size_when_changing_font_size = false
 config.color_scheme = 'Laserwave (Gogh)'
 config.use_fancy_tab_bar = true
