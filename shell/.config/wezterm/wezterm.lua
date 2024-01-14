@@ -30,8 +30,7 @@ config.webgpu_power_preference = "HighPerformance"
 config.prefer_egl = false
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- config.win32_system_backdrop = 'Acrylic'
--- config.default_prog = { 'pwsh.exe', '-NoLogo' }
-config.default_prog = { 'broot' }
+config.default_prog = { 'pwsh.exe', '-NoLogo' }
 
 local launch_menu = require("launch_table")
 config.launch_menu = launch_menu
