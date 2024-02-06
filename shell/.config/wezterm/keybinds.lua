@@ -1,24 +1,32 @@
-local wezterm = require("wezterm")
+local wezterm = require 'wezterm'
 local binds = {}
 
-binds.keybinds = {
+binds.keybinds =
+{
   {
     key = '}',
     mods = 'CTRL|SHIFT',
-    action = wezterm.action.SplitPane {
+    action = wezterm.action.SplitPane
+    {
       direction = 'Right',
       command = { args = { 'broot' } },
-      size = { Percent = 25},
+      size = { Percent = 25 },
     },
   },
   {
     key = '{',
     mods = 'CTRL|SHIFT',
-    action = wezterm.action.SplitPane {
+    action = wezterm.action.SplitPane
+    {
       direction = 'Left',
       command = { args = { 'broot' } },
-      size = { Percent = 25},
+      size = { Percent = 25 },
     },
+  },
+  {
+    key = 'D',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DetachDomain 'CurrentPaneDomain',
   },
 }
 

@@ -20,5 +20,9 @@ table.insert(launch_menu, {
   label = 'cmd',
   args = { 'cmd' },
 })
+table.insert(launch_menu, {
+  label = 'btm',
+  args = { 'btm' },
+})
 
 return launch_menu
