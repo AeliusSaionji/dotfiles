@@ -25,23 +25,22 @@ user_pref("extensions.formautofill.creditCards.enabled", false); // 5017
 
 //aelius
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
-user_pref("browser.display.use_document_fonts", 0); //override web page fonts
-user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
+// user_pref("browser.display.use_document_fonts", 0); //override web page fonts
+// user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
 user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", true); //tab-stash restore tabs w/ history
 user_pref("browser.tabs.closeWindowWithLastTab", false);
 user_pref("browser.tabs.inTitlebar", 1);
 user_pref("browser.taskbar.previews.enable", false);
-user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.urlbar.clickSelectsAll", true);
-user_pref("browser.urlbar.maxRichResults", 5);
+user_pref("browser.urlbar.maxRichResults", 15);
 user_pref("config.trim_on_minimize", true); //Windows trim memory when fx minimized
 user_pref("devtools.editor.keymap", "vim"); //binds for source editor
 user_pref("extensions.pocket.enabled", false);
-user_pref("font.name.sans-serif.x-western", "Sylfaen"); //serif font for sans serif
-user_pref("font.name.serif.x-unicode", "GohuFont 14 Nerd Font");
-user_pref("font.name.serif.x-western", "GohuFont 14 Nerd Font");
-user_pref("font.size.variable.x-unicode", 14);
-user_pref("font.size.variable.x-western", 14);
+// user_pref("font.name.sans-serif.x-western", "Sylfaen"); //serif font for sans serif
+// user_pref("font.name.serif.x-unicode", "GohuFont 14 Nerd Font");
+// user_pref("font.name.serif.x-western", "GohuFont 14 Nerd Font");
+// user_pref("font.size.variable.x-unicode", 14);
+// user_pref("font.size.variable.x-western", 14);
 user_pref("intl.regional_prefs.use_os_locales", true);
 user_pref("network.http.windows-sso.enabled", true);
 user_pref("privacy.globalprivacycontrol.enabled", true);

@@ -2,6 +2,9 @@
 @import url(chrome/compact_extensions_panel.css);
 /* Loading overlay */
 @import url(chrome/loading_indicator_rotating_image.css);
+@import url(chrome/autohide_sidebar.css);
+@import url(chrome/tabs_fill_available_width.css);
+@import url(chrome/toggle_tabs_toolbar_with_alt.css);
 
 /* Tridactyl */
 tabs {
@@ -168,25 +171,6 @@ tab {
 	border: none !important;
 }
 
-/* Tab size rules */
-.tabbrowser-tab[fadein]:not([pinned]) {
-/* Expand tab width to fill window width */
-	max-width: 100vw !important;
-/* Shrink tabs no smaller than favicon + number */
-	min-width: 5.5vw !important;
-	border: none;
-}
-
-/* increase width on hover */
-tab.tabbrowser-tab:hover:not([pinned]) {
-   min-width: 20vw !important;
-}
-
-/* increase width for selected */
-tab.tabbrowser-tab[selected]:not([pinned]) {
-   min-width: 20vw !important;
-}
-
 /* Hide close button on tabs */
 #tabbrowser-tabs .tabbrowser-tab .tab-close-button { display: none !important; }
 
@@ -208,10 +192,10 @@ tab.tabbrowser-tab[selected]:not([pinned]) {
 }
 
 /* hide window controls */
-.titlebar-buttonbox-container { display: none; }
+/* .titlebar-buttonbox-container { display: none; } */
 
 /* remove titlebar spacers */
-.titlebar-spacer { display: none !important; }
+/* .titlebar-spacer { display: none !important; } */
 
 /* disable tab shadow */
 #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
@@ -244,11 +228,6 @@ tab.tabbrowser-tab[selected]:not([pinned]) {
 /* remove additional mystery new tab button that appears in certain contexts */
 toolbarbutton#new-tab-button {
 	display: none !important;
-}
-
-/* hide private browsing indicator */
-#private-browsing-indicator-with-label {
-	display: none;
 }
 
 /* taken from-https://github.com/Tagggar/Firefox-Alpha------------------- */
