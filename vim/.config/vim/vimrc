@@ -35,9 +35,6 @@ set laststatus=2               " Always display the status line, even if only on
 set hlsearch                   " Switch on search pattern highlighting.
 set undofile                   " Remember undo across sessions
 set visualbell                 " audio bell is incredibly annoying
-if ! has ('nvim')
-  set cryptmethod=blowfish2    " Set enrcyption method to blowfish
-endif
 set ignorecase                 " Make vim case insensitive...
 set smartcase                  " ...Except when we explicitly type a capital
 set incsearch                  " Jump to matches as you search
@@ -48,32 +45,27 @@ set tabstop=2                  " Indent tabs less
 set shiftwidth=2               " Indent tabs less
 set expandtab                  " Use spaces instead of tabs
 set backspace=indent,eol,start " Make backspace work as expected
-set mouse=a                    " Enables mouse scrolling within ssh/tmux, prevents terminal scroll
+set mouse=a                    " Enables mouse support
 let c_comment_strings=1        " Highlight strings inside C comments
 " Theme
-colorscheme torte
+colorscheme slate
 " quick run terminal
 nnoremap <silent> <Leader>r :.terminal ++noclose ++eof=exit ++shell<CR>
 vnoremap <silent> <Leader>r :'<,'>terminal ++noclose ++eof=exit ++shell<CR>
-" My own mru solution using dmenu
-"noremap <C-p> :wv<CR>:e <C-r>=system("mruvim p")<CR><CR>
 " Exit insert mode with jj
-inoremap jj <Esc>
-" Elevate vim under windows. Update me to use powershell elevation
-"noremap <C-e> :mksession! ~/vimfiles/elevate.vim<Return>:silent exec '!elevate.exe ' . v:progname '-S C:/Users/Link/vimfiles/elevate.vim --cmd "let $HOME=''C:\Users\Link\''"'<Return>:q<Return>
-" Don't write viminfo while editing an encrypted file
-augroup Security
-  if ! has ('nvim')
-    autocmd vimleavepre * if strlen(&key) | set viminfo= | endif
-  endif
-augroup End
-
+" inoremap jj <Esc>
+" Helpers for MS Surface keyboard layout 
+inoremap <S-Del> <C-O>"+p
+vnoremap <C-Del> "+y
+if exists('g:neovide')
+  autocmd VimEnter * call timer_start(2000, {tid -> execute('NeovideFocus')})
+endif
 " --- Plugin config --- "
 
 " Vim-plug package manager
 call plug#begin()
 "UI
-  Plug 'vim-airline/vim-airline'         " Fancy statusbar
+  Plug 'vim-airline/vim-airline'             " Fancy statusbar
     set noshowmode " remove internal statusline
   " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
     " let g:airline_theme = 'catppuccin_mocha'
@@ -86,25 +78,25 @@ call plug#begin()
     endfunction
     set statusline+=%{GitStatus()}
 
-  Plug 'junegunn/goyo.vim'               " Distraction free reading and writing
-  Plug 'junegunn/limelight.vim'          " Highlight current paragraph
+  Plug 'junegunn/goyo.vim'                   " Distraction free reading and writing
+  Plug 'junegunn/limelight.vim'              " Highlight current paragraph
 "Tools
   Plug 'jreybert/vimagit'
   Plug 'mbbill/undotree'
-  Plug 'christoomey/vim-titlecase'       " Capitalize operator
-  Plug 'godlygeek/tabular'               " Format tables
-  Plug 'gpanders/vim-oldfiles'           " Improve internal file history
-  Plug 'reedes/vim-pencil'               " Auto apply textwidth formatting in real time
+  Plug 'christoomey/vim-titlecase'           " Capitalize operator
+  Plug 'godlygeek/tabular'                   " Format tables
+  Plug 'gpanders/vim-oldfiles'               " Improve internal file history
+  Plug 'reedes/vim-pencil'                   " Auto apply textwidth formatting in real time
   Plug 'https://tpope.io/vim/repeat.git'
   Plug 'https://tpope.io/vim/commentary.git' " Comment/uncomment a range
   Plug 'https://tpope.io/vim/surround.git'   " Commands to manipulate surrounding tags/quotes/other
   Plug 'https://tpope.io/vim/vinegar.git'    " Improve internal file browser
 "Words
-  Plug 'christoomey/vim-sort-motion'     " Sort motion
-  Plug 'michaeljsmith/vim-indent-object' " Indent object
+  Plug 'christoomey/vim-sort-motion'         " Sort motion
+  Plug 'michaeljsmith/vim-indent-object'     " Indent object
 "Syntax
-  Plug 'PProvost/vim-ps1'                " Powershell support
-  Plug 'plasticboy/vim-markdown'         " Markdown support
+  Plug 'PProvost/vim-ps1'                    " Powershell support
+  Plug 'plasticboy/vim-markdown'             " Markdown support
 call plug#end()
 
 " Close Oldfiles split after use
