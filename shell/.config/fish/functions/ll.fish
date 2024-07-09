@@ -1,7 +1,7 @@
-function ll --wraps=ls --wraps='lsd -l' --description 'alias ll lsd -l'
-  if command -q lsd
-    command lsd --config-file ~/.config/lsd/config.yaml -l $argv
+function ll --wraps=ls --wraps='eza -l' --description 'alias ll eza -l'
+  if command -q eza
+    command eza --classify auto --icons --hyperlink --long --git $argv
     return
   end
-  ls -l
+  ls -l --hyperlink=auto
 end
