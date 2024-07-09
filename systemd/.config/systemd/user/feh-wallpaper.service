@@ -6,6 +6,3 @@ Requisite=x11.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/feh --bg-max --no-fehbg -z %h/pictures/bg
-
-[Install]
-WantedBy=x11.target
