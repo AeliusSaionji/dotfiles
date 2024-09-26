@@ -32,6 +32,7 @@ set encoding=utf-8             " Enforce UTF-8
 set autoindent                 " Absent filetype-specific indenting, new lines inherit above indentation
 set cmdheight=2                " Command window height 2 lines avoids many cases of <Enter> to continue
 set laststatus=2               " Always display the status line, even if only one window is displayed
+set hidden                     " Allow unsaved buffers to be hidden 
 set hlsearch                   " Switch on search pattern highlighting.
 set undofile                   " Remember undo across sessions
 set visualbell                 " audio bell is incredibly annoying
