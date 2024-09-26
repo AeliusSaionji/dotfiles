@@ -49,7 +49,8 @@ config.font = wezterm.font {
 }
 
 config.font_size = 11
-config.line_height = 1.2
+-- Changing line height causes font rendering issues on resize
+-- config.line_height = 1.2
 -- Workaround for possible bug where fallback nerd glyphs shrink, but built in
 -- glyphs from patched fonts don't. Not needed if using an external nerd font.
 config.allow_square_glyphs_to_overflow_width = 'Always'
