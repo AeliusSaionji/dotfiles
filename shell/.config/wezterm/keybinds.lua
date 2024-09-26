@@ -28,6 +28,11 @@ binds.keybinds =
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DetachDomain 'CurrentPaneDomain',
   },
+  {
+    key = '?',
+    mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
 }
 
 binds.mouse_bindings = {
