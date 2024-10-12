@@ -1,35 +1,30 @@
 user_pref("browser.startup.page", 3); // 0102
-
 user_pref("browser.sessionstore.privacy_level", 0); // 1003
 user_pref("toolkit.winRegisterApplicationRestart", true); // 1005
 user_pref("browser.shell.shortcutFavicons", true); // 1006
 
-user_pref("privacy.userContext.ui.enabled", false); // 1701
-
 user_pref("pdfjs.disabled", true); // 2620
 user_pref("browser.download.useDownloadDir", true); // 2651
 user_pref("browser.download.alwaysOpenPanel", true); // 2652
+user_pref("browser.download.manager.addToRecentDocs", true); // 2653
+user_pref("browser.download.always_ask_before_handling_new_types", false); // 2653
 user_pref("extensions.webextensions.restrictedDomains", ""); // 2662
+user_pref("privacy.sanitize.sanitizeOnShutdown", false); // 2810
 user_pref("privacy.clearOnShutdown.history", false); // 2811
-user_pref("privacy.cpd.history", false); // 2820
-
-user_pref("privacy.resistFingerprinting", false); // 4501
-user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // 4503
-user_pref("privacy.resistFingerprinting.letterboxing", false); // 4504
-user_pref("webgl.disabled", false); // 4520 [mostly pointless if not using RFP]
+user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false); // 2811
+user_pref("privacy.clearSiteData.historyFormDataAndDownloads", false); // 2820
+user_pref("privacy.cpd.history", false); // 2830
+user_pref("privacy.cpd.sessions	", false); // 2830
 
 user_pref("media.eme.enabled", false); // 5508
-user_pref("privacy.resistFingerprinting.pbmode", true); // 4501
-user_pref("extensions.formautofill.addresses.enabled", false); // 5017
-user_pref("extensions.formautofill.creditCards.enabled", false); // 5017
 
 //aelius
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
 // user_pref("browser.display.use_document_fonts", 0); //override web page fonts
 // user_pref("browser.download.start_downloads_in_tmp_dir", true); //for play-with m3u spam
 user_pref("browser.sessionstore.persist_closed_tabs_between_sessions", true); //tab-stash restore tabs w/ history
-user_pref("browser.tabs.closeWindowWithLastTab", false);
-user_pref("browser.tabs.inTitlebar", 1);
+user_pref("browser.tabs.closeWindowWithLastTab", true);
+user_pref("browser.tabs.inTitlebar", 0);
 user_pref("browser.taskbar.previews.enable", false);
 user_pref("browser.urlbar.clickSelectsAll", true);
 user_pref("browser.urlbar.maxRichResults", 15);
