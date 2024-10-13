@@ -2,7 +2,7 @@ user_pref("browser.startup.page", 3); // 0102
 user_pref("browser.sessionstore.privacy_level", 0); // 1003
 user_pref("toolkit.winRegisterApplicationRestart", true); // 1005
 user_pref("browser.shell.shortcutFavicons", true); // 1006
-
+user_pref("security.cert_pinning.enforcement_level", 1);  //1223 adguard mitm cert
 user_pref("pdfjs.disabled", true); // 2620
 user_pref("browser.download.useDownloadDir", true); // 2651
 user_pref("browser.download.alwaysOpenPanel", true); // 2652
