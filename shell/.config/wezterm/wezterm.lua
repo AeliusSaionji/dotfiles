@@ -54,7 +54,8 @@ config.font_size = 11
 -- Workaround for possible bug where fallback nerd glyphs shrink, but built in
 -- glyphs from patched fonts don't. Not needed if using an external nerd font.
 config.allow_square_glyphs_to_overflow_width = 'Always'
-config.adjust_window_size_when_changing_font_size = true
+-- Unfortunately buggy or doesn't work with tiling
+config.adjust_window_size_when_changing_font_size = false
 -- config.use_fancy_tab_bar = true
 config.warn_about_missing_glyphs = false
 config.enable_tab_bar = false
