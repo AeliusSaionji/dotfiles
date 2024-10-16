@@ -1,6 +1,7 @@
 common/home/user/.config/
 common/home/user/.local/
-vim/.config/vim/plugged/
+env-win/AppData/Local/SumatraPDF/sumatrapdfcache/
 shell/.config/fish/
 weechat/**/sec.conf
 vim/.config/vim/autoload/plug.vim.old
+vim/.config/vim/plugged/
