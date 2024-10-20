@@ -13,3 +13,6 @@
 [submodule "mpv/.config/mpv/scripts/thumbfast"]
 	path = mpv/.config/mpv/scripts/thumbfast
 	url = https://github.com/po5/thumbfast
+[submodule "mpv/.config/mpv/scripts/mpv_sponsorblock_minimal"]
+	path = mpv/.config/mpv/scripts/mpv_sponsorblock_minimal
+	url = https://codeberg.org/jouni/mpv_sponsorblock_minimal
